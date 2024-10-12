@@ -1,3 +1,3 @@
 [submodule "src/DeckScaler/Assets/Entitas.Generic"]
-	path = src/DeckScaler/Assets/Entitas.Generic
+	path = src/DeckScaler/Assets/Dependencies/Entitas.Generic
 	url = git@github.com:rapushka/Entitas.Generic.git
