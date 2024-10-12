@@ -1,4 +1,4 @@
-namespace Code.Utils
+namespace DeckScaler.Utils
 {
     public static class Constants
     {

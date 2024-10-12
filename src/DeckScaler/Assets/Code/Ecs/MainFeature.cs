@@ -1,3 +1,4 @@
+using DeckScaler.System;
 using Entitas.Generic;
 
 namespace DeckScaler
@@ -7,6 +8,9 @@ namespace DeckScaler
         public MainFeature()
             : base(nameof(MainFeature))
         {
+            // Add(new RegisterBehavioursSystem(Contexts.Instance));
+            Add(new TestSpawnLead());
+            
             Add(new BoilerplateFeature(Contexts.Instance));
         }
     }

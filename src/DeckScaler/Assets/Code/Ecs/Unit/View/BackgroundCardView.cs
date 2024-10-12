@@ -11,7 +11,8 @@ namespace DeckScaler
 
         public override void OnValueChanged(Entity<Scope> entity, Component.Suit component)
         {
-            Sprite sprite = Services.Get<Configs>().Units.CardBackgrounds[component.Value];
+            var sprite = Services.Get<Configs>().Units.CardBackgrounds[component.Value];
+            _spriteRenderer.sprite = sprite;
         }
     }
 }
