@@ -8,10 +8,10 @@ namespace DeckScaler
 
 		private void Awake()
 		{
-			Services.Init(_servicesConfig);
+			var gameStateMachine = new GameStateMachine();
+			Services.Init(_servicesConfig, gameStateMachine);
 
-			var gameStateMachine = new StateMachine();
-			gameStateMachine.Enter<State.Bootstrap>();
+			gameStateMachine.Enter<States.BootstrapState>();
 		}
 	}
 }

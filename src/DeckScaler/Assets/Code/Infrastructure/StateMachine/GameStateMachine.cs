@@ -4,13 +4,13 @@ using DeckScaler.Utils;
 
 namespace DeckScaler
 {
-	public class StateMachine
+	public class GameStateMachine
 	{
-		private readonly Dictionary<Type, BaseState> _states = new();
-		private BaseState _currentState;
+		private readonly Dictionary<Type, GameState> _states = new();
+		private GameState _currentState;
 
 		public void Enter<TState>()
-			where TState : BaseState, new()
+			where TState : GameState, new()
 		{
 			var nextState = _states.GetOrAdd(typeof(TState), NewState<TState>);
 
@@ -20,7 +20,7 @@ namespace DeckScaler
 		}
 
 		private TState NewState<TState>()
-			where TState : BaseState, new()
-			=> BaseState.Create<TState>(this);
+			where TState : GameState, new()
+			=> GameState.Create<TState>(this);
 	}
 }
