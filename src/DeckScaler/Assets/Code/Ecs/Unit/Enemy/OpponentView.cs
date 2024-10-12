@@ -7,6 +7,7 @@ namespace DeckScaler
     public class OpponentView : BaseListener<Scope, Opponent>
     {
         [SerializeField] private Transform _opponentHolder;
+        
 
         public override void OnValueChanged(Entity<Scope> entity, Opponent component)
         {
