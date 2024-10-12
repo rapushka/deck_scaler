@@ -22,6 +22,7 @@ namespace DeckScaler.System
                        .Add<Component.Suit, Suit>(config.Suit)
                        .Add<Portrait, Sprite>(config.Portrait)
                        .Add<Health, int>(config.Health)
+                       .Add<Component.Stats, StatsData>(config.StatsData)
                 ;
         }
     }

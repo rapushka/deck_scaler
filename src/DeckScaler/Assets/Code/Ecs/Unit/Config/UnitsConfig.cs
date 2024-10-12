@@ -19,6 +19,7 @@ namespace DeckScaler
             [field: SerializeField] public Sprite Portrait { get; private set; }
             [field: SerializeField] public int    Health   { get; private set; }
             [field: SerializeField] public Suit   Suit     { get; private set; }
+            [field: SerializeField] public StatsData  StatsData    { get; private set; }
         }
     }
 }
