@@ -3,5 +3,5 @@ using UnityEngine;
 
 namespace DeckScaler.Component
 {
-    public sealed class Portrait : ValueComponent<Sprite>, IInScope { }
+    public sealed class Portrait : ValueComponent<Sprite>, IInScope, IEvent<Self> { }
 }

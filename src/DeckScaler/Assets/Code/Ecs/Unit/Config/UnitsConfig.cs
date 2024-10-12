@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Code.Utils;
 using UnityEngine;
 
@@ -9,21 +7,18 @@ namespace DeckScaler
     [CreateAssetMenu(menuName = Constants.MenuPrefix + nameof(UnitsConfig))]
     public class UnitsConfig : ScriptableObject
     {
-        [SerializeField] private Entry[] _entries;
         [field: SerializeField] public EntityBehaviour UnitViewPrefab { get; private set; }
 
-        public Entry this[string id] => Dictionary[id];
+        [field: SerializeField] public SerializableDictionary<string, UnitConfig> UnitConfigs { get; private set; }
 
-        private Dictionary<string, Entry> _dictionary;
-        private Dictionary<string, Entry> Dictionary => _dictionary ??= CollectToDictionary();
-
-        private Dictionary<string, Entry> CollectToDictionary() => _entries.ToDictionary(e => e.ID, e => e);
+        [field: SerializeField] public SerializableDictionary<Suit, Sprite> CardBackgrounds { get; private set; }
 
         [Serializable]
-        public class Entry
+        public class UnitConfig
         {
-            [field: SerializeField] public string ID       { get; private set; }
             [field: SerializeField] public Sprite Portrait { get; private set; }
+            [field: SerializeField] public int    Health   { get; private set; }
+            [field: SerializeField] public Suit   Suit     { get; private set; }
         }
     }
 }

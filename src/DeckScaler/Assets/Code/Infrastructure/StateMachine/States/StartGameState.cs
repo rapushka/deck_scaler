@@ -1,6 +1,6 @@
 using DeckScaler.Component;
 using DeckScaler.Service;
-using Entitas.Generic;
+using DeckScaler.Utils;
 
 namespace DeckScaler.States
 {
@@ -18,11 +18,16 @@ namespace DeckScaler.States
 
         private void SpawnInitials()
         {
-            var unitsUnitViewPrefab = Services.Get<Configs>().Units.UnitViewPrefab;
+            var unitsConfig = Services.Get<Configs>().Units;
+            var config = unitsConfig.UnitConfigs["bouncer"];
 
-            Contexts.Instance.Scope().CreateEntity()
-                    .Add<Name, string>("Test Lead")
-                    .Is<Lead>(true);
+            unitsConfig.UnitViewPrefab
+                       .Spawn()
+                       .Entity
+                       .Add<Name, string>("Test Lead")
+                       .Is<Lead>(true)
+                       .Add<Component.Suit, Suit>(config.Suit)
+                ;
         }
     }
 }
