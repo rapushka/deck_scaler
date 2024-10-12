@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DeckScaler.Service
 {
-    public class Ecs
+    public class Ecs : IService
     {
         private GameplayFeatureAdapter _featureAdapter;
 

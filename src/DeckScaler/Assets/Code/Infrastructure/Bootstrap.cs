@@ -13,12 +13,9 @@ namespace DeckScaler
             var gameStateMachine = new GameStateMachine();
             Services.Init
             (
-                new Services.Data
-                {
-                    StateMachine = gameStateMachine,
-                    CamerasData = _cameras,
-                    Configs = _configs,
-                }
+                gameStateMachine,
+                _cameras,
+                _configs
             );
 
             gameStateMachine.Enter<States.BootstrapState>();

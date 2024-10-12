@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DeckScaler.Service
 {
-    public class Cameras
+    public class Cameras : IService
     {
         public Cameras(Data data)
         {

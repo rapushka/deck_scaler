@@ -1,12 +1,14 @@
+using DeckScaler.Service;
+
 namespace DeckScaler.States
 {
-	public class BootstrapState : GameState
-	{
-		public override void Enter()
-		{
-			Services.Instance.UI.Init();
+    public class BootstrapState : GameState
+    {
+        public override void Enter()
+        {
+            Services.Get<UI>().Init();
 
-			StateMachine.Enter<MainMenuState>();
-		}
-	}
+            StateMachine.Enter<MainMenuState>();
+        }
+    }
 }

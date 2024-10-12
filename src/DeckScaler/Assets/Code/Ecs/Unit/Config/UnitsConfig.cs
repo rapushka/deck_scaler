@@ -6,10 +6,11 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    [CreateAssetMenu(menuName = Constants.MenuPrefix + nameof(UnitViewsConfig))]
-    public class UnitViewsConfig : ScriptableObject
+    [CreateAssetMenu(menuName = Constants.MenuPrefix + nameof(UnitsConfig))]
+    public class UnitsConfig : ScriptableObject
     {
         [SerializeField] private Entry[] _entries;
+        [field: SerializeField] public EntityBehaviour UnitViewPrefab { get; private set; }
 
         public Entry this[string id] => Dictionary[id];
 

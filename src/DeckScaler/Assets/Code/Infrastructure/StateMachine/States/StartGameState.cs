@@ -1,4 +1,5 @@
 using DeckScaler.Component;
+using DeckScaler.Service;
 using Entitas.Generic;
 
 namespace DeckScaler.States
@@ -7,16 +8,18 @@ namespace DeckScaler.States
     {
         public override void Enter()
         {
-            Services.Instance.Ecs.Init();
+            Services.Get<Ecs>().Init();
 
             SpawnInitials();
 
-            Services.Instance.UI.ShowGameplayHUD();
+            Services.Get<UI>().ShowGameplayHUD();
             StateMachine.Enter<GameplayState>();
         }
 
         private void SpawnInitials()
         {
+            var unitsUnitViewPrefab = Services.Get<Configs>().Units.UnitViewPrefab;
+
             Contexts.Instance.Scope().CreateEntity()
                     .Add<Name, string>("Test Lead")
                     .Is<Lead>(true);
