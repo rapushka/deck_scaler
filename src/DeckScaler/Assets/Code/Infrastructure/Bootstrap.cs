@@ -1,17 +1,27 @@
+using DeckScaler.Service;
 using UnityEngine;
 
 namespace DeckScaler
 {
-	public class Bootstrap : MonoBehaviour
-	{
-		[SerializeField] private ServicesConfig _servicesConfig;
+    public class Bootstrap : MonoBehaviour
+    {
+        [SerializeField] private Cameras.Data _cameras;
+        [SerializeField] private Configs _configs;
 
-		private void Awake()
-		{
-			var gameStateMachine = new GameStateMachine();
-			Services.Init(_servicesConfig, gameStateMachine);
+        private void Awake()
+        {
+            var gameStateMachine = new GameStateMachine();
+            Services.Init
+            (
+                new Services.Data
+                {
+                    StateMachine = gameStateMachine,
+                    CamerasData = _cameras,
+                    Configs = _configs,
+                }
+            );
 
-			gameStateMachine.Enter<States.BootstrapState>();
-		}
-	}
+            gameStateMachine.Enter<States.BootstrapState>();
+        }
+    }
 }

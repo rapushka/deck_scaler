@@ -1,17 +1,18 @@
 using DeckScaler.Service;
+using UnityEngine;
 
 namespace DeckScaler
 {
     public class Services
     {
-        public static void Init(ServicesConfig config, GameStateMachine stateMachine)
-            => Instance = new Services(config, stateMachine);
+        public static void Init(Data data)
+            => Instance = new Services(data);
 
-        private Services(ServicesConfig config, GameStateMachine stateMachine)
+        private Services(Data data)
         {
             UI = new UI();
-            Cameras = new Cameras(config.MainCamera, config.UiCamera);
-            StateMachine = stateMachine;
+            Cameras = new Cameras(data.CamerasData);
+            StateMachine = data.StateMachine;
             Ecs = new Ecs();
         }
 
@@ -24,5 +25,12 @@ namespace DeckScaler
         public GameStateMachine StateMachine { get; }
 
         public Ecs Ecs { get; }
+
+        public class Data
+        {
+            public GameStateMachine StateMachine;
+            public Cameras.Data CamerasData;
+            public Configs Configs;
+        }
     }
 }
