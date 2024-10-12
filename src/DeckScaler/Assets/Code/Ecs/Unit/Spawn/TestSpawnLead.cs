@@ -4,7 +4,7 @@ using DeckScaler.Utils;
 using Entitas;
 using UnityEngine;
 
-namespace DeckScaler.System
+namespace DeckScaler.Systems
 {
     public sealed class TestSpawnLead : IInitializeSystem
     {
@@ -19,6 +19,7 @@ namespace DeckScaler.System
                        .Entity
                        .Add<Name, string>("Test Lead")
                        .Is<Lead>(true)
+                       .Is<Ally>(true)
                        .Add<Component.Suit, Suit>(config.Suit)
                        .Add<Portrait, Sprite>(config.Portrait)
                        .Add<Health, int>(config.Health)
