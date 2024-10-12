@@ -13,6 +13,10 @@ namespace DeckScaler.Service
 
             var go = new GameObject("Gameplay Feature");
             _featureAdapter = go.AddComponent<GameplayFeatureAdapter>();
+
+#if DEBUG
+            Entity.Formatter = new Formatter();
+#endif
         }
 
         public void Dispose()
