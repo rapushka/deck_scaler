@@ -5,6 +5,7 @@ using Entitas;
 using Entitas.Generic;
 using UnityEngine;
 using static Entitas.Generic.ScopeMatcher<DeckScaler.Scope>;
+using UnitID = DeckScaler.Component.UnitID;
 
 namespace DeckScaler.Systems
 {
@@ -16,7 +17,8 @@ namespace DeckScaler.Systems
 
         public void Initialize()
         {
-            var config = UnitsConfig.EnemyConfigs["rat"];
+            var unitID = "rat";
+            var config = UnitsConfig.EnemyConfigs[unitID];
 
             foreach (var ally in _allies)
             {
@@ -24,6 +26,7 @@ namespace DeckScaler.Systems
                                         .Spawn()
                                         .Entity
                                         .Add<Name, string>("Test enemy")
+                                        .Add<UnitID, string>(unitID)
                                         .Is<Enemy>(true)
                                         .Add<Component.Suit, Suit>(config.Suit)
                                         .Add<Portrait, Sprite>(config.Portrait)

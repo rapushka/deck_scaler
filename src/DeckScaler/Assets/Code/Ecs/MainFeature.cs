@@ -11,6 +11,9 @@ namespace DeckScaler
             Add(new TestSpawnLead());
             Add(new SpawnEnemyForEachAlly());
 
+            Add(new SpawnAllyActionCard());
+            Add(new SetupPlayerCardView());
+
             Add(new BoilerplateFeature(Contexts.Instance));
         }
     }

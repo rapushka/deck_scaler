@@ -12,12 +12,14 @@ namespace DeckScaler.Systems
 
         public void Initialize()
         {
-            var config = UnitsConfig.UnitConfigs["bouncer"];
+            var unitID = "bouncer";
+            var config = UnitsConfig.UnitConfigs[unitID];
 
             UnitsConfig.UnitViewPrefab
                        .Spawn()
                        .Entity
                        .Add<Name, string>("Test Lead")
+                       .Add<UnitID, string>(unitID)
                        .Is<Lead>(true)
                        .Is<Ally>(true)
                        .Add<Component.Suit, Suit>(config.Suit)

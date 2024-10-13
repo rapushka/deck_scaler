@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace DeckScaler.Service
 {
@@ -23,6 +25,12 @@ namespace DeckScaler.Service
         public void ShowGameplayHUD()
         {
             SetView(Resources.Load<GameObject>("UI/GameplayHUD/GameplayHUD"));
+        }
+
+        public TView GetView<TView>()
+        {
+            return _currentView.GetComponent<TView>()
+                   ?? throw new InvalidOperationException($"Current view isn't the {typeof(TView).Name}");
         }
 
         private void SetView(GameObject prefab)
