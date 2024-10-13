@@ -1,12 +1,14 @@
+using DeckScaler.Service;
+
 namespace DeckScaler.States
 {
     public class StartGameState : GameState
     {
         public override void Enter()
         {
-            Services.Instance.Ecs.Init();
+            Services.Get<Ecs>().Init();
 
-            Services.Instance.UI.ShowGameplayHUD();
+            Services.Get<UI>().ShowGameplayHUD();
             StateMachine.Enter<GameplayState>();
         }
     }

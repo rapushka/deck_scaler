@@ -1,3 +1,5 @@
+using DeckScaler.Service;
+
 namespace DeckScaler.States
 {
     public class GameplayState : GameState
@@ -6,7 +8,7 @@ namespace DeckScaler.States
 
         public override void Exit()
         {
-            Services.Instance.Ecs.Dispose();
+            Services.Get<Ecs>().Dispose();
         }
     }
 }

@@ -129,7 +129,6 @@ GameObject:
   m_Component:
   - component: {fileID: 252054449}
   - component: {fileID: 252054450}
-  - component: {fileID: 252054451}
   m_Layer: 0
   m_Name: Bootstrap
   m_TagString: Untagged
@@ -164,21 +163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9570b64653e74934b2b042ea482f7222, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _servicesConfig: {fileID: 252054451}
---- !u!114 &252054451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 252054448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38dcaebc5d1f41e98e8a52abb3d14c65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <MainCamera>k__BackingField: {fileID: 519420031}
-  <UiCamera>k__BackingField: {fileID: 1380140843}
+  _cameras:
+    MainCamera: {fileID: 519420031}
+    UiCamera: {fileID: 1380140843}
+  _configs: {fileID: 11400000, guid: 28ac7691c4956b6bc9592d413876f6c2, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
