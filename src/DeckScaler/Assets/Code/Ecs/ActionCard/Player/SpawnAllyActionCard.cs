@@ -27,7 +27,7 @@ namespace DeckScaler.Systems
             foreach (var unitID in entities.Select(e => e.Get<UnitID>().Value))
             foreach (var cardID in Configs.Units.UnitConfigs[unitID].RelatedCards)
             {
-                Configs.ActionCards.Load(cardID)
+                Configs.ActionCards.LoadView(cardID)
                        .Entity
                        .Is<PlayerCard>(true)
                        .Add<Parent, Transform>(HUD.CardsHolder.Root)

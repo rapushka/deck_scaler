@@ -12,7 +12,7 @@ namespace DeckScaler
             Add(new SpawnEnemyForEachAlly());
 
             Add(new SpawnAllyActionCard());
-            Add(new SetupPlayerCardView());
+            // Add(new SetupPlayerCardView()); TODO: now it duplicates code from SpawnAllyActionCard. Remove?
 
             Add(new BoilerplateFeature(Contexts.Instance));
         }

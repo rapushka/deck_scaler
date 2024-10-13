@@ -7,6 +7,6 @@ namespace DeckScaler.Service
     public class Configs : ScriptableObject, IService
     {
         [field: SerializeField] public UnitsConfig      Units { get; private set; }
-        [field: SerializeField] public ActionCardConfig ActionCards { get; private set; }
+        [field: SerializeField] public ActionCardsConfig ActionCards { get; private set; }
     }
 }

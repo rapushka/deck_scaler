@@ -14,6 +14,8 @@ namespace DeckScaler
             Add(new SelfEventSystem<Scope, Health>(contexts));
             Add(new SelfEventSystem<Scope, Component.Suit>(contexts));
             Add(new SelfEventSystem<Scope, Portrait>(contexts));
+            Add(new SelfEventSystem<Scope, Title>(contexts));
+            Add(new SelfEventSystem<Scope, Description>(contexts));
         }
     }
 }
