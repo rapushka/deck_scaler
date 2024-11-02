@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public class OpponentView : BaseListener<Scope, Opponent>
+    public class OpponentView : BaseListener<Model, Opponent>
     {
         [SerializeField] private Transform _opponentHolder;
         
 
-        public override void OnValueChanged(Entity<Scope> entity, Opponent component)
+        public override void OnValueChanged(Entity<Model> entity, Opponent component)
         {
             if (!entity.Is<Ally>())
                 return;

@@ -6,23 +6,23 @@ using DeckScaler.Ui.Views.GameplayHUD;
 using Entitas;
 using Entitas.Generic;
 using UnityEngine;
-using static Entitas.Generic.ScopeMatcher<DeckScaler.Scope>;
+using static Entitas.Generic.ScopeMatcher<DeckScaler.Model>;
 
 namespace DeckScaler.Systems
 {
-    public sealed class SpawnAllyActionCard : ReactiveSystem<Entity<Scope>>
+    public sealed class SpawnAllyActionCard : ReactiveSystem<Entity<Model>>
     {
-        public SpawnAllyActionCard() : base(Contexts.Instance.Scope()) { }
+        public SpawnAllyActionCard() : base(Contexts.Instance.Get<Model>()) { }
 
         private static Configs     Configs => Services.Get<Configs>();
         private static GameplayHUD HUD     => Services.Get<UI>().GetView<GameplayHUD>();
 
-        protected override ICollector<Entity<Scope>> GetTrigger(IContext<Entity<Scope>> context)
+        protected override ICollector<Entity<Model>> GetTrigger(IContext<Entity<Model>> context)
             => context.CreateCollector(Get<UnitID>().Added());
 
-        protected override bool Filter(Entity<Scope> entity) => entity.Is<Ally>();
+        protected override bool Filter(Entity<Model> entity) => entity.Is<Ally>();
 
-        protected override void Execute(List<Entity<Scope>> entities)
+        protected override void Execute(List<Entity<Model>> entities)
         {
             foreach (var unitID in entities.Select(e => e.Get<UnitID>().Value))
             foreach (var cardID in Configs.Units.UnitConfigs[unitID].RelatedCards)

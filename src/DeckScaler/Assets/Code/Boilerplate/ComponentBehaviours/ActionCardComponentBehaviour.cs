@@ -2,5 +2,5 @@ using Entitas.Generic;
 
 namespace DeckScaler.Component
 {
-    public class ActionCardComponentBehaviour : ComponentBehaviour<Scope, ActionCard> { }
+    public class ActionCardComponentBehaviour : ComponentBehaviour<Model, ActionCard> { }
 }

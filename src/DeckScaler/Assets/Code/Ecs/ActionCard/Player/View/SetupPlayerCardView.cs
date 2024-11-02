@@ -9,18 +9,18 @@ using UnityEngine;
 
 namespace DeckScaler.Systems
 {
-    public sealed class SetupPlayerCardView : ReactiveSystem<Entity<Scope>>
+    public sealed class SetupPlayerCardView : ReactiveSystem<Entity<Model>>
     {
-        public SetupPlayerCardView() : base(Contexts.Instance.Scope()) { }
+        public SetupPlayerCardView() : base(Contexts.Instance.Get<Model>()) { }
 
         private static GameplayHUD HUD => Services.Get<UI>().GetView<GameplayHUD>();
 
-        protected override ICollector<Entity<Scope>> GetTrigger(IContext<Entity<Scope>> context)
-            => context.CreateCollector(ScopeMatcher<Scope>.Get<PlayerCard>().Added());
+        protected override ICollector<Entity<Model>> GetTrigger(IContext<Entity<Model>> context)
+            => context.CreateCollector(ScopeMatcher<Model>.Get<PlayerCard>().Added());
 
-        protected override bool Filter(Entity<Scope> entity) => true;
+        protected override bool Filter(Entity<Model> entity) => true;
 
-        protected override void Execute(List<Entity<Scope>> entities)
+        protected override void Execute(List<Entity<Model>> entities)
         {
             foreach (var e in entities)
                 e.Add<Parent, Transform>(HUD.CardsHolder.Root);

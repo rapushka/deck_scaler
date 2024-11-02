@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public class DescriptionView : BaseListener<Scope, Description>
+    public class DescriptionView : BaseListener<Model, Description>
     {
         [SerializeField] private TMP_Text _textMesh;
 
-        public override void OnValueChanged(Entity<Scope> entity, Description component)
+        public override void OnValueChanged(Entity<Model> entity, Description component)
         {
             _textMesh.text = component.Value;
         }

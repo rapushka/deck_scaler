@@ -4,21 +4,21 @@ using DeckScaler.Utils;
 using Entitas;
 using Entitas.Generic;
 using UnityEngine;
-using static Entitas.Generic.ScopeMatcher<DeckScaler.Scope>;
+using static Entitas.Generic.ScopeMatcher<DeckScaler.Model>;
 using UnitID = DeckScaler.Component.UnitID;
 
 namespace DeckScaler.Systems
 {
     public sealed class SpawnEnemyForEachAlly : IInitializeSystem
     {
-        private readonly IGroup<Entity<Scope>> _allies = Contexts.Instance.Scope().GetGroup(Get<Ally>());
+        private readonly IGroup<Entity<Model>> _allies = Contexts.Instance.Get<Model>().GetGroup(Get<Ally>());
 
         private static UnitsConfig UnitsConfig => Services.Get<Configs>().Units;
 
         public void Initialize()
         {
             return;
-            
+
             var unitID = "rat";
             var config = UnitsConfig.EnemyConfigs[unitID];
 
@@ -34,10 +34,10 @@ namespace DeckScaler.Systems
                                         .Add<Portrait, Sprite>(config.Portrait)
                                         .Add<Health, int>(config.Health)
                                         .Add<Stats, StatsData>(config.StatsData)
-                                        .Add<Opponent, Entity<Scope>>(ally)
+                                        .Add<Opponent, Entity<Model>>(ally)
                     ;
 
-                ally.Add<Opponent, Entity<Scope>>(entity);
+                ally.Add<Opponent, Entity<Model>>(entity);
             }
         }
     }

@@ -4,9 +4,9 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public class Formatter : EntityComponentsListFormatter<Scope>
+    public class ModelEntityFormatter : EntityComponentsListFormatter<Model>
     {
-        protected override IEnumerable<string> CreateList(Entity<Scope> entity)
+        protected override IEnumerable<string> CreateList(Entity<Model> entity)
         {
             yield return entity.creationIndex.ToString();
 

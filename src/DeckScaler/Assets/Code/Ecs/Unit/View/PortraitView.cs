@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public class PortraitView : BaseListener<Scope, Portrait>
+    public class PortraitView : BaseListener<Model, Portrait>
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
 
-        public override void OnValueChanged(Entity<Scope> entity, Portrait component)
+        public override void OnValueChanged(Entity<Model> entity, Portrait component)
         {
             _spriteRenderer.sprite = component.Value;
         }

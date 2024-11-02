@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public class BackgroundCardView : BaseListener<Scope, Component.Suit>
+    public class BackgroundCardView : BaseListener<Model, Component.Suit>
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
 
-        public override void OnValueChanged(Entity<Scope> entity, Component.Suit component)
+        public override void OnValueChanged(Entity<Model> entity, Component.Suit component)
         {
             var sprite = Services.Get<Configs>().Units.CardBackgrounds[component.Value];
             _spriteRenderer.sprite = sprite;
