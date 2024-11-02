@@ -7,13 +7,13 @@ namespace DeckScaler
     public class ActionCardsConfig : ScriptableObject
     {
         [SerializeField] private EntityBehaviour _cardVewPrefab;
-        [SerializeField] private SerializableDictionary<string, EntityConfig> _configs;
+        // [SerializeField] private SerializableDictionary<string, EntityConfig> _configs;
 
         public EntityBehaviour LoadView(string id)
         {
             var view = _cardVewPrefab.Spawn();
-            var config = _configs[id];
-            config.Setup(view.Entity);
+            // var config = _configs[id];
+            // config.Setup(view.Entity);
 
             return view;
         }
