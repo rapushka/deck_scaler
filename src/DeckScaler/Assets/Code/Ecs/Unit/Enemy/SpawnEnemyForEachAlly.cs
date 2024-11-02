@@ -17,6 +17,8 @@ namespace DeckScaler.Systems
 
         public void Initialize()
         {
+            return;
+            
             var unitID = "rat";
             var config = UnitsConfig.EnemyConfigs[unitID];
 

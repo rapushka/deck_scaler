@@ -14,7 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <UnitViewPrefab>k__BackingField: {fileID: 0}
   <UnitConfigs>k__BackingField:
-    _values: []
+    _values:
+    - Key: 
+      Value:
+        <Portrait>k__BackingField: {fileID: 0}
+        <Health>k__BackingField: 0
+        <Suit>k__BackingField: 0
+        <StatsData>k__BackingField:
+          _values: []
+        <RelatedCards>k__BackingField: []
   <EnemyConfigs>k__BackingField:
     _values: []
   <CardBackgrounds>k__BackingField:
