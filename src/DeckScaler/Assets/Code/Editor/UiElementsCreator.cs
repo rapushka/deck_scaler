@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DeckScaler.Editor
 {
-    public class ElementsCreator
+    public class UiElementsCreator
     {
         private const string Prefix = "GameObject/375/";
 
