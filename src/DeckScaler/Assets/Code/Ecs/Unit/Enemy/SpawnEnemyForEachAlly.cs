@@ -24,17 +24,21 @@ namespace DeckScaler.Systems
 
             foreach (var ally in _allies)
             {
-                var entity = UnitsConfig.UnitViewPrefab
-                                        .Spawn()
-                                        .Entity
-                                        .Add<Name, string>("Test enemy")
-                                        .Add<UnitID, string>(unitID)
-                                        .Is<Enemy>(true)
-                                        .Add<Component.Suit, Suit>(config.Suit)
-                                        .Add<Portrait, Sprite>(config.Portrait)
-                                        .Add<Health, int>(config.Health)
-                                        .Add<Stats, StatsData>(config.StatsData)
-                                        .Add<Opponent, Entity<Model>>(ally)
+                var entity = Contexts.Instance.Get<Model>().CreateEntity()
+                                     .Add<Name, string>("Test enemy")
+                                     .Add<UnitID, string>(unitID)
+                                     .Is<Enemy>(true)
+                                     .Add<Component.Suit, Suit>(config.Suit)
+                                     .Add<Health, int>(config.Health)
+                                     .Add<Stats, StatsData>(config.StatsData)
+                                     .Add<Opponent, Entity<Model>>(ally);
+
+                var view = UnitsConfig.UnitViewPrefab
+                                      .Spawn()
+                                      .Entity
+                                      .AddModel(entity)
+                                      .Add<Name, string>("Test enemy")
+                                      .Add<Portrait, Sprite>(config.Portrait)
                     ;
 
                 ally.Add<Opponent, Entity<Model>>(entity);

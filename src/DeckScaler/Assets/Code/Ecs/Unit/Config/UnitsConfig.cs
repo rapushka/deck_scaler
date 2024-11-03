@@ -7,7 +7,7 @@ namespace DeckScaler
     [CreateAssetMenu(menuName = Constants.MenuPrefix + nameof(UnitsConfig))]
     public class UnitsConfig : ScriptableObject
     {
-        [field: SerializeField] public EntityBehaviour UnitViewPrefab { get; private set; }
+        [field: SerializeField] public ViewEntityBehaviour UnitViewPrefab { get; private set; }
 
         [field: SerializeField] public SerializableDictionary<string, UnitConfig> UnitConfigs { get; private set; }
 

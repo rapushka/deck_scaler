@@ -1,18 +1,23 @@
-using System.Collections.Generic;
+using System.Text;
 using DeckScaler.Component;
 using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public class ModelEntityFormatter : EntityComponentsListFormatter<Model>
+    public class ModelEntityFormatter : EntityStringBuilderFormatter<Model>
     {
-        protected override IEnumerable<string> CreateList(Entity<Model> entity)
+        protected override void BuildName(ref StringBuilder stringBuilder, in Entity<Model> entity)
         {
-            yield return entity.creationIndex.ToString();
+            stringBuilder.AppendJoin
+            (
+                " ",
+                entity.creationIndex.ToString(),
+                entity.ToString<Name, string>(),
+                entity.ToString<Lead>(),
 
-            yield return entity.ToString<Name, string>();
-
-            yield return entity.ToString<Lead>();
+                // Empty symbol just because i have to leave multi-line expression without trailing coma
+                "\0"
+            );
         }
     }
 }

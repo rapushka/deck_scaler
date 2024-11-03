@@ -4,5 +4,5 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public class ViewTransformComponentBehaviours : ComponentBehaviour<Model, ViewTransform, Transform> { }
+    public class ViewTransformComponentBehaviours : ComponentBehaviour<View, ViewTransform, Transform> { }
 }

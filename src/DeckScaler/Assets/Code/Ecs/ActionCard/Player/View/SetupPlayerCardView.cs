@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using DeckScaler.Component;
 using DeckScaler.Service;
 using DeckScaler.Ui.Views.GameplayHUD;
@@ -22,8 +22,8 @@ namespace DeckScaler.Systems
 
         protected override void Execute(List<Entity<Model>> entities)
         {
-            foreach (var e in entities)
-                e.Add<Parent, Transform>(HUD.CardsHolder.Root);
+            foreach (var view in entities.Select(e => e.Get<ViewEntity>().Value))
+                view.Add<Parent, Transform>(HUD.CardsHolder.Root);
         }
     }
 }
