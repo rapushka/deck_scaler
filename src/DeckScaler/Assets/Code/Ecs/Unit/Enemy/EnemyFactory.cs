@@ -1,33 +1,31 @@
+using System;
+using System.Collections.Generic;
 using DeckScaler.Component;
 using DeckScaler.Service;
 using DeckScaler.Utils;
-using Entitas;
 using Entitas.Generic;
 using UnityEngine;
-using static Entitas.Generic.ScopeMatcher<DeckScaler.Model>;
-using UnitID = DeckScaler.Component.UnitID;
 
-namespace DeckScaler.Systems
+namespace DeckScaler
 {
-    public sealed class SpawnEnemyForEachAlly : IInitializeSystem
+    public class EnemyFactory
     {
-        private readonly IGroup<Entity<Model>> _allies = Contexts.Instance.Get<Model>().GetGroup(Get<Ally>());
-
         private static UnitsConfig UnitsConfig => Services.Get<Configs>().Units;
 
-        public void Initialize()
+        public void Foo()
         {
-            return;
+            throw new NotImplementedException();
 
             var unitID = "rat";
-            var config = UnitsConfig.EnemyConfigs[unitID];
+            var config = UnitsConfig[unitID];
 
+            var _allies = (IEnumerable<Entity<Model>>)null;
             foreach (var ally in _allies)
             {
                 var entity = Contexts.Instance.Get<Model>().CreateEntity()
                                      .Add<Name, string>("Test enemy")
                                      .Add<UnitID, string>(unitID)
-                                     .Is<Enemy>(true)
+                                     .Is<Component.Enemy>(true)
                                      .Add<Component.Suit, Suit>(config.Suit)
                                      .Add<Health, int>(config.Health)
                                      .Add<Stats, StatsData>(config.StatsData)

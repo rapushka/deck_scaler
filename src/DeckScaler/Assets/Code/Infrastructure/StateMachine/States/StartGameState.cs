@@ -10,7 +10,7 @@ namespace DeckScaler.States
 
             Services.Get<Progress>().StartNewRun();
 
-            StateMachine.Enter<GameplayState>();
+            StateMachine.Enter<LoadCurrentStageState>();
         }
     }
 }

@@ -18,6 +18,7 @@ namespace DeckScaler
             Service<Ecs>.Instance = new Ecs();
             Service<Configs>.Instance = configs;
             Service<ProgressData>.Instance = new ProgressData();
+            Service<Factories>.Instance = new Factories();
         }
 
         public static T Get<T>() where T : IService
