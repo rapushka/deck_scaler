@@ -17,11 +17,12 @@ namespace DeckScaler
             Service<GameStateMachine>.Instance = gameStateMachine;
             Service<Ecs>.Instance = new Ecs();
             Service<Configs>.Instance = configs;
-            Service<ProgressData>.Instance = new ProgressData();
-            Service<Factories>.Instance = new Factories();
+            Service<Progress>.Instance = new Progress();
+            Service<EventBus>.Instance = new EventBus();
         }
 
-        public static T Get<T>() where T : IService
+        public static T Get<T>()
+            where T : IService
         {
 #if DEBUG
             if (Service<T>.Instance is null)
@@ -32,6 +33,7 @@ namespace DeckScaler
         }
 
         private static class Service<T>
+            where T : IService
         {
             public static T Instance;
         }

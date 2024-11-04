@@ -166,7 +166,7 @@ MonoBehaviour:
   _cameras:
     MainCamera: {fileID: 519420031}
     UiCamera: {fileID: 1380140843}
-  _configs: {fileID: 11400000, guid: 28ac7691c4956b6bc9592d413876f6c2, type: 2}
+  _configs: {fileID: 11400000, guid: 24e292f4636917433abc423d6323a2c1, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
