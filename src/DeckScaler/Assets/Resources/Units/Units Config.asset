@@ -12,18 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c193bd8b8e2642d68c313aee557901bd, type: 3}
   m_Name: Units Config
   m_EditorClassIdentifier: 
-  <UnitViewPrefab>k__BackingField: {fileID: 0}
-  <UnitConfigs>k__BackingField:
+  _unitConfigsMap:
     _values:
-    - Key: 
-      Value:
-        <Portrait>k__BackingField: {fileID: 0}
-        <Health>k__BackingField: 0
-        <Suit>k__BackingField: 0
-        <StatsData>k__BackingField:
-          _values: []
-        <RelatedCards>k__BackingField: []
-  <EnemyConfigs>k__BackingField:
-    _values: []
+    - <ID>k__BackingField: Units/Bouncer
+      <Type>k__BackingField: 0
+      <Portrait>k__BackingField: {fileID: 0}
+      <Health>k__BackingField: 0
+      <Suit>k__BackingField: 0
+      <StatsData>k__BackingField:
+        _values: []
+      <RelatedCards>k__BackingField: []
+  <UnitViewPrefab>k__BackingField: {fileID: 0}
   <CardBackgrounds>k__BackingField:
     _values: []

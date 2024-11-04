@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using DeckScaler.Utils;
+using SmartIdTable;
 using UnityEngine;
 
 namespace DeckScaler
@@ -26,7 +27,9 @@ namespace DeckScaler
         [Serializable]
         public class UnitConfig
         {
-            [field: SerializeField] public string    ID           { get; private set; }
+            [field: IdRef(startsWith: Constants.TableID.Units)]
+            [field: SerializeField] public string ID { get; private set; }
+
             [field: SerializeField] public UnitType  Type         { get; private set; }
             [field: SerializeField] public Sprite    Portrait     { get; private set; }
             [field: SerializeField] public int       Health       { get; private set; }
