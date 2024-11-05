@@ -8,9 +8,7 @@ namespace DeckScaler.States
         public override void Enter()
         {
             var progress = Services.Get<Progress>().CurrentProgress;
-            Services.Get<EventBus>().Send<SpawnUnit, SpawnUnit.Args>(new(progress.SelectedLeadID, UnitType.Lead));
-            
-            
+            Services.Get<EventBus>().Send<SpawnUnit, (string, Side)>((progress.SelectedLeadID, Side.Player));
 
             StateMachine.Enter<GameplayState>();
         }
