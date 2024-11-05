@@ -1,6 +1,6 @@
 namespace DeckScaler.Service
 {
-    public class Debug : IDebug
+    public class SimpleDebug : IDebug
     {
         public void Assert(bool condition)
         {
