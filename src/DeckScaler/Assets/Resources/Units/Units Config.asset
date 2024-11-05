@@ -24,4 +24,6 @@ MonoBehaviour:
       <RelatedCards>k__BackingField: []
   <UnitViewPrefab>k__BackingField: {fileID: 0}
   <CardBackgrounds>k__BackingField:
-    _values: []
+    _values:
+    - Key: 0
+      Value: {fileID: 0}

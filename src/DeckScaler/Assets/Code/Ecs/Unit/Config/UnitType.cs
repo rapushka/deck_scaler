@@ -6,4 +6,10 @@ namespace DeckScaler
         Enemy,
         Lead,
     }
+
+    public enum Side
+    {
+        Player,
+        Enemy,
+    }
 }

@@ -1,5 +1,6 @@
 using DeckScaler.Service;
 using UnityEngine;
+using Debug = DeckScaler.Service.Debug;
 
 namespace DeckScaler
 {
@@ -19,6 +20,12 @@ namespace DeckScaler
             Service<Configs>.Instance = configs;
             Service<Progress>.Instance = new Progress();
             Service<EventBus>.Instance = new EventBus();
+
+#if DEBUG
+            Service<IDebug>.Instance = new Debug();
+#else
+            Service<IDebug>.Instance = new DebugMock();
+#endif
         }
 
         public static T Get<T>()
@@ -26,7 +33,7 @@ namespace DeckScaler
         {
 #if DEBUG
             if (Service<T>.Instance is null)
-                Debug.LogError($"the {typeof(T).Name} Service isn't initialized!");
+                UnityEngine.Debug.LogError($"the {typeof(T).Name} Service isn't initialized!");
 #endif
 
             return Service<T>.Instance;

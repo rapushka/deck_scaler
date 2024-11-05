@@ -9,7 +9,8 @@ namespace DeckScaler.States
         {
             var progress = Services.Get<Progress>().CurrentProgress;
             Services.Get<EventBus>().Send<SpawnUnit, SpawnUnit.Args>(new(progress.SelectedLeadID, UnitType.Lead));
-            // Services.Get<Factories>().Lead.Create(progress.SelectedLeadID);
+            
+            
 
             StateMachine.Enter<GameplayState>();
         }

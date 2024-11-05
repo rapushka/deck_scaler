@@ -9,14 +9,22 @@ namespace DeckScaler.Component
         [Serializable]
         public class Args
         {
-            public Args(string unitID, UnitType type)
+            public Args(string unitID, Side side)
             {
                 ID = unitID;
-                Type = type;
+                Side = side;
             }
 
-            [field: SerializeField] public string   ID   { get; private set; }
-            [field: SerializeField] public UnitType Type { get; private set; }
+            [field: SerializeField] public string ID   { get; private set; }
+            [field: SerializeField] public Side   Side { get; private set; }
+
+            public void Deconstruct(out string id, out Side type)
+            {
+                id = ID;
+                type = Side;
+            }
         }
     }
+
+    public sealed class UnitSpawned : ValueComponent<Entity<Model>>, IInScope<Model> { }
 }
