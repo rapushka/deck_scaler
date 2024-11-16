@@ -13,15 +13,9 @@ MonoBehaviour:
   m_Name: ID Table
   m_EditorClassIdentifier: 
   _idList:
-  - Action Cards
-  - Action Cards/Attack
   - Units
   - Units/Bouncer
   _idDefinitions:
-  - _id: Action Cards
-    _assetRefs: []
-  - _id: Action Cards/Attack
-    _assetRefs: []
   - _id: Units
     _assetRefs: []
   - _id: Units/Bouncer
