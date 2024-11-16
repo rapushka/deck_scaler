@@ -1,4 +1,3 @@
-using DeckScaler.Systems;
 using Entitas.Generic;
 
 namespace DeckScaler
@@ -8,9 +7,6 @@ namespace DeckScaler
         public MainFeature()
             : base(nameof(MainFeature))
         {
-            Add(new SpawnAlly());
-            Add(new SpawnTeamSlot());
-            
             Add(new BoilerplateFeature(Contexts.Instance));
         }
     }

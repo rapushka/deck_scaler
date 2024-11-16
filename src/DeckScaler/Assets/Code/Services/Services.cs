@@ -14,8 +14,13 @@ namespace DeckScaler
             Service<Ecs>.Instance = new Ecs();
             Service<Configs>.Instance = data.Configs;
             Service<Progress>.Instance = new Progress();
-            Service<EventBus>.Instance = new EventBus();
+            Service<Factories>.Instance = new Factories();
 
+            InitDebugServices();
+        }
+
+        private static void InitDebugServices()
+        {
 #if DEBUG
             Service<IDebug>.Instance = new SimpleDebug();
 #else

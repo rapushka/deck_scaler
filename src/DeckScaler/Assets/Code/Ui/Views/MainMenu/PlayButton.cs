@@ -1,5 +1,3 @@
-using DeckScaler;
-
 namespace DeckScaler
 {
     public class PlayButton : BaseButton
