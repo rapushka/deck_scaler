@@ -1,4 +1,6 @@
 using System;
+using DeckScaler.Utils;
+using SmartIdTable;
 using UnityEngine;
 
 namespace DeckScaler
@@ -6,6 +8,7 @@ namespace DeckScaler
     [Serializable]
     public class ProgressData
     {
+        [field: IdRef(startsWith: Constants.TableID.Units)]
         [field: SerializeField] public string SelectedLeadID { get; private set; }
 
         [field: HideInInspector]

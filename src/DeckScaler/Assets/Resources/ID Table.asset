@@ -30,3 +30,7 @@ MonoBehaviour:
       _targetRefType: 0
       _apiVersion: 1
       _propertyPath: _unitConfigsMap._values.Array.data[0].<ID>k__BackingField
+    - _objectPath: 8c84f30fda7d2db0a99bd62edddd1e4b||11400000
+      _targetRefType: 0
+      _apiVersion: 1
+      _propertyPath: <NewProgressData>k__BackingField.<SelectedLeadID>k__BackingField
