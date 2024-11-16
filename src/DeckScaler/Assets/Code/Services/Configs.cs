@@ -7,5 +7,7 @@ namespace DeckScaler.Service
     {
         [field: SerializeField] public UnitsConfig    Units    { get; private set; }
         [field: SerializeField] public ProgressConfig Progress { get; private set; }
+
+        [field: SerializeField] public SpriteSheet SpriteSheet { get; private set; }
     }
 }

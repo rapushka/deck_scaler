@@ -1,5 +1,5 @@
-using DeckScaler;
 using Entitas.Generic;
+using SmartIdTable;
 using TMPro;
 using UnityEngine;
 
@@ -7,7 +7,7 @@ namespace DeckScaler
 {
     public class StatsView : BaseListener<Model, Component.Stats>
     {
-        [SerializeField] private SerializableDictionary<Suit, TMP_Text> _suits;
+        [SerializeField] private SerializedDictionary<Suit, TMP_Text> _suits;
 
         public override void OnValueChanged(Entity<Model> entity, Component.Stats component)
         {

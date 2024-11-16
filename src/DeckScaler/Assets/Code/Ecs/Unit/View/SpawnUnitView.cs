@@ -3,11 +3,10 @@ using DeckScaler.Component;
 using DeckScaler.Service;
 using Entitas;
 using Entitas.Generic;
-using UnityEngine;
 
 namespace DeckScaler
 {
-    public sealed class SpawnUnitView : ReactiveSystem<Entity<Model>>
+    public sealed class SpawnUnitView : ReactiveSystem<Entity<Model>> // TODO: REMOVE ME
     {
         public SpawnUnitView(Contexts contexts) : base(contexts.Get<Model>()) { }
 
@@ -31,7 +30,7 @@ namespace DeckScaler
                            .Entity
                            .Add<Name, string>("Test Lead")
                            .AddModel(entity)
-                           .Add<Portrait, Sprite>(unitConfig.Portrait)
+                    // .Add<Portrait, Sprite>(unitConfig.Portrait)
                     ;
             }
         }

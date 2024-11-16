@@ -13,7 +13,6 @@ namespace DeckScaler
             Add(new SelfEventSystem<Model, Health>(contexts));
             Add(new SelfEventSystem<Model, Component.Suit>(contexts));
             Add(new SelfEventSystem<View, Parent>(contexts));
-            Add(new SelfEventSystem<View, Portrait>(contexts));
         }
     }
 }

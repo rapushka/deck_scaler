@@ -8,10 +8,11 @@ namespace DeckScaler
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
 
+        private static SpriteSheet SpriteSheet => Services.Get<Configs>().SpriteSheet;
+
         public override void OnValueChanged(Entity<Model> entity, Component.Suit component)
         {
-            var sprite = Services.Get<Configs>().Units.CardBackgrounds[component.Value];
-            _spriteRenderer.sprite = sprite;
+            _spriteRenderer.sprite = SpriteSheet.CardBackgrounds[component.Value];
         }
     }
 }

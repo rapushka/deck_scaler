@@ -36,7 +36,7 @@ namespace DeckScaler
                                       .Entity
                                       .AddModel(entity)
                                       .Add<Name, string>("Test enemy")
-                                      .Add<Portrait, Sprite>(config.Portrait)
+                                      // .Add<Portrait, Sprite>(config.Portrait)
                     ;
 
                 ally.Add<Opponent, EntityModelIDBase>(entity.ID());

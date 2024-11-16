@@ -15,15 +15,27 @@ MonoBehaviour:
   _unitConfigsMap:
     _values:
     - <ID>k__BackingField: Units/Crook
-      <Type>k__BackingField: 0
-      <Portrait>k__BackingField: {fileID: 0}
-      <Health>k__BackingField: 0
-      <Suit>k__BackingField: 0
+      <Type>k__BackingField: 3
+      <Health>k__BackingField: 100
+      <Suit>k__BackingField: 1
       <StatsData>k__BackingField:
-        _values: []
-      <RelatedCards>k__BackingField: []
-  <UnitViewPrefab>k__BackingField: {fileID: 0}
+        list:
+        - key: 1
+          value: 10
+        - key: 2
+          value: 5
+        - key: 3
+          value: 5
+        - key: 4
+          value: 5
+  <UnitViewPrefab>k__BackingField: {fileID: 5318333384016965562, guid: c7e6205b478384c4299c195efeafdd68, type: 3}
   <CardBackgrounds>k__BackingField:
-    _values:
-    - Key: 0
-      Value: {fileID: 0}
+    list:
+    - key: 1
+      value: {fileID: 0}
+    - key: 3
+      value: {fileID: 0}
+    - key: 2
+      value: {fileID: 0}
+    - key: 4
+      value: {fileID: 0}

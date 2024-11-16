@@ -1,8 +1,9 @@
 using System;
 using DeckScaler;
+using SmartIdTable;
 
 namespace DeckScaler
 {
     [Serializable]
-    public class StatsData : SerializableDictionary<Suit, int> { }
+    public class StatsData : SerializedDictionary<Suit, int> { }
 }
