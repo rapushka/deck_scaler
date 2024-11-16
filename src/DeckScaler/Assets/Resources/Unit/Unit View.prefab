@@ -270,9 +270,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5928265620876184411}
-  - component: {fileID: 5318333384016965562}
-  - component: {fileID: 417218144805712}
-  - component: {fileID: 7294290336371195761}
+  - component: {fileID: 6915663080607579929}
+  - component: {fileID: 4386601732497496428}
+  - component: {fileID: 3982370130271860517}
   m_Layer: 0
   m_Name: Unit View
   m_TagString: Untagged
@@ -299,7 +299,7 @@ Transform:
   - {fileID: 1423392883698718663}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5318333384016965562
+--- !u!114 &6915663080607579929
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -308,15 +308,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6710012509412954626}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 993965e5319746cdb298853bb509f158, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f08a49712174c5b80b680a11c83d40e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentBehaviours: []
+  _componentBehaviours:
+  - {fileID: 4386601732497496428}
+  - {fileID: 3982370130271860517}
   _listeners: []
   _subEntities: []
   _ensureComponentsCountOnAwake: 1
   _forceSubEntitiesAutoCollect: 1
---- !u!114 &417218144805712
+--- !u!114 &4386601732497496428
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -325,11 +327,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6710012509412954626}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53eaad72a79d4b88a3c99812bc41fa0a, type: 3}
+  m_Script: {fileID: 11500000, guid: 07187f5698ec44a4aeddbe2fa33f939e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 3792121756617789525}
---- !u!114 &7294290336371195761
+  _value: {fileID: 3792121756617789525}
+--- !u!114 &3982370130271860517
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -338,10 +340,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6710012509412954626}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1a48c9f76124cb3a4df17a4c657abed, type: 3}
+  m_Script: {fileID: 11500000, guid: da3de035b2584464877d686deab0e636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 7528235056311142584}
+  _value: {fileID: 7528235056311142584}
 --- !u!1 &7908943310836628263
 GameObject:
   m_ObjectHideFlags: 0

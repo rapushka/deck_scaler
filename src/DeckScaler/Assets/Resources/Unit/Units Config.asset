@@ -28,14 +28,4 @@ MonoBehaviour:
           value: 5
         - key: 4
           value: 5
-  <UnitViewPrefab>k__BackingField: {fileID: 5318333384016965562, guid: c7e6205b478384c4299c195efeafdd68, type: 3}
-  <CardBackgrounds>k__BackingField:
-    list:
-    - key: 1
-      value: {fileID: 0}
-    - key: 3
-      value: {fileID: 0}
-    - key: 2
-      value: {fileID: 0}
-    - key: 4
-      value: {fileID: 0}
+  <ViewPrefab>k__BackingField: {fileID: 6915663080607579929, guid: c7e6205b478384c4299c195efeafdd68, type: 3}

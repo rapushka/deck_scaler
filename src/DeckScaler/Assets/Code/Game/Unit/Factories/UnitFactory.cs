@@ -11,7 +11,7 @@ namespace DeckScaler.Service
 
         private TeamSlotFactory TeamSlotFactory => Services.Get<Factories>().TeamSlot;
 
-        public Entity<Model> CreateTeammate(string unitID)
+        public Entity<Game> CreateTeammate(string unitID)
         {
             var config = UnitsConfig[unitID];
             var unitType = config.Type;
@@ -20,7 +20,7 @@ namespace DeckScaler.Service
             var slot = TeamSlotFactory.Create();
 
             // TODO: portraits
-            return CreateEntity.NewModel()
+            return CreateEntity.New()
                                .Add<Name, string>(config.ID) // TODO: localization
                                .Add<UnitID, string>(config.ID)
                                .Is<Lead>(unitType is UnitType.Lead)
@@ -30,6 +30,8 @@ namespace DeckScaler.Service
                                .Add<Health, int>(config.Health)
                                .Add<Stats, StatsData>(config.StatsData)
                                .SetupToSlotAsTeammate(slot)
+                               .Is<Loading>(true)
+                               .Add<PrefabToLoad, EntityBehaviour>(UnitsConfig.ViewPrefab)
                 ;
         }
     }

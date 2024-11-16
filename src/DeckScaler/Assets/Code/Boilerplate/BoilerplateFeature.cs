@@ -8,11 +8,10 @@ namespace DeckScaler
         public BoilerplateFeature(Contexts contexts)
             : base(nameof(BoilerplateFeature))
         {
-            Add(new SelfEventSystem<Model, Stats>(contexts));
-            Add(new SelfEventSystem<Model, Opponent>(contexts));
-            Add(new SelfEventSystem<Model, Health>(contexts));
-            Add(new SelfEventSystem<Model, Component.Suit>(contexts));
-            Add(new SelfEventSystem<View, Parent>(contexts));
+            Add(new SelfEventSystem<Game, Stats>(contexts));
+            Add(new SelfEventSystem<Game, Opponent>(contexts));
+            Add(new SelfEventSystem<Game, Health>(contexts));
+            Add(new SelfEventSystem<Game, Component.Suit>(contexts));
         }
     }
 }

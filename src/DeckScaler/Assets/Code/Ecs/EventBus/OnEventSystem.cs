@@ -4,9 +4,9 @@ using Entitas.Generic;
 namespace DeckScaler.Systems
 {
     public abstract class OnEventSystem<TComponent> : IExecuteSystem
-        where TComponent : IComponent, IInScope<Model>, new()
+        where TComponent : IComponent, IInScope<Game>, new()
     {
-        private readonly IGroup<Entity<Model>> _events = Contexts.Instance.GetGroup(ScopeMatcher<Model>.Get<TComponent>());
+        private readonly IGroup<Entity<Game>> _events = Contexts.Instance.GetGroup(ScopeMatcher<Game>.Get<TComponent>());
 
         public void Execute()
         {

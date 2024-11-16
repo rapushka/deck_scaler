@@ -11,7 +11,7 @@ namespace DeckScaler
     {
         [SerializeField] private UnitConfigMap _unitConfigsMap;
 
-        [field: SerializeField] public ViewEntityBehaviour UnitViewPrefab { get; private set; }
+        [field: SerializeField] public EntityBehaviour ViewPrefab { get; private set; }
 
         public UnitConfig this[string id] => _unitConfigsMap[id];
 

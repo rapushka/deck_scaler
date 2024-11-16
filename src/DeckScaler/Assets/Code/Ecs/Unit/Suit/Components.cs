@@ -2,5 +2,5 @@ using Entitas.Generic;
 
 namespace DeckScaler.Component
 {
-    public sealed class Suit : ValueComponent<DeckScaler.Suit>, IInScope<Model>, IEvent<Self> { }
+    public sealed class Suit : ValueComponent<DeckScaler.Suit>, IInScope<Game>, IEvent<Self> { }
 }

@@ -19,27 +19,26 @@ namespace DeckScaler
             var unitID = "rat";
             var config = UnitsConfig[unitID];
 
-            var _allies = (IEnumerable<Entity<Model>>)null;
+            var _allies = (IEnumerable<Entity<Game>>)null;
             foreach (var ally in _allies)
             {
-                var entity = Contexts.Instance.Get<Model>().CreateEntity()
+                var entity = Contexts.Instance.Get<Game>().CreateEntity()
                                      .Add<Name, string>("Test enemy")
                                      .Add<UnitID, string>(unitID)
                                      .Is<Component.Enemy>(true)
                                      .Add<Component.Suit, Suit>(config.Suit)
                                      .Add<Health, int>(config.Health)
                                      .Add<Stats, StatsData>(config.StatsData)
-                                     .Add<Opponent, EntityModelIDBase>(ally.ID());
+                                     .Add<Opponent, EntityID>(ally.ID());
 
-                var view = UnitsConfig.UnitViewPrefab
+                var view = UnitsConfig.ViewPrefab
                                       .Spawn()
                                       .Entity
-                                      .AddModel(entity)
                                       .Add<Name, string>("Test enemy")
-                                      // .Add<Portrait, Sprite>(config.Portrait)
+                    // .Add<Portrait, Sprite>(config.Portrait)
                     ;
 
-                ally.Add<Opponent, EntityModelIDBase>(entity.ID());
+                ally.Add<Opponent, EntityID>(entity.ID());
             }
         }
     }

@@ -6,30 +6,30 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class SpawnUnitView : ReactiveSystem<Entity<Model>> // TODO: REMOVE ME
+    public sealed class SpawnUnitView : ReactiveSystem<Entity<Game>> // TODO: REMOVE ME
     {
-        public SpawnUnitView(Contexts contexts) : base(contexts.Get<Model>()) { }
+        public SpawnUnitView(Contexts contexts) : base(contexts.Get<Game>()) { }
 
         private static UnitsConfig UnitsConfig => Services.Get<Configs>().Units;
 
-        protected override ICollector<Entity<Model>> GetTrigger(IContext<Entity<Model>> context)
-            => context.CreateCollector(ScopeMatcher<Model>.Get<UnitID>());
+        protected override ICollector<Entity<Game>> GetTrigger(IContext<Entity<Game>> context)
+            => context.CreateCollector(ScopeMatcher<Game>.Get<UnitID>());
 
-        protected override bool Filter(Entity<Model> entity)
+        protected override bool Filter(Entity<Game> entity)
             => true;
 
-        protected override void Execute(List<Entity<Model>> entities)
+        protected override void Execute(List<Entity<Game>> entities)
         {
             foreach (var entity in entities)
             {
                 var unitID = entity.Get<UnitID>().Value;
                 var unitConfig = Services.Get<Configs>().Units[unitID];
 
-                UnitsConfig.UnitViewPrefab
+                UnitsConfig.ViewPrefab
                            .Spawn()
                            .Entity
                            .Add<Name, string>("Test Lead")
-                           .AddModel(entity)
+                    // .AddModel(entity)
                     // .Add<Portrait, Sprite>(unitConfig.Portrait)
                     ;
             }
