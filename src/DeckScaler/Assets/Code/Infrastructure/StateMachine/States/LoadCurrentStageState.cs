@@ -1,14 +1,15 @@
-using DeckScaler.Component;
 using DeckScaler.Service;
 
-namespace DeckScaler.States
+namespace DeckScaler
 {
     public class LoadCurrentStageState : GameState
     {
+        private static UnitFactory UnitFactory => Services.Get<Factories>().Unit;
+
         public override void Enter()
         {
-            var progress = Services.Get<Progress>().CurrentProgress;
-            Services.Get<EventBus>().Send<SpawnAlly, string>(progress.SelectedLeadID);
+            var progress = Services.Get<Progress>().CurrentRun;
+            UnitFactory.CreateTeammate(progress.SelectedLeadID);
 
             StateMachine.Enter<GameplayState>();
         }

@@ -1,7 +1,4 @@
 namespace DeckScaler.Service
 {
-    public interface IService
-    {
-        
-    }
+    public interface IService { }
 }

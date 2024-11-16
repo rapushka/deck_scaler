@@ -14,9 +14,17 @@ namespace DeckScaler
         [field: HideInInspector]
         [field: SerializeField] public int Stage { get; private set; }
 
+        [field: HideInInspector]
+        [field: SerializeField] public int TeamSize { get; private set; }
+
         public void SelectLead(string leadID)
         {
             SelectedLeadID = leadID;
+        }
+
+        public void AddTeammate()
+        {
+            TeamSize++;
         }
     }
 }
