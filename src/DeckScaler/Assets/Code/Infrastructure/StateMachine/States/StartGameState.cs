@@ -8,8 +8,9 @@ namespace DeckScaler.States
         {
             Services.Get<Ecs>().Init();
 
-            Services.Get<UI>().ShowGameplayHUD();
-            StateMachine.Enter<GameplayState>();
+            Services.Get<Progress>().StartNewRun();
+
+            StateMachine.Enter<LoadCurrentStageState>();
         }
     }
 }

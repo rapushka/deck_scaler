@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public class CopyParentPositionView : BaseListener<Scope, Parent>
+    public class CopyParentPositionView : BaseListener<View, Parent>
     {
         [SerializeField] private Transform _transform;
 
-        public override void OnValueChanged(Entity<Scope> entity, Parent component)
+        public override void OnValueChanged(Entity<View> entity, Parent component)
         {
             _transform.position = component.Value.position;
         }

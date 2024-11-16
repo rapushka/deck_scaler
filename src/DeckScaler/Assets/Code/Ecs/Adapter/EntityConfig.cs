@@ -2,5 +2,5 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public class EntityConfig : EntityConfig<Scope> { }
+    // public class EntityConfig : EntityConfig<Scope> { }
 }

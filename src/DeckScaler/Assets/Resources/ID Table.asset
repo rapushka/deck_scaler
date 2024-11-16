@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126ef340acdb69244a1008c5191cf19e, type: 3}
+  m_Name: ID Table
+  m_EditorClassIdentifier: 
+  _idList:
+  - Units
+  - Units/Bouncer
+  _idDefinitions:
+  - _id: Units
+    _assetRefs: []
+  - _id: Units/Bouncer
+    _assetRefs:
+    - _objectPath: 93e9e64e3e122934a9c7db4c430e9fde||11400000
+      _targetRefType: 0
+      _apiVersion: 1
+      _propertyPath: _unitConfigsMap._values.Array.data[0].<ID>k__BackingField
+    - _objectPath: 8c84f30fda7d2db0a99bd62edddd1e4b||11400000
+      _targetRefType: 0
+      _apiVersion: 1
+      _propertyPath: <NewProgressData>k__BackingField.<SelectedLeadID>k__BackingField

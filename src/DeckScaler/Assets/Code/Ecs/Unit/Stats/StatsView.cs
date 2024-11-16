@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public class StatsView : BaseListener<Scope, Component.Stats>
+    public class StatsView : BaseListener<Model, Component.Stats>
     {
         [SerializeField] private SerializableDictionary<Suit, TMP_Text> _suits;
 
-        public override void OnValueChanged(Entity<Scope> entity, Component.Stats component)
+        public override void OnValueChanged(Entity<Model> entity, Component.Stats component)
         {
 #if DEBUG
             Debug.Assert(_suits.Count == 4);
