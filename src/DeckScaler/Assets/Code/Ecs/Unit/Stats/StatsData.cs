@@ -1,5 +1,5 @@
 using System;
-using DeckScaler.Utils;
+using DeckScaler;
 
 namespace DeckScaler
 {

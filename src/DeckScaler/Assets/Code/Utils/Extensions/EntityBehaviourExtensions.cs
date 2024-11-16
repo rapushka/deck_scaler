@@ -1,7 +1,7 @@
 using Entitas.Generic;
 using UnityEngine;
 
-namespace DeckScaler.Utils
+namespace DeckScaler
 {
     public static class EntityBehaviourExtensions
     {

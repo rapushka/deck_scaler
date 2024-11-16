@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DeckScaler.Utils;
+using DeckScaler;
 using SmartIdTable;
 using UnityEngine;
 

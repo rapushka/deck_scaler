@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DeckScaler.Utils
+namespace DeckScaler
 {
 	public static class DictionaryExtension
 	{

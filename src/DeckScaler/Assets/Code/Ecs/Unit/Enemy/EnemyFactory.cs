@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using DeckScaler.Component;
 using DeckScaler.Service;
-using DeckScaler.Utils;
+using DeckScaler;
 using Entitas.Generic;
 using UnityEngine;
 
@@ -29,7 +29,7 @@ namespace DeckScaler
                                      .Add<Component.Suit, Suit>(config.Suit)
                                      .Add<Health, int>(config.Health)
                                      .Add<Stats, StatsData>(config.StatsData)
-                                     .Add<Opponent, Entity<Model>>(ally);
+                                     .Add<Opponent, EntityModelIDBase>(ally.ID());
 
                 var view = UnitsConfig.UnitViewPrefab
                                       .Spawn()
@@ -39,7 +39,7 @@ namespace DeckScaler
                                       .Add<Portrait, Sprite>(config.Portrait)
                     ;
 
-                ally.Add<Opponent, Entity<Model>>(entity);
+                ally.Add<Opponent, EntityModelIDBase>(entity.ID());
             }
         }
     }
