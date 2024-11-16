@@ -1,6 +1,6 @@
 using DeckScaler.Service;
 
-namespace DeckScaler.States
+namespace DeckScaler
 {
     public class StartGameState : GameState
     {

@@ -1,7 +1,7 @@
 using DeckScaler.Component;
 using DeckScaler.Service;
 
-namespace DeckScaler.States
+namespace DeckScaler
 {
     public class LoadCurrentStageState : GameState
     {

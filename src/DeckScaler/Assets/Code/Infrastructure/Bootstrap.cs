@@ -11,7 +11,7 @@ namespace DeckScaler
             var gameStateMachine = new GameStateMachine();
             Services.Init(gameStateMachine, _servicesData);
 
-            gameStateMachine.Enter<States.BootstrapState>();
+            gameStateMachine.Enter<DeckScaler.BootstrapState>();
         }
     }
 }

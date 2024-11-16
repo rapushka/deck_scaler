@@ -1,4 +1,4 @@
-using DeckScaler.States;
+using DeckScaler;
 
 namespace DeckScaler.Ui.Views.GameplayHUD
 {
