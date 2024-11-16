@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unitConfigsMap:
     _values:
-    - <ID>k__BackingField: Units/Bouncer
+    - <ID>k__BackingField: Units/Crook
       <Type>k__BackingField: 0
       <Portrait>k__BackingField: {fileID: 0}
       <Health>k__BackingField: 0
