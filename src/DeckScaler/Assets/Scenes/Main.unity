@@ -167,6 +167,11 @@ MonoBehaviour:
     MainCamera: {fileID: 519420031}
     UiCamera: {fileID: 1380140843}
   _configs: {fileID: 11400000, guid: 24e292f4636917433abc423d6323a2c1, type: 2}
+  _servicesData:
+    <CamerasData>k__BackingField:
+      MainCamera: {fileID: 519420031}
+      UiCamera: {fileID: 1380140843}
+    <Configs>k__BackingField: {fileID: 11400000, guid: 24e292f4636917433abc423d6323a2c1, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
