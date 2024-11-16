@@ -11,10 +11,10 @@ namespace DeckScaler
             stringBuilder.AppendJoin
             (
                 " ",
-                entity.creationIndex.ToString(),
+                entity.ToString<ID, EntityIDBase>(),
                 entity.ToString<Name, string>(),
 
-                // Empty symbol just because i have to leave multi-line expression without trailing coma
+                // Empty symbol just because I wanna leave multi-line expression without trailing coma
                 "\0"
             );
         }

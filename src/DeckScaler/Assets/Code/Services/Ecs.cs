@@ -1,3 +1,4 @@
+using DeckScaler.Component;
 using Entitas.Generic;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ namespace DeckScaler.Service
         {
             Contexts.Instance.InitializeScope<Model>();
             Contexts.Instance.InitializeScope<View>();
+
+            Contexts.Instance.Get<Model>().GetPrimaryIndex<ID, EntityIDBase>().Initialize();
 
             var go = new GameObject("Gameplay Feature");
             _featureAdapter = go.AddComponent<GameplayFeatureAdapter>();

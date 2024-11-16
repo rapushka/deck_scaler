@@ -1,5 +1,3 @@
-using DeckScaler;
-
 namespace DeckScaler.Ui.Views.GameplayHUD
 {
     public class OpenMainMenuButton : BaseButton

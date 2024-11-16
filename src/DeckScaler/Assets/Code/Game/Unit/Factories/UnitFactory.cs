@@ -1,5 +1,4 @@
 using DeckScaler.Component;
-using DeckScaler.Utils;
 using Entitas.Generic;
 
 namespace DeckScaler.Service
@@ -21,7 +20,7 @@ namespace DeckScaler.Service
             var slot = TeamSlotFactory.Create();
 
             // TODO: portraits
-            return CreateEntity.New<Model>()
+            return CreateEntity.NewModel()
                                .Add<Name, string>(config.ID) // TODO: localization
                                .Add<UnitID, string>(config.ID)
                                .Is<Lead>(unitType is UnitType.Lead)

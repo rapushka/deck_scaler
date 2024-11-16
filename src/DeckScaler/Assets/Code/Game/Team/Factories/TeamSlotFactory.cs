@@ -1,5 +1,4 @@
 using DeckScaler.Component;
-using DeckScaler.Utils;
 using Entitas.Generic;
 
 namespace DeckScaler.Service
@@ -12,7 +11,7 @@ namespace DeckScaler.Service
         {
             Progress.AddTeammate();
 
-            return CreateEntity.New<Model>()
+            return CreateEntity.NewModel()
                                .Add<Name, string>("slot")
                                .Add<TeamSlot, int>(Progress.TeamSize)
                 ;
