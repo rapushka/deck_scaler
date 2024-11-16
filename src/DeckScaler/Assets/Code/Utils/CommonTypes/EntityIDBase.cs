@@ -9,6 +9,8 @@ namespace DeckScaler
         public int ID { get; protected set; }
 
         public static implicit operator int(EntityIDBase entityIDBase) => entityIDBase.ID;
+
+        public override string ToString() => ID.ToString();
     }
 
     [Serializable]
