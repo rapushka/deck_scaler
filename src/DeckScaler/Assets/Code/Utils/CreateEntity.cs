@@ -5,12 +5,8 @@ namespace DeckScaler
 {
     public static class CreateEntity
     {
-        public static Entity<Model> NewModel()
-            => Contexts.Instance.Get<Model>().CreateEntity()
-                       .Add<ID, EntityIDBase>(EntityModelIDBase.Next());
-
-        public static Entity<View> NewView()
-            => Contexts.Instance.Get<View>().CreateEntity()
-                       .Add<ID, EntityIDBase>(EntityViewIDBase.Next());
+        public static Entity<Game> New()
+            => Contexts.Instance.Get<Game>().CreateEntity()
+                       .Add<ID, EntityID>(EntityID.Next());
     }
 }

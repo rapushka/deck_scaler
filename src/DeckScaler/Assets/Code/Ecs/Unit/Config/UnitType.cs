@@ -2,8 +2,9 @@ namespace DeckScaler
 {
     public enum UnitType
     {
-        Ally,
-        Enemy,
-        Lead,
+        Unknown = 0,
+        Ally = 1,
+        Enemy = 2,
+        Lead = 3,
     }
 }

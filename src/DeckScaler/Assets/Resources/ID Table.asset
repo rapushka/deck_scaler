@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _idList:
   - Units
-  - Units/Bouncer
+  - Units/Crook
   _idDefinitions:
   - _id: Units
     _assetRefs: []
-  - _id: Units/Bouncer
+  - _id: Units/Crook
     _assetRefs:
     - _objectPath: 93e9e64e3e122934a9c7db4c430e9fde||11400000
       _targetRefType: 0
@@ -28,3 +28,7 @@ MonoBehaviour:
       _targetRefType: 0
       _apiVersion: 1
       _propertyPath: <NewProgressData>k__BackingField.<SelectedLeadID>k__BackingField
+    - _objectPath: 75f7728a340da1a438d7c3d10889455f||11400000
+      _targetRefType: 0
+      _apiVersion: 1
+      _propertyPath: <UnitPortraits>k__BackingField.list.Array.data[0].key.Value

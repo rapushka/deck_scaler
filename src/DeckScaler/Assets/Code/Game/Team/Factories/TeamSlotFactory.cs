@@ -7,11 +7,11 @@ namespace DeckScaler.Service
     {
         private static ProgressData Progress => Services.Get<Progress>().CurrentRun;
 
-        public Entity<Model> Create()
+        public Entity<Game> Create()
         {
             Progress.AddTeammate();
 
-            return CreateEntity.NewModel()
+            return CreateEntity.New()
                                .Add<Name, string>("slot")
                                .Add<TeamSlot, int>(Progress.TeamSize)
                 ;

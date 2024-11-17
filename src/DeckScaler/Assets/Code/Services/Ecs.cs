@@ -10,17 +10,15 @@ namespace DeckScaler.Service
 
         public void Init()
         {
-            Contexts.Instance.InitializeScope<Model>();
-            Contexts.Instance.InitializeScope<View>();
+            Contexts.Instance.InitializeScope<Game>();
 
-            Contexts.Instance.Get<Model>().GetPrimaryIndex<ID, EntityIDBase>().Initialize();
+            Contexts.Instance.Get<Game>().GetPrimaryIndex<ID, EntityID>().Initialize();
 
             var go = new GameObject("Gameplay Feature");
             _featureAdapter = go.AddComponent<GameplayFeatureAdapter>();
 
 #if DEBUG
-            Entity<Model>.Formatter = new ModelEntityFormatter();
-            Entity<View>.Formatter = new ViewEntityFormatter();
+            Entity<Game>.Formatter = new ModelEntityFormatter();
 #endif
         }
 

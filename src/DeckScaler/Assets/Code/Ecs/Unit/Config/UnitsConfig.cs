@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DeckScaler;
 using SmartIdTable;
 using UnityEngine;
 
@@ -12,8 +11,7 @@ namespace DeckScaler
     {
         [SerializeField] private UnitConfigMap _unitConfigsMap;
 
-        [field: SerializeField] public ViewEntityBehaviour                  UnitViewPrefab  { get; private set; }
-        [field: SerializeField] public SerializableDictionary<Suit, Sprite> CardBackgrounds { get; private set; }
+        [field: SerializeField] public EntityBehaviour ViewPrefab { get; private set; }
 
         public UnitConfig this[string id] => _unitConfigsMap[id];
 
@@ -30,12 +28,10 @@ namespace DeckScaler
             [field: IdRef(startsWith: Constants.TableID.Units)]
             [field: SerializeField] public string ID { get; private set; }
 
-            [field: SerializeField] public UnitType  Type         { get; private set; }
-            [field: SerializeField] public Sprite    Portrait     { get; private set; }
-            [field: SerializeField] public int       Health       { get; private set; }
-            [field: SerializeField] public Suit      Suit         { get; private set; }
-            [field: SerializeField] public StatsData StatsData    { get; private set; }
-            [field: SerializeField] public string[]  RelatedCards { get; private set; }
+            [field: SerializeField] public UnitType  Type      { get; private set; }
+            [field: SerializeField] public int       Health    { get; private set; }
+            [field: SerializeField] public Suit      Suit      { get; private set; }
+            [field: SerializeField] public StatsData StatsData { get; private set; }
         }
 
         [Serializable]
