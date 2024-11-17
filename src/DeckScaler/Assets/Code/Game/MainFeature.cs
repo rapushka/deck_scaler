@@ -7,6 +7,8 @@ namespace DeckScaler
         public MainFeature()
             : base(nameof(MainFeature))
         {
+            Add(new SpawnRandomEnemy());
+
             Add(new LoadViewsForEntities());
             Add(new LoadUnitPortrait());
             Add(new LoadCardBackgroundsPortrait());

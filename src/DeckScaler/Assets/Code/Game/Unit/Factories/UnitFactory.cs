@@ -13,26 +13,37 @@ namespace DeckScaler.Service
 
         public Entity<Game> CreateTeammate(string unitID)
         {
-            var config = UnitsConfig[unitID];
-            var unitType = config.Type;
-            Debug.Assert(unitType is not UnitType.Enemy);
-
             var slot = TeamSlotFactory.Create();
 
-            // TODO: portraits
+            return CreateUnit(unitID)
+                    .SetupToSlotAsTeammate(slot)
+                ;
+        }
+
+        public Entity<Game> CreateEnemy(string unitID, Entity<Game> teamSlot)
+        {
+            return CreateUnit(unitID)
+                    .SetupToSlotAsEnemy(teamSlot)
+                ;
+        }
+
+        private Entity<Game> CreateUnit(string unitID)
+        {
+            var config = UnitsConfig[unitID];
+            var unitType = config.Type;
+
             return CreateEntity.New()
-                               .Add<Name, string>(config.ID) // TODO: localization
+                               .Add<Name, string>(config.ID)
                                .Add<UnitID, string>(config.ID)
                                .Is<Lead>(unitType is UnitType.Lead)
-                               .Is<Teammate>(true)
-                               .Is<Ally>(true)
+                               .Is<Enemy>(unitType is UnitType.Enemy)
+                               .Is<Teammate>(unitType is UnitType.Ally)
+                               .Is<Ally>(unitType is UnitType.Ally)
                                .Add<Component.Suit, Suit>(config.Suit)
                                .Add<Health, int>(config.Health)
                                .Add<Stats, StatsData>(config.StatsData)
-                               .SetupToSlotAsTeammate(slot)
                                .Is<Loading>(true)
-                               .Add<PrefabToLoad, EntityBehaviour>(UnitsConfig.ViewPrefab)
-                ;
+                               .Add<PrefabToLoad, EntityBehaviour>(UnitsConfig.ViewPrefab);
         }
     }
 }
