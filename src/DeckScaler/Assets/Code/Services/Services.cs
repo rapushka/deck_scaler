@@ -1,6 +1,7 @@
 using System;
 using DeckScaler.Service;
 using UnityEngine;
+using Random = DeckScaler.Service.Random;
 
 namespace DeckScaler
 {
@@ -15,6 +16,7 @@ namespace DeckScaler
             Service<Configs>.Instance = data.Configs;
             Service<Progress>.Instance = new Progress();
             Service<Factories>.Instance = new Factories();
+            Service<Random>.Instance = new Random();
 
             InitDebugServices();
         }

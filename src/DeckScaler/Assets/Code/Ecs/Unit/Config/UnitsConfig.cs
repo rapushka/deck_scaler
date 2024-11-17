@@ -23,18 +23,6 @@ namespace DeckScaler
             => _unitConfigsMap.Values.Where(c => c.Type == unitType);
 
         [Serializable]
-        public class UnitConfig
-        {
-            [field: IdRef(startsWith: Constants.TableID.Units)]
-            [field: SerializeField] public string ID { get; private set; }
-
-            [field: SerializeField] public UnitType  Type      { get; private set; }
-            [field: SerializeField] public int       Health    { get; private set; }
-            [field: SerializeField] public Suit      Suit      { get; private set; }
-            [field: SerializeField] public StatsData StatsData { get; private set; }
-        }
-
-        [Serializable]
         private class UnitConfigMap : Map<string, UnitConfig>
         {
             protected override string SelectKey(UnitConfig value) => value.ID;
