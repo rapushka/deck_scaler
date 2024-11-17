@@ -3,7 +3,7 @@ using DeckScaler.Component;
 using Entitas;
 using Entitas.Generic;
 using UnityEngine;
-using static Entitas.Generic.ScopeMatcher<DeckScaler.Game>;
+using static DeckScaler.MatcherBuilder<DeckScaler.Game>;
 
 namespace DeckScaler.Systems
 {
@@ -11,7 +11,7 @@ namespace DeckScaler.Systems
     {
         private readonly IGroup<Entity<Game>> _entities
             = Contexts.Instance.GetGroup(
-                Get<PrefabToLoad>()
+                With<PrefabToLoad>()
                     .Without<View>()
             );
 

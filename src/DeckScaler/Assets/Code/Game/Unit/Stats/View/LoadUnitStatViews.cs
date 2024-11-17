@@ -8,9 +8,10 @@ namespace DeckScaler.Systems
     {
         private readonly IGroup<Entity<Game>> _entities
             = Contexts.Instance.GetGroup(
-                ScopeMatcher<Game>.Get<Loading>()
-                                  .And<Stats>()
-                                  .And<Component.StatsView>()
+                MatcherBuilder<Game>
+                    .With<Loading>()
+                    .And<Stats>()
+                    .And<Component.StatsView>()
             );
 
         public void Execute()
