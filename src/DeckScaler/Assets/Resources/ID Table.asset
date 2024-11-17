@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _idList:
   - Units
-  - Units/Crook
+  - Units/Ally
+  - Units/Ally/Crook
+  - Units/Enemy
+  - Units/Enemy/TestEnemy
   _idDefinitions:
   - _id: Units
     _assetRefs: []
-  - _id: Units/Crook
+  - _id: Units/Ally
     _assetRefs:
     - _objectPath: 93e9e64e3e122934a9c7db4c430e9fde||11400000
       _targetRefType: 0
@@ -32,3 +35,17 @@ MonoBehaviour:
       _targetRefType: 0
       _apiVersion: 1
       _propertyPath: <UnitPortraits>k__BackingField.list.Array.data[0].key.Value
+  - _id: Units/Ally/Crook
+    _assetRefs:
+    - _objectPath: 8a5b9c8ac47cfe2139d7532d0b89d2f1||11400000
+      _targetRefType: 0
+      _apiVersion: 1
+      _propertyPath: <ID>k__BackingField
+  - _id: Units/Enemy
+    _assetRefs: []
+  - _id: Units/Enemy/TestEnemy
+    _assetRefs:
+    - _objectPath: 2499748cbf6e4bb8999cddebef7fb512||11400000
+      _targetRefType: 0
+      _apiVersion: 1
+      _propertyPath: <ID>k__BackingField

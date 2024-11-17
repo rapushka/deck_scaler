@@ -15,7 +15,7 @@ MonoBehaviour:
   <UnitPortraits>k__BackingField:
     list:
     - key:
-        Value: Units/Crook
+        Value: Units/Ally
       value: {fileID: 21300000, guid: 0024759bee1780eeca346072c8382696, type: 3}
   <CardBackgrounds>k__BackingField:
     list:
