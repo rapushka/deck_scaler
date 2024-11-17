@@ -10,7 +10,11 @@ namespace DeckScaler.Systems
     public class LoadViewsForEntities : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _entities
-            = Contexts.Instance.GetGroup(Get<PrefabToLoad>().Without(Get<View>()));
+            = Contexts.Instance.GetGroup(
+                Get<PrefabToLoad>()
+                    .Without<View>()
+            );
+
         private readonly List<Entity<Game>> _buffer = new(16);
 
         public void Execute()

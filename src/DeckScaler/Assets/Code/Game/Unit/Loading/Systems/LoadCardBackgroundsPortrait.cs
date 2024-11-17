@@ -9,7 +9,12 @@ namespace DeckScaler.Systems
 {
     public class LoadCardBackgroundsPortrait : IExecuteSystem
     {
-        private readonly IGroup<Entity<Game>> _entities = Contexts.Instance.GetGroup(Get<Loading>());
+        private readonly IGroup<Entity<Game>> _entities
+            = Contexts.Instance.GetGroup(
+                Get<Loading>()
+                    .And<Component.Suit>()
+                    .And<CardBackground>()
+            );
 
         private static SpriteSheet SpriteSheet => Services.Get<Configs>().SpriteSheet;
 

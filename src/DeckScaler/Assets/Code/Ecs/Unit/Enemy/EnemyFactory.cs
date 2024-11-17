@@ -2,9 +2,7 @@ using System;
 using System.Collections.Generic;
 using DeckScaler.Component;
 using DeckScaler.Service;
-using DeckScaler;
 using Entitas.Generic;
-using UnityEngine;
 
 namespace DeckScaler
 {

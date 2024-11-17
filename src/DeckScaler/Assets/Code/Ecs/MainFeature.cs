@@ -1,5 +1,4 @@
 using DeckScaler.Systems;
-using Entitas.Generic;
 
 namespace DeckScaler
 {
@@ -12,8 +11,6 @@ namespace DeckScaler
             Add(new LoadUnitPortrait());
             Add(new LoadCardBackgroundsPortrait());
             Add(new MarkLoaded());
-
-            Add(new BoilerplateFeature(Contexts.Instance));
         }
     }
 }

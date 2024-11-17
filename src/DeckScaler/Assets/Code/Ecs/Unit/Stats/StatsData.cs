@@ -1,5 +1,4 @@
 using System;
-using DeckScaler;
 using SmartIdTable;
 
 namespace DeckScaler

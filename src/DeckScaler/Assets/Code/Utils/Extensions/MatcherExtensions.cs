@@ -5,13 +5,40 @@ namespace DeckScaler.Systems
 {
     public static class MatcherExtensions
     {
-        public static IMatcher<Entity<TScope>> Without<TScope>(this IMatcher<Entity<TScope>> @this, IMatcher<Entity<TScope>> other)
-            where TScope : IScope
-            => ScopeMatcher<TScope>.AllOf(@this).NoneOf(other);
+        public static IAnyOfMatcher<Entity<Game>> And<TComponent>(this IMatcher<Entity<Game>> @this)
+            where TComponent : IComponent, IInScope<Game>, new()
+            => @this.And<Game, TComponent>();
 
-        public static IMatcher<Entity<TScope>> Without<TScope, TOtherComponent>(this IMatcher<Entity<TScope>> @this) // TODO: this one doesn't work. but why?
+        private static IAnyOfMatcher<Entity<TScope>> And<TScope, TComponent>(this IMatcher<Entity<TScope>> @this)
             where TScope : IScope
-            where TOtherComponent : IComponent, IInScope<TScope>, new()
-            => ScopeMatcher<TScope>.AllOf(@this).NoneOf(ScopeMatcher<TScope>.Get<TOtherComponent>());
+            where TComponent : IComponent, IInScope<TScope>, new()
+            => ScopeMatcher<TScope>.AllOf(@this, ScopeMatcher<TScope>.Get<TComponent>());
+
+        public static IAnyOfMatcher<Entity<Game>> Or<TComponent>(this IMatcher<Entity<Game>> @this)
+            where TComponent : IComponent, IInScope<Game>, new()
+            => @this.Or<Game, TComponent>();
+
+        private static IAnyOfMatcher<Entity<TScope>> Or<TScope, TComponent>(this IMatcher<Entity<TScope>> @this)
+            where TScope : IScope
+            where TComponent : IComponent, IInScope<TScope>, new()
+            => ScopeMatcher<TScope>.AnyOf(@this, ScopeMatcher<TScope>.Get<TComponent>());
+
+        public static INoneOfMatcher<Entity<Game>> Without<TComponent>(this IMatcher<Entity<Game>> @this)
+            where TComponent : IComponent, IInScope<Game>, new()
+            => @this.Without<Game, TComponent>();
+
+        private static INoneOfMatcher<Entity<TScope>> Without<TScope, TComponent>(this IMatcher<Entity<TScope>> @this)
+            where TScope : IScope
+            where TComponent : IComponent, IInScope<TScope>, new()
+            => ScopeMatcher<TScope>.AllOf(@this).Without<TScope, TComponent>();
+
+        public static INoneOfMatcher<Entity<Game>> Without<TComponent>(this IAnyOfMatcher<Entity<Game>> @this)
+            where TComponent : IComponent, IInScope<Game>, new()
+            => @this.Without<Game, TComponent>();
+
+        private static INoneOfMatcher<Entity<TScope>> Without<TScope, TComponent>(this IAnyOfMatcher<Entity<TScope>> @this)
+            where TScope : IScope
+            where TComponent : IComponent, IInScope<TScope>, new()
+            => @this.NoneOf(ScopeMatcher<TScope>.Get<TComponent>());
     }
 }

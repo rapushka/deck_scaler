@@ -9,7 +9,12 @@ namespace DeckScaler.Systems
 {
     public class LoadUnitPortrait : IExecuteSystem
     {
-        private readonly IGroup<Entity<Game>> _entities = Contexts.Instance.GetGroup(Get<Loading>());
+        private readonly IGroup<Entity<Game>> _entities
+            = Contexts.Instance.GetGroup(
+                Get<Loading>()
+                    .And<UnitID>()
+                    .And<Portrait>()
+            );
 
         private static SpriteSheet SpriteSheet => Services.Get<Configs>().SpriteSheet;
 
