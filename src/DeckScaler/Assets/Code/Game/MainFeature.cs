@@ -10,6 +10,8 @@ namespace DeckScaler
             Add(new LoadViewsForEntities());
             Add(new LoadUnitPortrait());
             Add(new LoadCardBackgroundsPortrait());
+            Add(new LoadUnitStatViews());
+
             Add(new MarkLoaded());
         }
     }
