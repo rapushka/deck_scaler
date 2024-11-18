@@ -7,7 +7,10 @@ namespace DeckScaler
         public TeamSlotsFeature()
             : base(nameof(TeamSlotsFeature))
         {
-            Add(new PutNewUnitInFirstAvailableSlot());
+            Add(new PutNewTeammateInFirstAvailableSlot());
+            Add(new SpawnTeamSlotForQueuedUnits());
+
+            Add(new PutNewEnemyInFirstAvailableSlot());
             Add(new SpawnTeamSlotForQueuedUnits());
         }
     }
