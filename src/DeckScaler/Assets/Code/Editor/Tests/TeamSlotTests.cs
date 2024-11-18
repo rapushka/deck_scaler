@@ -31,6 +31,16 @@ namespace DeckScaler.Editor.Tests
         }
 
         [Test]
+        public void _000_WhenCreate0Allies_And0Enemies_ThenShouldBe0TeamSlot()
+        {
+            TestTeamSlotsSpawn(
+                teammateCount: 0,
+                enemyCount: 0,
+                expectedSlotCount: 0
+            );
+        }
+
+        [Test]
         public void _010_WhenCreate1Ally_And0Enemies_ThenShouldBe1TeamSlot()
         {
             TestTeamSlotsSpawn(
