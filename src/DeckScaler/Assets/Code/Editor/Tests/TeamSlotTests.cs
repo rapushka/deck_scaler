@@ -1,7 +1,6 @@
 using DeckScaler.Component;
 using DeckScaler.Service;
 using DeckScaler.Utils;
-using Entitas;
 using Entitas.Generic;
 using FluentAssertions;
 using NUnit.Framework;
@@ -58,6 +57,16 @@ namespace DeckScaler.Editor.Tests
                 teammateCount: 2,
                 enemyCount: 0,
                 expectedSlotCount: 2
+            );
+        }
+
+        [Test]
+        public void _040_WhenCreate1Allies_And1Enemies_ThenShouldBe1TeamSlots()
+        {
+            TestTeamSlotsSpawn(
+                enemyCount: 1,
+                teammateCount: 1,
+                expectedSlotCount: 1
             );
         }
 
