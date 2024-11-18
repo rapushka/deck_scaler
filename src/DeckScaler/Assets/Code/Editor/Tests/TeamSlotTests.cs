@@ -70,6 +70,26 @@ namespace DeckScaler.Editor.Tests
             );
         }
 
+        [Test]
+        public void _050_WhenCreate2Allies_And1Enemies_ThenShouldBe2TeamSlots()
+        {
+            TestTeamSlotsSpawn(
+                enemyCount: 2,
+                teammateCount: 1,
+                expectedSlotCount: 2
+            );
+        }
+
+        [Test]
+        public void _060_WhenCreate2Allies_And3Enemies_ThenShouldBe3TeamSlots()
+        {
+            TestTeamSlotsSpawn(
+                enemyCount: 2,
+                teammateCount: 3,
+                expectedSlotCount: 3
+            );
+        }
+
         private void TestTeamSlotsSpawn(int teammateCount, int enemyCount, int expectedSlotCount)
         {
             // Arrange.
