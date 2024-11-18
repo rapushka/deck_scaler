@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using DeckScaler.Service;
 
 namespace DeckScaler
 {
@@ -8,7 +9,7 @@ namespace DeckScaler
         public static T PickRandom<T>(this IEnumerable<T> @this)
         {
             var array = @this as T[] ?? @this.ToArray();
-            var randomIndex = Services.Get<Service.Random>().RandomIndex(array);
+            var randomIndex = Services.Get<IRandom>().RandomIndex(array);
 
             return array[randomIndex];
         }

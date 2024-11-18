@@ -5,7 +5,7 @@ namespace DeckScaler.Service
 {
     public class UnitFactory
     {
-        private UnitsConfig UnitsConfig => Services.Get<Configs>().Units;
+        private UnitsConfig UnitsConfig => Services.Get<IConfigs>().Units;
 
         public Entity<Game> CreateTeammate(string unitID)
         {

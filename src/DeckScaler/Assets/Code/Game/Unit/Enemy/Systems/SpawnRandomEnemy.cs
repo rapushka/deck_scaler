@@ -5,11 +5,11 @@ namespace DeckScaler
 {
     public class SpawnRandomEnemy : IInitializeSystem
     {
-        private static UnitFactory EnemyFactory => Services.Get<Factories>().Unit;
+        private static UnitFactory EnemyFactory => Services.Get<IFactories>().Unit;
 
         public void Initialize()
         {
-            var randomEnemy = Services.Get<Configs>().Units.Enemies.PickRandom();
+            var randomEnemy = Services.Get<IConfigs>().Units.Enemies.PickRandom();
             EnemyFactory.CreateEnemy(randomEnemy.ID);
         }
     }

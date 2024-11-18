@@ -4,7 +4,16 @@ using Object = UnityEngine.Object;
 
 namespace DeckScaler.Service
 {
-    public class UI : IService
+    public interface IUI : IService
+    {
+        void  Init();
+        void  ShowMainMenu();
+        void  ShowGameplayHUD();
+        TView GetView<TView>();
+        void  SetView(GameObject prefab);
+    }
+
+    public class UI : IUI
     {
         private Canvas _canvas;
 
@@ -14,7 +23,7 @@ namespace DeckScaler.Service
         {
             var canvasPrefab = Resources.Load<Canvas>("UI/Canvas/Canvas");
             _canvas = Object.Instantiate(canvasPrefab);
-            _canvas.Init(Services.Get<Cameras>().UiCamera);
+            _canvas.Init(Services.Get<ICameras>().UiCamera);
         }
 
         public void ShowMainMenu()
@@ -33,7 +42,7 @@ namespace DeckScaler.Service
                    ?? throw new InvalidOperationException($"Current view isn't the {typeof(TView).Name}");
         }
 
-        private void SetView(GameObject prefab)
+        public void SetView(GameObject prefab)
         {
             if (_currentView != null)
                 Object.Destroy(_currentView);

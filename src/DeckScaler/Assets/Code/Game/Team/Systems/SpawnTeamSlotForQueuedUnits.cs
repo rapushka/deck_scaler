@@ -16,7 +16,7 @@ namespace DeckScaler.Systems
 
         private readonly List<Entity<Game>> _buffer = new(32);
 
-        private TeamSlotFactory TeamSlotFactory => Services.Get<Factories>().TeamSlot;
+        private TeamSlotFactory TeamSlotFactory => Services.Get<IFactories>().TeamSlot;
 
         public void Execute()
         {
