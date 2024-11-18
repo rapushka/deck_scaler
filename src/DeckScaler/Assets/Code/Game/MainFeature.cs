@@ -9,6 +9,9 @@ namespace DeckScaler
         {
             Add(new SpawnRandomEnemy());
 
+            Add(new PutNewUnitInFirstAvailableSlot());
+            Add(new SpawnTeamSlotForQueuedUnits());
+
             Add(new LoadViewsForEntities());
             Add(new LoadUnitPortrait());
             Add(new LoadCardBackgroundsPortrait());
