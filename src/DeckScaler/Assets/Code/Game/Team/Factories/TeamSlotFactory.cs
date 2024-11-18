@@ -5,7 +5,7 @@ namespace DeckScaler.Service
 {
     public class TeamSlotFactory
     {
-        private static ProgressData Progress => Services.Get<Progress>().CurrentRun;
+        private static ProgressData Progress => Services.Get<IProgress>().CurrentRun;
 
         public Entity<Game> Create()
         {

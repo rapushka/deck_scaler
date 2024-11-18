@@ -9,10 +9,8 @@ namespace DeckScaler
         {
             Add(new SpawnRandomEnemy());
 
-            Add(new LoadViewsForEntities());
-            Add(new LoadUnitPortrait());
-            Add(new LoadCardBackgroundsPortrait());
-            Add(new LoadUnitStatViews());
+            Add(new TeamSlotsFeature());
+            Add(new ViewFeature());
 
             Add(new MarkLoaded());
         }

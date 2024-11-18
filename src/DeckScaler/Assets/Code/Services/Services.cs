@@ -7,28 +7,8 @@ namespace DeckScaler
 {
     public static class Services
     {
-        public static void Init(GameStateMachine stateMachine, Data data)
-        {
-            Service<UI>.Instance = new UI();
-            Service<Cameras>.Instance = new Cameras(data);
-            Service<GameStateMachine>.Instance = stateMachine;
-            Service<Ecs>.Instance = new Ecs();
-            Service<Configs>.Instance = data.Configs;
-            Service<Progress>.Instance = new Progress();
-            Service<Factories>.Instance = new Factories();
-            Service<Random>.Instance = new Random();
-
-            InitDebugServices();
-        }
-
-        private static void InitDebugServices()
-        {
-#if DEBUG
-            Service<IDebug>.Instance = new SimpleDebug();
-#else
-            Service<IDebug>.Instance = new DebugMock();
-#endif
-        }
+        public static void Setup<TService>(TService service) where TService : IService
+            => Service<TService>.Instance = service;
 
         public static T Get<T>()
             where T : IService

@@ -16,7 +16,7 @@ namespace DeckScaler.Systems
                     .And<Portrait>()
             );
 
-        private static SpriteSheet SpriteSheet => Services.Get<Configs>().SpriteSheet;
+        private static SpriteSheet SpriteSheet => Services.Get<IConfigs>().SpriteSheet;
 
         public void Execute()
         {

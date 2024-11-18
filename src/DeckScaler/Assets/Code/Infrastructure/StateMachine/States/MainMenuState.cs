@@ -6,7 +6,7 @@ namespace DeckScaler
     {
         public override void Enter()
         {
-            Services.Get<UI>().ShowMainMenu();
+            Services.Get<IUI>().ShowMainMenu();
         }
     }
 }
