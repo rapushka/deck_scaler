@@ -10,9 +10,8 @@ namespace DeckScaler
             Add(new SpawnRandomEnemy());
 
             Add(new TeamSlotsFeature());
-            Add(new ViewFeature());
 
-            Add(new MarkLoaded());
+            Add(new ViewFeature());
         }
     }
 }

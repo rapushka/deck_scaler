@@ -7,6 +7,7 @@ namespace DeckScaler.Service
         UnitsConfig    Units       { get; }
         ProgressConfig Progress    { get; }
         SpriteSheet    SpriteSheet { get; }
+        TeamSlotConfig TeamSlot    { get; }
     }
 
     [CreateAssetMenu(menuName = Constants.MenuPrefix + nameof(Configs))]
@@ -15,6 +16,7 @@ namespace DeckScaler.Service
         [field: SerializeField] public UnitsConfig    Units    { get; private set; }
         [field: SerializeField] public ProgressConfig Progress { get; private set; }
 
-        [field: SerializeField] public SpriteSheet SpriteSheet { get; private set; }
+        [field: SerializeField] public SpriteSheet    SpriteSheet { get; private set; }
+        [field: SerializeField] public TeamSlotConfig TeamSlot    { get; private set; }
     }
 }

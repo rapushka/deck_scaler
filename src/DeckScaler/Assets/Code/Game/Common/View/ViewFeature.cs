@@ -1,4 +1,4 @@
-using DeckScaler.Systems;
+using DeckScaler.Component;
 
 namespace DeckScaler
 {
@@ -7,10 +7,13 @@ namespace DeckScaler
         public ViewFeature()
             : base(nameof(ViewFeature))
         {
-            Add(new LoadViewsForEntities());
-            Add(new LoadUnitPortrait());
-            Add(new LoadCardBackgroundsPortrait());
-            Add(new LoadUnitStatViews());
+            Add(new LoadViewFeature());
+
+            Add(new TeamSlotsViewFeature());
+
+            Add(new UpdateParent());
+            Add(new UpdatePosition());
+            Add(new UpdateWorldPosition());
         }
     }
 }

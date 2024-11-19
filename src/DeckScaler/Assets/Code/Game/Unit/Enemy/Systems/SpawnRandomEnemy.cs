@@ -1,7 +1,7 @@
 using DeckScaler.Service;
 using Entitas;
 
-namespace DeckScaler
+namespace DeckScaler.Systems
 {
     public class SpawnRandomEnemy : IInitializeSystem
     {

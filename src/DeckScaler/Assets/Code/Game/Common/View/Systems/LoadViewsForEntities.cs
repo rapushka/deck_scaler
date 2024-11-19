@@ -27,7 +27,10 @@ namespace DeckScaler.Systems
                 view.Register(entity);
                 entity.Remove<PrefabToLoad>();
 
-                entity.Add<View, EntityBehaviour>(view);
+                entity
+                    .Add<View, EntityBehaviour>(view)
+                    .Add<ViewTransform, Transform>(view.transform)
+                    ;
             }
         }
     }
