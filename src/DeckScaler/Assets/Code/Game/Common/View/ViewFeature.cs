@@ -1,3 +1,4 @@
+using DeckScaler.Component;
 using DeckScaler.Systems;
 
 namespace DeckScaler
@@ -11,6 +12,10 @@ namespace DeckScaler
             Add(new LoadUnitPortrait());
             Add(new LoadCardBackgroundsPortrait());
             Add(new LoadUnitStatViews());
+
+            Add(new UpdateParent());
+            Add(new UpdatePosition());
+            Add(new UpdateWorldPosition());
         }
     }
 }
