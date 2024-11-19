@@ -7,7 +7,6 @@ namespace DeckScaler
         public LoadViewFeature()
             : base(nameof(LoadViewFeature))
         {
-            Add(new LoadViewsForEntities());
             Add(new LoadUnitPortrait());
             Add(new LoadCardBackgroundsPortrait());
             Add(new LoadUnitStatViews());
