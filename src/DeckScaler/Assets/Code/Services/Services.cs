@@ -1,7 +1,6 @@
 using System;
 using DeckScaler.Service;
 using UnityEngine;
-using Random = DeckScaler.Service.Random;
 
 namespace DeckScaler
 {

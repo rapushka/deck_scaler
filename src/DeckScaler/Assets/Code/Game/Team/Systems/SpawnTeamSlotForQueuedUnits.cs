@@ -16,13 +16,13 @@ namespace DeckScaler.Systems
 
         private readonly List<Entity<Game>> _buffer = new(32);
 
-        private TeamSlotFactory TeamSlotFactory => Services.Get<IFactories>().TeamSlot;
+        private IFactories Factory => Services.Get<IFactories>();
 
         public void Execute()
         {
             foreach (var unit in _units.GetEntities(_buffer))
             {
-                var slot = TeamSlotFactory.Create();
+                var slot = Factory.CreateTeamSlot();
 
                 if (unit.Is<Teammate>())
                     unit.SetupToSlotAsTeammate(slot);

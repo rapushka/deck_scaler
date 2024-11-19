@@ -8,15 +8,15 @@ namespace DeckScaler.Service
         private ProgressData   Progress => Services.Get<IProgress>().CurrentRun;
         private TeamSlotConfig Config   => Services.Get<IConfigs>().TeamSlot;
 
-        private EntityBehaviourFactory ViewFactory => Services.Get<IFactories>().EntityBehaviour;
+        private IFactories Factory => Services.Get<IFactories>();
 
         public Entity<Game> Create()
         {
             Progress.AddTeammate();
 
-            return ViewFactory.Create(Config.ViewPrefab).Entity
-                              .Add<Name, string>("slot")
-                              .Add<TeamSlot, int>(Progress.TeamSize);
+            return Factory.CreateEntityBehaviour(Config.ViewPrefab)
+                          .Add<Name, string>("slot")
+                          .Add<TeamSlot, int>(Progress.TeamSize);
         }
     }
 }

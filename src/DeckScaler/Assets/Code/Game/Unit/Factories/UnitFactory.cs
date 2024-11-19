@@ -7,7 +7,7 @@ namespace DeckScaler.Service
     {
         private UnitsConfig UnitsConfig => Services.Get<IConfigs>().Units;
 
-        private EntityBehaviourFactory ViewFactory => Services.Get<IFactories>().EntityBehaviour;
+        private IFactories Factory => Services.Get<IFactories>();
 
         public Entity<Game> CreateTeammate(string unitID)
         {
@@ -24,17 +24,17 @@ namespace DeckScaler.Service
             var config = UnitsConfig[unitID];
             var unitType = config.Type;
 
-            return ViewFactory.Create(UnitsConfig.ViewPrefab).Entity
-                              .Add<Name, string>(config.ID)
-                              .Add<UnitID, string>(config.ID)
-                              .Is<Lead>(unitType is UnitType.Lead)
-                              .Is<Enemy>(unitType is UnitType.Enemy)
-                              .Is<Teammate>(unitType is UnitType.Ally or UnitType.Lead)
-                              .Is<Ally>(unitType is UnitType.Ally)
-                              .Add<Component.Suit, Suit>(config.Suit)
-                              .Add<Health, int>(config.Health)
-                              .Add<Stats, StatsData>(config.StatsData)
-                              .Is<Queued>(true);
+            return Factory.CreateEntityBehaviour(UnitsConfig.ViewPrefab)
+                          .Add<Name, string>(config.ID)
+                          .Add<UnitID, string>(config.ID)
+                          .Is<Lead>(unitType is UnitType.Lead)
+                          .Is<Enemy>(unitType is UnitType.Enemy)
+                          .Is<Teammate>(unitType is UnitType.Ally or UnitType.Lead)
+                          .Is<Ally>(unitType is UnitType.Ally)
+                          .Add<Component.Suit, Suit>(config.Suit)
+                          .Add<Health, int>(config.Health)
+                          .Add<Stats, StatsData>(config.StatsData)
+                          .Is<Queued>(true);
         }
     }
 }
