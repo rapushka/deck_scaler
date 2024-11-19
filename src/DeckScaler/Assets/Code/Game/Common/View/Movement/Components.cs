@@ -13,5 +13,5 @@ namespace DeckScaler.Component
 
     public sealed class ParentTransform : ValueComponent<Transform>, IInScope<Game> { }
 
-    public sealed class ForceReparentWithPosition : FlagComponent, IInScope<Game> { }
+    public sealed class ForceChangePositionOnReparent : FlagComponent, IInScope<Game> { }
 }

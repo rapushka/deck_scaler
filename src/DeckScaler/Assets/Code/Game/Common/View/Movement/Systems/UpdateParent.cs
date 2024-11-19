@@ -20,7 +20,7 @@ namespace DeckScaler.Component
         {
             foreach (var entity in _entities.GetEntities(_buffer))
             {
-                var changePosition = entity.Is<ForceReparentWithPosition>();
+                var changePosition = entity.Is<ForceChangePositionOnReparent>();
 
                 var parent = entity.Get<ParentTransform>().Value;
                 entity.Get<ViewTransform>().Value.SetParent(parent, worldPositionStays: !changePosition);
