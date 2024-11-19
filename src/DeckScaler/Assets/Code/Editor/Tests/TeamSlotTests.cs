@@ -21,11 +21,11 @@ namespace DeckScaler.Editor.Tests
             Contexts.Instance.EntityIDIndex().Initialize();
 
             Services.Setup<IFactories>(new Mocks.Factories());
-            Services.Setup<IProgress>(new Mocks.Progress());
 
             // ReSharper disable once Unity.UnknownResource - it actually exists
             Services.Setup<IConfigs>(Resources.Load<Configs>("Configs"));
 
+            Services.Setup<IProgress>(new Mocks.Progress());
             Services.Get<IProgress>().StartNewRun();
         }
 
