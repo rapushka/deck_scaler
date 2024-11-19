@@ -4,6 +4,7 @@ using DeckScaler.Utils;
 using Entitas.Generic;
 using FluentAssertions;
 using NUnit.Framework;
+using UnityEngine;
 
 namespace DeckScaler.Editor.Tests
 {
@@ -17,8 +18,13 @@ namespace DeckScaler.Editor.Tests
             _feature = new Entitas.Systems();
             Contexts.Instance.InitializeScope<Game>();
 
-            Services.Setup<IFactories>(new Factories());
+            Contexts.Instance.EntityIDIndex().Initialize();
+
+            Services.Setup<IFactories>(new Mocks.Factories());
             Services.Setup<IProgress>(new Mocks.Progress());
+
+            // ReSharper disable once Unity.UnknownResource - it actually exists
+            Services.Setup<IConfigs>(Resources.Load<Configs>("Configs"));
 
             Services.Get<IProgress>().StartNewRun();
         }

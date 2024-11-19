@@ -6,7 +6,10 @@ namespace DeckScaler
     public static class EntityIDExtensions
     {
         private static PrimaryEntityIndex<Game, ID, EntityID> Index
-            => Contexts.Instance.Get<Game>().GetPrimaryIndex<ID, EntityID>();
+            => Contexts.Instance.EntityIDIndex();
+
+        public static PrimaryEntityIndex<Game, ID, EntityID> EntityIDIndex(this Contexts contexts)
+            => contexts.Get<Game>().GetPrimaryIndex<ID, EntityID>();
 
         public static EntityID ID(this Entity<Game> @this) => @this.Get<ID>().Value;
 

@@ -5,12 +5,12 @@ namespace DeckScaler
 {
     public class SpawnPlayerTeamFromProgress : IInitializeSystem
     {
-        private static UnitFactory UnitFactory => Services.Get<IFactories>().Unit;
+        private static IFactories Factory => Services.Get<IFactories>();
 
         public void Initialize()
         {
             var progress = Services.Get<IProgress>().CurrentRun;
-            UnitFactory.CreateTeammate(progress.SelectedLeadID);
+            Factory.CreateTeammate(progress.SelectedLeadID);
         }
     }
 }
