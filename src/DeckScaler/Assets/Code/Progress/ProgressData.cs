@@ -25,5 +25,13 @@ namespace DeckScaler
         {
             TeamSize++;
         }
+
+        public ProgressData Clone()
+            => new()
+            {
+                SelectedLeadID = SelectedLeadID,
+                Stage = Stage,
+                TeamSize = TeamSize,
+            };
     }
 }
