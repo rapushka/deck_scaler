@@ -7,6 +7,7 @@ namespace DeckScaler
         public MainFeature()
             : base(nameof(MainFeature))
         {
+            Add(new SpawnPlayerTeamFromProgress());
             Add(new SpawnRandomEnemy());
 
             Add(new TeamSlotsFeature());

@@ -13,6 +13,8 @@ namespace DeckScaler
             // SpawnTeamSlotForQueuedUnits is called for two times on purpose
             Add(new PutNewEnemyInFirstAvailableSlot());
             Add(new SpawnTeamSlotForQueuedUnits());
+
+            Add(new TeamSlotsViewFeature());
         }
     }
 }
