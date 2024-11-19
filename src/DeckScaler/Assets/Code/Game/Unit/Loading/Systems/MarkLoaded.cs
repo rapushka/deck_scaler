@@ -14,7 +14,12 @@ namespace DeckScaler.Systems
         public void Execute()
         {
             foreach (var entity in _entities.GetEntities(_buffer))
+            {
                 entity.Is<Loading>(false);
+
+                if (entity.TryGet<View, EntityBehaviour>(out var view))
+                    view.SetActive(true);
+            }
         }
     }
 }

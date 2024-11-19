@@ -10,6 +10,7 @@ namespace DeckScaler
         {
             var view = Object.Instantiate(prefab);
             view.Register(Contexts.Instance);
+            view.SetActive(false);
 
             view.Entity
                 .Add<ID, EntityID>(EntityID.Next())
