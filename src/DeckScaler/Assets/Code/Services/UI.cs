@@ -9,7 +9,7 @@ namespace DeckScaler.Service
         void  Init();
         void  ShowMainMenu();
         void  ShowGameplayHUD();
-        TView GetView<TView>();
+        TView GetScene<TView>() where TView : UiSceneBase;
         void  SetView(GameObject prefab);
     }
 
@@ -36,10 +36,11 @@ namespace DeckScaler.Service
             SetView(Resources.Load<GameObject>("UI/GameplayHUD/GameplayHUD"));
         }
 
-        public TView GetView<TView>()
+        public TScene GetScene<TScene>()
+            where TScene : UiSceneBase
         {
-            return _currentView.GetComponent<TView>()
-                   ?? throw new InvalidOperationException($"Current view isn't the {typeof(TView).Name}");
+            return _currentView.GetComponent<TScene>()
+                   ?? throw new InvalidOperationException($"Current view isn't the {typeof(TScene).Name}");
         }
 
         public void SetView(GameObject prefab)
