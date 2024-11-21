@@ -1,6 +1,4 @@
-using DeckScaler.Systems;
-
-namespace DeckScaler
+namespace DeckScaler.Systems
 {
     public sealed class LoadViewFeature : Feature
     {

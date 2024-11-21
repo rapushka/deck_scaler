@@ -1,4 +1,4 @@
-using DeckScaler.Component;
+using DeckScaler.Systems;
 
 namespace DeckScaler
 {
@@ -8,6 +8,8 @@ namespace DeckScaler
             : base(nameof(ViewFeature))
         {
             Add(new LoadViewFeature());
+
+            Add(new UpdateHealthProgressBar());
 
             Add(new UpdateParent());
             Add(new UpdatePosition());

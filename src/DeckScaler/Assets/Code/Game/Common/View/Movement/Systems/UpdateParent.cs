@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using DeckScaler.Component;
 using Entitas;
 using Entitas.Generic;
 
-namespace DeckScaler.Component
+namespace DeckScaler.Systems
 {
     public class UpdateParent : IExecuteSystem
     {
