@@ -6,7 +6,7 @@ namespace DeckScaler.Service
     public class TeamSlotFactory
     {
         private ProgressData   Progress => Services.Get<IProgress>().CurrentRun;
-        private TeamSlotConfig Config   => Services.Get<IConfigs>().TeamSlot;
+        private TeamSlotViewConfig ViewConfig   => Services.Get<IConfigs>().TeamSlotView;
 
         private IFactories Factory => Services.Get<IFactories>();
 
@@ -14,7 +14,7 @@ namespace DeckScaler.Service
         {
             Progress.AddTeammate();
 
-            return Factory.CreateEntityBehaviour(Config.ViewPrefab)
+            return Factory.CreateEntityBehaviour(ViewConfig.ViewPrefab)
                           .Add<Name, string>("slot")
                           .Add<TeamSlot, int>(Progress.TeamSize);
         }
