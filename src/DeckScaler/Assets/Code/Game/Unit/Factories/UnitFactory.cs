@@ -33,6 +33,7 @@ namespace DeckScaler.Service
                           .Is<Ally>(unitType is UnitType.Ally)
                           .Add<Component.Suit, Suit>(config.Suit)
                           .Add<Health, int>(config.Health)
+                          .Add<MaxHealth, int>(config.Health)
                           .Add<Stats, StatsData>(config.StatsData)
                           .Is<Queued>(true);
         }
