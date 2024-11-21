@@ -7,10 +7,12 @@ namespace DeckScaler
     {
         private static IFactories Factory => Services.Get<IFactories>();
 
+        private static ProgressData Progress => Services.Get<IProgress>().CurrentRun;
+
         public void Initialize()
         {
-            var progress = Services.Get<IProgress>().CurrentRun;
-            Factory.CreateTeammate(progress.SelectedLeadID);
+            foreach (var unitID in Progress.TeammateIDs)
+                Factory.CreateTeammate(unitID.Value);
         }
     }
 }

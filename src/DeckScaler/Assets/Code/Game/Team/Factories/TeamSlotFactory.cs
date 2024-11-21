@@ -12,11 +12,13 @@ namespace DeckScaler.Service
 
         public Entity<Game> Create()
         {
-            Progress.AddTeammate();
+            var entity = Factory.CreateEntityBehaviour(ViewConfig.ViewPrefab)
+                                .Add<Name, string>("slot")
+                                .Add<TeamSlot, int>(Progress.TeamSlotsCounter);
 
-            return Factory.CreateEntityBehaviour(ViewConfig.ViewPrefab)
-                          .Add<Name, string>("slot")
-                          .Add<TeamSlot, int>(Progress.TeamSize - 1);
+            Progress.IncrementTeamSlotCount();
+
+            return entity;
         }
     }
 }
