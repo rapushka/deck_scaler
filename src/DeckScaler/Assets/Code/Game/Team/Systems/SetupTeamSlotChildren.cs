@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace DeckScaler.Systems
 {
-    public class SetupTeamSlotParents : IExecuteSystem
+    public class SetupTeamSlotChildren : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _slots
             = Contexts.Instance.GetGroup(
