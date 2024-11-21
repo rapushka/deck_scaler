@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Progress Config
   m_EditorClassIdentifier: 
   <NewProgressData>k__BackingField:
-    <SelectedLeadID>k__BackingField: Units/Ally/Crook
-    <Stage>k__BackingField: 0
-    <TeamSize>k__BackingField: 9
+    <TeammateIDs>k__BackingField:
+    - Value: Units/Ally/Crook
+    - Value: Units/Ally/Crook

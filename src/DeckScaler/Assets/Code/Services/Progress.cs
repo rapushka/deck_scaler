@@ -15,7 +15,7 @@ namespace DeckScaler.Service
 
         public void StartNewRun()
         {
-            CurrentRun = Configs.Progress.NewProgressData.Clone();
+            CurrentRun = ProgressData.NewRun(from: Configs.Progress.NewProgressData);
         }
     }
 }

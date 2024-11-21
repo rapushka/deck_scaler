@@ -1,5 +1,5 @@
 using System;
-using SmartIdTable;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DeckScaler
@@ -7,31 +7,26 @@ namespace DeckScaler
     [Serializable]
     public class ProgressData
     {
-        [field: IdRef(startsWith: Constants.TableID.Units)]
-        [field: SerializeField] public string SelectedLeadID { get; private set; }
+        [field: SerializeField] public List<UnitIDRef> TeammateIDs { get; private set; }
 
-        [field: HideInInspector]
-        [field: SerializeField] public int Stage { get; private set; }
+        public int TeamSlotsCounter { get; private set; }
 
-        [field: HideInInspector]
-        [field: SerializeField] public int TeamSize { get; private set; }
-
-        public void SelectLead(string leadID)
+        public void AddTeammate(string unitID)
         {
-            SelectedLeadID = leadID;
+            TeammateIDs.Add(unitID);
         }
 
-        public void AddTeammate()
+        public void IncrementTeamSlotCount()
         {
-            TeamSize++;
+            TeamSlotsCounter++;
         }
 
-        public ProgressData Clone()
-            => new()
+        public static ProgressData NewRun(ProgressData from)
+        {
+            return new ProgressData
             {
-                SelectedLeadID = SelectedLeadID,
-                Stage = 0,
-                TeamSize = 0,
+                TeammateIDs = from.TeammateIDs,
             };
+        }
     }
 }
