@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using DeckScaler.Component;
 using DeckScaler.Utils;
 using Entitas;
 using Entitas.Generic;
 
-namespace DeckScaler.Component
+namespace DeckScaler.Systems
 {
     public class UpdateWorldPosition : IExecuteSystem
     {
