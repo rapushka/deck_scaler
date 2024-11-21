@@ -5,6 +5,9 @@ namespace DeckScaler
 {
     public static class TeamSlotExtensions
     {
+        public static PrimaryEntityIndex<Game, TeamSlot, int> TeamSlotIndex(this Contexts contexts)
+            => contexts.Get<Game>().GetPrimaryIndex<TeamSlot, int>();
+
         public static Entity<Game> SetupToSlotAsTeammate(this Entity<Game> teammate, Entity<Game> slot)
         {
             slot.Replace<HeldTeammate, EntityID>(teammate.ID());

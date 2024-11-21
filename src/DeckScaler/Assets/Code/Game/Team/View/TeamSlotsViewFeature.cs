@@ -10,7 +10,7 @@ namespace DeckScaler
             Add(new SetupTeamSlotToTeamContainer());
             Add(new SetupTeamSlotChildren());
 
-            // Add(new ArrangeTeamSlots()); TODO
+            Add(new ArrangeTeamSlots());
         }
     }
 }

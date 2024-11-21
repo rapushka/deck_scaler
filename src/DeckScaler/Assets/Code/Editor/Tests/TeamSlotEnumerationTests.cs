@@ -47,7 +47,7 @@ namespace DeckScaler.Editor.Tests
 
             // Assert.
             var slotNumber = entity.Get<TeamSlot>().Value;
-            slotNumber.Should().Be(1);
+            slotNumber.Should().Be(0);
         }
 
         [Test]
@@ -62,7 +62,7 @@ namespace DeckScaler.Editor.Tests
 
             // Assert.
             var slotNumber = secondEntity.Get<TeamSlot>().Value;
-            slotNumber.Should().Be(2);
+            slotNumber.Should().Be(1);
         }
     }
 }

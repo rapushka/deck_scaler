@@ -13,6 +13,6 @@ namespace DeckScaler
 
         public static EntityID ID(this Entity<Game> @this) => @this.Get<ID>().Value;
 
-        public static Entity<Game> GetEntity(this EntityID @this) => Index.GetEntity(@this);
+        public static Entity<Game> GetEntity(this EntityID @this) => Index.GetEntityOrDefault(@this);
     }
 }
