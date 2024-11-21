@@ -20,6 +20,7 @@ namespace DeckScaler.Service
             Contexts.Instance.InitializeScope<Game>();
 
             Contexts.Instance.Get<Game>().GetPrimaryIndex<ID, EntityID>().Initialize();
+            Contexts.Instance.Get<Game>().GetPrimaryIndex<TeamSlot, int>().Initialize();
 
             var go = new GameObject("Gameplay Feature");
             _featureAdapter = go.AddComponent<GameplayFeatureAdapter>();

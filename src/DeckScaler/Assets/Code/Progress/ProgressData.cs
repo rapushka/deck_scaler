@@ -30,8 +30,8 @@ namespace DeckScaler
             => new()
             {
                 SelectedLeadID = SelectedLeadID,
-                Stage = Stage,
-                TeamSize = TeamSize,
+                Stage = 0,
+                TeamSize = 0,
             };
     }
 }

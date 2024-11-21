@@ -7,7 +7,8 @@ namespace DeckScaler.Component
 
     public sealed class NeedsNewSlot : FlagComponent, IInScope<Game> { }
 
-    public sealed class TeamSlot : ValueComponent<int>, IInScope<Game> { }
+    /// Starts from 0
+    public sealed class TeamSlot : PrimaryIndexComponent<int>, IInScope<Game> { }
 
     public sealed class HeldTeammate : ValueComponent<EntityID>, IInScope<Game> { }
 
