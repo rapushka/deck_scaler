@@ -22,7 +22,7 @@ namespace DeckScaler.Systems
             foreach (var entity in _entities.GetEntities(_buffer))
             {
                 var z = entity.GetOrDefault<ZOrder, float>();
-                var position = entity.Get<Position>().Value.WithZ(z);
+                var position = entity.Get<Position>().Value.Extend(z);
 
                 entity.Get<ViewTransform>().Value.localPosition = position;
 

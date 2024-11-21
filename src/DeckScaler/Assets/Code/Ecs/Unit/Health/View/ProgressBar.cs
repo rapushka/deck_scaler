@@ -1,11 +1,12 @@
+using DeckScaler.Utils;
 using UnityEngine;
 
 namespace DeckScaler
 {
     public class ProgressBar : MonoBehaviour
     {
-        [SerializeField] private SpriteRenderer _backgroundSpriteRenderer;
-        [SerializeField] private SpriteRenderer _fillSpriteRenderer;
+        [SerializeField] private Transform _background;
+        [SerializeField] private Transform _fill;
 
         public float NormalizedValue
         {
@@ -13,13 +14,8 @@ namespace DeckScaler
             {
                 value = Mathf.Clamp01(value);
 
-                var bgTransform = _backgroundSpriteRenderer.transform;
-                var fillTransform = _fillSpriteRenderer.transform;
-
-                var newScale = bgTransform.localScale;
-                newScale.x = bgTransform.localScale.x * value;
-
-                fillTransform.localScale = newScale;
+                var bgScale = _background.localScale;
+                _fill.localScale = _fill.localScale.With(x: bgScale.x * value);
             }
         }
     }
