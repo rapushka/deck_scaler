@@ -114,7 +114,7 @@ namespace DeckScaler.Editor.Tests
             // Act.
             for (var i = 0; i < teammateCount; i++)
             {
-                CreateEntity.New()
+                CreateEntity.Next()
                             .Add<UnitID, string>(string.Empty)
                             .Is<Queued>(true)
                             .Is<Teammate>(true)
@@ -123,7 +123,7 @@ namespace DeckScaler.Editor.Tests
 
             for (var i = 0; i < enemyCount; i++)
             {
-                CreateEntity.New()
+                CreateEntity.Next()
                             .Add<UnitID, string>(string.Empty)
                             .Is<Queued>(true)
                             .Is<Enemy>(true)

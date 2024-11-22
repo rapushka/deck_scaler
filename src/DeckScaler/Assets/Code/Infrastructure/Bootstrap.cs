@@ -20,6 +20,7 @@ namespace DeckScaler
             Services.Setup<IProgress>(new Progress());
             Services.Setup<IFactories>(new Factories());
             Services.Setup<IRandom>(new Random());
+            Services.Setup<IUiMediator>(new UiMediator());
 
             SetupDebugServices();
 

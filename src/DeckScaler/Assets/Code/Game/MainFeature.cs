@@ -13,7 +13,11 @@ namespace DeckScaler
             Add(new TeamSlotsFeature());
             Add(new TeamSlotsViewFeature());
 
+            Add(new TurnLoopFeature());
+
             Add(new ViewFeature());
+
+            Add(new DestroyEntities());
         }
     }
 }
