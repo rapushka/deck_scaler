@@ -4,11 +4,11 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public class OnTurnEndedWhenNoAttackersStartEnemiesTurn : IExecuteSystem
+    public class OnTurnEndedStartEnemiesTurn : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _endTurns = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
-                .With<TurnEnded>()
+                .With<EndTurn>()
                 .Build()
         );
 

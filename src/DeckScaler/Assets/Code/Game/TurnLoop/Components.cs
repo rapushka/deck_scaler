@@ -4,8 +4,6 @@ namespace DeckScaler.Component
 {
     public sealed class EndTurn : FlagComponent, IInScope<Game> { }
 
-    public sealed class TurnEnded : FlagComponent, IInScope<Game> { }
-
     public sealed class StartEnemyTurn : FlagComponent, IInScope<Game> { }
 
     /// Stores Opponent's ID

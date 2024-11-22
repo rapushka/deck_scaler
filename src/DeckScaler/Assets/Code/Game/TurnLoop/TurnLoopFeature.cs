@@ -8,12 +8,11 @@ namespace DeckScaler
             : base(nameof(TurnLoopFeature))
         {
             Add(new OnEndTurnAllTeammatesAttackOpponents());
-            Add(new SendDealDamageWithAttack());
 
-            Add(new SendTurnEndedEventWhenThereNoAttackers());
-
-            Add(new OnTurnEndedWhenNoAttackersStartEnemiesTurn());
+            Add(new OnTurnEndedStartEnemiesTurn());
             Add(new OnStartEnemyTurnEnemiesAttack());
+
+            Add(new SendDealDamageWithAttack());
 
             Add(new CleanupAttackers());
         }
