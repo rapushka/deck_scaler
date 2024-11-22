@@ -9,6 +9,8 @@ namespace DeckScaler
         {
             Add(new OnEndTurnAllTeammatesAttackOpponents());
             Add(new DealDamageWithAttack());
+
+            Add(new CleanupAttackers());
         }
     }
 }
