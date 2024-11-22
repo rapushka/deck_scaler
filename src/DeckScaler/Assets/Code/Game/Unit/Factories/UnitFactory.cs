@@ -34,6 +34,7 @@ namespace DeckScaler.Service
                           .Add<Component.Suit, Suit>(config.Suit)
                           .Add<Health, int>(config.Health)
                           .Add<MaxHealth, int>(config.Health)
+                          .Add<BaseDamage, int>(config.BaseDamage)
                           .Add<Stats, StatsData>(config.StatsData)
                           .Is<Queued>(true);
         }
