@@ -4,7 +4,7 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public class DealDamageWithAttack : IExecuteSystem
+    public class SendDealDamageWithAttack : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _attackers = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
@@ -16,10 +16,12 @@ namespace DeckScaler.Systems
         {
             foreach (var attacker in _attackers)
             {
-                var opponent = attacker.Get<Attack>().Value.GetEntity();
+                var opponentID = attacker.Get<Attack>().Value;
                 var damage = attacker.Get<BaseDamage>().Value;
 
-                opponent.Replace<Health, int>(opponent.Get<Health>().Value - damage);
+                CreateEntity.OneFrame()
+                            .Add<Component.DealDamage, int>(damage)
+                            .Add<Target, EntityID>(opponentID);
             }
         }
     }
