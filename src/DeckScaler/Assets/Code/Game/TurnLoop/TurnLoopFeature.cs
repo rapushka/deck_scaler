@@ -1,7 +1,4 @@
-using DeckScaler.Component;
-using Entitas;
-using Entitas.Generic;
-using UnityEngine;
+using DeckScaler.Systems;
 
 namespace DeckScaler
 {
@@ -10,24 +7,10 @@ namespace DeckScaler
         public TurnLoopFeature()
             : base(nameof(TurnLoopFeature))
         {
-            Add(new TestTurnEnd());
-        }
+            Add(new OnEndTurnAllTeammatesAttackOpponents());
+            Add(new SendDealDamageWithAttack());
 
-        private class TestTurnEnd : IExecuteSystem
-        {
-            private readonly IGroup<Entity<Game>> _entities = Contexts.Instance.GetGroup(
-                MatcherBuilder<Game>
-                    .With<EndTurn>()
-                    .Build()
-            );
-
-            public void Execute()
-            {
-                foreach (var entity in _entities)
-                {
-                    Debug.Log("end turn indeed!");
-                }
-            }
+            Add(new CleanupAttackers());
         }
     }
 }

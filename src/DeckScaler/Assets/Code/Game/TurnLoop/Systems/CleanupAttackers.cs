@@ -5,19 +5,19 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public class DestroyEntities : ICleanupSystem
+    public class CleanupAttackers : ICleanupSystem
     {
-        private readonly IGroup<Entity<Game>> _entities = Contexts.Instance.GetGroup(
+        private readonly IGroup<Entity<Game>> _attackers = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
-                .With<Destroy>()
+                .With<Attack>()
                 .Build()
         );
         private readonly List<Entity<Game>> _buffer = new(64);
 
         public void Cleanup()
         {
-            foreach (var entity in _entities.GetEntities(_buffer))
-                entity.Destroy();
+            foreach (var entity in _attackers.GetEntities(_buffer))
+                entity.Remove<Attack>();
         }
     }
 }
