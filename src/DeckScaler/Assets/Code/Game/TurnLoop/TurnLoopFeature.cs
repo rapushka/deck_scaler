@@ -10,6 +10,11 @@ namespace DeckScaler
             Add(new OnEndTurnAllTeammatesAttackOpponents());
             Add(new SendDealDamageWithAttack());
 
+            Add(new SendTurnEndedEventWhenThereNoAttackers());
+
+            Add(new OnTurnEndedWhenNoAttackersStartEnemiesTurn());
+            Add(new OnStartEnemyTurnEnemiesAttack());
+
             Add(new CleanupAttackers());
         }
     }
