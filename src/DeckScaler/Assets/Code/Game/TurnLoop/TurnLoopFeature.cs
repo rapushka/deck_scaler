@@ -1,3 +1,5 @@
+using DeckScaler.Systems;
+
 namespace DeckScaler
 {
     public sealed class TurnLoopFeature : Feature
@@ -6,6 +8,7 @@ namespace DeckScaler
             : base(nameof(TurnLoopFeature))
         {
             Add(new OnEndTurnAllTeammatesAttackOpponents());
+            Add(new DealDamageWithAttack());
         }
     }
 }

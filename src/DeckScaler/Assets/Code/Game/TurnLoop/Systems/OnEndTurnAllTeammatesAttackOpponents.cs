@@ -2,7 +2,7 @@ using DeckScaler.Component;
 using Entitas;
 using Entitas.Generic;
 
-namespace DeckScaler
+namespace DeckScaler.Systems
 {
     public class OnEndTurnAllTeammatesAttackOpponents : IExecuteSystem
     {
