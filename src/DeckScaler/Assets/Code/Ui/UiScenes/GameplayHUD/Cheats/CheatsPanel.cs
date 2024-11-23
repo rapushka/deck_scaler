@@ -5,6 +5,7 @@ namespace DeckScaler
     public class CheatsPanel : MonoBehaviour
     {
         [SerializeField] private GameObject _container;
+        [SerializeField] private CheatsInputField _inputField;
 
         private void Awake() => SetActive(false);
 
@@ -18,6 +19,10 @@ namespace DeckScaler
 
         private void ToggleVisibility() => SetActive(!_container.activeSelf);
 
-        private void SetActive(bool value) => _container.SetActive(value);
+        private void SetActive(bool value)
+        {
+            _container.SetActive(value);
+            _inputField.Clear();
+        }
     }
 }

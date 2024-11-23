@@ -15,8 +15,13 @@ namespace DeckScaler
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 Services.Get<IUiMediator>().SendCheat(_inputField.text);
-                _inputField.text = string.Empty;
+                Clear();
             }
+        }
+
+        public void Clear()
+        {
+            _inputField.text = string.Empty;
         }
     }
 }
