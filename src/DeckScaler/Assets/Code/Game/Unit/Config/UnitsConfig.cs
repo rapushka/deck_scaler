@@ -21,6 +21,18 @@ namespace DeckScaler
         private IEnumerable<UnitConfig> UnitsOfType(UnitType unitType)
             => _unitConfigsMap.Values.Where(c => c.Type == unitType);
 
+        public bool TryGetUnitType(string unitID, out UnitType unitType)
+        {
+            if (!_unitConfigsMap.ContainsKey(unitID))
+            {
+                unitType = UnitType.Unknown;
+                return false;
+            }
+
+            unitType = _unitConfigsMap[unitID].Type;
+            return true;
+        }
+
         [Serializable]
         private class UnitConfigMap : Map<string, UnitConfig>
         {

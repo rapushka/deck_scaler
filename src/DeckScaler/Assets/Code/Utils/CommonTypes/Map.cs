@@ -18,6 +18,8 @@ namespace DeckScaler
 
         public TValue this[TKey key] => Dictionary[key];
 
+        public bool ContainsKey(TKey key) => Dictionary.ContainsKey(key);
+
         protected abstract TKey SelectKey(TValue value);
     }
 }
