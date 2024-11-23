@@ -26,7 +26,9 @@ namespace DeckScaler.Systems
                 var parent = entity.Get<ParentTransform>().Value;
                 entity.Get<ViewTransform>().Value.SetParent(parent, worldPositionStays: !changePosition);
 
-                entity.Remove<ParentTransform>();
+                entity.Remove<ParentTransform>()
+                      .Remove<ForceChangePositionOnReparent>()
+                    ;
             }
         }
     }
