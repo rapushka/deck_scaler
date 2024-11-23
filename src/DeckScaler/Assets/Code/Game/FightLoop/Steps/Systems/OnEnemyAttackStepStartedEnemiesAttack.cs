@@ -4,17 +4,17 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public class OnEndTurnAllTeammatesAttackOpponents : IExecuteSystem
+    public class OnEnemyAttackStepStartedEnemiesAttack : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _event = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
-                .With<EndTurn>()
+                .With<EnemyAttackStepStarted>()
                 .Build()
         );
 
-        private readonly IGroup<Entity<Game>> _teammates = Contexts.Instance.GetGroup(
+        private readonly IGroup<Entity<Game>> _enemies = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
-                .With<Teammate>()
+                .With<Enemy>()
                 .And<BaseDamage>()
                 .And<InSlot>()
                 .Build()
@@ -23,10 +23,10 @@ namespace DeckScaler.Systems
         public void Execute()
         {
             foreach (var _ in _event)
-            foreach (var teammate in _teammates)
+            foreach (var enemy in _enemies)
             {
-                if (teammate.TryGetOpponent(out var enemyID))
-                    teammate.Add<PrepareAttack, EntityID>(enemyID);
+                if (enemy.TryGetOpponent(out var teammateID))
+                    enemy.Add<PrepareAttack, EntityID>(teammateID);
             }
         }
     }

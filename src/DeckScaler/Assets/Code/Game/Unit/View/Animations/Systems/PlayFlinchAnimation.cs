@@ -23,7 +23,10 @@ namespace DeckScaler.Systems
                 if (target.TryGet<Component.UnitAnimator, UnitAnimator>(out var animator))
                 {
                     var tween = animator.PlayFlinchAnimation();
-                    target.Add<PlayingAnimation, Tween>(tween);
+                    target
+                        .Add<PlayingAnimation, Tween>(tween)
+                        .Add<Component.AnimationType, AnimationType>(AnimationType.Flinch)
+                        ;
                 }
             }
         }

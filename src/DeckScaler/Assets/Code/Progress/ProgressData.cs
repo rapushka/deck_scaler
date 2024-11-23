@@ -11,6 +11,8 @@ namespace DeckScaler
 
         public int TeamSlotsCounter { get; private set; }
 
+        public FightStep CurrentFightStep { get; set; }
+
         public void AddTeammate(string unitID)
         {
             TeammateIDs.Add(unitID);

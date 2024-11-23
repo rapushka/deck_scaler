@@ -11,6 +11,7 @@ namespace DeckScaler.Systems
         private readonly IGroup<Entity<Game>> _entities = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
                 .With<PlayingAnimation>()
+                .And<Component.AnimationType>()
                 .Build()
         );
         private readonly List<Entity<Game>> _buffer = new(32);
@@ -22,7 +23,10 @@ namespace DeckScaler.Systems
                 var tween = entity.Get<PlayingAnimation>().Value;
                 if (!tween.IsActive() || tween.IsComplete())
                 {
-                    entity.Remove<PlayingAnimation>();
+                    entity
+                        .Remove<PlayingAnimation>()
+                        .Remove<Component.AnimationType>()
+                        ;
                 }
             }
         }

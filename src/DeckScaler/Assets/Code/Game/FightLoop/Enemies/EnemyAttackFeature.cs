@@ -7,8 +7,7 @@ namespace DeckScaler
         public EnemyAttackFeature()
             : base(nameof(EnemyAttackFeature))
         {
-            Add(new OnTurnEndedStartEnemiesTurn());
-            Add(new OnStartEnemyTurnEnemiesAttack());
+            Add(new OnEnemyAttackStepStartedEnemiesAttack());
         }
     }
 }

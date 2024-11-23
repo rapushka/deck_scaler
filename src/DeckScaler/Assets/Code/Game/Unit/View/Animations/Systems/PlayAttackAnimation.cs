@@ -27,7 +27,10 @@ namespace DeckScaler.Systems
                 var targetWorldPosition = target.Get<LastWorldPosition>().Value;
                 var tween = animator.PlayAttackAnimation(targetWorldPosition);
 
-                attacker.Add<PlayingAnimation, Tween>(tween);
+                attacker
+                    .Add<PlayingAnimation, Tween>(tween)
+                    .Add<Component.AnimationType, AnimationType>(AnimationType.Attack)
+                    ;
             }
         }
     }
