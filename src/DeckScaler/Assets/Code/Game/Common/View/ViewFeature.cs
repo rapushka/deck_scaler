@@ -9,6 +9,9 @@ namespace DeckScaler
         {
             Add(new LoadViewFeature());
 
+            Add(new PlayAttackAnimation());
+            Add(new PlayFlinchAnimation());
+
             Add(new UpdateHealthProgressBar());
 
             Add(new UpdateParent());
