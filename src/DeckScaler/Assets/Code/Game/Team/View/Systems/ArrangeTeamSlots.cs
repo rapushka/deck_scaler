@@ -8,6 +8,12 @@ namespace DeckScaler.Systems
 {
     public class ArrangeTeamSlots : IExecuteSystem
     {
+        private readonly IGroup<Entity<Game>> _event = Contexts.Instance.GetGroup(
+            MatcherBuilder<Game>
+                .With<Component.ArrangeTeamSlots>()
+                .Build()
+        );
+
         private readonly IGroup<Entity<Game>> _slots = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
                 .With<TeamSlot>()
@@ -20,6 +26,9 @@ namespace DeckScaler.Systems
 
         public void Execute()
         {
+            if (!_event.Any())
+                return;
+
             var spacing = Config.SpacingBetweenSlots;
             var slotCount = _slots.count;
 
@@ -28,7 +37,7 @@ namespace DeckScaler.Systems
                 var slot = Index.GetEntity(index);
 
                 var xPosition = index * spacing;
-                slot.Replace<Position, Vector2>(Vector2.right * xPosition);
+                slot.Replace<TargetPosition, Vector2>(Vector2.right * xPosition);
             }
         }
     }

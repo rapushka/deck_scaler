@@ -1,34 +1,35 @@
 using System.Collections.Generic;
 using DeckScaler.Component;
+using DeckScaler.Utils;
+using DG.Tweening;
 using Entitas;
 using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public class UpdateParent : IExecuteSystem
+    public class UpdateTargetPosition : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _entities
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<ParentTransform>()
-                    .And<ViewTransform>()
+                    .With<ViewTransform>()
+                    .And<TargetPosition>()
                     .Build()
             );
-
         private readonly List<Entity<Game>> _buffer = new(64);
 
         public void Execute()
         {
             foreach (var entity in _entities.GetEntities(_buffer))
             {
-                var changePosition = entity.Is<ForceChangePositionOnReparent>();
+                var z = entity.GetOrDefault<ZOrder, float>();
 
-                var parent = entity.Get<ParentTransform>().Value;
-                entity.Get<ViewTransform>().Value.SetParent(parent, worldPositionStays: !changePosition);
+                var transform = entity.Get<ViewTransform>().Value;
+                var targetPosition = entity.Get<TargetPosition>().Value;
 
-                entity.Remove<ParentTransform>()
-                      .RemoveSafely<ForceChangePositionOnReparent>()
-                    ;
+                transform.DOMove(targetPosition.Extend(z), duration: 0.3f); // TODO: duration
+
+                entity.Remove<TargetPosition>();
             }
         }
     }

@@ -9,6 +9,9 @@ namespace DeckScaler.Component
     /// Local Position
     public sealed class Position : ValueComponent<Vector2>, IInScope<Game> { }
 
+    /// Local Position
+    public sealed class TargetPosition : ValueComponent<Vector2>, IInScope<Game> { }
+
     public sealed class ZOrder : ValueComponent<float>, IInScope<Game> { }
 
     public sealed class ParentTransform : ValueComponent<Transform>, IInScope<Game> { }
