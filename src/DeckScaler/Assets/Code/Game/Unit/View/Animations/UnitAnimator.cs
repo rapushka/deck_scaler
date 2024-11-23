@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -8,10 +9,17 @@ namespace DeckScaler
         [SerializeField] private float _attackAnimationDuration = 0.5f;
         [SerializeField] private float _flinchAnimationDuration = 0.3f;
 
+        private float _initialScale;
+
+        private void Awake()
+        {
+            _initialScale = transform.localScale.x;
+        }
+
         public void PlayAttackAnimation()
         {
-            transform.DOScale(Vector3.one * 1.2f, _attackAnimationDuration)
-                     .OnComplete(() => transform.DOScale(Vector3.one, _attackAnimationDuration));
+            transform.DOScale(_initialScale * 1.2f, _attackAnimationDuration)
+                     .OnComplete(() => transform.DOScale(_initialScale, _attackAnimationDuration));
 
             transform.DOPunchPosition(new Vector3(0.2f, 0, 0), _attackAnimationDuration, 10, 1);
         }
@@ -21,8 +29,8 @@ namespace DeckScaler
             transform.DOPunchPosition(new Vector3(-0.1f, 0, 0), _flinchAnimationDuration, 10, 1)
                      .OnComplete(() => transform.DOPunchPosition(new Vector3(0.1f, 0, 0), _flinchAnimationDuration, 10, 1));
 
-            transform.DOScale(Vector3.one * 0.9f, _flinchAnimationDuration)
-                     .OnComplete(() => transform.DOScale(Vector3.one, _flinchAnimationDuration));
+            transform.DOScale(_initialScale * 0.9f, _flinchAnimationDuration)
+                     .OnComplete(() => transform.DOScale(_initialScale, _flinchAnimationDuration));
         }
     }
 }
