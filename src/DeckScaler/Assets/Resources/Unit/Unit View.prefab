@@ -443,6 +443,8 @@ GameObject:
   - component: {fileID: 791669052856555266}
   - component: {fileID: 5506897281803942990}
   - component: {fileID: 3428918407003200674}
+  - component: {fileID: 1040689445572484939}
+  - component: {fileID: 4568492167430372923}
   m_Layer: 0
   m_Name: Unit View
   m_TagString: Untagged
@@ -489,6 +491,7 @@ MonoBehaviour:
   - {fileID: 791669052856555266}
   - {fileID: 5506897281803942990}
   - {fileID: 3428918407003200674}
+  - {fileID: 1040689445572484939}
   _listeners: []
   _subEntities: []
   _ensureComponentsCountOnAwake: 1
@@ -590,6 +593,44 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1040689445572484939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6710012509412954626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e184163478c430fbfaf4694702883b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _value: {fileID: 4568492167430372923}
+--- !u!114 &4568492167430372923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6710012509412954626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2cbc6e3b6cc482f9c6a4737f89c713a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackAnimationArgs:
+    <Duration>k__BackingField: 0.2
+    <Scale>k__BackingField: 1.2
+    <ReturnDuration>k__BackingField: 0.25
+    <PunchDistance>k__BackingField: 0.5
+    <ZOffset>k__BackingField: -1
+  _flinchAnimationArgs:
+    <Duration>k__BackingField: 0.25
+    <Scale>k__BackingField: 0.8
+    <ReturnDuration>k__BackingField: 0.15
+    <PunchPosition>k__BackingField: {x: 0.5, y: 1}
+    <Vibrato>k__BackingField: 20
+    <Elasticity>k__BackingField: 1
 --- !u!1 &7908943310836628263
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using DeckScaler.Component;
 using Entitas.Generic;
 using UnityEngine;
 

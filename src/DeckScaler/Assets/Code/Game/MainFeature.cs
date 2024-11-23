@@ -17,7 +17,7 @@ namespace DeckScaler
             Add(new TeamSlotsFeature());
             Add(new TeamSlotsViewFeature());
 
-            Add(new TurnLoopFeature());
+            Add(new FightLoopFeature());
             Add(new DamageFeature());
 
             Add(new ViewFeature());
