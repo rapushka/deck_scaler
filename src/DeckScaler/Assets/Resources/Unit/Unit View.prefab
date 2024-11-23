@@ -618,8 +618,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2cbc6e3b6cc482f9c6a4737f89c713a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackAnimationDuration: 0.5
-  _flinchAnimationDuration: 0.3
+  _attackAnimationArgs:
+    <Duration>k__BackingField: 0.2
+    <Scale>k__BackingField: 1.2
+    <PunchPosition>k__BackingField: {x: 0, y: 2}
+    <Vibrato>k__BackingField: 5
+    <Elasticity>k__BackingField: 1
+    <ReturnDuration>k__BackingField: 0.25
+  _flinchAnimationArgs:
+    <Duration>k__BackingField: 0.25
+    <Scale>k__BackingField: 0.8
+    <PunchPosition>k__BackingField: {x: 0.5, y: 1}
+    <Vibrato>k__BackingField: 20
+    <Elasticity>k__BackingField: 1
+    <ReturnDuration>k__BackingField: 0.15
 --- !u!1 &7908943310836628263
 GameObject:
   m_ObjectHideFlags: 0
