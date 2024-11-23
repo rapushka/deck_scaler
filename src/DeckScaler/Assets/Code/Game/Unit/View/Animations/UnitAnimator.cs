@@ -31,12 +31,9 @@ namespace DeckScaler
 
             _tween?.Kill();
             _tween = DOTween.Sequence()
-                            // startup
+                            // prepare
                             .Append(transform.DOScale(_initialScale * args.Scale, args.Duration))
                             .Append(transform.DOPunchPosition(punchDirection, args.Duration, 0))
-
-                            // active
-                            .AppendCallback(() => { }) // TODO: callback
 
                             // recovery
                             .Append(transform.DOScale(_initialScale, args.ReturnDuration))
