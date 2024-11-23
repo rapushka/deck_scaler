@@ -1,3 +1,4 @@
+using DeckScaler.Service;
 using TMPro;
 using UnityEngine;
 
@@ -12,7 +13,10 @@ namespace DeckScaler
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Return))
-                Debug.Log($"TODO: SEND CHEAT: {_inputField.text}");
+            {
+                Services.Get<IUiMediator>().SendCheat(_inputField.text);
+                _inputField.text = string.Empty;
+            }
         }
     }
 }
