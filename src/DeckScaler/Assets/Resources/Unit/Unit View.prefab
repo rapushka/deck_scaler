@@ -628,9 +628,9 @@ MonoBehaviour:
     <ZOffset>k__BackingField: -1
   _flinchAnimationArgs:
     <Duration>k__BackingField: 0.25
-    <Scale>k__BackingField: 0.8
+    <Scale>k__BackingField: 0.9
     <ReturnDuration>k__BackingField: 0.15
-    <PunchPosition>k__BackingField: {x: 0.5, y: 1}
+    <PunchPosition>k__BackingField: {x: 0.2, y: 0.2}
     <Vibrato>k__BackingField: 20
     <Elasticity>k__BackingField: 1
 --- !u!114 &1464675379004274929
@@ -645,7 +645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59fb9fa73bf14ee8b10f527f322ef937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: 0.4
+  _value: 0.25
 --- !u!1 &7908943310836628263
 GameObject:
   m_ObjectHideFlags: 0
