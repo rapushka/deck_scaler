@@ -1,4 +1,5 @@
 using DeckScaler.Service;
+using Entitas.Generic;
 using UnityEngine;
 using Random = DeckScaler.Service.Random;
 
@@ -10,6 +11,8 @@ namespace DeckScaler
 
         private void Awake()
         {
+            InitializeEcs();
+
             var gameStateMachine = new GameStateMachine();
 
             Services.Setup<IUI>(new UI());
@@ -34,6 +37,12 @@ namespace DeckScaler
 #else
             Services.Setup<IDebug>(new DebugMock());
 #endif
+        }
+
+        private static void InitializeEcs()
+        {
+            Contexts.Instance.InitializeScope<Game>();
+            Contexts.Instance.InitializeScope<Cheats>();
         }
     }
 }
