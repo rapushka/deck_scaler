@@ -1,6 +1,6 @@
 using Entitas.Generic;
 
-namespace DeckScaler
+namespace DeckScaler.Component
 {
     public sealed class PrepareAttackAnimationDuration : ValueComponent<float>, IInScope<Game> { }
 

@@ -11,13 +11,11 @@ namespace DeckScaler.Service
 
         public void Log(string category, string msg)
         {
-            // TODO: Categories
             Debug.Log($"[{category}] {msg}");
         }
 
         public void LogError(string category, string msg)
         {
-            // TODO: Categories
             Debug.LogError($"[{category}] {msg}");
         }
     }

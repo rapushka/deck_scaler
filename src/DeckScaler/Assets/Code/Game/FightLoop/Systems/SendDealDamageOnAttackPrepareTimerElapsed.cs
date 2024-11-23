@@ -4,11 +4,11 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public class SendDealDamageWithAttack : IExecuteSystem
+    public class SendDealDamageOnAttackPrepareTimerElapsed : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _attackers = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
-                .With<Attack>()
+                .With<PrepareAttackTimer>()
                 .Build()
         );
 
@@ -16,7 +16,10 @@ namespace DeckScaler.Systems
         {
             foreach (var attacker in _attackers)
             {
-                var opponentID = attacker.Get<Attack>().Value;
+                if (!attacker.Get<PrepareAttackTimer>().Value.IsElapsed)
+                    continue;
+
+                var opponentID = attacker.Get<PrepareAttack>().Value;
                 var damage = attacker.Get<BaseDamage>().Value;
 
                 CreateEntity.OneFrame()

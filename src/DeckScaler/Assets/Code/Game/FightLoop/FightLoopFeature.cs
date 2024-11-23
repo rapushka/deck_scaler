@@ -17,9 +17,10 @@ namespace DeckScaler
 
             Add(new EnemyAttackFeature());
 
-            Add(new SendDealDamageWithAttack());
+            Add(new StartAttackTimer());
+            Add(new SendDealDamageOnAttackPrepareTimerElapsed());
 
-            Add(new CleanupAttackers());
+            Add(new CleanupElapsedPrepareAttackTimer());
         }
     }
 
@@ -36,7 +37,7 @@ namespace DeckScaler
                 .With<Teammate>()
                 .And<BaseDamage>()
                 .And<InSlot>()
-                .Without<Attack>()
+                .Without<PrepareAttack>()
                 .Build()
         );
         private readonly IGroup<Entity<Game>> _enemies = Contexts.Instance.GetGroup(
@@ -51,7 +52,7 @@ namespace DeckScaler
             foreach (var _ in _event)
             foreach (var teammate in _teammates.GetEntities(_buffer))
             {
-                teammate.Add<Attack, EntityID>(GetFirstEnemy().ID());
+                teammate.Add<PrepareAttack, EntityID>(GetFirstEnemy().ID());
             }
         }
 

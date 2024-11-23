@@ -26,7 +26,7 @@ namespace DeckScaler.Systems
             foreach (var teammate in _teammates)
             {
                 if (teammate.TryGetOpponent(out var enemyID))
-                    teammate.Add<Attack, EntityID>(enemyID);
+                    teammate.Add<PrepareAttack, EntityID>(enemyID);
             }
         }
     }

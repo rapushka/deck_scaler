@@ -9,8 +9,7 @@ namespace DeckScaler
         {
             Add(new LoadViewFeature());
 
-            Add(new PlayAttackAnimation());
-            Add(new PlayFlinchAnimation());
+            Add(new AnimationFeature());
 
             Add(new UpdateHealthProgressBar());
 
@@ -19,8 +18,6 @@ namespace DeckScaler
             Add(new SetWorldPositionForViewTransform());
 
             Add(new UpdateLastWorldPositionFromViewTransform());
-
-            Add(new AnimationFeature());
         }
     }
 }

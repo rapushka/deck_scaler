@@ -21,7 +21,7 @@ namespace DeckScaler
             _initialZ = transform.position.z;
         }
 
-        public void PlayAttackAnimation(Vector2 targetWorldPosition)
+        public Tween PlayAttackAnimation(Vector2 targetWorldPosition)
         {
             var punchDirection = targetWorldPosition - transform.position.Flat();
 
@@ -33,15 +33,17 @@ namespace DeckScaler
             _tween = DOTween.Sequence()
                             // prepare
                             .Append(transform.DOScale(_initialScale * args.Scale, args.Duration))
-                            .Append(transform.DOPunchPosition(punchDirection, args.Duration, 0))
+                            .Append(transform.DOPunchPosition(punchDirection, args.Duration, vibrato: 0))
 
                             // recovery
                             .Append(transform.DOScale(_initialScale, args.ReturnDuration))
                             .AppendCallback(() => transform.SetGlobalPosition(z: _initialZ))
                 ;
+
+            return _tween;
         }
 
-        public void PlayFlinchAnimation()
+        public Tween PlayFlinchAnimation()
         {
             var args = _flinchAnimationArgs;
 
@@ -53,6 +55,8 @@ namespace DeckScaler
                             // recovery
                             .Append(transform.DOScale(_initialScale, args.ReturnDuration))
                 ;
+
+            return _tween;
         }
 
         [Serializable]
