@@ -9,5 +9,4 @@ namespace DeckScaler.Component
     public sealed class Easing : ValueComponent<AnimationCurve>, IInScope<Game> { }
 
     public sealed class AnimationDuration : ValueComponent<float>, IInScope<Game> { }
-    public sealed class AnimationSpeed : ValueComponent<float>, IInScope<Game> { }
 }

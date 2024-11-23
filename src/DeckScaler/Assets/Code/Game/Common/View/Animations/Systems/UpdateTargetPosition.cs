@@ -15,7 +15,6 @@ namespace DeckScaler.Systems
                 MatcherBuilder<Game>
                     .With<ViewTransform>()
                     .And<TargetPosition>()
-                    .Without<AnimationSpeed>()
                     .Build()
             );
         private readonly List<Entity<Game>> _buffer = new(64);
