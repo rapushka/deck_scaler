@@ -14,10 +14,10 @@ namespace DeckScaler.Utils
                 @this.x = x.Value;
 
             if (y is not null)
-                @this.x = y.Value;
+                @this.y = y.Value;
 
             if (z is not null)
-                @this.x = z.Value;
+                @this.z = z.Value;
 
             return @this;
         }

@@ -623,6 +623,7 @@ MonoBehaviour:
     <Scale>k__BackingField: 1.2
     <ReturnDuration>k__BackingField: 0.25
     <PunchDistance>k__BackingField: 0.5
+    <ZOffset>k__BackingField: -1
   _flinchAnimationArgs:
     <Duration>k__BackingField: 0.25
     <Scale>k__BackingField: 0.8

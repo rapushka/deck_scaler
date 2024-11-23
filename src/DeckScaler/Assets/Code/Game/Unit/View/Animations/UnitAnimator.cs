@@ -11,11 +11,14 @@ namespace DeckScaler
         [SerializeField] private FlinchAnimationArgs _flinchAnimationArgs;
 
         private float _initialScale;
+        private float _initialZ;
+
         private Tween _tween;
 
         private void Awake()
         {
             _initialScale = transform.localScale.x;
+            _initialZ = transform.position.z;
         }
 
         public void PlayAttackAnimation(Vector2 targetWorldPosition)
@@ -24,6 +27,7 @@ namespace DeckScaler
 
             var args = _attackAnimationArgs;
             punchDirection *= args.PunchDistance;
+            transform.SetGlobalPosition(z: args.ZOffset);
 
             _tween?.Kill();
             _tween = DOTween.Sequence()
@@ -36,6 +40,7 @@ namespace DeckScaler
 
                             // recovery
                             .Append(transform.DOScale(_initialScale, args.ReturnDuration))
+                            .AppendCallback(() => transform.SetGlobalPosition(z: _initialZ))
                 ;
         }
 
@@ -66,6 +71,7 @@ namespace DeckScaler
         private class AttackAnimationArgs : AnimationArgs
         {
             [field: SerializeField] public float PunchDistance { get; private set; } = 1f;
+            [field: SerializeField] public float ZOffset       { get; private set; } = -10f;
         }
 
         [Serializable]
