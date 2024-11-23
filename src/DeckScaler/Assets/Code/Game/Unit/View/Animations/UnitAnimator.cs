@@ -7,8 +7,8 @@ namespace DeckScaler
 {
     public class UnitAnimator : MonoBehaviour
     {
-        [SerializeField] private AnimationArgs _attackAnimationArgs;
-        [SerializeField] private AnimationArgs _flinchAnimationArgs;
+        [SerializeField] private AttackAnimationArgs _attackAnimationArgs;
+        [SerializeField] private FlinchAnimationArgs _flinchAnimationArgs;
 
         private float _initialScale;
         private Tween _tween;
@@ -21,13 +21,15 @@ namespace DeckScaler
         public void PlayAttackAnimation(Vector2 targetWorldPosition)
         {
             var punchDirection = targetWorldPosition - transform.position.Flat();
+
             var args = _attackAnimationArgs;
+            punchDirection *= args.PunchDistance;
 
             _tween?.Kill();
             _tween = DOTween.Sequence()
                             // startup
                             .Append(transform.DOScale(_initialScale * args.Scale, args.Duration))
-                            .Append(transform.DOPunchPosition(punchDirection, args.Duration, args.Vibrato, args.Elasticity))
+                            .Append(transform.DOPunchPosition(punchDirection, args.Duration, 0))
 
                             // active
                             .AppendCallback(() => { }) // TODO: callback
@@ -54,13 +56,25 @@ namespace DeckScaler
         [Serializable]
         private class AnimationArgs
         {
-            [field: SerializeField] public float   Duration      { get; private set; } = 0.3f;
-            [field: SerializeField] public float   Scale         { get; private set; } = 1f;
-            [field: SerializeField] public Vector2 PunchPosition { get; private set; }
-            [field: SerializeField] public int     Vibrato       { get; private set; } = 10;
-            [field: SerializeField] public float   Elasticity    { get; private set; } = 1f;
+            [field: SerializeField] public float Duration { get; private set; } = 0.3f;
+            [field: SerializeField] public float Scale    { get; private set; } = 1f;
 
             [field: SerializeField] public float ReturnDuration { get; private set; } = 0.3f;
+        }
+
+        [Serializable]
+        private class AttackAnimationArgs : AnimationArgs
+        {
+            [field: SerializeField] public float PunchDistance { get; private set; } = 1f;
+        }
+
+        [Serializable]
+        private class FlinchAnimationArgs : AnimationArgs
+        {
+            [field: SerializeField] public Vector2 PunchPosition { get; private set; }
+
+            [field: SerializeField] public int   Vibrato    { get; private set; } = 10;
+            [field: SerializeField] public float Elasticity { get; private set; } = 1f;
         }
     }
 }
