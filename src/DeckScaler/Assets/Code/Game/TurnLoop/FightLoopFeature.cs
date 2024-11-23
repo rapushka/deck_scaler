@@ -9,8 +9,7 @@ namespace DeckScaler
         {
             Add(new OnEndTurnAllTeammatesAttackOpponents());
 
-            Add(new OnTurnEndedStartEnemiesTurn());
-            Add(new OnStartEnemyTurnEnemiesAttack());
+            Add(new EnemyAttackFeature());
 
             Add(new SendDealDamageWithAttack());
 
