@@ -7,8 +7,6 @@ namespace DeckScaler.Systems
 {
     public class LogUnprocessedCheats : IExecuteSystem
     {
-        private const string Category = "Cheats";
-
         private readonly IGroup<Entity<Cheats>> _cheats
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Cheats>
@@ -22,7 +20,7 @@ namespace DeckScaler.Systems
             foreach (var entity in _cheats)
             {
                 var cheat = entity.Get<Cheat>().Value;
-                Services.Get<IDebug>().LogError(Category, $"Cheat \"{cheat}\" doesn't exist!");
+                Services.Get<IDebug>().LogError(nameof(Cheats), $"Cheat \"{cheat}\" doesn't exist!");
             }
         }
     }

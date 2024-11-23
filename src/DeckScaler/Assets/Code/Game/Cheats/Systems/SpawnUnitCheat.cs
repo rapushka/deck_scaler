@@ -9,10 +9,7 @@ namespace DeckScaler.Systems
 {
     public class SpawnUnitCheat : IExecuteSystem
     {
-        private const string Pattern = @"spawn unit (.+)";
-
-        private const string AllyGroupID = "Ally";
-        private const string EnemyGroupID = "Enemy";
+        private const string Pattern = "spawn unit (.+)";
 
         private readonly IGroup<Entity<Cheats>> _cheats
             = Contexts.Instance.GetGroup(
@@ -23,9 +20,9 @@ namespace DeckScaler.Systems
             );
         private readonly List<Entity<Cheats>> _buffer = new(32);
 
-        private static IFactories Factory => Services.Get<IFactories>();
-
-        private static IDebug Debug => Services.Get<IDebug>();
+        private static IFactories  Factory => Services.Get<IFactories>();
+        private static UnitsConfig Config  => Services.Get<IConfigs>().Units;
+        private static IDebug      Debug   => Services.Get<IDebug>();
 
         public void Execute()
         {
@@ -39,18 +36,26 @@ namespace DeckScaler.Systems
 
                 var unitID = match.Groups[1].ToString();
 
-                if (unitID.Contains(AllyGroupID))
-                    Factory.CreateTeammate(unitID);
-                else if (unitID.Contains(EnemyGroupID))
-                    Factory.CreateEnemy(unitID);
-                else
-                {
+                if (!TryCreate(unitID))
                     Debug.LogError(nameof(Cheats), "Invalid unit ID!");
-                    continue;
-                }
 
                 entity.Is<Processed>(true);
             }
+        }
+
+        private static bool TryCreate(string unitID)
+        {
+            if (!Config.TryGetUnitType(unitID, out var unitType))
+                return false;
+
+            if (unitType is UnitType.Ally)
+                Factory.CreateTeammate(unitID);
+            else if (unitType is UnitType.Enemy)
+                Factory.CreateEnemy(unitID);
+            else
+                return false;
+
+            return true;
         }
     }
 }

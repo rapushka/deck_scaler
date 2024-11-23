@@ -17,4 +17,4 @@ MonoBehaviour:
   <SpriteSheet>k__BackingField: {fileID: 11400000, guid: 75f7728a340da1a438d7c3d10889455f, type: 2}
   <TeamSlotView>k__BackingField:
     <ViewPrefab>k__BackingField: {fileID: 5709879491896991328, guid: f7f8ccdd674a5aa949e7e857daf42c77, type: 3}
-    <SpacingBetweenSlots>k__BackingField: 300
+    <SpacingBetweenSlots>k__BackingField: 2.75

@@ -14,6 +14,8 @@ namespace DeckScaler
             Add(new UpdateParent());
             Add(new UpdatePosition());
             Add(new UpdateWorldPosition());
+
+            Add(new AnimationFeature());
         }
     }
 }

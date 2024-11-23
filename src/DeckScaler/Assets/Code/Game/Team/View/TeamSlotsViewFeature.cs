@@ -7,6 +7,8 @@ namespace DeckScaler
         public TeamSlotsViewFeature()
             : base(nameof(TeamSlotsViewFeature))
         {
+            Add(new RequestArrangeTeamSlotsOnNewSlotCreated());
+
             Add(new SetupTeamSlotToTeamContainer());
             Add(new SetupTeamSlotChildren());
 

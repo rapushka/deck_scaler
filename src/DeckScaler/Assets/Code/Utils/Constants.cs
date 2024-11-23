@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace DeckScaler
 {
     public static class Constants
@@ -10,7 +12,13 @@ namespace DeckScaler
 
             // # Categories
             public const string Units = "Units/";
-            public const string ActionCards = "Action Cards/";
+        }
+
+        public static class Animation
+        {
+            public const float DefaultDuration = 0.3f;
+
+            public static readonly AnimationCurve LinearEasing = AnimationCurve.Linear(0f, 0f, 1f, 1f);
         }
     }
 }
