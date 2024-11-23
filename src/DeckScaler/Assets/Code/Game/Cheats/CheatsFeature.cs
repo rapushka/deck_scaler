@@ -7,6 +7,8 @@ namespace DeckScaler
         public CheatsFeature()
             : base(nameof(CheatsFeature))
         {
+            Add(new SpawnUnitCheat());
+
             Add(new LogUnprocessedCheats());
             Add(new DestroyAllCheats());
         }

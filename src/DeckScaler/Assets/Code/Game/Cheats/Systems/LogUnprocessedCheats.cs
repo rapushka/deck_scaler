@@ -22,7 +22,7 @@ namespace DeckScaler.Systems
             foreach (var entity in _cheats)
             {
                 var cheat = entity.Get<Cheat>().Value;
-                Services.Get<IDebug>().LogError(Category, $"Cheat {cheat} doesn't exist!");
+                Services.Get<IDebug>().LogError(Category, $"Cheat \"{cheat}\" doesn't exist!");
             }
         }
     }
