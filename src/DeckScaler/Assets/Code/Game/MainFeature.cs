@@ -7,6 +7,10 @@ namespace DeckScaler
         public MainFeature()
             : base(nameof(MainFeature))
         {
+#if UNITY_EDITOR
+            Add(new CheatsFeature());
+#endif
+
             Add(new SpawnPlayerTeamFromProgress());
             Add(new SpawnRandomEnemy());
 

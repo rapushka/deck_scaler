@@ -18,6 +18,7 @@ namespace DeckScaler.Service
         public void Init()
         {
             Contexts.Instance.InitializeScope<Game>();
+            Contexts.Instance.InitializeScope<Cheats>();
 
             Contexts.Instance.Get<Game>().GetPrimaryIndex<ID, EntityID>().Initialize();
             Contexts.Instance.Get<Game>().GetPrimaryIndex<TeamSlot, int>().Initialize();
