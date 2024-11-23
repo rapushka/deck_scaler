@@ -7,7 +7,7 @@ namespace DeckScaler.Service
         int RandomIndex<T>(T[] array);
     }
 
-    public class Random : IRandom
+    public class SimpleRandom : IRandom
     {
         public int RandomIndex<T>(T[] array)
         {
