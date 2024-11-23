@@ -18,8 +18,10 @@ namespace DeckScaler.Systems
             foreach (var attacker in _attackers)
             {
                 var animator = attacker.Get<Component.UnitAnimator>().Value;
+                var target = attacker.Get<Attack>().Value.GetEntity();
 
-                animator.PlayAttackAnimation();
+                var targetWorldPosition = target.Get<LastWorldPosition>().Value;
+                animator.PlayAttackAnimation(targetWorldPosition);
             }
         }
     }

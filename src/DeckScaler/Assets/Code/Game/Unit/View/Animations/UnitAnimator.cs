@@ -1,4 +1,5 @@
 using System;
+using DeckScaler.Utils;
 using DG.Tweening;
 using UnityEngine;
 
@@ -17,16 +18,21 @@ namespace DeckScaler
             _initialScale = transform.localScale.x;
         }
 
-        public void PlayAttackAnimation()
+        public void PlayAttackAnimation(Vector2 targetWorldPosition)
         {
+            var punchDirection = targetWorldPosition - transform.position.Flat();
             var args = _attackAnimationArgs;
 
             _tween?.Kill();
             _tween = DOTween.Sequence()
+                            // startup
                             .Append(transform.DOScale(_initialScale * args.Scale, args.Duration))
-                            .Append(transform.DOPunchPosition(args.PunchPosition, args.Duration, args.Vibrato, args.Elasticity))
+                            .Append(transform.DOPunchPosition(punchDirection, args.Duration, args.Vibrato, args.Elasticity))
 
-                            // return
+                            // active
+                            .AppendCallback(() => { }) // TODO: callback
+
+                            // recovery
                             .Append(transform.DOScale(_initialScale, args.ReturnDuration))
                 ;
         }
@@ -40,7 +46,7 @@ namespace DeckScaler
                             .Append(transform.DOPunchPosition(args.PunchPosition, args.Duration, args.Vibrato, args.Elasticity))
                             .Join(transform.DOScale(_initialScale * args.Scale, args.Duration))
 
-                            // return
+                            // recovery
                             .Append(transform.DOScale(_initialScale, args.ReturnDuration))
                 ;
         }

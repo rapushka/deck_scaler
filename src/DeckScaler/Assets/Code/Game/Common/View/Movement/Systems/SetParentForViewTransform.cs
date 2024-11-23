@@ -5,7 +5,7 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public class UpdateParent : IExecuteSystem
+    public class SetParentForViewTransform : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _entities
             = Contexts.Instance.GetGroup(

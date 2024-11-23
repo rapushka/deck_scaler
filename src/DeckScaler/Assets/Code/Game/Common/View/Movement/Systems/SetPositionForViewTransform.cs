@@ -6,7 +6,7 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public class UpdatePosition : IExecuteSystem
+    public class SetPositionForViewTransform : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _entities
             = Contexts.Instance.GetGroup(
