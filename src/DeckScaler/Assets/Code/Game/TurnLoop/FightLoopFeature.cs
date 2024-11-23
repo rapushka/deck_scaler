@@ -2,10 +2,10 @@ using DeckScaler.Systems;
 
 namespace DeckScaler
 {
-    public sealed class TurnLoopFeature : Feature
+    public sealed class FightLoopFeature : Feature
     {
-        public TurnLoopFeature()
-            : base(nameof(TurnLoopFeature))
+        public FightLoopFeature()
+            : base(nameof(FightLoopFeature))
         {
             Add(new OnEndTurnAllTeammatesAttackOpponents());
 
