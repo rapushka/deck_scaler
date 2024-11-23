@@ -7,6 +7,8 @@ namespace DeckScaler
     {
         [SerializeField] private TMP_InputField _inputField;
 
+        private void OnEnable() => _inputField.Select();
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Return))
