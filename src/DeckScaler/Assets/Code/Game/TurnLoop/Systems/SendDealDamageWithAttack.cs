@@ -21,7 +21,9 @@ namespace DeckScaler.Systems
 
                 CreateEntity.OneFrame()
                             .Add<Component.DealDamage, int>(damage)
-                            .Add<Target, EntityID>(opponentID);
+                            .Add<Sender, EntityID>(attacker.ID())
+                            .Add<Target, EntityID>(opponentID)
+                    ;
             }
         }
     }
