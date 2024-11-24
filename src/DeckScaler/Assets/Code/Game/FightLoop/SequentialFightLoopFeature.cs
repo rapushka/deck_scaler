@@ -2,18 +2,18 @@ using DeckScaler.Systems;
 
 namespace DeckScaler
 {
-    public sealed class FightLoopFeature : Feature
+    public sealed class SequentialFightLoopFeature : Feature
     {
-        public FightLoopFeature()
-            : base(nameof(FightLoopFeature))
+        public SequentialFightLoopFeature()
+            : base(nameof(SequentialFightLoopFeature))
         {
             Add(new StartWithPlayerPrepareStep());
 
-            Add(new RequestEndPlayerPrepareStep());
+            Add(new ReactOnRequestEndPlayerPrepareStep());
             Add(new ChangeFightStateOnRequest());
 
             Add(new OnPlayerAttackStepTeammatesAttackOpponents());
-            Add(new EnemyAttackFeature());
+            Add(new OnEnemyAttackStepStartedEnemiesAttack());
 
             Add(new OnAttackStepStartedStartWaitingForAttackAnimations());
             Add(new WaitForUnitAnimations());

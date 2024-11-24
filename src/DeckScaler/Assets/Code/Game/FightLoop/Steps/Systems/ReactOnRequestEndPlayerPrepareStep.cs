@@ -5,7 +5,7 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public class RequestEndPlayerPrepareStep : IExecuteSystem
+    public class ReactOnRequestEndPlayerPrepareStep : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _requests
             = Contexts.Instance.GetGroup(
@@ -22,7 +22,7 @@ namespace DeckScaler.Systems
             if (Progress.CurrentFightStep is not FightStep.PlayerPrepare)
                 return;
 
-            CreateEntity.OneFrame()
+            CreateEntity.Empty()
                         .Add<RequestChangeFightStep, FightStep>(FightStep.PlayerAttack)
                 ;
         }

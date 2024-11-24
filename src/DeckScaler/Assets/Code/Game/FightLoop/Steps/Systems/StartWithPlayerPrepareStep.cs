@@ -7,7 +7,7 @@ namespace DeckScaler.Systems
     {
         public void Initialize()
         {
-            CreateEntity.OneFrame()
+            CreateEntity.Empty()
                         .Add<RequestChangeFightStep, FightStep>(FightStep.PlayerPrepare)
                 ;
         }

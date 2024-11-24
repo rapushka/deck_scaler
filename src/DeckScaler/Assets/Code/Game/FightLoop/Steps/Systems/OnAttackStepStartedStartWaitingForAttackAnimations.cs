@@ -8,7 +8,7 @@ namespace DeckScaler.Systems
     {
         private readonly IGroup<Entity<Game>> _events = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
-                .With<PlayerAttackStepStarted>()
+                .WithOr<PlayerAttackStepStarted>()
                 .Or<EnemyAttackStepStarted>()
                 .Build()
         );

@@ -18,16 +18,16 @@ namespace DeckScaler.Systems
 
         public void Execute()
         {
-            if (!_events.Any())
-                return;
+            foreach (var _ in _events)
+            {
+                if (TryChangeState(from: FightStep.PlayerAttack, to: FightStep.EnemyAttack))
+                    return;
 
-            if (TryChangeState(from: FightStep.PlayerAttack, to: FightStep.EnemyAttack))
-                return;
+                if (TryChangeState(from: FightStep.EnemyAttack, to: FightStep.PlayerPrepare))
+                    return;
 
-            if (TryChangeState(from: FightStep.EnemyAttack, to: FightStep.PlayerPrepare))
-                return;
-
-            Services.Get<IDebug>().LogError(nameof(FightStep), "Unknown Fight Step Transition");
+                Services.Get<IDebug>().LogError(nameof(FightStep), "Unknown Fight Step Transition");
+            }
         }
 
         private static bool TryChangeState(FightStep from, FightStep to)
@@ -36,7 +36,7 @@ namespace DeckScaler.Systems
 
             if (isFromCurrent)
             {
-                CreateEntity.OneFrame()
+                CreateEntity.Empty()
                             .Add<RequestChangeFightStep, FightStep>(to)
                     ;
             }

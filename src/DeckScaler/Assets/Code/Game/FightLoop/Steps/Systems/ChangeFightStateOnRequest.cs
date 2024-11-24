@@ -12,13 +12,30 @@ namespace DeckScaler.Systems
                 MatcherBuilder<Game>.With<RequestChangeFightStep>().Build()
             );
 
+        private readonly IGroup<Entity<Game>> _blockers
+            = Contexts.Instance.GetGroup(
+                MatcherBuilder<Game>.With<BlockFightStepChange>().Build()
+            );
+
         private static ProgressData Progress => Services.Get<IProgress>().CurrentRun;
+
+        private static IDebug Debug => Services.Get<IDebug>();
 
         public void Execute()
         {
+            if (_blockers.Any())
+                return;
+
             foreach (var request in _requests)
             {
+                if (!request.GetOrDefault<ChangeFightStepTimer, Timer>().IsElapsed)
+                    return;
+
                 var newStep = request.Get<RequestChangeFightStep>().Value;
+                var oldStep = Progress.CurrentFightStep;
+
+                Debug.Log(nameof(FightStep), $"Change Fight Step: {oldStep} -> {newStep}");
+
                 Progress.CurrentFightStep = newStep;
 
                 CreateEntity.OneFrame()
@@ -26,6 +43,8 @@ namespace DeckScaler.Systems
                             .Is<PlayerAttackStepStarted>(newStep is FightStep.PlayerAttack)
                             .Is<EnemyAttackStepStarted>(newStep is FightStep.EnemyAttack)
                     ;
+
+                request.Add<Destroy>();
             }
         }
     }

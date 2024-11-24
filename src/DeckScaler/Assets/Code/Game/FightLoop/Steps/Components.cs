@@ -4,9 +4,14 @@ namespace DeckScaler.Component
 {
     public sealed class RequestChangeFightStep : ValueComponent<FightStep>, IInScope<Game> { }
 
+    public sealed class ChangeFightStepTimer : ValueComponent<Timer>, IInScope<Game> { }
+
+    public sealed class BlockFightStepChange : FlagComponent, IInScope<Game> { }
+
     public sealed class EndPlayerPrepareStep : FlagComponent, IInScope<Game> { }
 
     public sealed class WaitingForAttackAnimations : FlagComponent, IInScope<Game> { }
+
     public sealed class AllAnimationsCompleted : FlagComponent, IInScope<Game> { }
 
     // # Concrete transitions

@@ -18,6 +18,8 @@ namespace DeckScaler.Systems
                     .With<UnitID>()
                     .And<PlayingAnimation>()
                     .And<Component.AnimationType>()
+                    .Or<PrepareAttack>()
+                    // .Or<PlayingAnimation>()
                     .Build()
             );
 
