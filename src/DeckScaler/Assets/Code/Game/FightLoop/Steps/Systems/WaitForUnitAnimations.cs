@@ -25,11 +25,11 @@ namespace DeckScaler.Systems
 
         public void Execute()
         {
+            if (_animatedAttackers.Any())
+                return;
+
             foreach (var waiter in _waiters)
             {
-                if (_animatedAttackers.Any())
-                    return; // yes, return, not continue
-
                 CreateEntity.OneFrame()
                             .Is<AllAnimationsCompleted>(true)
                     ;
