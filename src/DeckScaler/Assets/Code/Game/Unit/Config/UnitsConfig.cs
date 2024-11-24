@@ -10,7 +10,8 @@ namespace DeckScaler
     {
         [SerializeField] private UnitConfigMap _unitConfigsMap;
 
-        [field: SerializeField] public EntityBehaviour ViewPrefab { get; private set; }
+        [field: SerializeField] public float           DelayBetweenAttacks { get; private set; }
+        [field: SerializeField] public EntityBehaviour ViewPrefab          { get; private set; }
 
         public UnitConfig this[string id] => _unitConfigsMap[id];
 

@@ -1,3 +1,4 @@
+using DeckScaler.Component;
 using DeckScaler.Systems;
 
 namespace DeckScaler
@@ -7,8 +8,10 @@ namespace DeckScaler
         public AttackFeature()
             : base(nameof(AnimationFeature))
         {
-            Add(new OnPlayerAttackStepTeammatesAttackOpponents());
-            Add(new OnEnemyAttackStepStartedEnemiesAttack());
+            Add(new OnAttackStepStartedStartAttackTimer<PlayerAttackStepStarted, HeldTeammate>());
+            Add(new OnAttackStepStartedStartAttackTimer<EnemyAttackStepStarted, HeldEnemy>());
+
+            Add(new OnTimerBeforeAttackElapsedThenAttackOpponent());
 
             Add(new StartAttackTimer());
             Add(new SendDealDamageOnAttackPrepareTimerElapsed());

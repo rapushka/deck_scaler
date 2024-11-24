@@ -1,5 +1,6 @@
 using DeckScaler.Component;
 using DeckScaler.Service;
+using DeckScaler.Utils;
 using Entitas;
 using Entitas.Generic;
 using UnityEngine;
@@ -22,20 +23,15 @@ namespace DeckScaler.Systems
 
         private static TeamSlotViewConfig Config => Services.Get<IConfigs>().TeamSlotView;
 
-        private static PrimaryEntityIndex<Game, TeamSlot, int> Index => Contexts.Instance.TeamSlotIndex();
-
         public void Execute()
         {
             if (!_event.Any())
                 return;
 
             var spacing = Config.SpacingBetweenSlots;
-            var slotCount = _slots.count;
 
-            for (var index = 0; index < slotCount; index++)
+            foreach (var (slot, index) in _slots.GetTeamSlotsInOrder())
             {
-                var slot = Index.GetEntity(index);
-
                 var xPosition = index * spacing;
                 slot.Replace<TargetPosition, Vector2>(Vector2.right * xPosition);
             }
