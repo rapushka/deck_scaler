@@ -1,4 +1,5 @@
 using DeckScaler.Component;
+using DG.Tweening;
 using Entitas;
 using Entitas.Generic;
 
@@ -20,7 +21,13 @@ namespace DeckScaler.Systems
                 var target = attack.Get<Target>().Value.GetEntity();
 
                 if (target.TryGet<Component.UnitAnimator, UnitAnimator>(out var animator))
-                    animator.PlayFlinchAnimation();
+                {
+                    var tween = animator.PlayFlinchAnimation();
+                    target
+                        .Add<PlayingAnimation, Tween>(tween)
+                        .Add<Component.AnimationType, AnimationType>(AnimationType.Flinch)
+                        ;
+                }
             }
         }
     }

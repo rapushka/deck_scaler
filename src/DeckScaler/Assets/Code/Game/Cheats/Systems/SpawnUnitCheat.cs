@@ -15,7 +15,7 @@ namespace DeckScaler.Systems
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Cheats>
                     .With<Cheat>()
-                    .Without<Processed>()
+                    .Without<ProcessedCheat>()
                     .Build()
             );
         private readonly List<Entity<Cheats>> _buffer = new(32);
@@ -39,7 +39,7 @@ namespace DeckScaler.Systems
                 if (!TryCreate(unitID))
                     Debug.LogError(nameof(Cheats), "Invalid unit ID!");
 
-                entity.Is<Processed>(true);
+                entity.Is<ProcessedCheat>(true);
             }
         }
 

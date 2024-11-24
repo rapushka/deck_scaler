@@ -1,7 +1,6 @@
 using DeckScaler.Service;
 using Entitas.Generic;
 using UnityEngine;
-using Random = DeckScaler.Service.Random;
 
 namespace DeckScaler
 {
@@ -22,8 +21,9 @@ namespace DeckScaler
             Services.Setup<IConfigs>(_servicesData.Configs);
             Services.Setup<IProgress>(new Progress());
             Services.Setup<IFactories>(new Factories());
-            Services.Setup<IRandom>(new Random());
+            Services.Setup<IRandom>(new SimpleRandom());
             Services.Setup<IUiMediator>(new UiMediator());
+            Services.Setup<ITime>(new SimpleTime());
 
             SetupDebugServices();
 

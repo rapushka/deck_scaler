@@ -18,6 +18,10 @@ namespace DeckScaler
             where TComponent : IComponent, IInScope<TScope>, new()
             => new MatcherBuilder<TScope>().And<TComponent>();
 
+        public static MatcherBuilder<TScope> Either<TComponent>()
+            where TComponent : IComponent, IInScope<TScope>, new()
+            => new MatcherBuilder<TScope>().Or<TComponent>();
+
         public MatcherBuilder<TScope> And<TComponent>()
             where TComponent : IComponent, IInScope<TScope>, new()
         {

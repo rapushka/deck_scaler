@@ -13,7 +13,7 @@ namespace DeckScaler.Utils
             @this.DeactivateReactiveSystems();
             @this.ClearReactiveSystems();
 
-            // TODO: Destroy All Entities
+            // Destroy All Entities
 
             @this.Cleanup();
             @this.TearDown();

@@ -4,6 +4,8 @@ namespace DeckScaler.Service
 {
     public class SimpleDebug : IDebug
     {
+        private ITime Time => Services.Get<ITime>();
+
         public void Assert(bool condition)
         {
             Debug.Assert(condition);
@@ -11,14 +13,15 @@ namespace DeckScaler.Service
 
         public void Log(string category, string msg)
         {
-            // TODO: Categories
-            Debug.Log($"[{category}] {msg}");
+            Debug.Log(Format(category, msg));
         }
 
         public void LogError(string category, string msg)
         {
-            // TODO: Categories
-            Debug.LogError($"[{category}] {msg}");
+            Debug.LogError(Format(category, msg));
         }
+
+        private string Format(string category, string msg)
+            => $"|{Time.Frame}| [{category}] {msg}\n\n---\n";
     }
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ID>k__BackingField: Units/Enemy/TestEnemy
   <Type>k__BackingField: 2
-  <Health>k__BackingField: 3
+  <Health>k__BackingField: 10
   <BaseDamage>k__BackingField: 1
   <Suit>k__BackingField: 2
   <StatsData>k__BackingField:
