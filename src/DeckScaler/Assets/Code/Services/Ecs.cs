@@ -24,7 +24,7 @@ namespace DeckScaler.Service
             _featureAdapter = go.AddComponent<GameplayFeatureAdapter>();
 
 #if DEBUG
-            Entity<Game>.Formatter = new ModelEntityFormatter();
+            Entity<Game>.Formatter = new GameEntityFormatter();
 #endif
         }
 

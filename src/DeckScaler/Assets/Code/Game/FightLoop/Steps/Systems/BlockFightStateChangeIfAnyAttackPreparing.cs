@@ -17,6 +17,7 @@ namespace DeckScaler.Systems
             foreach (var _ in _attackers)
             {
                 CreateEntity.OneFrame()
+                            .Add<Name, string>("blocked by Prepare Attack")
                             .Add<BlockFightStepChange>()
                     ;
             }

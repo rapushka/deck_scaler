@@ -17,6 +17,7 @@ namespace DeckScaler.Systems
             foreach (var _ in _animations)
             {
                 CreateEntity.OneFrame()
+                            .Add<Name, string>("blocked by Playing Animation")
                             .Add<BlockFightStepChange>()
                     ;
             }

@@ -24,6 +24,7 @@ namespace DeckScaler.Systems
 
             CreateEntity.Empty()
                         .Add<RequestChangeFightStep, FightStep>(FightStep.PlayerAttack)
+                        .Add<ChangeFightStepTimer, Timer>(new Timer(0.1f)) // TODO: does it really needed here?:(
                 ;
         }
     }

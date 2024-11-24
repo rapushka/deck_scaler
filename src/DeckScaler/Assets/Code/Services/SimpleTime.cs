@@ -7,6 +7,8 @@ namespace DeckScaler.Service
         float DeltaTime { get; }
 
         float DeltaRealTime { get; }
+
+        int Frame { get; }
     }
 
     public class SimpleTime : ITime
@@ -14,5 +16,7 @@ namespace DeckScaler.Service
         public float CurrentTime   => UnityEngine.Time.time;
         public float DeltaTime     => UnityEngine.Time.deltaTime;
         public float DeltaRealTime => UnityEngine.Time.unscaledDeltaTime;
+
+        public int Frame => UnityEngine.Time.frameCount;
     }
 }

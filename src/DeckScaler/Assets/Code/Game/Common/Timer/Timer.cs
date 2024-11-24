@@ -19,8 +19,8 @@ namespace DeckScaler
 
         public bool IsElapsed => Time.CurrentTime >= _endTimeStamp;
 
-        private float TimeBeforeElapse => Time.CurrentTime - _endTimeStamp;
+        private float TimeLeft => _endTimeStamp - Time.CurrentTime;
 
-        public override string ToString() => TimeBeforeElapse.ToString(CultureInfo.InvariantCulture);
+        public override string ToString() => $"time left: {TimeLeft}";
     }
 }

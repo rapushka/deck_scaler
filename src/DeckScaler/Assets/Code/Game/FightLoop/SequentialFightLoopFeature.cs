@@ -13,19 +13,13 @@ namespace DeckScaler
             Add(new BlockFightStateChangeIfAnimationPlaying());
 
             Add(new ReactOnRequestEndPlayerPrepareStep());
+
             Add(new ChangeFightStateOnRequest());
 
-            Add(new OnPlayerAttackStepTeammatesAttackOpponents());
-            Add(new OnEnemyAttackStepStartedEnemiesAttack());
+            Add(new OnPlayerAttackStartedRequestEnemyAttack());
+            Add(new OnEnemyAttackStartedRequestPlayerPrepare());
 
-            Add(new OnAttackStepStartedStartWaitingForAttackAnimations());
-            Add(new WaitForUnitAnimations());
-            Add(new EndAttackStateOnAllUnitAnimationsComplete());
-
-            Add(new StartAttackTimer());
-            Add(new SendDealDamageOnAttackPrepareTimerElapsed());
-
-            Add(new CleanupElapsedPrepareAttackTimer());
+            Add(new AttackFeature());
         }
     }
 }

@@ -4,19 +4,19 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public class ModelEntityFormatter : EntityStringBuilderFormatter<Game>
+    public class GameEntityFormatter : EntityStringBuilderFormatter<Game>
     {
         protected override void BuildName(ref StringBuilder stringBuilder, in Entity<Game> entity)
         {
-            stringBuilder.AppendJoin
-            (
-                " ",
+            stringBuilder.AppendJoin(
+                separator: " ",
                 entity.ToString<ID, EntityID>(),
                 entity.ToString<Name, string>(),
                 entity.ToString<Lead>(),
+                entity.ToString<RequestChangeFightStep, FightStep>(prefix: "change fight step: "),
 
-                // Empty symbol just because I wanna leave multi-line expression without trailing coma
-                "\0"
+                // Empty just because I wanna leave multi-line expression with trailing coma
+                string.Empty
             );
         }
     }
