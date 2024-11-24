@@ -28,10 +28,6 @@ namespace DeckScaler.Systems
 
             foreach (var request in _requests)
             {
-                var timer = request.GetOrDefault<ChangeFightStepTimer, Timer>();
-                if (!timer.IsElapsed)
-                    continue;
-
                 var oldStep = Progress.CurrentFightStep;
                 var newStep = request.Get<RequestChangeFightStep>().Value;
 
