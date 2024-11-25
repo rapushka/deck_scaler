@@ -8,20 +8,43 @@ namespace DeckScaler
     {
         [SerializeField] private TMP_InputField _inputField;
 
+        private string _lastCheat;
+
         private void OnEnable() => _inputField.Select();
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Return))
-            {
-                Services.Get<IUiMediator>().SendCheat(_inputField.text);
-                Clear();
-            }
+                SendCheat();
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+                RestorePreviousCheat();
+        }
+
+        private void SendCheat()
+        {
+            var cheat = _inputField.text;
+            if (cheat.IsEmpty())
+                return;
+
+            Services.Get<IUiMediator>().SendCheat(cheat);
+            _lastCheat = cheat;
+            Clear();
+        }
+
+        private void RestorePreviousCheat()
+        {
+            _inputField.text = _lastCheat;
         }
 
         public void Clear()
         {
             _inputField.text = string.Empty;
         }
+    }
+
+    public static class StringExtensions
+    {
+        public static bool IsEmpty(this string @this) => string.IsNullOrWhiteSpace(@this);
     }
 }
