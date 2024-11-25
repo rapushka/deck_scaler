@@ -8,6 +8,12 @@ namespace DeckScaler.Systems
 {
     public class UpdateOpponentStraightforward : IExecuteSystem
     {
+        private readonly IGroup<Entity<Game>> _events
+            = Contexts.Instance.GetGroup(
+                MatcherBuilder<Game>
+                    .With<RecalculateOpponents>()
+                    .Build()
+            );
         private readonly IGroup<Entity<Game>> _units
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
@@ -18,6 +24,7 @@ namespace DeckScaler.Systems
 
         public void Execute()
         {
+            foreach (var _ in _events)
             foreach (var unit in _units.GetEntities(_buffer))
             {
                 if (unit.TryGetOpponent(out var opponentID))

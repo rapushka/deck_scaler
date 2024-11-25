@@ -1,4 +1,5 @@
 using DeckScaler.Systems;
+using DeckScaler.Component;
 
 namespace DeckScaler
 {
@@ -7,12 +8,12 @@ namespace DeckScaler
         public TeamSlotsViewFeature()
             : base(nameof(TeamSlotsViewFeature))
         {
-            Add(new RequestArrangeTeamSlotsOnNewSlotCreated());
+            Add(new SendEventOnAddedOrRemoved<TeamSlot, Component.ArrangeTeamSlots>());
 
             Add(new SetupTeamSlotToTeamContainer());
             Add(new SetupTeamSlotChildren());
 
-            Add(new ArrangeTeamSlots());
+            Add(new Systems.ArrangeTeamSlots());
         }
     }
 }
