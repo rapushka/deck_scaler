@@ -3,5 +3,5 @@ using Entitas.Generic;
 
 namespace DeckScaler.Editor
 {
-    public class ModelComponentID : ComponentID<Game> { }
+    public class GameComponentID : ComponentID<Game> { }
 }
