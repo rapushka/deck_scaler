@@ -11,6 +11,7 @@ namespace DeckScaler
 
             Add(new ResetOpponent());
             Add(new UpdateOpponentStraightforward());
+            Add(new SeekForNeighborOpponents());
         }
     }
 }
