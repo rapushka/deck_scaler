@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using DeckScaler.Component;
+using DeckScaler.Scopes;
 using Entitas;
 using Entitas.Generic;
-using static Entitas.Generic.ScopeMatcher<DeckScaler.Game>;
+using static Entitas.Generic.ScopeMatcher<DeckScaler.Scopes.Game>;
 
 namespace DeckScaler.Systems
 {

@@ -1,6 +1,6 @@
-using DeckScaler.Systems;
+using DeckScaler.Cheats.Systems;
 
-namespace DeckScaler
+namespace DeckScaler.Cheats
 {
     public sealed class CheatsFeature : Feature
     {

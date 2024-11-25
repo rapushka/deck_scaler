@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DeckScaler.Component;
+using DeckScaler.Scopes;
 using DeckScaler.Utils;
 using DG.Tweening;
 using Entitas;

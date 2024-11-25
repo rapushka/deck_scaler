@@ -1,9 +1,10 @@
 using DeckScaler.Component;
+using DeckScaler.Scopes;
 using DeckScaler.Service;
 using Entitas;
 using Entitas.Generic;
 using UnityEngine;
-using static DeckScaler.MatcherBuilder<DeckScaler.Game>;
+using static DeckScaler.MatcherBuilder<DeckScaler.Scopes.Game>;
 
 namespace DeckScaler.Systems
 {

@@ -1,3 +1,4 @@
+using DeckScaler.Scopes;
 using DeckScaler.Service;
 using Entitas.Generic;
 

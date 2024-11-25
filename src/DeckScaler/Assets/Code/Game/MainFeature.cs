@@ -1,3 +1,4 @@
+using DeckScaler.Cheats;
 using DeckScaler.Systems;
 
 namespace DeckScaler

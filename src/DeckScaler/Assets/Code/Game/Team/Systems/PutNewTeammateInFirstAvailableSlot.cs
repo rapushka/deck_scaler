@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using DeckScaler.Component;
+using DeckScaler.Scopes;
+using DeckScaler.Systems;
 using Entitas;
 using Entitas.Generic;
 
-namespace DeckScaler.Systems
+namespace DeckScaler.Cheats.Systems
 {
     public class PutNewTeammateInFirstAvailableSlot : IExecuteSystem
     {
