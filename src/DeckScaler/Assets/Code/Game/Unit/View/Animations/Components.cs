@@ -1,3 +1,4 @@
+using DeckScaler.Scopes;
 using DG.Tweening;
 using Entitas.Generic;
 

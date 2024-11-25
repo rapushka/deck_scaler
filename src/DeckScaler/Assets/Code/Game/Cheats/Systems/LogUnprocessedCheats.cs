@@ -1,17 +1,17 @@
-using DeckScaler.Component;
+using DeckScaler.Cheats.Component;
 using DeckScaler.Service;
 using Entitas;
 using Entitas.Generic;
 
-namespace DeckScaler.Systems
+namespace DeckScaler.Cheats.Systems
 {
     public class LogUnprocessedCheats : IExecuteSystem
     {
-        private readonly IGroup<Entity<Cheats>> _cheats
+        private readonly IGroup<Entity<Scopes.Cheats>> _cheats
             = Contexts.Instance.GetGroup(
-                MatcherBuilder<Cheats>
+                MatcherBuilder<Scopes.Cheats>
                     .With<Cheat>()
-                    .Without<ProcessedCheat>()
+                    .Without<Processed>()
                     .Build()
             );
 
@@ -20,7 +20,7 @@ namespace DeckScaler.Systems
             foreach (var entity in _cheats)
             {
                 var cheat = entity.Get<Cheat>().Value;
-                Services.Get<IDebug>().LogError(nameof(Cheats), $"Cheat \"{cheat}\" doesn't exist!");
+                Services.Get<IDebug>().LogError(nameof(Cheats), $"Cheat \"{cheat}\" wasn't processed!");
             }
         }
     }

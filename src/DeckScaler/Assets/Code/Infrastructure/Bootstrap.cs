@@ -1,3 +1,4 @@
+using DeckScaler.Scopes;
 using DeckScaler.Service;
 using Entitas.Generic;
 using UnityEngine;
@@ -42,7 +43,7 @@ namespace DeckScaler
         private static void InitializeEcs()
         {
             Contexts.Instance.InitializeScope<Game>();
-            Contexts.Instance.InitializeScope<Cheats>();
+            Contexts.Instance.InitializeScope<Scopes.Cheats>();
         }
     }
 }
