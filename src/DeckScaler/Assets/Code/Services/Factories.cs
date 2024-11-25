@@ -5,8 +5,8 @@ namespace DeckScaler.Service
 {
     public interface IFactories : IService
     {
-        Entity<Game> CreateTeammate(string unitID);
-        Entity<Game> CreateEnemy(string unitID);
+        Entity<Game> CreateTeammate(UnitIDRef unitID);
+        Entity<Game> CreateEnemy(UnitIDRef unitID);
 
         Entity<Game> CreateTeamSlot();
 
@@ -19,9 +19,9 @@ namespace DeckScaler.Service
         private readonly TeamSlotFactory _teamSlot = new();
         private readonly EntityBehaviourFactory _entityBehaviour = new();
 
-        public Entity<Game> CreateTeammate(string unitID) => _unit.CreateTeammate(unitID);
+        public Entity<Game> CreateTeammate(UnitIDRef unitID) => _unit.CreateTeammate(unitID);
 
-        public Entity<Game> CreateEnemy(string unitID) => _unit.CreateEnemy(unitID);
+        public Entity<Game> CreateEnemy(UnitIDRef unitID) => _unit.CreateEnemy(unitID);
 
         public Entity<Game> CreateTeamSlot() => _teamSlot.Create();
 

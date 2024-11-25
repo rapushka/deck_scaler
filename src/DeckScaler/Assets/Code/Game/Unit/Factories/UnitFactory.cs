@@ -10,17 +10,17 @@ namespace DeckScaler.Service
 
         private IFactories Factory => Services.Get<IFactories>();
 
-        public Entity<Game> CreateTeammate(string unitID)
+        public Entity<Game> CreateTeammate(UnitIDRef unitID)
         {
             return CreateUnit(unitID);
         }
 
-        public Entity<Game> CreateEnemy(string unitID)
+        public Entity<Game> CreateEnemy(UnitIDRef unitID)
         {
             return CreateUnit(unitID);
         }
 
-        private Entity<Game> CreateUnit(string unitID)
+        private Entity<Game> CreateUnit(UnitIDRef unitID)
         {
             var config = UnitsConfig[unitID];
             var unitType = config.Type;

@@ -13,7 +13,7 @@ namespace DeckScaler
         [field: SerializeField] public float           DelayBetweenAttacks { get; private set; }
         [field: SerializeField] public EntityBehaviour ViewPrefab          { get; private set; }
 
-        public UnitConfig this[string id] => _unitConfigsMap[id];
+        public UnitConfig this[UnitIDRef id] => _unitConfigsMap[id];
 
         public IEnumerable<UnitConfig> Leads   => UnitsOfType(UnitType.Lead);
         public IEnumerable<UnitConfig> Allies  => UnitsOfType(UnitType.Ally);
@@ -22,22 +22,25 @@ namespace DeckScaler
         private IEnumerable<UnitConfig> UnitsOfType(UnitType unitType)
             => _unitConfigsMap.Values.Where(c => c.Type == unitType);
 
-        public bool TryGetUnitType(string unitID, out UnitType unitType)
+        public bool ContainsUnit(UnitIDRef unitID)
+            => _unitConfigsMap.ContainsKey(unitID);
+
+        public bool TryGet(UnitIDRef unitID, out UnitConfig unitType)
         {
-            if (!_unitConfigsMap.ContainsKey(unitID))
+            if (!ContainsUnit(unitID))
             {
-                unitType = UnitType.Unknown;
+                unitType = null;
                 return false;
             }
 
-            unitType = _unitConfigsMap[unitID].Type;
+            unitType = _unitConfigsMap[unitID];
             return true;
         }
 
         [Serializable]
-        private class UnitConfigMap : Map<string, UnitConfig>
+        private class UnitConfigMap : Map<UnitIDRef, UnitConfig>
         {
-            protected override string SelectKey(UnitConfig value) => value.ID;
+            protected override UnitIDRef SelectKey(UnitConfig value) => value.ID;
         }
     }
 }

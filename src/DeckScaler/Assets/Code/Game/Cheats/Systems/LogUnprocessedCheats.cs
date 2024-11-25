@@ -11,7 +11,7 @@ namespace DeckScaler.Cheats.Systems
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Scopes.Cheats>
                     .With<Cheat>()
-                    .Without<ProcessedCheat>()
+                    .Without<Processed>()
                     .Build()
             );
 
