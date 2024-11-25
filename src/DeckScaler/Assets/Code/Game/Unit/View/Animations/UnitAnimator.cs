@@ -10,34 +10,31 @@ namespace DeckScaler
         [SerializeField] private AttackAnimationArgs _attackAnimationArgs;
         [SerializeField] private FlinchAnimationArgs _flinchAnimationArgs;
 
-        private float _initialScale;
-        private float _initialZ;
+        private TransformData _initTransform;
 
         private Tween _tween;
 
-        private void Awake()
-        {
-            _initialScale = transform.localScale.x;
-            _initialZ = transform.position.z;
-        }
+        public float InitialScale => _initTransform.LocalScale.x;
 
         public Tween PlayAttackAnimation(Vector2 targetWorldPosition)
         {
+            _tween?.Kill();
+            _initTransform = transform.Save();
+
             var punchDirection = targetWorldPosition - transform.position.Flat();
 
             var args = _attackAnimationArgs;
             punchDirection *= args.PunchDistance;
             transform.SetGlobalPosition(z: args.ZOffset);
 
-            _tween?.Kill();
             _tween = DOTween.Sequence()
                             // prepare
-                            .Append(transform.DOScale(_initialScale * args.Scale, args.Duration))
+                            .Append(transform.DOScale(InitialScale * args.Scale, args.Duration))
                             .Append(transform.DOPunchPosition(punchDirection, args.Duration, vibrato: 0))
 
                             // recovery
-                            .Append(transform.DOScale(_initialScale, args.ReturnDuration))
-                            .AppendCallback(() => transform.SetGlobalPosition(z: _initialZ))
+                            .Append(transform.DOScale(InitialScale, args.ReturnDuration))
+                            .OnKill(ResetTransform)
                 ;
 
             return _tween;
@@ -45,19 +42,24 @@ namespace DeckScaler
 
         public Tween PlayFlinchAnimation()
         {
+            _tween?.Kill();
+            _initTransform = transform.Save();
+
             var args = _flinchAnimationArgs;
 
-            _tween?.Kill();
             _tween = DOTween.Sequence()
                             .Append(transform.DOPunchPosition(args.PunchPosition, args.Duration, args.Vibrato, args.Elasticity))
-                            .Join(transform.DOScale(_initialScale * args.Scale, args.Duration))
+                            .Join(transform.DOScale(InitialScale * args.Scale, args.Duration))
 
                             // recovery
-                            .Append(transform.DOScale(_initialScale, args.ReturnDuration))
+                            .Append(transform.DOScale(InitialScale, args.ReturnDuration))
+                            .OnKill(ResetTransform)
                 ;
 
             return _tween;
         }
+
+        private void ResetTransform() => transform.Load(_initTransform);
 
         [Serializable]
         private class AnimationArgs
