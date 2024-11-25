@@ -11,6 +11,7 @@ namespace DeckScaler
             Add(new OnAttackStepStartedStartAttackTimer<PlayerAttackStepStarted, HeldTeammate>());
             Add(new OnAttackStepStartedStartAttackTimer<EnemyAttackStepStarted, HeldEnemy>());
 
+            Add(new OpponentsFeature());
             Add(new OnTimerBeforeAttackElapsedThenAttackOpponent());
 
             Add(new StartAttackTimer());

@@ -17,6 +17,4 @@ namespace DeckScaler.Component
     public sealed class InSlot : ValueComponent<EntityID>, IInScope<Game> { }
 
     public sealed class Enemy : FlagComponent, IInScope<Game> { }
-
-    public sealed class Opponent : ValueComponent<EntityID>, IInScope<Game> { }
 }
