@@ -31,7 +31,7 @@ namespace DeckScaler.Systems
                 var transform = entity.Get<ViewTransform>().Value;
                 var targetPosition = entity.Get<TargetPosition>().Value;
 
-                transform.DOMove(targetPosition.Extend(z), duration)
+                transform.DOLocalMove(targetPosition.Extend(z), duration)
                          .SetEase(easing)
                     ;
 
