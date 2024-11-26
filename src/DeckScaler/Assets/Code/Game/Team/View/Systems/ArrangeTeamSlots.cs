@@ -26,14 +26,10 @@ namespace DeckScaler.Systems
 
         public void Execute()
         {
-            if (!_event.Any())
-                return;
-
-            var spacing = Config.SpacingBetweenSlots;
-
+            foreach (var _ in _event)
             foreach (var (slot, index) in _slots.GetTeamSlotsInOrder())
             {
-                var xPosition = index * spacing;
+                var xPosition = index * Config.SpacingBetweenSlots;
                 slot.Replace<TargetPosition, Vector2>(Vector2.right * xPosition);
             }
         }
