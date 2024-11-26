@@ -23,7 +23,7 @@ namespace DeckScaler.Systems
         {
             foreach (var entity in _entities.GetEntities(_buffer))
             {
-                if (Index.HasEntity(entity.Get<TComponent>().Value))
+                if (!Index.HasEntity(entity.Get<TComponent>().Value))
                     entity.Remove<TComponent>();
             }
         }
