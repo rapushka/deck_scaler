@@ -23,8 +23,11 @@ namespace DeckScaler.Systems
                 if (!attacker.Get<TimerBeforeAttack, Timer>().IsElapsed)
                     continue;
 
-                if (attacker.TryGet<Opponent, EntityID>(out var opponentID)) // TODO: it's here temporary!
+                if (attacker.TryGet<Opponent, EntityID>(out var opponentID)
+                    && !opponentID.IsEntityDead())
+                {
                     attacker.Add<PrepareAttack, EntityID>(opponentID);
+                }
 
                 attacker.Remove<TimerBeforeAttack>();
             }

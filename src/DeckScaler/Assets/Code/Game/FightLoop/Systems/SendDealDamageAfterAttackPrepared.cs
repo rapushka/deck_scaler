@@ -5,7 +5,7 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public class SendDealDamageOnAttackPrepareTimerElapsed : IExecuteSystem
+    public class SendDealDamageAfterAttackPrepared : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _attackers = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
@@ -22,6 +22,9 @@ namespace DeckScaler.Systems
 
                 var opponentID = attacker.Get<PrepareAttack>().Value;
                 var damage = attacker.Get<BaseDamage>().Value;
+
+                if (opponentID.IsEntityDead())
+                    continue;
 
                 CreateEntity.OneFrame()
                             .Add<Component.DealDamage, int>(damage)

@@ -61,6 +61,12 @@ namespace DeckScaler
 
         private void ResetTransform() => transform.Load(_initTransform);
 
+        private void OnDestroy()
+        {
+            _tween?.Kill();
+            _tween = null;
+        }
+
         [Serializable]
         private class AnimationArgs
         {

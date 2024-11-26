@@ -16,5 +16,5 @@ MonoBehaviour:
     _values:
     - {fileID: 11400000, guid: 8a5b9c8ac47cfe2139d7532d0b89d2f1, type: 2}
     - {fileID: 11400000, guid: 2499748cbf6e4bb8999cddebef7fb512, type: 2}
-  <DelayBetweenAttacks>k__BackingField: 0.1
+  <DelayBetweenAttacks>k__BackingField: 0.3
   <ViewPrefab>k__BackingField: {fileID: 6915663080607579929, guid: c7e6205b478384c4299c195efeafdd68, type: 3}
