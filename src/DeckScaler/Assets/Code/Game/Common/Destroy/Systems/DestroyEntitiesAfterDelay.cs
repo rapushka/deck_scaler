@@ -6,11 +6,11 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public class DestroyEntities : ICleanupSystem
+    public class DestroyEntitiesAfterDelay : ICleanupSystem
     {
         private readonly IGroup<Entity<Game>> _entities = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
-                .With<Destroy>()
+                .With<DestroyAfterDelay>()
                 .Build()
         );
         private readonly List<Entity<Game>> _buffer = new(64);
@@ -18,7 +18,10 @@ namespace DeckScaler.Systems
         public void Cleanup()
         {
             foreach (var entity in _entities.GetEntities(_buffer))
-                entity.Destroy();
+            {
+                if (entity.Get<DestroyAfterDelay>().Value.IsElapsed)
+                    entity.Is<Destroy>(true);
+            }
         }
     }
 }

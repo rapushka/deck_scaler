@@ -66,7 +66,7 @@ namespace DeckScaler.Systems
                 ? targetSlot.GetOrDefault<HeldEnemy>()?.Value
                 : targetSlot.GetOrDefault<HeldTeammate>()?.Value;
 
-            if (opponent is not null)
+            if (opponent is not null && !opponent.Value.GetEntity().Is<Dead>())
             {
                 unit.Add<Opponent, EntityID>(opponent.Value);
                 return Result.Success;

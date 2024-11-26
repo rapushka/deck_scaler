@@ -27,7 +27,10 @@ namespace DeckScaler.Systems
             foreach (var _ in _events)
             foreach (var unit in _units.GetEntities(_buffer))
             {
-                if (unit.TryGetOpponent(out var opponentID))
+                if (!unit.TryGetOpponent(out var opponentID))
+                    continue;
+
+                if (!opponentID.IsEntityDead())
                     unit.Add<Opponent, EntityID>(opponentID);
             }
         }

@@ -20,9 +20,11 @@ namespace DeckScaler
 
             Add(new SequentialFightLoopFeature());
             Add(new DamageFeature());
+            Add(new DeathFeature());
+
+            Add(new DestroyEntitiesAfterDelay());
 
             Add(new ViewFeature());
-
             Add(new DestroyEntities());
             Add(new EntityIDFeature());
         }

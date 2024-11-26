@@ -21,5 +21,7 @@ namespace DeckScaler
         public static Entity<Game> GetEntityOrDefault(this EntityID @this) => Index.GetEntityOrDefault(@this);
 
         public static bool TryGetEntity(this EntityID @this, out Entity<Game> entity) => Index.TryGetEntity(@this, out entity);
+
+        public static bool IsEntityDead(this EntityID @this) => @this.GetEntity().Is<Dead>();
     }
 }
