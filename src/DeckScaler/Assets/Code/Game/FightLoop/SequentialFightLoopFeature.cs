@@ -10,6 +10,7 @@ namespace DeckScaler
         {
             Add(new StartWithPlayerPrepareStep());
 
+            Add(new BlockFightStateChangeIfAny<TimerBeforeAttack>());
             Add(new BlockFightStateChangeIfAny<PrepareAttack>());
             Add(new BlockFightStateChangeIfAny<PlayingAnimation>());
 
