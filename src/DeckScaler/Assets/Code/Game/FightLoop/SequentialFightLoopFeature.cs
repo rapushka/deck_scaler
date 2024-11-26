@@ -1,3 +1,4 @@
+using DeckScaler.Component;
 using DeckScaler.Systems;
 
 namespace DeckScaler
@@ -9,8 +10,9 @@ namespace DeckScaler
         {
             Add(new StartWithPlayerPrepareStep());
 
-            Add(new BlockFightStateChangeIfAnyAttackPreparing());
-            Add(new BlockFightStateChangeIfAnimationPlaying());
+            Add(new BlockFightStateChangeIfAny<TimerBeforeAttack>());
+            Add(new BlockFightStateChangeIfAny<PrepareAttack>());
+            Add(new BlockFightStateChangeIfAny<PlayingAnimation>());
 
             Add(new ReactOnRequestEndPlayerPrepareStep());
 

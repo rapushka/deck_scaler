@@ -5,20 +5,21 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public class BlockFightStateChangeIfAnyAttackPreparing : IExecuteSystem
+    public class BlockFightStateChangeIfAny<TComponent> : IExecuteSystem
+        where TComponent : IComponent, IInScope<Game>, new()
     {
-        private readonly IGroup<Entity<Game>> _attackers = Contexts.Instance.GetGroup(
+        private readonly IGroup<Entity<Game>> _entities = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
-                .With<PrepareAttack>()
+                .With<TComponent>()
                 .Build()
         );
 
         public void Execute()
         {
-            foreach (var _ in _attackers)
+            foreach (var _ in _entities)
             {
                 CreateEntity.OneFrame()
-                            .Add<Name, string>("blocked by Prepare Attack")
+                            .Add<Name, string>($"blocked by {typeof(TComponent).Name}")
                             .Add<BlockFightStepChange>()
                     ;
             }

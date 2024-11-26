@@ -24,6 +24,7 @@ namespace DeckScaler
             Add(new ViewFeature());
 
             Add(new DestroyEntities());
+            Add(new EntityIDFeature());
         }
     }
 }

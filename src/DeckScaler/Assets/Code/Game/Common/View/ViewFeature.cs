@@ -18,6 +18,8 @@ namespace DeckScaler
             Add(new SetWorldPositionForViewTransform());
 
             Add(new UpdateLastWorldPositionFromViewTransform());
+            
+            Add(new DestroyEntityBehaviours());
         }
     }
 }
