@@ -11,14 +11,25 @@ namespace DeckScaler
         {
             stringBuilder.AppendJoin(
                 separator: " ",
-                entity.ToString<ID, EntityID>(),
+                entity.GetOrDefault<ID>()?.Value.ID.ToString() ?? "_",
                 entity.ToString<Name, string>(),
                 entity.ToString<Lead>(),
+
+                // slots
+                entity.ToString<TeamSlot, int>(),
+                FormatContainingTeamSlot(entity),
+
+                // Fight Step Changing
                 entity.ToString<RequestChangeFightStep, FightStep>(prefix: "change fight step: "),
 
                 // Empty just because I wanna leave multi-line expression with trailing coma
                 string.Empty
             );
         }
+
+        private string FormatContainingTeamSlot(in Entity<Game> entity)
+            => entity.TryGet<InSlot, EntityID>(out var slot)
+                ? $"in slot {slot.GetEntity().Get<TeamSlot, int>()}"
+                : string.Empty;
     }
 }

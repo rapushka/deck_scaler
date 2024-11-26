@@ -1,4 +1,5 @@
 using System;
+using DeckScaler.Component;
 
 namespace DeckScaler
 {
@@ -13,6 +14,11 @@ namespace DeckScaler
 
         public static EntityID Next() => new() { ID = _globalCounter++ };
 
-        public override string ToString() => ID.ToString();
+        public override string ToString()
+            => $"{ID} {EntityName}";
+
+        private string EntityName
+            => this.GetEntityOrDefault()?.GetOrDefault<Name, string>()
+               ?? "Entity is destroyed:(";
     }
 }
