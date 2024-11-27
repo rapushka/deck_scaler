@@ -12,6 +12,8 @@ namespace DeckScaler
             Add(new CheatsFeature());
 #endif
 
+            Add(new InputFeature());
+
             Add(new SpawnPlayerTeamFromProgress());
             Add(new SpawnRandomEnemy());
 

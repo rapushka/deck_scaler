@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace DeckScaler
@@ -23,5 +24,10 @@ namespace DeckScaler
 
             Object.Destroy(@this.gameObject);
         }
+
+        [CanBeNull]
+        public static T Nullable<T>(this T @this)
+            where T : Object
+            => @this == null ? null : @this;
     }
 }

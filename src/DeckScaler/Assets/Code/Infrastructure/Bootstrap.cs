@@ -25,6 +25,7 @@ namespace DeckScaler
             Services.Setup<IRandom>(new SimpleRandom());
             Services.Setup<IUiMediator>(new UiMediator());
             Services.Setup<ITime>(new SimpleTime());
+            Services.Setup<IInput>(new UnityInput());
 
             SetupDebugServices();
 
@@ -44,6 +45,7 @@ namespace DeckScaler
         {
             Contexts.Instance.InitializeScope<Game>();
             Contexts.Instance.InitializeScope<Scopes.Cheats>();
+            Contexts.Instance.InitializeScope<Scopes.Input>();
         }
     }
 }

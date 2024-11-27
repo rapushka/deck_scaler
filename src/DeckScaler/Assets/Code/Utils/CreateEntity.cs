@@ -22,5 +22,8 @@ namespace DeckScaler
         public static Entity<Scopes.Cheats> Cheat(string cheat)
             => Cheat()
                 .Add<Cheat, string>(cheat);
+
+        public static Entity<Input> Input()
+            => Contexts.Instance.Get<Input>().CreateEntity();
     }
 }
