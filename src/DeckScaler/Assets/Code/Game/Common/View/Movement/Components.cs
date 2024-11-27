@@ -1,11 +1,12 @@
 using DeckScaler.Scopes;
 using Entitas.Generic;
 using UnityEngine;
+using Input = DeckScaler.Scopes.Input;
 
 namespace DeckScaler.Component
 {
     /// Global Position
-    public sealed class WorldPosition : ValueComponent<Vector2>, IInScope<Game> { }
+    public sealed class WorldPosition : ValueComponent<Vector2>, IInScope<Game>, IInScope<Input> { }
 
     /// Local Position
     public sealed class Position : ValueComponent<Vector2>, IInScope<Game> { }
