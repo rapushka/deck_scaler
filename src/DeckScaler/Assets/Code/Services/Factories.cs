@@ -10,7 +10,8 @@ namespace DeckScaler.Service
 
         Entity<Game> CreateTeamSlot();
 
-        Entity<Game> CreateEntityBehaviour(EntityBehaviour prefab);
+        Entity<Game> CreateEntityBehaviour(EntityBehaviour<Game> prefab);
+        Entity<Game> SetupEntityBehaviour(EntityBehaviour<Game> view);
     }
 
     public class Factories : IFactories
@@ -25,6 +26,7 @@ namespace DeckScaler.Service
 
         public Entity<Game> CreateTeamSlot() => _teamSlot.Create();
 
-        public Entity<Game> CreateEntityBehaviour(EntityBehaviour prefab) => _entityBehaviour.Create(prefab).Entity;
+        public Entity<Game> CreateEntityBehaviour(EntityBehaviour<Game> prefab) => _entityBehaviour.Create(prefab).Entity;
+        public Entity<Game> SetupEntityBehaviour(EntityBehaviour<Game> view)    => _entityBehaviour.Setup(view).Entity;
     }
 }

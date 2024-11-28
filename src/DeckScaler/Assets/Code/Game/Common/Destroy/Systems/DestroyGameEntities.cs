@@ -6,7 +6,7 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public class DestroyEntities : ICleanupSystem
+    public class DestroyGameEntities : ICleanupSystem
     {
         private readonly IGroup<Entity<Game>> _entities = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
