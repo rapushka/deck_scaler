@@ -43,7 +43,7 @@ namespace DeckScaler.Systems
                     var delta = cursor.Get<MoveDelta>().Value.With(y: 0);
                     var teamRootTransform = root.Get<ViewTransform>().Value;
 
-                    teamRootTransform.Translate(delta); // TODO: idk if it's a good ideas
+                    teamRootTransform.Translate(delta); // TODO: #90 idk if it's a good ideas
                 }
             }
         }
