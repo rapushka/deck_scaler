@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using DeckScaler.Component;
 using DeckScaler.Scopes;
-using DeckScaler.Utils;
 using DG.Tweening;
 using Entitas;
 using Entitas.Generic;
@@ -24,16 +23,23 @@ namespace DeckScaler.Systems
         {
             foreach (var entity in _entities.GetEntities(_buffer))
             {
+                entity.GetOrDefault<PlayingAnimation, Tween>()?.Kill();
+                entity.RemoveSafely<PlayingAnimation>();
+
                 var duration = entity.GetOrDefault<AnimationDuration, float>(Constants.Animation.DefaultDuration);
-                var z = entity.GetOrDefault<ZOrder, float>();
                 var easing = entity.GetOrDefault<Easing, AnimationCurve>(Constants.Animation.LinearEasing);
 
-                var transform = entity.Get<ViewTransform>().Value;
                 var targetPosition = entity.Get<TargetPosition>().Value;
 
-                transform.DOLocalMove(targetPosition.Extend(z), duration)
-                         .SetEase(easing)
-                    ;
+                var tween = DOTween.To(
+                        getter: () => entity.Get<WorldPosition, Vector2>(),
+                        setter: (v) => entity.Replace<WorldPosition, Vector2>(v),
+                        endValue: targetPosition,
+                        duration: duration
+                    )
+                    .SetEase(easing);
+
+                entity.Add<PlayingAnimation, Tween>(tween);
 
                 entity.Remove<TargetPosition>();
             }

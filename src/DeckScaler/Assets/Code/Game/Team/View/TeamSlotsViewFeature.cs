@@ -10,8 +10,7 @@ namespace DeckScaler
         {
             Add(new SendEventOnAddedOrRemoved<TeamSlot, Component.ArrangeTeamSlots>());
 
-            Add(new SetupTeamSlotToTeamRoot());
-            Add(new SetupTeamSlotChildren());
+            Add(new PlaceUnitsInTeamSlot());
 
             Add(new Systems.ArrangeTeamSlots());
         }

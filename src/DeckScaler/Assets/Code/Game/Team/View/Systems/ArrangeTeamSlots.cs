@@ -22,15 +22,31 @@ namespace DeckScaler.Systems
                 .Build()
         );
 
-        private static TeamSlotViewConfig Config => Services.Get<IConfigs>().TeamSlotView;
+        private readonly IGroup<Entity<Game>> _roots = Contexts.Instance.GetGroup(
+            MatcherBuilder<Game>
+                .With<TeamRoot>()
+                .Build()
+        );
+        private float _f;
+
+        private static TeamSlotViewConfig ViewConfig => Services.Get<IConfigs>().TeamSlotView;
 
         public void Execute()
         {
-            foreach (var _ in _event)
+            // foreach (var _ in _event)
+            foreach (var root in _roots)
             foreach (var (slot, index) in _slots.GetTeamSlotsInOrder())
             {
-                var xPosition = index * Config.SpacingBetweenSlots;
-                slot.Replace<TargetPosition, Vector2>(Vector2.right * xPosition);
+                var rootPosition = root.Get<WorldPosition, Vector2>();
+
+                var xPosition = index * ViewConfig.SpacingBetweenSlots;
+                var localPosition = Vector2.right * xPosition;
+
+                var targetPosition = localPosition + rootPosition;
+                var currentPosition = slot.Get<WorldPosition, Vector2>();
+
+                if (!currentPosition.ApproximatelyEquals(targetPosition))
+                    slot.Replace<TargetPosition, Vector2>(targetPosition);
             }
         }
     }

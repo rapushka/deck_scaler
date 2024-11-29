@@ -9,5 +9,8 @@ namespace DeckScaler
         [field: SerializeField] public EntityBehaviour ViewPrefab { get; private set; }
 
         [field: SerializeField] public float SpacingBetweenSlots { get; private set; }
+
+        [field: SerializeField] public Vector2 TeammateInSlotOffset { get; private set; }
+        [field: SerializeField] public Vector2 EnemyInSlotOffset    { get; private set; }
     }
 }

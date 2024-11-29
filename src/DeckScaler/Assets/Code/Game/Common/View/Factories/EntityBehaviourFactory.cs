@@ -13,11 +13,13 @@ namespace DeckScaler
         {
             view.Register(Contexts.Instance);
             view.SetActive(false);
+            var viewTransform = view.transform;
 
             view.Entity
                 .Add<ID, EntityID>(EntityID.Next())
                 .Add<View, EntityBehaviour<Game>>(view)
-                .Add<ViewTransform, Transform>(view.transform)
+                .Add<ViewTransform, Transform>(viewTransform)
+                .Add<WorldPosition, Vector2>(viewTransform.position)
                 .Add<Loading>()
                 ;
 

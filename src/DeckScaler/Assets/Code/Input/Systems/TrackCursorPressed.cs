@@ -2,7 +2,6 @@ using DeckScaler.Component;
 using DeckScaler.Service;
 using Entitas;
 using Entitas.Generic;
-using UnityEngine;
 using Cursor = DeckScaler.Component.Cursor;
 using Input = DeckScaler.Scopes.Input;
 
