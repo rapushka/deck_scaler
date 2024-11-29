@@ -12,10 +12,4 @@ namespace DeckScaler.Component
     public sealed class LastWorldPosition : ValueComponent<Vector2>, IInScope<Game> { } // TODO: may remove?
 
     public sealed class LastLocalPosition : ValueComponent<Vector2>, IInScope<Game> { } // TODO: may remove?
-
-    public sealed class ZOrder : ValueComponent<float>, IInScope<Game> { }
-
-    public sealed class ParentTransform : ValueComponent<Transform>, IInScope<Game> { }
-
-    public sealed class ForceChangePositionOnReparent : FlagComponent, IInScope<Game> { }
 }
