@@ -11,6 +11,8 @@ namespace DeckScaler
             Add(new PlaceUnitsInTeamSlot());
 
             Add(new ArrangeTeamSlots());
+            Add(new AddStrechyDurationDelayOnTeamSlotsScroll());
+            // Add(new StretchTeamSlotTargetPosition());
         }
     }
 }

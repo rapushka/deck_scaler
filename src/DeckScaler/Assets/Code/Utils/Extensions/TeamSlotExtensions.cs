@@ -18,5 +18,18 @@ namespace DeckScaler.Utils
                 yield return (slot, i);
             }
         }
+
+        public static IEnumerable<(Entity<Game>, int)> GetTeamSlotsInReversedOrder(this IGroup<Entity<Game>> slots)
+        {
+            var entityIndex = Contexts.Instance.TeamSlotIndex();
+            var slotCount = slots.count;
+            var lastIndex = slotCount - 1;
+
+            for (var i = slotCount - 1; i >= 0; i--)
+            {
+                var slot = entityIndex.GetEntity(i);
+                yield return (slot, lastIndex - i);
+            }
+        }
     }
 }

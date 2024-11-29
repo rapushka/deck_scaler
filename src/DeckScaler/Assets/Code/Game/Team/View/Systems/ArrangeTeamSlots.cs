@@ -21,7 +21,6 @@ namespace DeckScaler.Systems
                 .With<TeamRoot>()
                 .Build()
         );
-        private float _f;
 
         private static TeamSlotViewConfig ViewConfig => Services.Get<IConfigs>().TeamSlotView;
 

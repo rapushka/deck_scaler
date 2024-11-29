@@ -20,3 +20,11 @@ MonoBehaviour:
     <SpacingBetweenSlots>k__BackingField: 2.75
     <TeammateInSlotOffset>k__BackingField: {x: 0, y: -2.5}
     <EnemyInSlotOffset>k__BackingField: {x: 0, y: 2.5}
+    <StretchyScrollStartingDelay>k__BackingField: 0
+    <StretchyScrollDelayStep>k__BackingField: 0.01
+    <StretchyScrollLerp>k__BackingField: 0.5
+    <StretchyScrollAdd>k__BackingField: 0
+    <StretchyScrollMult>k__BackingField: 1
+    <StretchyScroll>k__BackingField:
+      <DelayAtCenter>k__BackingField: 0.1
+      <StepPerDistanceRate>k__BackingField: 0.02
