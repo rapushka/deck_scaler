@@ -7,27 +7,23 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public class UpdateViewTransformWorldPosition : IExecuteSystem
+    public sealed class UpdateViewTransformWorldPosition : ReactiveSystem<Entity<Game>>
     {
-        private readonly IGroup<Entity<Game>> _entities
-            = Contexts.Instance.GetGroup(
-                MatcherBuilder<Game>
-                    .With<ViewTransform>()
-                    .And<WorldPosition>()
-                    .Build()
-            );
-        private readonly List<Entity<Game>> _buffer = new(64);
+        public UpdateViewTransformWorldPosition() : base(Contexts.Instance.Get<Game>()) { }
 
-        public void Execute()
+        protected override ICollector<Entity<Game>> GetTrigger(IContext<Entity<Game>> context)
+            => context.CreateCollector(ScopeMatcher<Game>.Get<WorldPosition>().Added());
+
+        protected override bool Filter(Entity<Game> entity) => entity.Has<WorldPosition>();
+
+        protected override void Execute(List<Entity<Game>> entities)
         {
-            foreach (var entity in _entities.GetEntities(_buffer))
+            foreach (var entity in entities)
             {
                 var z = entity.GetOrDefault<ZOrder, float>();
                 var position = entity.Get<WorldPosition>().Value.Extend(z);
 
                 entity.Get<ViewTransform>().Value.position = position;
-
-                entity.Remove<WorldPosition>();
             }
         }
     }
