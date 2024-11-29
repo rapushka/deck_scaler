@@ -14,6 +14,7 @@ namespace DeckScaler.Systems
         {
             Factory
                 .SetupEntityBehaviour(HUD.TeamRoot)
+                .Add<Name, string>("team root")
                 .Is<TeamRoot>(true)
                 ;
         }

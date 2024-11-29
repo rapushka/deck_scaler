@@ -14,6 +14,7 @@ namespace DeckScaler.Systems
         {
             Factory
                 .SetupEntityBehaviour(HUD.TeamScroll)
+                .Add<Name, string>("scroll team root")
                 .Is<TeamRootScroll>(true)
                 ;
         }
