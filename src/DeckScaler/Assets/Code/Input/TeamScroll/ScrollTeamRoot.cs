@@ -1,5 +1,6 @@
 using DeckScaler.Component;
 using DeckScaler.Scopes;
+using DeckScaler.Utils;
 using Entitas;
 using Entitas.Generic;
 
@@ -11,6 +12,12 @@ namespace DeckScaler.Systems
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Input>
                     .With<HoveredEntity>()
+                    .Build()
+            );
+        private readonly IGroup<Entity<Game>> _teamRoots
+            = Contexts.Instance.GetGroup(
+                MatcherBuilder<Game>
+                    .With<TeamRoot>()
                     .Build()
             );
         private readonly IGroup<Entity<Input>> _cursors
@@ -31,11 +38,12 @@ namespace DeckScaler.Systems
                     continue;
 
                 foreach (var cursor in _cursors)
+                foreach (var root in _teamRoots)
                 {
-                    var delta = cursor.Get<MoveDelta>().Value;
-                    var targetTransform = target.Get<ViewTransform>().Value;
+                    var delta = cursor.Get<MoveDelta>().Value.With(y: 0);
+                    var teamRootTransform = root.Get<ViewTransform>().Value;
 
-                    targetTransform.Translate(delta); // TODO: idk if it's a good ideas
+                    teamRootTransform.Translate(delta); // TODO: idk if it's a good ideas
                 }
             }
         }
