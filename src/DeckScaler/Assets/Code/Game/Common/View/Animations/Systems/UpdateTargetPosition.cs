@@ -23,19 +23,22 @@ namespace DeckScaler.Systems
         {
             foreach (var entity in _entities.GetEntities(_buffer))
             {
+                entity.GetOrDefault<PlayingAnimation, Tween>()?.Kill();
+
                 var duration = entity.GetOrDefault<AnimationDuration, float>(Constants.Animation.DefaultDuration);
                 var easing = entity.GetOrDefault<Easing, AnimationCurve>(Constants.Animation.LinearEasing);
 
                 var targetPosition = entity.Get<TargetPosition>().Value;
 
-                DOTween.To(
+                var tween = DOTween.To(
                         getter: () => entity.Get<WorldPosition, Vector2>(),
                         setter: (v) => entity.Replace<WorldPosition, Vector2>(v),
                         endValue: targetPosition,
                         duration: duration
                     )
-                    .SetEase(easing)
-                    ;
+                    .SetEase(easing);
+
+                entity.Add<PlayingAnimation, Tween>(tween);
 
                 entity.Remove<TargetPosition>();
             }
