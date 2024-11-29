@@ -3,6 +3,9 @@ using DeckScaler.Scopes;
 using DeckScaler.Utils;
 using Entitas;
 using Entitas.Generic;
+using UnityEngine;
+using Cursor = DeckScaler.Component.Cursor;
+using Input = DeckScaler.Scopes.Input;
 
 namespace DeckScaler.Systems
 {
@@ -41,9 +44,7 @@ namespace DeckScaler.Systems
                 foreach (var root in _teamRoots)
                 {
                     var delta = cursor.Get<MoveDelta>().Value.With(y: 0);
-                    var teamRootTransform = root.Get<ViewTransform>().Value;
-
-                    teamRootTransform.Translate(delta); // TODO: #90 idk if it's a good ideas
+                    root.Add<Move, Vector2>(delta);
                 }
             }
         }

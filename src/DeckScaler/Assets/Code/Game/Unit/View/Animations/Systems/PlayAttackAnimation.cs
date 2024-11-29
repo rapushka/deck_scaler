@@ -25,7 +25,7 @@ namespace DeckScaler.Systems
                 var animator = attacker.Get<Component.UnitAnimator>().Value;
                 var target = attacker.Get<PrepareAttack>().Value.GetEntity();
 
-                var targetWorldPosition = target.Get<LastWorldPosition>().Value;
+                var targetWorldPosition = target.Get<WorldPosition>().Value;
                 var tween = animator.PlayAttackAnimation(targetWorldPosition);
 
                 attacker

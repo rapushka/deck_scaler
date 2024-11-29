@@ -22,14 +22,14 @@ namespace DeckScaler.Systems
                 .Build()
         );
 
-        private static TeamSlotViewConfig Config => Services.Get<IConfigs>().TeamSlotView;
+        private static TeamSlotViewConfig ViewConfig => Services.Get<IConfigs>().TeamSlotView;
 
         public void Execute()
         {
             foreach (var _ in _event)
             foreach (var (slot, index) in _slots.GetTeamSlotsInOrder())
             {
-                var xPosition = index * Config.SpacingBetweenSlots;
+                var xPosition = index * ViewConfig.SpacingBetweenSlots;
                 slot.Replace<TargetPosition, Vector2>(Vector2.right * xPosition);
             }
         }

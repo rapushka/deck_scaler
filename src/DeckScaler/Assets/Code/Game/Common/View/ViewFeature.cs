@@ -13,12 +13,10 @@ namespace DeckScaler
 
             Add(new UpdateHealthProgressBar());
 
-            Add(new SetParentForViewTransform());
-            Add(new SetPositionForViewTransform());
-            Add(new SetWorldPositionForViewTransform());
+            Add(new MovementFeature());
 
-            Add(new UpdateLastWorldPositionFromViewTransform());
-            
+            Add(new UpdateViewTransformWorldPosition());
+
             Add(new DestroyEntityBehaviours());
         }
     }
