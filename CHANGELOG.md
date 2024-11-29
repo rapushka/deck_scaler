@@ -4,6 +4,7 @@
   - [and added cheats "buffer"](https://github.com/rapushka/deck_scaler/pull/68)
 - [units can now attack neighbor opponents](https://github.com/rapushka/deck_scaler/issues/71)
 - [Correct Destroy flow & Unit's Death](https://github.com/rapushka/deck_scaler/issues/80)
+- [team view scroll](https://github.com/rapushka/deck_scaler/pull/91)
 - bugfix
 
 # v0.0.9
