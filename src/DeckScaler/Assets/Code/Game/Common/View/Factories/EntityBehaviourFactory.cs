@@ -7,10 +7,7 @@ namespace DeckScaler
 {
     public class EntityBehaviourFactory
     {
-        public EntityBehaviour<Game> Create(EntityBehaviour<Game> prefab)
-        {
-            return Setup(Object.Instantiate(prefab));
-        }
+        public EntityBehaviour<Game> Create(EntityBehaviour<Game> prefab) => Setup(Object.Instantiate(prefab));
 
         public EntityBehaviour<Game> Setup(EntityBehaviour<Game> view)
         {

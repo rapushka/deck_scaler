@@ -13,7 +13,7 @@ namespace DeckScaler.Systems
         public void Initialize()
         {
             Factory
-                .SetupEntityBehaviour(HUD.TeamScroll)
+                .SetupEntityBehaviour(HUD.TeamRoot)
                 .Is<TeamRoot>(true)
                 ;
         }

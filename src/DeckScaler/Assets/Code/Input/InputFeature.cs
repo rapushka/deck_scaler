@@ -13,6 +13,8 @@ namespace DeckScaler
             Add(new UpdateCursorWorldPosition());
 
             Add(new TrackCursorPressed());
+            Add(new ScrollTeamRoot());
+
             Add(new DestroyInputEntities());
         }
     }
