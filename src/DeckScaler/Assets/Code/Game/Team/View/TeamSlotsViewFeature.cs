@@ -8,11 +8,9 @@ namespace DeckScaler
         public TeamSlotsViewFeature()
             : base(nameof(TeamSlotsViewFeature))
         {
-            Add(new SendEventOnAddedOrRemoved<TeamSlot, Component.ArrangeTeamSlots>());
-
             Add(new PlaceUnitsInTeamSlot());
 
-            Add(new Systems.ArrangeTeamSlots());
+            Add(new ArrangeTeamSlots());
         }
     }
 }

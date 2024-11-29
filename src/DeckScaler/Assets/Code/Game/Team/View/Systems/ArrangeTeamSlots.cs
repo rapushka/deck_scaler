@@ -10,12 +10,6 @@ namespace DeckScaler.Systems
 {
     public class ArrangeTeamSlots : IExecuteSystem
     {
-        private readonly IGroup<Entity<Game>> _event = Contexts.Instance.GetGroup(
-            MatcherBuilder<Game>
-                .With<Component.ArrangeTeamSlots>()
-                .Build()
-        );
-
         private readonly IGroup<Entity<Game>> _slots = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
                 .With<TeamSlot>()
@@ -33,7 +27,6 @@ namespace DeckScaler.Systems
 
         public void Execute()
         {
-            // foreach (var _ in _event)
             foreach (var root in _roots)
             foreach (var (slot, index) in _slots.GetTeamSlotsInOrder())
             {
