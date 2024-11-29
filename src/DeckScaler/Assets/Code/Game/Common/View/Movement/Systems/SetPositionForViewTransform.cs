@@ -13,7 +13,7 @@ namespace DeckScaler.Systems
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
                     .With<ViewTransform>()
-                    .And<Position>()
+                    .And<LocalPosition>()
                     .Build()
             );
         private readonly List<Entity<Game>> _buffer = new(64);
@@ -23,11 +23,11 @@ namespace DeckScaler.Systems
             foreach (var entity in _entities.GetEntities(_buffer))
             {
                 var z = entity.GetOrDefault<ZOrder, float>();
-                var position = entity.Get<Position>().Value.Extend(z);
+                var position = entity.Get<LocalPosition>().Value.Extend(z);
 
                 entity.Get<ViewTransform>().Value.localPosition = position;
 
-                entity.Remove<Position>();
+                entity.Remove<LocalPosition>();
             }
         }
     }

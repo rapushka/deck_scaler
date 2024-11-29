@@ -5,13 +5,13 @@ using Input = DeckScaler.Scopes.Input;
 
 namespace DeckScaler.Component
 {
-    /// Global Position
     public sealed class WorldPosition : ValueComponent<Vector2>, IInScope<Game>, IInScope<Input> { }
 
-    /// Local Position
-    public sealed class Position : ValueComponent<Vector2>, IInScope<Game> { }
+    public sealed class LocalPosition : ValueComponent<Vector2>, IInScope<Game> { }
 
-    public sealed class LastWorldPosition : ValueComponent<Vector2>, IInScope<Game> { }
+    public sealed class LastWorldPosition : ValueComponent<Vector2>, IInScope<Game> { } // TODO: may remove?
+
+    public sealed class LastLocalPosition : ValueComponent<Vector2>, IInScope<Game> { } // TODO: may remove?
 
     public sealed class ZOrder : ValueComponent<float>, IInScope<Game> { }
 
