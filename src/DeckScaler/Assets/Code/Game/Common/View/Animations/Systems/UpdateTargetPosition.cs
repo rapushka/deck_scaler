@@ -24,6 +24,7 @@ namespace DeckScaler.Systems
             foreach (var entity in _entities.GetEntities(_buffer))
             {
                 entity.GetOrDefault<PlayingAnimation, Tween>()?.Kill();
+                entity.RemoveSafely<PlayingAnimation>();
 
                 var duration = entity.GetOrDefault<AnimationDuration, float>(Constants.Animation.DefaultDuration);
                 var easing = entity.GetOrDefault<Easing, AnimationCurve>(Constants.Animation.LinearEasing);

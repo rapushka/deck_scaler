@@ -14,7 +14,7 @@ namespace DeckScaler.Systems
                 MatcherBuilder<Game>
                     .With<UnitID>()
                     .And<WorldPosition>()
-                    .And<AutoArrangeInSlot>()
+                    .And<AutoPlaceInSlot>()
                     .Build()
             );
 

@@ -38,7 +38,7 @@ namespace DeckScaler.Service
                     .Add<BaseDamage, int>(config.BaseDamage)
                     .Add<Stats, StatsData>(config.StatsData)
                     .Is<Queued>(true)
-                    .Is<AutoArrangeInSlot>(true)
+                    .Is<AutoPlaceInSlot>(true)
                 ;
         }
     }
