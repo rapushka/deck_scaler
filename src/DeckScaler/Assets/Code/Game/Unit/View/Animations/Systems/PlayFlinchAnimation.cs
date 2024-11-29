@@ -26,7 +26,6 @@ namespace DeckScaler.Systems
                     var tween = animator.PlayFlinchAnimation();
                     target
                         .Replace<PlayingAnimation, Tween>(tween)
-                        .Replace<Component.AnimationType, AnimationType>(AnimationType.Flinch)
                         ;
                 }
             }
