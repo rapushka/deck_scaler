@@ -8,8 +8,14 @@ namespace DeckScaler
             : base(nameof(InputFeature))
         {
             Add(new SpawnCursorEntity());
+
+            Add(new UpdateCursorMoveDelta());
             Add(new UpdateCursorWorldPosition());
+
             Add(new TrackCursorPressed());
+            Add(new ScrollTeamRoot());
+
+            Add(new DestroyInputEntities());
         }
     }
 }

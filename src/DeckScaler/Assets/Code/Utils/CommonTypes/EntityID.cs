@@ -18,7 +18,7 @@ namespace DeckScaler
             => $"{ID} {EntityName}";
 
         private string EntityName
-            => this.GetEntityOrDefault()?.GetOrDefault<Name, string>()
-               ?? "Entity is destroyed:(";
+            => this.GetEntityOrDefault()?.GetOrDefault<Name, string>("no name")
+                ?? "Entity is destroyed:(";
     }
 }

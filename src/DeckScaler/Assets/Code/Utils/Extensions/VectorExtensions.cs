@@ -21,5 +21,16 @@ namespace DeckScaler.Utils
 
             return @this;
         }
+
+        public static Vector3 With(this Vector2 @this, float? x = null, float? y = null)
+        {
+            if (x is not null)
+                @this.x = x.Value;
+
+            if (y is not null)
+                @this.y = y.Value;
+
+            return @this;
+        }
     }
 }

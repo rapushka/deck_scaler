@@ -15,6 +15,7 @@ namespace DeckScaler.Editor.Tests.Mocks
 
         public Entity<Game> CreateTeamSlot() => _teamSlot.Create();
 
-        public Entity<Game> CreateEntityBehaviour(EntityBehaviour prefab) => CreateEntity.Next();
+        public Entity<Game> CreateEntityBehaviour(EntityBehaviour<Game> prefab) => CreateEntity.Next();
+        public Entity<Game> SetupEntityBehaviour(EntityBehaviour<Game> view)    => view.Entity;
     }
 }

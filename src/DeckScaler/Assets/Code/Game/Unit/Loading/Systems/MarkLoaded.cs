@@ -18,7 +18,7 @@ namespace DeckScaler.Systems
             {
                 entity.Is<Loading>(false);
 
-                if (entity.TryGet<View, EntityBehaviour>(out var view))
+                if (entity.TryGet<View, EntityBehaviour<Game>>(out var view))
                     view.SetActive(true);
             }
         }
