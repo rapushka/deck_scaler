@@ -1,4 +1,3 @@
-using DeckScaler.Component;
 using DeckScaler.Systems;
 
 namespace DeckScaler
@@ -12,7 +11,6 @@ namespace DeckScaler
 
             Add(new ArrangeTeamSlots());
             Add(new AddStrechyDurationDelayOnTeamSlotsScroll());
-            // Add(new StretchTeamSlotTargetPosition());
         }
     }
 }

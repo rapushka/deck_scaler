@@ -26,5 +26,5 @@ MonoBehaviour:
     <StretchyScrollAdd>k__BackingField: 0
     <StretchyScrollMult>k__BackingField: 1
     <StretchyScroll>k__BackingField:
-      <DelayAtCenter>k__BackingField: 0.1
-      <StepPerDistanceRate>k__BackingField: 0.02
+      <DelayAtCenter>k__BackingField: 0
+      <StepPerDistanceRate>k__BackingField: 0
