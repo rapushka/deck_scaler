@@ -6,4 +6,6 @@ namespace DeckScaler.Component
     public sealed class SittingInSlot : FlagComponent, IInScope<Game> { }
 
     public sealed class Appeared : FlagComponent, IInScope<Game> { }
+
+    public sealed class ReturnToSlot : FlagComponent, IInScope<Game> { }
 }

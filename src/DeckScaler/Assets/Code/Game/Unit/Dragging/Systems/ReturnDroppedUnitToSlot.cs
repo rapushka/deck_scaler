@@ -5,7 +5,7 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public sealed class StartAutoPlacingDroppedUnit : IExecuteSystem
+    public sealed class ReturnDroppedUnitToSlot : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _droppedUnits
             = Contexts.Instance.GetGroup(
@@ -18,7 +18,10 @@ namespace DeckScaler.Systems
         public void Execute()
         {
             foreach (var unit in _droppedUnits)
-                unit.Is<AnimateMovement>(true);
+                unit
+                    .Is<ReturnToSlot>(true)
+                    .Is<AnimateMovement>(true)
+                    ;
         }
     }
 }

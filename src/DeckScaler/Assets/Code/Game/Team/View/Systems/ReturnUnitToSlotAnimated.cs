@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using DeckScaler.Component;
 using DeckScaler.Scopes;
 using DeckScaler.Service;
@@ -14,15 +13,10 @@ namespace DeckScaler.Systems
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
                     .With<UnitID>()
+                    .And<ReturnToSlot>()
                     .And<WorldPosition>()
-                    .And<Appeared>()
-                    .Without<SittingInSlot>()
-                    .Without<TargetPosition>()
-                    .Without<PlayingAnimation>()
-                    .Without<Dragging>()
                     .Build()
             );
-        private readonly List<Entity<Game>> _buffer = new(16);
 
         private static TeamSlotViewConfig ViewConfig => Services.Get<IConfigs>().TeamSlotView;
 
@@ -30,7 +24,7 @@ namespace DeckScaler.Systems
 
         public void Execute()
         {
-            foreach (var unit in _units.GetEntities(_buffer))
+            foreach (var unit in _units)
             {
                 var offset = unit.Is<Teammate>() ? ViewConfig.TeammateInSlotOffset : ViewConfig.EnemyInSlotOffset;
 

@@ -32,6 +32,7 @@ namespace DeckScaler
             Add(new ViewFeature());
 
             Add(new RemoveComponent<Dropped>());
+            Add(new RemoveComponent<ReturnToSlot>());
             Add(new RemoveInputComponent<JustClicked>());
 
             Add(new DestroyGameEntities());
