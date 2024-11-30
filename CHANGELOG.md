@@ -6,7 +6,8 @@
 - [Correct Destroy flow & Unit's Death](https://github.com/rapushka/deck_scaler/issues/80)
 - [team view scroll](https://github.com/rapushka/deck_scaler/pull/91)
 - [sassy unit appear animation](https://github.com/rapushka/deck_scaler/pull/97)
-- [Drag'n'Drop Teammates](https://github.com/rapushka/deck_scaler/pull/101)
+- [drag'n'srop Teammates](https://github.com/rapushka/deck_scaler/pull/101)
+- [dynamically change unit's sorting layer](https://github.com/rapushka/deck_scaler/pull/103)
 - bugfix
 
 # v0.0.9
