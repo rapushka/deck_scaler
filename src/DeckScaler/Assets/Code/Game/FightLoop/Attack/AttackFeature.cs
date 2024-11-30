@@ -6,7 +6,7 @@ namespace DeckScaler
     public sealed class AttackFeature : Feature
     {
         public AttackFeature()
-            : base(nameof(AnimationFeature))
+            : base(nameof(AttackFeature))
         {
             Add(new OnAttackStepStartedStartAttackTimer<PlayerAttackStepStarted, HeldTeammate>());
             Add(new OnAttackStepStartedStartAttackTimer<EnemyAttackStepStarted, HeldEnemy>());

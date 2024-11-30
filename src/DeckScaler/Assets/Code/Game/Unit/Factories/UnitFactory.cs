@@ -39,6 +39,7 @@ namespace DeckScaler.Service
                     .Add<BaseDamage, int>(config.BaseDamage)
                     .Add<Stats, StatsData>(config.StatsData)
                     .Is<Queued>(true)
+                    .Add<SortingOrder, int>(ViewConfig.SortingOrder.Idle)
                 ;
         }
     }
