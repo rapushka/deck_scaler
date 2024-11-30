@@ -13,7 +13,9 @@ namespace DeckScaler.Service
 
         private static UnitViewConfig ViewConfig => Services.Get<IConfigs>().UnitView;
 
-        public Entity<Game> CreateTeammate(UnitIDRef unitID) => CreateUnit(unitID, ViewConfig.TeammateSpawnOffset);
+        public Entity<Game> CreateTeammate(UnitIDRef unitID)
+            => CreateUnit(unitID, ViewConfig.TeammateSpawnOffset)
+                .Is<Draggable>(true);
 
         public Entity<Game> CreateEnemy(UnitIDRef unitID) => CreateUnit(unitID, ViewConfig.EnemySpawnOffset);
 
@@ -22,13 +24,15 @@ namespace DeckScaler.Service
             var config = UnitsConfig[unitID];
             var unitType = config.Type;
 
+            var isTeammate = unitType is UnitType.Ally or UnitType.Lead;
+
             return Factory.CreateEntityBehaviour(UnitsConfig.ViewPrefab, spawnPosition)
                     .Add<Name, string>(config.ID)
                     .Add<UnitID, string>(config.ID)
                     .Is<Lead>(unitType is UnitType.Lead)
                     .Is<Enemy>(unitType is UnitType.Enemy)
-                    .Is<Teammate>(unitType is UnitType.Ally or UnitType.Lead)
-                    .Is<Ally>(unitType is UnitType.Ally)
+                    .Is<Teammate>(isTeammate)
+                    .Is<Ally>(isTeammate)
                     .Add<Component.Suit, Suit>(config.Suit)
                     .Add<Health, int>(config.Health)
                     .Add<MaxHealth, int>(config.Health)

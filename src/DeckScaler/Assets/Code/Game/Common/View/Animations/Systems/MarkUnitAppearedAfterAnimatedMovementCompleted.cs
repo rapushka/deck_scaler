@@ -6,7 +6,7 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public sealed class AutoPlaceUnitInSlotAfterAppearCompleted : IExecuteSystem
+    public sealed class MarkUnitAppearedAfterAnimatedMovementCompleted : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _units
             = Contexts.Instance.GetGroup(
@@ -21,8 +21,13 @@ namespace DeckScaler.Systems
         {
             foreach (var unit in _units.GetEntities(_buffer))
             {
-                if (unit.Get<StopAnimatingMovementAfter, Timer>().IsElapsed)
-                    unit.Is<AutoPlaceInSlot>(true);
+                if (!unit.Get<StopAnimatingMovementAfter, Timer>().IsElapsed)
+                    continue;
+
+                unit
+                    .Is<SittingInSlot>(true)
+                    .Is<Appeared>(true)
+                    ;
             }
         }
     }

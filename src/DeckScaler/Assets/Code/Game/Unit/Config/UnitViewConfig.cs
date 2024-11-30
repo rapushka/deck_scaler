@@ -8,6 +8,7 @@ namespace DeckScaler
         [field: SerializeField] public Vector2 TeammateSpawnOffset { get; private set; }
         [field: SerializeField] public Vector2 EnemySpawnOffset    { get; private set; }
 
-        [field: SerializeField] public float AppearDuration { get; private set; }
+        [field: SerializeField] public float AppearDuration          { get; private set; }
+        [field: SerializeField] public float ReturnAfterDragDuration { get; private set; }
     }
 }

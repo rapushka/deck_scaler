@@ -1,4 +1,5 @@
 using DeckScaler.Cheats;
+using DeckScaler.Component;
 using DeckScaler.Systems;
 
 namespace DeckScaler
@@ -29,8 +30,14 @@ namespace DeckScaler
             Add(new DestroyEntitiesAfterDelay());
 
             Add(new ViewFeature());
+
+            Add(new RemoveComponent<Dropped>());
+            Add(new RemoveComponent<ReturnToSlot>());
+            Add(new RemoveInputComponent<JustClicked>());
+
             Add(new DestroyGameEntities());
-            Add(new EntityIDFeature());
+            Add(new CleanupEntityIDFeature());
+            Add(new DestroyInputEntities());
         }
     }
 }

@@ -3,10 +3,10 @@ using DeckScaler.Systems;
 
 namespace DeckScaler
 {
-    public sealed class EntityIDFeature : Feature
+    public sealed class CleanupEntityIDFeature : Feature
     {
-        public EntityIDFeature()
-            : base(nameof(EntityIDFeature))
+        public CleanupEntityIDFeature()
+            : base(nameof(CleanupEntityIDFeature))
         {
             Add(new CleanupMissingEntityID<HeldTeammate>());
             Add(new CleanupMissingEntityID<HeldEnemy>());
