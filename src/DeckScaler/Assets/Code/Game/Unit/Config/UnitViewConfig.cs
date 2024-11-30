@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace DeckScaler
@@ -10,5 +11,17 @@ namespace DeckScaler
 
         [field: SerializeField] public float AppearDuration          { get; private set; }
         [field: SerializeField] public float ReturnAfterDragDuration { get; private set; }
+
+        [field: SerializeField] public SortingOrderIndexes SortingOrder { get; private set; }
+
+        [Serializable]
+        public class SortingOrderIndexes
+        {
+            public int Idle;
+            public int Attack = 1;
+            public int PerIndexStep = 1;
+
+            public int Dragging = 10;
+        }
     }
 }

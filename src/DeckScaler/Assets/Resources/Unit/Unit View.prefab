@@ -449,6 +449,7 @@ GameObject:
   - component: {fileID: 2025785035012797173}
   - component: {fileID: 6795088676363852325}
   - component: {fileID: 3938729095580251114}
+  - component: {fileID: -6112732240925007532}
   m_Layer: 0
   m_Name: Unit View
   m_TagString: Untagged
@@ -497,6 +498,7 @@ MonoBehaviour:
   - {fileID: 3428918407003200674}
   - {fileID: 1040689445572484939}
   - {fileID: 1464675379004274929}
+  - {fileID: -6112732240925007532}
   _listeners: []
   _subEntities: []
   _ensureComponentsCountOnAwake: 1
@@ -632,13 +634,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2cbc6e3b6cc482f9c6a4737f89c713a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sortingGroup: {fileID: 2025785035012797173}
   _attackAnimationArgs:
     <Duration>k__BackingField: 0.2
     <Scale>k__BackingField: 1.2
     <ReturnDuration>k__BackingField: 0.25
     <PunchDistance>k__BackingField: 0.5
-    <SortingOrder>k__BackingField: 1
   _flinchAnimationArgs:
     <Duration>k__BackingField: 0.25
     <Scale>k__BackingField: 0.9
@@ -730,6 +730,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityBehaviour: {fileID: 6915663080607579929}
+--- !u!114 &-6112732240925007532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6710012509412954626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae7f78c7ae684cab92e9f66826573f15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _value: {fileID: 2025785035012797173}
 --- !u!1 &7908943310836628263
 GameObject:
   m_ObjectHideFlags: 0

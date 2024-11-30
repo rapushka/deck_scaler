@@ -2,15 +2,11 @@ using System;
 using DeckScaler.Utils;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace DeckScaler
 {
     public class UnitAnimator : MonoBehaviour
     {
-        [SerializeField] private SortingGroup _sortingGroup;
-
-        [Space]
         [SerializeField] private AttackAnimationArgs _attackAnimationArgs;
         [SerializeField] private FlinchAnimationArgs _flinchAnimationArgs;
 
@@ -21,21 +17,13 @@ namespace DeckScaler
 
         private float InitialScale => _initTransform.LocalScale.x;
 
-        private int SortOrder
-        {
-            get => _sortingGroup.sortingOrder;
-            set => _sortingGroup.sortingOrder = value;
-        }
-
         public Tween PlayAttackAnimation(Vector2 targetWorldPosition)
         {
             _tween?.Kill();
 
             _initTransform = transform.Save();
-            _initSortingOrder = SortOrder;
 
             var args = _attackAnimationArgs;
-            SortOrder = args.SortingOrder;
 
             var punchDirection = targetWorldPosition - transform.position.Flat();
             var punchPosition = punchDirection * args.PunchDistance;
@@ -75,7 +63,6 @@ namespace DeckScaler
         private void ResetTransform()
         {
             transform.Load(_initTransform);
-            SortOrder = _initSortingOrder;
         }
 
         private void OnDestroy()
@@ -97,7 +84,6 @@ namespace DeckScaler
         private class AttackAnimationArgs : AnimationArgs
         {
             [field: SerializeField] public float PunchDistance { get; private set; } = 1f;
-            [field: SerializeField] public int   SortingOrder  { get; private set; } = 1;
         }
 
         [Serializable]
