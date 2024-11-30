@@ -7,9 +7,11 @@ namespace DeckScaler
         public TeamSlotsViewFeature()
             : base(nameof(TeamSlotsViewFeature))
         {
-            Add(new PlaceUnitsInTeamSlot());
+            Add(new PlaceSittingUnitsInTeamSlot());
 
-            Add(new ArrangeTeamSlots());
+            Add(new ArrangeTeamSlotsAnimated());
+            Add(new SetTeamSlotsAnimateMovement());
+
             Add(new AddStrechyDurationDelayOnTeamSlotsScroll());
         }
     }

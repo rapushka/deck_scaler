@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace DeckScaler.Systems
 {
-    public class ArrangeTeamSlots : IExecuteSystem
+    public class ArrangeTeamSlotsAnimated : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _slots = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
@@ -38,7 +38,7 @@ namespace DeckScaler.Systems
                 var currentPosition = slot.Get<WorldPosition, Vector2>();
 
                 if (!currentPosition.ApproximatelyEquals(targetPosition))
-                    slot.Replace<TargetPosition, Vector2>(targetPosition);
+                    slot.SetPositionAnimatable(targetPosition);
             }
         }
     }
