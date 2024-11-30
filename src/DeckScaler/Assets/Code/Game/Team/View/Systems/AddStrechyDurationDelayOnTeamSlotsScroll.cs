@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace DeckScaler.Systems
 {
-    public class ArrangeTeamSlots : IExecuteSystem
+    public class AddStrechyDurationDelayOnTeamSlotsScroll : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _slots = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
@@ -19,6 +19,7 @@ namespace DeckScaler.Systems
         private readonly IGroup<Entity<Game>> _roots = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
                 .With<TeamRoot>()
+                .And<Move>()
                 .Build()
         );
 
@@ -27,18 +28,16 @@ namespace DeckScaler.Systems
         public void Execute()
         {
             foreach (var root in _roots)
-            foreach (var (slot, index) in _slots.GetTeamSlotsInOrder())
+            foreach (var slot in _slots)
             {
-                var rootPosition = root.Get<WorldPosition, Vector2>();
+                var direction = root.Get<Move, Vector2>().x.SignInt();
+                var slotPosition = slot.Get<WorldPosition, Vector2>().x;
 
-                var xPosition = index * ViewConfig.SpacingBetweenSlots;
-                var localPosition = Vector2.right * xPosition;
+                var distanceFromCenter = -slotPosition * direction;
+                var config = ViewConfig.StretchyScroll;
+                var delay = config.DelayAtCenter + config.StepPerDistanceRate * distanceFromCenter;
 
-                var targetPosition = localPosition + rootPosition;
-                var currentPosition = slot.Get<WorldPosition, Vector2>();
-
-                if (!currentPosition.ApproximatelyEquals(targetPosition))
-                    slot.Replace<TargetPosition, Vector2>(targetPosition);
+                slot.Replace<AnimationDuration, float>(delay);
             }
         }
     }
