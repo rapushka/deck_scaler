@@ -4,7 +4,11 @@
     "references": [
         "GUID:0febfe9295780535993eb9c5ed8b8c91",
         "GUID:a938580faf129dc2dbcd1df2e7d7011e",
-        "GUID:ad60ef1cb1a2ab045b511ff137216a70"
+        "GUID:ad60ef1cb1a2ab045b511ff137216a70",
+        "GUID:776d03a35f1b52c4a9aed9f56d7b4229",
+        "GUID:f88fb04354076c646a4107a491394033",
+        "NaughtyAttributes.Core",
+        "NaughtyAttributes.Editor"
     ],
     "includePlatforms": [
         "Editor"
