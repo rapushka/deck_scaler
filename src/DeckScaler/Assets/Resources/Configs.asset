@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Configs
   m_EditorClassIdentifier: 
   <Units>k__BackingField: {fileID: 11400000, guid: 93e9e64e3e122934a9c7db4c430e9fde, type: 2}
+  <UnitView>k__BackingField: {fileID: 11400000, guid: 6d0304e0278adb1f1a58a6f2767c0b84, type: 2}
   <Progress>k__BackingField: {fileID: 11400000, guid: 8c84f30fda7d2db0a99bd62edddd1e4b, type: 2}
   <SpriteSheet>k__BackingField: {fileID: 11400000, guid: 75f7728a340da1a438d7c3d10889455f, type: 2}
   <TeamSlotView>k__BackingField:
@@ -21,5 +22,5 @@ MonoBehaviour:
     <TeammateInSlotOffset>k__BackingField: {x: 0, y: -2.5}
     <EnemyInSlotOffset>k__BackingField: {x: 0, y: 2.5}
     <StretchyScroll>k__BackingField:
-      <DelayAtCenter>k__BackingField: 0
-      <StepPerDistanceRate>k__BackingField: 0
+      <DelayAtCenter>k__BackingField: 0.05
+      <StepPerDistanceRate>k__BackingField: 0.005

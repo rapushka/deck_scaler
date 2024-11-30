@@ -12,6 +12,9 @@ namespace DeckScaler
 
             Add(new UpdateTargetPosition());
 
+            Add(new StopAnimatingMovementAfterTimerElapsed());
+            Add(new AutoPlaceUnitInSlotAfterAppearCompleted());
+
             Add(new CleanupCompletedAnimations());
         }
     }

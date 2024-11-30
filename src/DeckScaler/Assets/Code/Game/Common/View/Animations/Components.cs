@@ -12,4 +12,6 @@ namespace DeckScaler.Component
     public sealed class AnimationDuration : ValueComponent<float>, IInScope<Game> { }
 
     public sealed class AnimateMovement : FlagComponent, IInScope<Game> { }
+
+    public sealed class StopAnimatingMovementAfter : ValueComponent<Timer>, IInScope<Game> { }
 }

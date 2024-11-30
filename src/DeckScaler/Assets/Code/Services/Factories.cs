@@ -1,5 +1,6 @@
 using DeckScaler.Scopes;
 using Entitas.Generic;
+using UnityEngine;
 
 namespace DeckScaler.Service
 {
@@ -10,8 +11,8 @@ namespace DeckScaler.Service
 
         Entity<Game> CreateTeamSlot();
 
-        Entity<Game> CreateEntityBehaviour(EntityBehaviour<Game> prefab);
-        Entity<Game> SetupEntityBehaviour(EntityBehaviour<Game> view);
+        Entity<Game> CreateEntityBehaviour(EntityBehaviour<Game> prefab, Vector2 spawnPosition = default);
+        Entity<Game> SetupEntityBehaviour(EntityBehaviour<Game> view, Vector2 spawnPosition = default);
     }
 
     public class Factories : IFactories
@@ -26,7 +27,10 @@ namespace DeckScaler.Service
 
         public Entity<Game> CreateTeamSlot() => _teamSlot.Create();
 
-        public Entity<Game> CreateEntityBehaviour(EntityBehaviour<Game> prefab) => _entityBehaviour.Create(prefab).Entity;
-        public Entity<Game> SetupEntityBehaviour(EntityBehaviour<Game> view)    => _entityBehaviour.Setup(view).Entity;
+        public Entity<Game> CreateEntityBehaviour(EntityBehaviour<Game> prefab, Vector2 spawnPosition = default)
+            => _entityBehaviour.Create(prefab, spawnPosition).Entity;
+
+        public Entity<Game> SetupEntityBehaviour(EntityBehaviour<Game> view, Vector2 spawnPosition = default)
+            => _entityBehaviour.Setup(view).Entity;
     }
 }

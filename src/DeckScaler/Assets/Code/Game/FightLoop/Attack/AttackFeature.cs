@@ -17,7 +17,8 @@ namespace DeckScaler
             Add(new StartAttackTimer());
             Add(new SendDealDamageAfterAttackPrepared());
 
-            Add(new CleanupElapsedPrepareAttackTimer());
+            Add(new OnPrepareAttackTimerElapsed());
+            Add(new CleanupElapsedTimers<PrepareAttackTimer>());
         }
     }
 }

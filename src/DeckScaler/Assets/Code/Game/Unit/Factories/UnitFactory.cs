@@ -1,6 +1,7 @@
 using DeckScaler.Component;
 using DeckScaler.Scopes;
 using Entitas.Generic;
+using UnityEngine;
 
 namespace DeckScaler.Service
 {
@@ -10,22 +11,18 @@ namespace DeckScaler.Service
 
         private IFactories Factory => Services.Get<IFactories>();
 
-        public Entity<Game> CreateTeammate(UnitIDRef unitID)
-        {
-            return CreateUnit(unitID);
-        }
+        private static UnitViewConfig ViewConfig => Services.Get<IConfigs>().UnitView;
 
-        public Entity<Game> CreateEnemy(UnitIDRef unitID)
-        {
-            return CreateUnit(unitID);
-        }
+        public Entity<Game> CreateTeammate(UnitIDRef unitID) => CreateUnit(unitID, ViewConfig.TeammateSpawnOffset);
 
-        private Entity<Game> CreateUnit(UnitIDRef unitID)
+        public Entity<Game> CreateEnemy(UnitIDRef unitID) => CreateUnit(unitID, ViewConfig.EnemySpawnOffset);
+
+        private Entity<Game> CreateUnit(UnitIDRef unitID, Vector2 spawnPosition)
         {
             var config = UnitsConfig[unitID];
             var unitType = config.Type;
 
-            return Factory.CreateEntityBehaviour(UnitsConfig.ViewPrefab)
+            return Factory.CreateEntityBehaviour(UnitsConfig.ViewPrefab, spawnPosition)
                     .Add<Name, string>(config.ID)
                     .Add<UnitID, string>(config.ID)
                     .Is<Lead>(unitType is UnitType.Lead)
@@ -38,7 +35,6 @@ namespace DeckScaler.Service
                     .Add<BaseDamage, int>(config.BaseDamage)
                     .Add<Stats, StatsData>(config.StatsData)
                     .Is<Queued>(true)
-                    .Is<AutoPlaceInSlot>(true)
                 ;
         }
     }
