@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 935291102412380094}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.01}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -319,7 +319,7 @@ Transform:
   m_GameObject: {fileID: 4989344510784079220}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -406,7 +406,7 @@ Transform:
   m_GameObject: {fileID: 5059392789698973933}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.2675, z: -0.1}
+  m_LocalPosition: {x: 0, y: -1.2675, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -446,6 +446,7 @@ GameObject:
   - component: {fileID: 1040689445572484939}
   - component: {fileID: 4568492167430372923}
   - component: {fileID: 1464675379004274929}
+  - component: {fileID: 2025785035012797173}
   m_Layer: 0
   m_Name: Unit View
   m_TagString: Untagged
@@ -463,15 +464,15 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5027377058076689909}
-  - {fileID: 5725117065428244155}
   - {fileID: 6453893405406432567}
+  - {fileID: 2870501356479516204}
+  - {fileID: 5725117065428244155}
   - {fileID: 1423392883698718663}
   - {fileID: 8157611673062272329}
-  - {fileID: 2870501356479516204}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6915663080607579929
@@ -629,12 +630,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2cbc6e3b6cc482f9c6a4737f89c713a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sortingGroup: {fileID: 2025785035012797173}
   _attackAnimationArgs:
     <Duration>k__BackingField: 0.2
     <Scale>k__BackingField: 1.2
     <ReturnDuration>k__BackingField: 0.25
     <PunchDistance>k__BackingField: 0.5
-    <ZOffset>k__BackingField: -1
+    <SortingOrder>k__BackingField: 1
   _flinchAnimationArgs:
     <Duration>k__BackingField: 0.25
     <Scale>k__BackingField: 0.9
@@ -655,6 +657,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _value: 0.25
+--- !u!210 &2025785035012797173
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6710012509412954626}
+  m_Enabled: 1
+  m_SortingLayerID: 682003943
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &7908943310836628263
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,7 +695,7 @@ Transform:
   m_GameObject: {fileID: 7908943310836628263}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -851,7 +865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2217341543685884346, guid: cbd83779581c3bff0a30f3e99691594a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2217341543685884346, guid: cbd83779581c3bff0a30f3e99691594a, type: 3}
       propertyPath: m_LocalRotation.w

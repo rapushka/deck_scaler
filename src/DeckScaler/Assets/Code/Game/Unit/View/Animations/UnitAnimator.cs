@@ -2,39 +2,52 @@ using System;
 using DeckScaler.Utils;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace DeckScaler
 {
     public class UnitAnimator : MonoBehaviour
     {
+        [SerializeField] private SortingGroup _sortingGroup;
+
+        [Space]
         [SerializeField] private AttackAnimationArgs _attackAnimationArgs;
         [SerializeField] private FlinchAnimationArgs _flinchAnimationArgs;
 
         private TransformData _initTransform;
 
         private Tween _tween;
+        private int _initSortingOrder;
 
-        public float InitialScale => _initTransform.LocalScale.x;
+        private float InitialScale => _initTransform.LocalScale.x;
+
+        private int SortOrder
+        {
+            get => _sortingGroup.sortingOrder;
+            set => _sortingGroup.sortingOrder = value;
+        }
 
         public Tween PlayAttackAnimation(Vector2 targetWorldPosition)
         {
             _tween?.Kill();
-            _initTransform = transform.Save();
 
-            var punchDirection = targetWorldPosition - transform.position.Flat();
+            _initTransform = transform.Save();
+            _initSortingOrder = SortOrder;
 
             var args = _attackAnimationArgs;
-            punchDirection *= args.PunchDistance;
-            transform.SetGlobalPosition(z: args.ZOffset);
+            SortOrder = args.SortingOrder;
+
+            var punchDirection = targetWorldPosition - transform.position.Flat();
+            var punchPosition = punchDirection * args.PunchDistance;
 
             _tween = DOTween.Sequence()
-                            // prepare
-                            .Append(transform.DOScale(InitialScale * args.Scale, args.Duration))
-                            .Append(transform.DOPunchPosition(punchDirection, args.Duration, vibrato: 0))
+                    // prepare
+                    .Append(transform.DOScale(InitialScale * args.Scale, args.Duration))
+                    .Append(transform.DOPunchPosition(punchPosition, args.Duration, vibrato: 0))
 
-                            // recovery
-                            .Append(transform.DOScale(InitialScale, args.ReturnDuration))
-                            .OnKill(ResetTransform)
+                    // recovery
+                    .Append(transform.DOScale(InitialScale, args.ReturnDuration))
+                    .OnKill(ResetTransform)
                 ;
 
             return _tween;
@@ -48,18 +61,22 @@ namespace DeckScaler
             var args = _flinchAnimationArgs;
 
             _tween = DOTween.Sequence()
-                            .Append(transform.DOPunchPosition(args.PunchPosition, args.Duration, args.Vibrato, args.Elasticity))
-                            .Join(transform.DOScale(InitialScale * args.Scale, args.Duration))
+                    .Append(transform.DOPunchPosition(args.PunchPosition, args.Duration, args.Vibrato, args.Elasticity))
+                    .Join(transform.DOScale(InitialScale * args.Scale, args.Duration))
 
-                            // recovery
-                            .Append(transform.DOScale(InitialScale, args.ReturnDuration))
-                            .OnKill(ResetTransform)
+                    // recovery
+                    .Append(transform.DOScale(InitialScale, args.ReturnDuration))
+                    .OnKill(ResetTransform)
                 ;
 
             return _tween;
         }
 
-        private void ResetTransform() => transform.Load(_initTransform);
+        private void ResetTransform()
+        {
+            transform.Load(_initTransform);
+            SortOrder = _initSortingOrder;
+        }
 
         private void OnDestroy()
         {
@@ -80,7 +97,7 @@ namespace DeckScaler
         private class AttackAnimationArgs : AnimationArgs
         {
             [field: SerializeField] public float PunchDistance { get; private set; } = 1f;
-            [field: SerializeField] public float ZOffset       { get; private set; } = -10f;
+            [field: SerializeField] public int   SortingOrder  { get; private set; } = 1;
         }
 
         [Serializable]

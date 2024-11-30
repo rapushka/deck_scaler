@@ -15,15 +15,15 @@ namespace DeckScaler.Service
 
     public class UI : IUI
     {
-        private Canvas _canvas;
+        private UiCanvas _uiCanvas;
 
         private GameObject _currentView;
 
         public void Init()
         {
-            var canvasPrefab = Resources.Load<Canvas>("UI/Canvas/Canvas");
-            _canvas = Object.Instantiate(canvasPrefab);
-            _canvas.Init(Services.Get<ICameras>().UiCamera);
+            var canvasPrefab = Resources.Load<UiCanvas>("UI/Canvas/Canvas");
+            _uiCanvas = Object.Instantiate(canvasPrefab);
+            _uiCanvas.Init(Services.Get<ICameras>().UiCamera);
         }
 
         public void ShowMainMenu()
@@ -48,7 +48,7 @@ namespace DeckScaler.Service
             if (_currentView != null)
                 Object.Destroy(_currentView);
 
-            _currentView = Object.Instantiate(prefab, _canvas.Root);
+            _currentView = Object.Instantiate(prefab, _uiCanvas.Root);
         }
     }
 }

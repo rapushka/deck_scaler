@@ -7,10 +7,12 @@ namespace DeckScaler
 {
     public class EntityBehaviourFactory
     {
-        public EntityBehaviour<Game> Create(EntityBehaviour<Game> prefab, Vector2 spawnPosition = default)
+        public EntityBehaviour<Game> Create(EntityBehaviour<Game> prefab, Vector2 spawnPosition)
             => Setup(Object.Instantiate(prefab), spawnPosition);
 
-        public EntityBehaviour<Game> Setup(EntityBehaviour<Game> view, Vector2 spawnPosition = default)
+        public EntityBehaviour<Game> Setup(EntityBehaviour<Game> view) => Setup(view, view.transform.position);
+
+        public EntityBehaviour<Game> Setup(EntityBehaviour<Game> view, Vector2 spawnPosition)
         {
             view.Register(Contexts.Instance);
             view.SetActive(false);
