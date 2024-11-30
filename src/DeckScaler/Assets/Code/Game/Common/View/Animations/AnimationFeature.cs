@@ -16,6 +16,7 @@ namespace DeckScaler
             Add(new MarkUnitAppearedAfterAnimatedMovementCompleted());
 
             Add(new CleanupCompletedAnimations());
+            Add(new OnAnimationCompletedRemoveAnimationsFlags());
         }
     }
 }

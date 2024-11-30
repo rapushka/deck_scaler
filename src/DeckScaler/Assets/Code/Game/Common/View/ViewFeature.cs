@@ -13,7 +13,7 @@ namespace DeckScaler
             Add(new AnimationFeature());
 
             Add(new UpdateHealthProgressBar());
-            Add(new UpdateSortingOrderView());
+            Add(new SortingOrderFeature());
 
             Add(new MovementFeature());
 

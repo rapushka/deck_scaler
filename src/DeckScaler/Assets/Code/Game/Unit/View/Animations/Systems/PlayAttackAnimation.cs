@@ -30,6 +30,7 @@ namespace DeckScaler.Systems
 
                 attacker
                     .Add<PlayingAnimation, Tween>(tween)
+                    .Add<PlayingAttackAnimation>()
                     ;
             }
         }
