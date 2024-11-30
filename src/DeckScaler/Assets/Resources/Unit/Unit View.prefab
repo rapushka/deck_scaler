@@ -446,6 +446,7 @@ GameObject:
   - component: {fileID: 1040689445572484939}
   - component: {fileID: 4568492167430372923}
   - component: {fileID: 1464675379004274929}
+  - component: {fileID: 2025785035012797173}
   m_Layer: 0
   m_Name: Unit View
   m_TagString: Untagged
@@ -467,8 +468,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5027377058076689909}
-  - {fileID: 5725117065428244155}
   - {fileID: 6453893405406432567}
+  - {fileID: 5725117065428244155}
   - {fileID: 1423392883698718663}
   - {fileID: 8157611673062272329}
   - {fileID: 2870501356479516204}
@@ -655,6 +656,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _value: 0.25
+--- !u!210 &2025785035012797173
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6710012509412954626}
+  m_Enabled: 1
+  m_SortingLayerID: 682003943
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &7908943310836628263
 GameObject:
   m_ObjectHideFlags: 0
