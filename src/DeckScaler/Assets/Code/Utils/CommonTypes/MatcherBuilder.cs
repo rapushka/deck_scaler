@@ -52,11 +52,11 @@ namespace DeckScaler
 
             if (_orMatchers.Any())
                 matcher = ((IAllOfMatcher<Entity<TScope>>)matcher)?.AnyOf(_orMatchers.ToArray())
-                          ?? ScopeMatcher<TScope>.AnyOf(_orMatchers.ToArray());
+                    ?? ScopeMatcher<TScope>.AnyOf(_orMatchers.ToArray());
 
             if (_noneMatchers.Any())
                 matcher = ((IAnyOfMatcher<Entity<TScope>>)matcher)?.NoneOf(_noneMatchers.ToArray())
-                          ?? ScopeMatcher<TScope>.AllOf().NoneOf(_noneMatchers.ToArray());
+                    ?? ScopeMatcher<TScope>.AllOf().NoneOf(_noneMatchers.ToArray());
 
             _andMatchers.Clear();
             _orMatchers.Clear();

@@ -38,7 +38,7 @@ namespace DeckScaler.Systems
                 var currentPosition = slot.Get<WorldPosition, Vector2>();
 
                 if (!currentPosition.ApproximatelyEquals(targetPosition))
-                    slot.Replace<TargetPosition, Vector2>(targetPosition);
+                    slot.SetPositionAnimatable(targetPosition);
             }
         }
     }

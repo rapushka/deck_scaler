@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace DeckScaler.Systems
 {
-    public class PlaceUnitsInTeamSlot : IExecuteSystem
+    public class PlaceSittingUnitsInTeamSlot : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _units
             = Contexts.Instance.GetGroup(
@@ -15,6 +15,7 @@ namespace DeckScaler.Systems
                     .With<UnitID>()
                     .And<WorldPosition>()
                     .And<AutoPlaceInSlot>()
+                    .Without<AnimateMovement>()
                     .Build()
             );
 
