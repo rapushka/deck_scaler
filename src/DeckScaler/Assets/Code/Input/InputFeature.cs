@@ -1,3 +1,4 @@
+using DeckScaler.Component;
 using DeckScaler.Systems;
 
 namespace DeckScaler
@@ -13,9 +14,10 @@ namespace DeckScaler
             Add(new UpdateCursorWorldPosition());
 
             Add(new TrackCursorPressed());
-            Add(new ScrollTeamRoot());
+            Add(new TrackJustClicked());
 
-            Add(new DestroyInputEntities());
+            Add(new ScrollTeamRoot());
+            Add(new DragAndDropFeature());
         }
     }
 }

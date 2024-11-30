@@ -1,6 +1,7 @@
 using DeckScaler.Cheats.Component;
 using DeckScaler.Component;
 using DeckScaler.Scopes;
+using Entitas;
 using Entitas.Generic;
 
 namespace DeckScaler
@@ -22,6 +23,9 @@ namespace DeckScaler
         public static Entity<Scopes.Cheats> Cheat(string cheat)
             => Cheat()
                 .Add<Cheat, string>(cheat);
+
+        public static Entity<Input> InputOneFrame()
+            => Input().Add<Destroy>();
 
         public static Entity<Input> Input()
             => Contexts.Instance.Get<Input>().CreateEntity();
