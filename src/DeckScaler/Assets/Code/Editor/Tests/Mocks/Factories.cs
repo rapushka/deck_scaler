@@ -24,5 +24,7 @@ namespace DeckScaler.Editor.Tests.Mocks
         public Entity<Game> SetupEntityBehaviour(EntityBehaviour<Game> view, Vector2 spawnPosition)
             => view.Entity
                 .Replace<WorldPosition, Vector2>(spawnPosition);
+
+        public Entity<Game> SetupEntityBehaviour(EntityBehaviour<Game> view) => view.Entity;
     }
 }
