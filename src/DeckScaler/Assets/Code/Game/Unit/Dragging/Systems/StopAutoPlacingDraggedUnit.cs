@@ -13,7 +13,7 @@ namespace DeckScaler.Systems
                 MatcherBuilder<Game>
                     .With<Dragging>()
                     .And<UnitID>()
-                    .And<AutoPlaceInSlot>()
+                    .And<SittingInSlot>()
                     .Build()
             );
         private readonly List<Entity<Game>> _buffer = new();
@@ -23,7 +23,7 @@ namespace DeckScaler.Systems
             foreach (var unit in _draggedUnits.GetEntities(_buffer))
             {
                 unit
-                    .Is<AutoPlaceInSlot>(false)
+                    .Is<SittingInSlot>(false)
                     .Is<AnimateMovement>(false)
                     ;
             }

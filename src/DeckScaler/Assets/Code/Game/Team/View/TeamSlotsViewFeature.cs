@@ -10,8 +10,9 @@ namespace DeckScaler
             Add(new ArrangeTeamSlots());
             Add(new SetTeamSlotsAnimateMovement());
 
-            Add(new PlayUnitAppearAnimation());
-            Add(new PlaceSittingUnitsInTeamSlot());
+            Add(new AppearUnitToSlotAnimated());
+            Add(new ReturnUnitToSlotAnimated());
+            Add(new SetSittingUnitPositionInTeamSlot());
 
             Add(new AddStrechyDurationDelayOnTeamSlotsScroll());
         }

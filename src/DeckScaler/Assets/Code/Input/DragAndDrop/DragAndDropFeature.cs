@@ -13,8 +13,8 @@ namespace DeckScaler
             Add(new MoveDraggedEntitiesWithCursor());
 
             Add(new DropCurrentDraggingEntity());
-            Add(new StopAutoPlacingDraggedUnit());
 
+            Add(new StopAutoPlacingDraggedUnit());
             Add(new StartAutoPlacingDroppedUnit());
         }
     }

@@ -18,12 +18,7 @@ namespace DeckScaler.Systems
         public void Execute()
         {
             foreach (var unit in _droppedUnits)
-            {
-                unit
-                    .Is<AutoPlaceInSlot>(true)
-                    .Is<AnimateMovement>(true)
-                    ;
-            }
+                unit.Is<AnimateMovement>(true);
         }
     }
 }
