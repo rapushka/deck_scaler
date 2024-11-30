@@ -19,8 +19,8 @@ MonoBehaviour:
   <TeamSlotView>k__BackingField:
     <ViewPrefab>k__BackingField: {fileID: 5709879491896991328, guid: f7f8ccdd674a5aa949e7e857daf42c77, type: 3}
     <SpacingBetweenSlots>k__BackingField: 2.75
-    <TeammateInSlotOffset>k__BackingField: {x: 0, y: -2.5}
-    <EnemyInSlotOffset>k__BackingField: {x: 0, y: 2.5}
+    <TeammateInSlotOffset>k__BackingField: {x: 0, y: -1.75}
+    <EnemyInSlotOffset>k__BackingField: {x: 0, y: 1.5}
     <StretchyScroll>k__BackingField:
       <DelayAtCenter>k__BackingField: 0.05
       <StepPerDistanceRate>k__BackingField: 0.005
