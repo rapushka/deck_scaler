@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace DeckScaler.Systems
 {
-    public class ArrangeTeamSlotsAnimated : IExecuteSystem
+    public class ArrangeTeamSlots : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _slots = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>

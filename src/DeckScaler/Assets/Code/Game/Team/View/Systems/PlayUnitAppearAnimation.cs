@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using DeckScaler.Component;
 using DeckScaler.Scopes;
 using DeckScaler.Service;
+using DeckScaler.Utils;
 using Entitas;
 using Entitas.Generic;
 using UnityEngine;
@@ -38,10 +39,13 @@ namespace DeckScaler.Systems
                 var duration = UnitViewConfig.AppearDuration;
 
                 var targetPosition = slotPosition + offset;
+                var startPosition = unit.Get<WorldPosition, Vector2>().With(x: slotPosition.x);
+
                 unit
+                    .Replace<WorldPosition, Vector2>(startPosition)
                     .Replace<TargetPosition, Vector2>(targetPosition)
                     .Is<AnimateMovement>(true)
-                    .Add<StopAnimatingMovementAfter, Timer>(new Timer(duration))
+                    .Replace<StopAnimatingMovementAfter, Timer>(new Timer(duration))
                     .Replace<AnimationDuration, float>(duration)
                     ;
             }
