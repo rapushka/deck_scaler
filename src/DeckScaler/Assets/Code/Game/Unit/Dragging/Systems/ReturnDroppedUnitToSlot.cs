@@ -18,10 +18,7 @@ namespace DeckScaler.Systems
         public void Execute()
         {
             foreach (var unit in _droppedUnits)
-                unit
-                    .Is<ReturnToSlot>(true)
-                    .Is<AnimateMovement>(true)
-                    ;
+                unit.Is<ReturnToSlot>(true);
         }
     }
 }
