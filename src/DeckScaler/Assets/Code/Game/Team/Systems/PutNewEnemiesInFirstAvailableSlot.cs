@@ -30,7 +30,7 @@ namespace DeckScaler.Systems
                     if (slot.Has<HeldEnemy>())
                         continue;
 
-                    enemy.SetupToSlotAsEnemy(slot)
+                    enemy.SetupEnemyToSlot(slot)
                          .Is<Queued>(false)
                         ;
 
