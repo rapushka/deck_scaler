@@ -576,6 +576,7 @@ GameObject:
   - component: {fileID: 552616087931558902}
   - component: {fileID: 802065691241068243}
   - component: {fileID: 552915029528987566}
+  - component: {fileID: 4031788284634713489}
   m_Layer: 0
   m_Name: Team Scroll
   m_TagString: Untagged
@@ -616,7 +617,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f08a49712174c5b80b680a11c83d40e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentBehaviours: []
+  _componentBehaviours:
+  - {fileID: 4031788284634713489}
   _listeners: []
   _subEntities: []
   _ensureComponentsCountOnAwake: 1
@@ -634,6 +636,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityBehaviour: {fileID: 802065691241068243}
+--- !u!114 &4031788284634713489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6942511719828092028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06743a7200f4bba9f78f7c11c99f63e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7111396001159307207
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,6 +658,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5635573182259194903}
   - component: {fileID: 3667235594815817756}
+  - component: {fileID: 8582801517242873100}
+  - component: {fileID: 3390542118899697662}
   m_Layer: 0
   m_Name: Team Root
   m_TagString: Untagged
@@ -682,11 +698,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f08a49712174c5b80b680a11c83d40e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentBehaviours: []
+  _componentBehaviours:
+  - {fileID: 8582801517242873100}
+  - {fileID: 3390542118899697662}
   _listeners: []
   _subEntities: []
   _ensureComponentsCountOnAwake: 1
   _forceSubEntitiesAutoCollect: 1
+--- !u!114 &8582801517242873100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7111396001159307207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10881d0a78374b41a4675a6f998a9923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3390542118899697662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7111396001159307207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f54a84cf9448cdb961bd08dd584115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _value: Team Root
 --- !u!1 &8551543088172143899
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,8 +782,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28129d177096499ea2cdae1d614eff58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <TeamRoot>k__BackingField: {fileID: 3667235594815817756}
-  <TeamScroll>k__BackingField: {fileID: 802065691241068243}
+  <Behaviours>k__BackingField:
+  - {fileID: 3054715192507017176}
+  - {fileID: 3667235594815817756}
+  - {fileID: 802065691241068243}
 --- !u!1 &8877720512580252004
 GameObject:
   m_ObjectHideFlags: 0

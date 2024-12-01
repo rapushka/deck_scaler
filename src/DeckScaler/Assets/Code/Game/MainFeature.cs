@@ -15,7 +15,7 @@ namespace DeckScaler
 
             Add(new InputFeature());
 
-            Add(new TeamScrollFeature());
+            Add(new GameplayHudFeature());
 
             Add(new SpawnPlayerTeamFromProgress());
             Add(new SpawnRandomEnemy());

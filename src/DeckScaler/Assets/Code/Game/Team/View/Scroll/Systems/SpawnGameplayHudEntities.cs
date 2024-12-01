@@ -1,10 +1,9 @@
-using DeckScaler.Component;
 using DeckScaler.Service;
 using Entitas;
 
 namespace DeckScaler.Systems
 {
-    public class SpawnTeamRoot : IInitializeSystem
+    public class SpawnGameplayHudEntities : IInitializeSystem
     {
         private static GameplayHUD HUD => Services.Get<IUI>().GetScene<GameplayHUD>();
 
@@ -12,11 +11,8 @@ namespace DeckScaler.Systems
 
         public void Initialize()
         {
-            Factory
-                .SetupEntityBehaviour(HUD.TeamRoot)
-                .Add<Name, string>("team root")
-                .Is<TeamRoot>(true)
-                ;
+            foreach (var entityBehaviour in HUD.Behaviours)
+                Factory.SetupEntityBehaviour(entityBehaviour);
         }
     }
 }

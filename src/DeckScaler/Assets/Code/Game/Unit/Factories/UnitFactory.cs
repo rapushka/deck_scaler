@@ -27,7 +27,7 @@ namespace DeckScaler.Service
             var isTeammate = unitType is UnitType.Ally or UnitType.Lead;
 
             return Factory.CreateEntityBehaviour(UnitsConfig.ViewPrefab, spawnPosition)
-                    .Add<Name, string>(config.ID)
+                    .AddSafely<Name, string>(config.ID)
                     .Add<UnitID, string>(config.ID)
                     .Is<Lead>(unitType is UnitType.Lead)
                     .Is<Enemy>(unitType is UnitType.Enemy)
