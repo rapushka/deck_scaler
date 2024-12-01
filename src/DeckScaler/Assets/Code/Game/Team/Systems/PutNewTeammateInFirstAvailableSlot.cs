@@ -31,7 +31,7 @@ namespace DeckScaler.Cheats.Systems
                     if (slot.Has<HeldTeammate>())
                         continue;
 
-                    teammate.SetupToSlotAsTeammate(slot)
+                    teammate.SetupTeammateToSlot(slot)
                             .Is<Queued>(false)
                         ;
 

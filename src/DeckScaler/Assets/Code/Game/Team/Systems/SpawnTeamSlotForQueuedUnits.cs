@@ -26,9 +26,9 @@ namespace DeckScaler.Systems
                 var slot = Factory.CreateTeamSlot();
 
                 if (unit.Is<Teammate>())
-                    unit.SetupToSlotAsTeammate(slot);
+                    unit.SetupTeammateToSlot(slot);
                 else
-                    unit.SetupToSlotAsEnemy(slot);
+                    unit.SetupEnemyToSlot(slot);
 
                 unit.Is<NeedsNewSlot>(false);
                 unit.Is<Queued>(false);

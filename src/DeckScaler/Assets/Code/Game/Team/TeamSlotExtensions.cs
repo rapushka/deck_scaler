@@ -9,13 +9,13 @@ namespace DeckScaler
         public static PrimaryEntityIndex<Game, TeamSlot, int> TeamSlotIndex(this Contexts contexts)
             => contexts.Get<Game>().GetPrimaryIndex<TeamSlot, int>();
 
-        public static Entity<Game> SetupToSlotAsTeammate(this Entity<Game> teammate, Entity<Game> slot)
+        public static Entity<Game> SetupTeammateToSlot(this Entity<Game> teammate, Entity<Game> slot)
         {
             slot.Replace<HeldTeammate, EntityID>(teammate.ID());
             return teammate.Replace<InSlot, EntityID>(slot.ID());
         }
 
-        public static Entity<Game> SetupToSlotAsEnemy(this Entity<Game> enemy, Entity<Game> slot)
+        public static Entity<Game> SetupEnemyToSlot(this Entity<Game> enemy, Entity<Game> slot)
         {
             slot.Replace<HeldEnemy, EntityID>(enemy.ID());
             return enemy.Replace<InSlot, EntityID>(slot.ID());

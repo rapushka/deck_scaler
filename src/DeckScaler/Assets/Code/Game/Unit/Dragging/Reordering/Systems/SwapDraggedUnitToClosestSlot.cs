@@ -25,26 +25,23 @@ namespace DeckScaler.Systems
 
         public void Execute()
         {
-            foreach (var slot in _slots)
+            foreach (var newSlot in _slots)
             foreach (var unit in _draggedUnits)
             {
-                var previousSlotID = unit.Get<InSlot, EntityID>();
-                var newSlotID = slot.Get<ID, EntityID>();
+                var oldSlotID = unit.Get<InSlot, EntityID>();
+                var newSlotID = newSlot.Get<ID, EntityID>();
 
-                if (previousSlotID == newSlotID)
+                if (oldSlotID == newSlotID)
                     continue;
 
-                if (slot.TryGet<HeldTeammate, EntityID>(out var teammateID))
+                if (newSlot.TryGet<HeldTeammate, EntityID>(out var teammateID))
                 {
                     teammateID.GetEntity()
-                        .Replace<InSlot, EntityID>(previousSlotID)
-                        .Add<ReturnToSlot>()
-                        ;
+                        .SetupTeammateToSlot(oldSlotID.GetEntity())
+                        .Add<ReturnToSlot>();
                 }
 
-                unit
-                    .Replace<InSlot, EntityID>(newSlotID)
-                    ;
+                unit.SetupTeammateToSlot(newSlot);
             }
         }
     }
