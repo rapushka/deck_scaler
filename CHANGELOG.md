@@ -8,6 +8,7 @@
 - [sassy unit appear animation](https://github.com/rapushka/deck_scaler/pull/97)
 - [drag'n'srop Teammates](https://github.com/rapushka/deck_scaler/pull/101)
 - [dynamically change unit's sorting layer](https://github.com/rapushka/deck_scaler/pull/103)
+- [units reordering](https://github.com/rapushka/deck_scaler/pull/106)
 - bugfix
 
 # v0.0.9
