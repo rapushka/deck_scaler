@@ -9,7 +9,7 @@ using Input = DeckScaler.Scopes.Input;
 
 namespace DeckScaler.Systems
 {
-    public sealed class FindClosestSlot : IExecuteSystem
+    public sealed class FindClosestSlotToCursor : IExecuteSystem
     {
         private readonly IGroup<Entity<Input>> _cursors
             = Contexts.Instance.GetGroup(

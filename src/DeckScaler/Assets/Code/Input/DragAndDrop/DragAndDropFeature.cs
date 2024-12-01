@@ -17,7 +17,7 @@ namespace DeckScaler
             Add(new StopAutoPlacingDraggedUnit());
             Add(new ReturnDroppedUnitToSlot());
 
-            Add(new FindClosestSlot());
+            Add(new FindClosestSlotToCursor());
             Add(new SwapDraggedUnitToClosestSlot());
         }
     }
