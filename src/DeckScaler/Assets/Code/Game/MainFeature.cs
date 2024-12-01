@@ -30,6 +30,7 @@ namespace DeckScaler
             Add(new DestroyEntitiesAfterDelay());
 
             Add(new ViewFeature());
+            Add(new InteractableFeature());
 
             Add(new RemoveComponent<Dropped>());
             Add(new RemoveComponent<ReturnToSlot>());
