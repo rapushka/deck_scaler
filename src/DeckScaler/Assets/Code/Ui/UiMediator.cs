@@ -10,7 +10,7 @@ namespace DeckScaler.Service
 
     public class UiMediator : IUiMediator
     {
-        public void EndTurn() => CreateEntity.OneFrame().Add<Component.EndPlayerPrepareStep>();
+        public void EndTurn() => CreateEntity.OneFrame().Add<Component.ExitPlayerPrepareStep>();
 
         public void SendCheat(string cheat) => CreateEntity.Cheat(cheat);
     }

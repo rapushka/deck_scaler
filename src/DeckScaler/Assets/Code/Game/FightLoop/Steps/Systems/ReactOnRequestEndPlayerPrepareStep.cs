@@ -10,22 +10,22 @@ namespace DeckScaler.Systems
     {
         private readonly IGroup<Entity<Game>> _requests
             = Contexts.Instance.GetGroup(
-                MatcherBuilder<Game>.With<EndPlayerPrepareStep>().Build()
+                MatcherBuilder<Game>.With<ExitPlayerPrepareStep>().Build()
             );
 
         private static ProgressData Progress => Services.Get<IProgress>().CurrentRun;
 
         public void Execute()
         {
-            if (!_requests.Any())
-                return;
-
-            if (Progress.CurrentFightStep is not FightStep.PlayerPrepare)
-                return;
-
-            CreateEntity.Empty()
+            foreach (var _ in _requests)
+            {
+                if (Progress.CurrentFightStep is FightStep.PlayerPrepare)
+                {
+                    CreateEntity.Empty()
                         .Add<RequestChangeFightStep, FightStep>(FightStep.PlayerAttack)
-                ;
+                        ;
+                }
+            }
         }
     }
 }

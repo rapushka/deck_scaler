@@ -6,7 +6,6 @@ namespace DeckScaler
 {
     public class GameplayHUD : UiScene
     {
-        [field: SerializeField] public EntityBehaviour<Game> TeamRoot   { get; private set; }
-        [field: SerializeField] public EntityBehaviour<Game> TeamScroll { get; private set; }
+        [field: SerializeField] public EntityBehaviour<Game>[] Behaviours { get; private set; }
     }
 }

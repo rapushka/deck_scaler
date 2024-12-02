@@ -15,7 +15,7 @@ namespace DeckScaler
 
             Add(new InputFeature());
 
-            Add(new TeamScrollFeature());
+            Add(new GameplayHudFeature());
 
             Add(new SpawnPlayerTeamFromProgress());
             Add(new SpawnRandomEnemy());
@@ -30,6 +30,7 @@ namespace DeckScaler
             Add(new DestroyEntitiesAfterDelay());
 
             Add(new ViewFeature());
+            Add(new InteractableFeature());
 
             Add(new RemoveComponent<Dropped>());
             Add(new RemoveComponent<ReturnToSlot>());
@@ -39,6 +40,8 @@ namespace DeckScaler
             Add(new DestroyGameEntities());
             Add(new CleanupEntityIDFeature());
             Add(new DestroyInputEntities());
+
+            Add(new BoilerplateFeature());
         }
     }
 }
