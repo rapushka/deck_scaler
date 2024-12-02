@@ -5,9 +5,6 @@ namespace DeckScaler.Systems
         public LoadViewFeature()
             : base(nameof(LoadViewFeature))
         {
-            Add(new LoadUnitPortrait());
-            Add(new LoadCardBackgroundsPortrait());
-
             Add(new MarkLoaded());
         }
     }
