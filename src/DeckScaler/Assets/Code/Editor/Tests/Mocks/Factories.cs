@@ -8,12 +8,9 @@ namespace DeckScaler.Editor.Tests.Mocks
 {
     public class Factories : IFactories
     {
-        private readonly UnitFactory _unit = new();
         private readonly TeamSlotFactory _teamSlot = new();
 
-        public Entity<Game> CreateTeammate(UnitIDRef unitID) => _unit.CreateTeammate(unitID);
-
-        public Entity<Game> CreateEnemy(UnitIDRef unitID) => _unit.CreateEnemy(unitID);
+        public IUnitFactory Unit { get; } = new UnitFactory();
 
         public Entity<Game> CreateTeamSlot() => _teamSlot.Create();
 

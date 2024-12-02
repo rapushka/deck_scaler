@@ -12,7 +12,7 @@ namespace DeckScaler.Systems
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
                     .With<UnitID>()
-                    .And<SortingOrder>()
+                    .And<SpriteSortOrder>()
                     .And<Dragging>()
                     .Without<PlayingAttackAnimation>()
                     .Without<TargetPosition>()
@@ -24,7 +24,7 @@ namespace DeckScaler.Systems
         public void Execute()
         {
             foreach (var unit in _units)
-                unit.ReplaceIfDifferent<SortingOrder, int>(Config.Dragging);
+                unit.ReplaceIfDifferent<SpriteSortOrder, int>(Config.Dragging);
         }
     }
 }

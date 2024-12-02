@@ -5,7 +5,7 @@ namespace DeckScaler.Systems
 {
     public class SpawnRandomEnemy : IInitializeSystem
     {
-        private static IFactories EnemyFactory => Services.Get<IFactories>();
+        private static IUnitFactory EnemyFactory => Services.Get<IFactories>().Unit;
 
         public void Initialize()
         {

@@ -1,3 +1,4 @@
+using System;
 using DeckScaler.Component;
 using DeckScaler.Scopes;
 using Entitas.Generic;
@@ -5,7 +6,15 @@ using UnityEngine;
 
 namespace DeckScaler.Service
 {
-    public class UnitFactory
+    public interface IUnitFactory
+    {
+        Entity<Game> CreateAtSide(UnitIDRef unitID, Side side);
+
+        Entity<Game> CreateTeammate(UnitIDRef unitID);
+        Entity<Game> CreateEnemy(UnitIDRef unitID);
+    }
+
+    public class UnitFactory : IUnitFactory
     {
         private UnitsConfig UnitsConfig => Services.Get<IConfigs>().Units;
 
@@ -13,33 +22,43 @@ namespace DeckScaler.Service
 
         private static UnitViewConfig ViewConfig => Services.Get<IConfigs>().UnitView;
 
+        public Entity<Game> CreateAtSide(UnitIDRef unitID, Side side)
+        {
+            if (side is Side.Enemy)
+                return CreateEnemy(unitID);
+
+            if (side is Side.Player)
+                return CreateTeammate(unitID);
+
+            throw new ArgumentException("Unknown Side");
+        }
+
         public Entity<Game> CreateTeammate(UnitIDRef unitID)
             => CreateUnit(unitID, ViewConfig.TeammateSpawnOffset)
-                .Is<Draggable>(true);
+                .Is<Draggable>(true)
+                .Is<Teammate>(true)
+                .Is<Ally>(true);
 
-        public Entity<Game> CreateEnemy(UnitIDRef unitID) => CreateUnit(unitID, ViewConfig.EnemySpawnOffset);
+        public Entity<Game> CreateEnemy(UnitIDRef unitID)
+            => CreateUnit(unitID, ViewConfig.EnemySpawnOffset)
+                .Is<Enemy>(true);
 
         private Entity<Game> CreateUnit(UnitIDRef unitID, Vector2 spawnPosition)
         {
             var config = UnitsConfig[unitID];
             var unitType = config.Type;
 
-            var isTeammate = unitType is UnitType.Ally or UnitType.Lead;
-
             return Factory.CreateEntityBehaviour(UnitsConfig.ViewPrefab, spawnPosition)
                     .AddSafely<Name, string>(config.ID)
                     .Add<UnitID, string>(config.ID)
                     .Is<Lead>(unitType is UnitType.Lead)
-                    .Is<Enemy>(unitType is UnitType.Enemy)
-                    .Is<Teammate>(isTeammate)
-                    .Is<Ally>(isTeammate)
                     .Add<Component.Suit, Suit>(config.Suit)
                     .Add<Health, int>(config.Health)
                     .Add<MaxHealth, int>(config.Health)
                     .Add<BaseDamage, int>(config.BaseDamage)
                     .Add<Stats, StatsData>(config.StatsData)
                     .Is<Queued>(true)
-                    .Add<SortingOrder, int>(ViewConfig.SortingOrder.Idle)
+                    .Add<SpriteSortOrder, int>(ViewConfig.SortingOrder.Idle)
                 ;
         }
     }
