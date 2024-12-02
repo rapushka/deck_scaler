@@ -106,11 +106,25 @@ namespace EnlitGames.ScriptableObjectTable
             for(int i = 0; i < scriptableObjectData.fields.Count; i++)
             {
                 
-                Label fieldHeader = new Label(scriptableObjectData.fields[i].Name);
+                Label fieldHeader = new Label(FormatHeader(scriptableObjectData.fields[i].Name));
                 fieldHeader.style.width = columnWidths[i];
 
                 headerRow.Add(fieldHeader);
             }
+        }
+
+        private string FormatHeader(string source)
+        {
+            if (!source.EndsWith("k__BackingField"))
+                return source;
+
+            var startIndex = source.IndexOf('<') + 1;
+            var endIndex = source.IndexOf('>');
+
+            if (startIndex > 0 && endIndex > startIndex)
+                return source.Substring(startIndex, endIndex - startIndex);
+
+            return source;
         }
 
         void ShowScriptableObjectInstance(ScriptableObjectData scriptableObjectData, VisualElement scrollview, float columnWidth, List<float> columnWidths, bool colorRowGrey)
