@@ -17,15 +17,15 @@ namespace DeckScaler.Systems
 
         public void Execute()
         {
-            if (!_requests.Any())
-                return;
-
-            if (Progress.CurrentFightStep is not FightStep.PlayerPrepare)
-                return;
-
-            CreateEntity.Empty()
+            foreach (var _ in _requests)
+            {
+                if (Progress.CurrentFightStep is FightStep.PlayerPrepare)
+                {
+                    CreateEntity.Empty()
                         .Add<RequestChangeFightStep, FightStep>(FightStep.PlayerAttack)
-                ;
+                        ;
+                }
+            }
         }
     }
 }

@@ -2,6 +2,7 @@ using DeckScaler.Component;
 using DeckScaler.Scopes;
 using Entitas;
 using Entitas.Generic;
+using UnityEngine;
 
 namespace DeckScaler.Systems
 {
@@ -15,8 +16,7 @@ namespace DeckScaler.Systems
         private readonly IGroup<Entity<Game>> _colliders
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<Interactable>()
-                    .And<EnableOnlyInPlayerPrepare>()
+                    .With<EnableOnlyInPlayerPrepare>()
                     .Build()
             );
 
@@ -25,6 +25,7 @@ namespace DeckScaler.Systems
             foreach (var _ in _requests)
             foreach (var entity in _colliders)
             {
+                Debug.Log($"disable {entity}");
                 entity.Is<Interactable>(false);
             }
         }
