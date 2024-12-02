@@ -12,7 +12,7 @@ namespace DeckScaler.Systems
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
                     .With<UnitID>()
-                    .And<SortingOrder>()
+                    .And<SpriteSortOrder>()
                     .And<PlayingAttackAnimation>()
                     .Without<Dragging>()
                     .Build()
@@ -27,7 +27,7 @@ namespace DeckScaler.Systems
                 var slot = unit.Get<InSlot, EntityID>().GetEntity();
                 var slotIndex = slot.Get<TeamSlot, int>();
 
-                unit.ReplaceIfDifferent<SortingOrder, int>(Config.Attack + slotIndex);
+                unit.ReplaceIfDifferent<SpriteSortOrder, int>(Config.Attack + slotIndex);
             }
         }
     }

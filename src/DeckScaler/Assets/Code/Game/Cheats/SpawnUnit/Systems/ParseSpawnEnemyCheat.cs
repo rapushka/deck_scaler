@@ -1,32 +1,12 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using DeckScaler.Cheats.Component;
-using DeckScaler.Service;
-
 namespace DeckScaler.Cheats.Systems
 {
-    public class ParseSpawnEnemyCheat : ParseCheatBaseSystem
+    public class ParseSpawnEnemyCheat : ParseSpawnUnitCheatBase
     {
-        private static UnitsConfig Config => Services.Get<IConfigs>().Units;
-        private static IDebug      Debug  => Services.Get<IDebug>();
-
         protected override string Pattern => "spawn enemy (.+)";
+        protected override string Alias   => "se (.+)";
 
-        protected override bool TryParse(IList<Group> groups)
-        {
-            var unitID = $"{Constants.TableID.Enemies}{groups[1]}";
+        protected override string GroupID => Constants.TableID.Enemies;
 
-            var unitConfig = Config.Enemies.FirstOrDefault((c) => c.ID == unitID);
-            if (unitConfig is null)
-            {
-                Debug.LogError(nameof(Cheats), $"Has no enemy with ID {unitID}!");
-                return false;
-            }
-
-            CreateEntity.Cheat().Add<SpawnEnemy, UnitIDRef>(unitConfig.ID);
-
-            return true;
-        }
+        protected override Side Side => Side.Enemy;
     }
 }

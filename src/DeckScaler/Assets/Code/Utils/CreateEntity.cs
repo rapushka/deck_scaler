@@ -16,11 +16,10 @@ namespace DeckScaler
         public static Entity<Game> Empty()
             => Contexts.Instance.Get<Game>().CreateEntity();
 
-        public static Entity<Scopes.Cheats> Cheat()
-            => Contexts.Instance.Get<Scopes.Cheats>().CreateEntity();
+        public static Entity<Scopes.Cheats> Cheat() => Cheat(string.Empty);
 
         public static Entity<Scopes.Cheats> Cheat(string cheat)
-            => Cheat()
+            => Contexts.Instance.Get<Scopes.Cheats>().CreateEntity()
                 .Add<Cheat, string>(cheat);
 
         public static Entity<Input> InputOneFrame()

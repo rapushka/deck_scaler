@@ -5,7 +5,7 @@ namespace DeckScaler
 {
     public class SpawnPlayerTeamFromProgress : IInitializeSystem
     {
-        private static IFactories Factory => Services.Get<IFactories>();
+        private static IUnitFactory Factory => Services.Get<IFactories>().Unit;
 
         private static ProgressData Progress => Services.Get<IProgress>().CurrentRun;
 

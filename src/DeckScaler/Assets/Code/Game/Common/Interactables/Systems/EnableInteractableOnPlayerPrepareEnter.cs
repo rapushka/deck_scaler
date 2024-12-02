@@ -2,7 +2,6 @@ using DeckScaler.Component;
 using DeckScaler.Scopes;
 using Entitas;
 using Entitas.Generic;
-using UnityEngine;
 
 namespace DeckScaler.Systems
 {
@@ -25,7 +24,6 @@ namespace DeckScaler.Systems
             foreach (var _ in _event)
             foreach (var entity in _colliders)
             {
-                Debug.Log($"enable {entity}");
                 entity.Is<Interactable>(true);
             }
         }
