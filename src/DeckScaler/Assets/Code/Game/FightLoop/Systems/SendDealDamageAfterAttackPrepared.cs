@@ -21,7 +21,7 @@ namespace DeckScaler.Systems
                     continue;
 
                 var opponentID = attacker.Get<PrepareAttack>().Value;
-                var damage = attacker.Get<BaseDamage>().Value;
+                var damage = attacker.Get<Damage>().Value;
 
                 if (opponentID.IsEntityDead())
                     continue;

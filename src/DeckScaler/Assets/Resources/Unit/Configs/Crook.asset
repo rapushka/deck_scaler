@@ -14,16 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ID>k__BackingField: Units/Ally/Crook
   <Type>k__BackingField: 1
-  <Health>k__BackingField: 10
-  <BaseDamage>k__BackingField: 2
   <Suit>k__BackingField: 1
-  <StatsData>k__BackingField:
-    list:
-    - key: 1
-      value: 15
-    - key: 2
-      value: 5
-    - key: 3
-      value: 5
-    - key: 4
-      value: 5
+  <MaxHealth>k__BackingField: 10
+  <BaseDamage>k__BackingField: 2
+  <Power>k__BackingField: 4

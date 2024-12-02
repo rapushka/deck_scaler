@@ -9,6 +9,8 @@ namespace DeckScaler.Component
         {
             Add(new EnableInteractableOnPlayerPrepareEnter());
             Add(new DisableInteractableOnPlayerPrepareExit());
+
+            Add(new OnPlayerPrepareStepEnsureInteractableAllies());
         }
     }
 }

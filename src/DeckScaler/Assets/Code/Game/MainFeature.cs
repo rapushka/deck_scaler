@@ -1,6 +1,7 @@
 using DeckScaler.Cheats;
 using DeckScaler.Component;
 using DeckScaler.Systems;
+using Entitas.Generic;
 
 namespace DeckScaler
 {
@@ -41,7 +42,7 @@ namespace DeckScaler
             Add(new CleanupEntityIDFeature());
             Add(new DestroyInputEntities());
 
-            Add(new BoilerplateFeature());
+            Add(new BoilerplateFeature(Contexts.Instance));
         }
     }
 }

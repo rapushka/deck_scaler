@@ -14,16 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ID>k__BackingField: Units/Enemy/TestEnemy
   <Type>k__BackingField: 2
-  <Health>k__BackingField: 10
-  <BaseDamage>k__BackingField: 1
   <Suit>k__BackingField: 2
-  <StatsData>k__BackingField:
-    list:
-    - key: 1
-      value: 1
-    - key: 2
-      value: 2
-    - key: 3
-      value: 1
-    - key: 4
-      value: 1
+  <MaxHealth>k__BackingField: 2
+  <BaseDamage>k__BackingField: 1
+  <Power>k__BackingField: 2
