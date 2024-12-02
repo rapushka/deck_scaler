@@ -9,8 +9,6 @@ namespace DeckScaler
             Add(new SetIdleUnitSortingLayer());
             Add(new SetDraggingUnitSortingLayer());
             Add(new SetAttackingUnitSortingLayer());
-
-            Add(new UpdateSortingOrderView());
         }
     }
 }

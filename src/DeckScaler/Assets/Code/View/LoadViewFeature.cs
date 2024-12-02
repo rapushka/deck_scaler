@@ -7,7 +7,6 @@ namespace DeckScaler.Systems
         {
             Add(new LoadUnitPortrait());
             Add(new LoadCardBackgroundsPortrait());
-            Add(new LoadUnitStatViews());
 
             Add(new MarkLoaded());
         }

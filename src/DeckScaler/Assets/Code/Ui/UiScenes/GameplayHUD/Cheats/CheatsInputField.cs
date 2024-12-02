@@ -42,9 +42,4 @@ namespace DeckScaler
             _inputField.text = string.Empty;
         }
     }
-
-    public static class StringExtensions
-    {
-        public static bool IsEmpty(this string @this) => string.IsNullOrWhiteSpace(@this);
-    }
 }

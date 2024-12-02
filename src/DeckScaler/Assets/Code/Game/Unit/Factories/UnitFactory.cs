@@ -46,19 +46,23 @@ namespace DeckScaler.Service
         private Entity<Game> CreateUnit(UnitIDRef unitID, Vector2 spawnPosition)
         {
             var config = UnitsConfig[unitID];
+            var stats = config.Stats;
             var unitType = config.Type;
 
             return Factory.CreateEntityBehaviour(UnitsConfig.ViewPrefab, spawnPosition)
                     .AddSafely<Name, string>(config.ID)
                     .Add<UnitID, string>(config.ID)
                     .Is<Lead>(unitType is UnitType.Lead)
-                    .Add<Component.Suit, Suit>(config.Suit)
-                    .Add<Health, int>(config.Health)
-                    .Add<MaxHealth, int>(config.Health)
-                    .Add<BaseDamage, int>(config.BaseDamage)
-                    .Add<Stats, StatsData>(config.StatsData)
                     .Is<Queued>(true)
                     .Add<SpriteSortOrder, int>(ViewConfig.SortingOrder.Idle)
+                    .Add<Component.Suit, Suit>(config.Suit)
+
+                    // stats
+                    .Add<BaseStats, StatsData>(stats)
+                    .Add<Health, int>(stats[Stat.MaxHealth])
+                    .Add<MaxHealth, int>(stats[Stat.MaxHealth])
+                    .Add<Damage, int>(stats[Stat.BaseDamage])
+                    .Add<Power, int>(stats[Stat.Power])
                 ;
         }
     }

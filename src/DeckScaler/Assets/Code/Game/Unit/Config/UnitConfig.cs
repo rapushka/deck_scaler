@@ -9,10 +9,16 @@ namespace DeckScaler
         [field: IdRef(startsWith: Constants.TableID.Units)]
         [field: SerializeField] public string ID { get; private set; }
 
-        [field: SerializeField] public UnitType  Type       { get; private set; }
-        [field: SerializeField] public int       Health     { get; private set; }
-        [field: SerializeField] public int       BaseDamage { get; private set; }
-        [field: SerializeField] public Suit      Suit       { get; private set; }
-        [field: SerializeField] public StatsData StatsData  { get; private set; }
+        [field: SerializeField] public UnitType Type { get; private set; }
+        [field: SerializeField] public Suit     Suit { get; private set; }
+
+        [field: SerializeField] public int MaxHealth  { get; private set; }
+        [field: SerializeField] public int BaseDamage { get; private set; }
+        [field: SerializeField] public int Power      { get; private set; }
+
+        public StatsData Stats => new StatsData()
+            .With(Stat.BaseDamage, BaseDamage)
+            .With(Stat.Power, Power)
+            .With(Stat.MaxHealth, MaxHealth);
     }
 }
