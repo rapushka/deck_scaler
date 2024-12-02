@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 3054715192507017176}
   - component: {fileID: 8841447367245009233}
   - component: {fileID: 5600777059062621247}
-  - component: {fileID: 8955796180859887340}
+  - component: {fileID: 6723120267950953740}
   m_Layer: 0
   m_Name: End Turn Button
   m_TagString: Untagged
@@ -194,8 +194,8 @@ MonoBehaviour:
   _componentBehaviours:
   - {fileID: 8841447367245009233}
   - {fileID: 5600777059062621247}
-  - {fileID: 8955796180859887340}
-  _listeners: []
+  _listeners:
+  - {fileID: 6723120267950953740}
   _subEntities: []
   _ensureComponentsCountOnAwake: 1
   _forceSubEntitiesAutoCollect: 1
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a67badd4831474d9733f4f3a44c00bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8955796180859887340
+--- !u!114 &6723120267950953740
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,10 +233,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3694672547633950370}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5380abe4e7b64cc0b150e2c93c7aff6a, type: 3}
+  m_Script: {fileID: 11500000, guid: bcf483922d0942ffa851ebdbc8525358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: {fileID: 1546312164710228057}
+  _button: {fileID: 1546312164710228057}
 --- !u!1 &4872830326662184841
 GameObject:
   m_ObjectHideFlags: 0

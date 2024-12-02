@@ -7,7 +7,7 @@ namespace DeckScaler.Component
 
     public sealed class BlockFightStepChange : FlagComponent, IInScope<Game> { }
 
-    public sealed class EndPlayerPrepareStep : FlagComponent, IInScope<Game> { }
+    public sealed class ExitPlayerPrepareStep : FlagComponent, IInScope<Game> { }
 
     // # Concrete transitions
     public sealed class PlayerPrepareStepStarted : FlagComponent, IInScope<Game> { }

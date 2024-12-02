@@ -7,7 +7,7 @@ namespace DeckScaler.Systems
 {
     public sealed class EnableInteractableOnPlayerPrepareEnter : IExecuteSystem
     {
-        private readonly IGroup<Entity<Game>> _requests
+        private readonly IGroup<Entity<Game>> _event
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>.With<PlayerPrepareStepStarted>().Build()
             );
@@ -22,7 +22,7 @@ namespace DeckScaler.Systems
 
         public void Execute()
         {
-            foreach (var _ in _requests)
+            foreach (var _ in _event)
             foreach (var entity in _colliders)
             {
                 entity.Is<Interactable>(true);

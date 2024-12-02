@@ -40,6 +40,8 @@ namespace DeckScaler
             Add(new DestroyGameEntities());
             Add(new CleanupEntityIDFeature());
             Add(new DestroyInputEntities());
+
+            Add(new BoilerplateFeature());
         }
     }
 }

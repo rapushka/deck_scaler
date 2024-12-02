@@ -9,7 +9,7 @@ namespace DeckScaler.Systems
     {
         private readonly IGroup<Entity<Game>> _requests
             = Contexts.Instance.GetGroup(
-                MatcherBuilder<Game>.With<EndPlayerPrepareStep>().Build()
+                MatcherBuilder<Game>.With<ExitPlayerPrepareStep>().Build()
             );
 
         private readonly IGroup<Entity<Game>> _colliders
