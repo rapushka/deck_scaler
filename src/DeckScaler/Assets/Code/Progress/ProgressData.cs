@@ -23,6 +23,11 @@ namespace DeckScaler
             TeamSlotsCounter++;
         }
 
+        public void DecrementTeamSlotCount()
+        {
+            TeamSlotsCounter--;
+        }
+
         public static ProgressData NewRun(ProgressData from)
         {
             return new ProgressData

@@ -14,6 +14,7 @@ namespace DeckScaler.Service
         public Entity<Game> Create()
         {
             var entity = Factory.CreateEntityBehaviour(ViewConfig.ViewPrefab)
+                .Replace<Name, string>("team slot")
                 .Add<TeamSlot, int>(Progress.TeamSlotsCounter);
 
             Progress.IncrementTeamSlotCount();

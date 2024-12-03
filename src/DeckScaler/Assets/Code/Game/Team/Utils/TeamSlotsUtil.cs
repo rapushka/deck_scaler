@@ -3,6 +3,7 @@ using DeckScaler.Component;
 using DeckScaler.Scopes;
 using Entitas;
 using Entitas.Generic;
+using JetBrains.Annotations;
 
 namespace DeckScaler
 {

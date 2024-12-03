@@ -13,19 +13,25 @@ namespace DeckScaler.Systems
 
         private static TeamSlotsUtil TeamSlotsUtil => Services.Get<IUtils>().TeamSlotsUtil;
 
+        private static ProgressData Progress => Services.Get<IProgress>().CurrentRun;
+
         public void Execute()
         {
-            var movedSlots = 0;
+            var removedSlots = 0;
 
             foreach (var (slot, _) in TeamSlotsUtil.GetTeamSlotsInOrder())
             {
                 if (slot.Is<FreedBoth>())
                 {
-                    movedSlots++;
+                    Progress.DecrementTeamSlotCount();
+                    removedSlots++;
+
+                    // slot.Replace<TeamSlot, int>(-removedSlots); // TODO: this is a shitty one:(
+                    slot.Remove<TeamSlot>();
                     continue;
                 }
 
-                slot.Increment<TeamSlot>(-movedSlots);
+                slot.Increment<TeamSlot>(-removedSlots);
             }
 
             // foreach (var slot in _slots.GetEntities(_buffer))
