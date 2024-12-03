@@ -52,7 +52,7 @@ namespace DeckScaler.Service
             var unitType = config.Type;
 
             return Factory.CreateEntityBehaviour(UnitsConfig.ViewPrefab, spawnPosition)
-                    .AddSafely<Name, string>(config.ID)
+                    .Replace<Name, string>(PrettierUnitID(config.ID))
                     .Add<UnitID, string>(config.ID)
                     .Is<Lead>(unitType is UnitType.Lead)
                     .Is<Queued>(true)
@@ -67,5 +67,10 @@ namespace DeckScaler.Service
                     .Add<Power, int>(stats[Stat.Power])
                 ;
         }
+
+        private string PrettierUnitID(string source)
+            => source
+                .Remove(Constants.TableID.Allies)
+                .Remove(Constants.TableID.Enemies);
     }
 }
