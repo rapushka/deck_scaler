@@ -9,23 +9,11 @@ namespace DeckScaler
     {
         [field: SerializeField] public List<UnitIDRef> TeammateIDs { get; private set; }
 
-        public int TeamSlotsCounter { get; private set; }
-
         public FightStep CurrentFightStep { get; set; }
 
         public void AddTeammate(string unitID)
         {
             TeammateIDs.Add(unitID);
-        }
-
-        public void IncrementTeamSlotCount()
-        {
-            TeamSlotsCounter++;
-        }
-
-        public void DecrementTeamSlotCount()
-        {
-            TeamSlotsCounter--;
         }
 
         public static ProgressData NewRun(ProgressData from)

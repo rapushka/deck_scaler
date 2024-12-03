@@ -55,7 +55,6 @@ namespace DeckScaler.Service
                     .Replace<Name, string>(PrettierUnitID(config.ID))
                     .Add<UnitID, string>(config.ID)
                     .Is<Lead>(unitType is UnitType.Lead)
-                    .Is<Queued>(true)
                     .Add<SpriteSortOrder, int>(ViewConfig.SortingOrder.Idle)
                     .Add<Component.Suit, Suit>(config.Suit)
 

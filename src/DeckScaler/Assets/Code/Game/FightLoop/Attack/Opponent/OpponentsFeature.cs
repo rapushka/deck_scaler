@@ -10,8 +10,8 @@ namespace DeckScaler
             Add(new SendEventOnAddedOrRemoved<Component.UnitID, Component.RecalculateOpponents>());
 
             Add(new ResetOpponent());
-            Add(new UpdateOpponentStraightforward());
-            Add(new SeekForNeighborOpponents());
+            // Add(new UpdateOpponentStraightforward());
+            // Add(new SeekForNeighborOpponents());
         }
     }
 }

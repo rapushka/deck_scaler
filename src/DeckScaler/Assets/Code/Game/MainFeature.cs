@@ -39,7 +39,7 @@ namespace DeckScaler
             Add(new RemoveInputComponent<JustClicked>());
 
             Add(new DestroyGameEntities());
-            Add(new CleanupEntityIDFeature());
+            // Add(new CleanupEntityIDFeature());
             Add(new DestroyInputEntities());
 
             Add(new BoilerplateFeature(Contexts.Instance));

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DeckScaler.Scopes;
 using Entitas;
 using Entitas.Generic;
@@ -24,30 +25,14 @@ namespace DeckScaler.Systems
             return false;
         }
 
-        [CanBeNull]
-        public static Entity<Game> MinByOrDefault<TComponent>(this IGroup<Entity<Game>> @this, Func<TComponent, float> selector)
-            where TComponent : IComponent, IInScope<Game>, new()
-            => @this.MinByOrDefault((e) => selector(e.Get<TComponent>()));
-
-        [CanBeNull]
-        public static Entity<TScope> MinByOrDefault<TScope>(this IGroup<Entity<TScope>> @this, Func<Entity<TScope>, float> selector)
+        public static IEnumerable<Entity<TScope>> Where<TScope>(this IGroup<Entity<TScope>> @this, Func<Entity<TScope>, bool> predicate)
             where TScope : IScope
         {
-            float? min = null;
-            Entity<TScope> minEntity = null;
-
             foreach (var entity in @this)
             {
-                var value = selector(entity);
-
-                if (min is null || min > value)
-                {
-                    min = value;
-                    minEntity = entity;
-                }
+                if (predicate.Invoke(entity))
+                    yield return entity;
             }
-
-            return minEntity;
         }
     }
 }

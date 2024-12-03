@@ -16,6 +16,7 @@ namespace DeckScaler.Systems
                 MatcherBuilder<Game>
                     .With<UnitID>()
                     .And<WorldPosition>()
+                    .And<SlotPosition>()
                     .Without<Appeared>()
                     .Without<SittingInSlot>()
                     .Without<TargetPosition>()
@@ -25,29 +26,22 @@ namespace DeckScaler.Systems
             );
         private readonly List<Entity<Game>> _buffer = new(16);
 
-        private static TeamSlotViewConfig ViewConfig => Services.Get<IConfigs>().TeamSlotView;
-
         private static UnitViewConfig UnitViewConfig => Services.Get<IConfigs>().UnitView;
 
         public void Execute()
         {
             foreach (var unit in _units.GetEntities(_buffer))
             {
-                var offset = unit.Is<Teammate>() ? ViewConfig.TeammateInSlotOffset : ViewConfig.EnemyInSlotOffset;
-
-                var slot = unit.Get<InSlot, EntityID>().GetEntity();
-                var slotPosition = slot.Get<WorldPosition, Vector2>();
-
                 var duration = UnitViewConfig.AppearDuration;
 
-                var targetPosition = slotPosition + offset;
+                var slotPosition = unit.Get<SlotPosition, Vector2>();
                 var startPosition = unit.Get<WorldPosition, Vector2>().With(x: slotPosition.x);
 
                 unit
                     .Replace<WorldPosition, Vector2>(startPosition)
-                    .Replace<TargetPosition, Vector2>(targetPosition)
+                    .Replace<TargetPosition, Vector2>(slotPosition)
                     .Is<AnimateMovement>(true)
-                    .Replace<StopAnimatingMovementAfter, Timer>(new Timer(duration))
+                    .Replace<StopAnimatingMovementAfter, Timer>(new(duration))
                     .Replace<AnimationDuration, float>(duration)
                     ;
             }

@@ -16,8 +16,7 @@ namespace DeckScaler
                 entity.ToString<Lead>(),
 
                 // slots
-                entity.ToString<TeamSlot, int>(),
-                FormatContainingTeamSlot(entity),
+                entity.ToString<SlotIndex, int>(prefix: "in slot: "),
 
                 // Fight Step Changing
                 entity.ToString<RequestChangeFightStep, FightStep>(prefix: "change fight step: "),
@@ -26,10 +25,5 @@ namespace DeckScaler
                 string.Empty
             );
         }
-
-        private string FormatContainingTeamSlot(in Entity<Game> entity)
-            => entity.TryGet<InSlot, EntityID>(out var slot)
-                ? $"in slot {slot.GetEntity().Get<TeamSlot, int>()}"
-                : string.Empty;
     }
 }

@@ -8,11 +8,7 @@ namespace DeckScaler.Editor.Tests.Mocks
 {
     public class Factories : IFactories
     {
-        private readonly TeamSlotFactory _teamSlot = new();
-
         public IUnitFactory Unit { get; } = new UnitFactory();
-
-        public Entity<Game> CreateTeamSlot() => _teamSlot.Create();
 
         public Entity<Game> CreateEntityBehaviour(EntityBehaviour<Game> prefab, Vector2 spawnPosition)
             => CreateEntity.Next()

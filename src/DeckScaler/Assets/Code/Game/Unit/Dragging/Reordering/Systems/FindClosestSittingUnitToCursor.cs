@@ -1,6 +1,5 @@
 using DeckScaler.Component;
 using DeckScaler.Scopes;
-using DeckScaler;
 using Entitas;
 using Entitas.Generic;
 using UnityEngine;
@@ -9,7 +8,7 @@ using Input = DeckScaler.Scopes.Input;
 
 namespace DeckScaler.Systems
 {
-    public sealed class FindClosestSlotToCursor : IExecuteSystem
+    public sealed class FindClosestSittingUnitToCursor : IExecuteSystem
     {
         private readonly IGroup<Entity<Input>> _cursors
             = Contexts.Instance.GetGroup(
@@ -24,11 +23,12 @@ namespace DeckScaler.Systems
                     .And<UnitID>()
                     .Build()
             );
-        private readonly IGroup<Entity<Game>> _slots
+        private readonly IGroup<Entity<Game>> _placedUnits
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<TeamSlot>()
+                    .With<UnitID>()
                     .And<WorldPosition>()
+                    .Without<Dragging>()
                     .Build()
             );
 
@@ -39,7 +39,7 @@ namespace DeckScaler.Systems
             {
                 var cursorPosition = cursor.Get<WorldPosition, Vector2>();
 
-                var closestSlot = _slots.MinByOrDefault<WorldPosition>((s) => cursorPosition.DistanceTo(s.Value));
+                var closestSlot = _placedUnits.MinByOrDefault<WorldPosition>((s) => cursorPosition.DistanceTo(s.Value));
                 closestSlot?.Is<ClosestSlotForReorder>(true);
             }
         }

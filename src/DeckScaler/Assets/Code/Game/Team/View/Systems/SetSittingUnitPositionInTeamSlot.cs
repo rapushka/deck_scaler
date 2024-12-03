@@ -14,24 +14,19 @@ namespace DeckScaler.Systems
                 MatcherBuilder<Game>
                     .With<UnitID>()
                     .And<WorldPosition>()
+                    .And<SlotPosition>()
                     .And<SittingInSlot>()
                     .And<Appeared>()
                     .Without<AnimateMovement>()
                     .Build()
             );
 
-        private static TeamSlotViewConfig ViewConfig => Services.Get<IConfigs>().TeamSlotView;
-
         public void Execute()
         {
             foreach (var unit in _units)
             {
-                var offset = unit.Is<Teammate>() ? ViewConfig.TeammateInSlotOffset : ViewConfig.EnemyInSlotOffset;
-
-                var slot = unit.Get<InSlot, EntityID>().GetEntity();
-                var slotPosition = slot.Get<WorldPosition, Vector2>();
-
-                unit.Replace<WorldPosition, Vector2>(slotPosition + offset);
+                var slotPosition = unit.Get<SlotPosition, Vector2>();
+                unit.Replace<WorldPosition, Vector2>(slotPosition);
             }
         }
     }
