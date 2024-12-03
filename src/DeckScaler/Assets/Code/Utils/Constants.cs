@@ -4,7 +4,7 @@ namespace DeckScaler
 {
     public static class Constants
     {
-        public const int TeamSlotsStartingIndex = 1;
+        public const int TeamSlotsStartingIndex = 0;
 
         public const string MenuPrefix = "375/Deck Scaler/";
 
