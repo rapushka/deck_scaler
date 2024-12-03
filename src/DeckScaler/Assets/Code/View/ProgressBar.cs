@@ -1,4 +1,4 @@
-using DeckScaler.Utils;
+using DeckScaler;
 using UnityEngine;
 
 namespace DeckScaler

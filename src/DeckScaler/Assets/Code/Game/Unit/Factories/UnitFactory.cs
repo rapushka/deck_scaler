@@ -37,11 +37,13 @@ namespace DeckScaler.Service
             => CreateUnit(unitID, ViewConfig.TeammateSpawnOffset)
                 .Is<Draggable>(true)
                 .Is<Teammate>(true)
-                .Is<Ally>(true);
+                .Is<Ally>(true)
+                .Add<OnSide, Side>(Side.Player);
 
         public Entity<Game> CreateEnemy(UnitIDRef unitID)
             => CreateUnit(unitID, ViewConfig.EnemySpawnOffset)
-                .Is<Enemy>(true);
+                .Is<Enemy>(true)
+                .Add<OnSide, Side>(Side.Enemy);
 
         private Entity<Game> CreateUnit(UnitIDRef unitID, Vector2 spawnPosition)
         {

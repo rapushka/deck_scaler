@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DeckScaler.Utils
+namespace DeckScaler
 {
     public static class TransformExtensions
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using DeckScaler.Component;
 using DeckScaler.Scopes;
-using DeckScaler.Utils;
+using DeckScaler;
 using Entitas;
 using Entitas.Generic;
 
