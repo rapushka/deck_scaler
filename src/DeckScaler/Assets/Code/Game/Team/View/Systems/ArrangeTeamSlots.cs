@@ -1,7 +1,7 @@
 using DeckScaler.Component;
 using DeckScaler.Scopes;
 using DeckScaler.Service;
-using DeckScaler.Utils;
+using DeckScaler;
 using Entitas;
 using Entitas.Generic;
 using UnityEngine;
@@ -10,12 +10,6 @@ namespace DeckScaler.Systems
 {
     public class ArrangeTeamSlots : IExecuteSystem
     {
-        private readonly IGroup<Entity<Game>> _slots = Contexts.Instance.GetGroup(
-            MatcherBuilder<Game>
-                .With<TeamSlot>()
-                .Build()
-        );
-
         private readonly IGroup<Entity<Game>> _roots = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
                 .With<TeamRoot>()
@@ -24,10 +18,12 @@ namespace DeckScaler.Systems
 
         private static TeamSlotViewConfig ViewConfig => Services.Get<IConfigs>().TeamSlotView;
 
+        private static TeamSlotsUtil TeamSlotsUtil => Services.Get<IUtils>().TeamSlotsUtil;
+
         public void Execute()
         {
             foreach (var root in _roots)
-            foreach (var (slot, index) in _slots.GetTeamSlotsInOrder())
+            foreach (var (slot, index) in TeamSlotsUtil.GetTeamSlotsInOrder())
             {
                 var rootPosition = root.Get<WorldPosition, Vector2>();
 

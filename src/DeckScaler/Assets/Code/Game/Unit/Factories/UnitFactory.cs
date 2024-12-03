@@ -37,11 +37,13 @@ namespace DeckScaler.Service
             => CreateUnit(unitID, ViewConfig.TeammateSpawnOffset)
                 .Is<Draggable>(true)
                 .Is<Teammate>(true)
-                .Is<Ally>(true);
+                .Is<Ally>(true)
+                .Add<OnSide, Side>(Side.Player);
 
         public Entity<Game> CreateEnemy(UnitIDRef unitID)
             => CreateUnit(unitID, ViewConfig.EnemySpawnOffset)
-                .Is<Enemy>(true);
+                .Is<Enemy>(true)
+                .Add<OnSide, Side>(Side.Enemy);
 
         private Entity<Game> CreateUnit(UnitIDRef unitID, Vector2 spawnPosition)
         {
@@ -50,7 +52,7 @@ namespace DeckScaler.Service
             var unitType = config.Type;
 
             return Factory.CreateEntityBehaviour(UnitsConfig.ViewPrefab, spawnPosition)
-                    .AddSafely<Name, string>(config.ID)
+                    .Replace<Name, string>(PrettierUnitID(config.ID))
                     .Add<UnitID, string>(config.ID)
                     .Is<Lead>(unitType is UnitType.Lead)
                     .Is<Queued>(true)
@@ -65,5 +67,10 @@ namespace DeckScaler.Service
                     .Add<Power, int>(stats[Stat.Power])
                 ;
         }
+
+        private string PrettierUnitID(string source)
+            => source
+                .Remove(Constants.TableID.Allies)
+                .Remove(Constants.TableID.Enemies);
     }
 }

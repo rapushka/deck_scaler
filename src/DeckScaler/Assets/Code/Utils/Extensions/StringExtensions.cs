@@ -8,5 +8,7 @@ namespace DeckScaler
 
         public static string JoinString<T>(this IEnumerable<T> @this, char separator = ' ')                       => string.Join(separator, @this);
         public static string JoinString<TKey, TValue>(this IDictionary<TKey, TValue> @this, char separator = ' ') => string.Join(separator, @this);
+
+        public static string Remove(this string source, string oldString) => source.Replace(oldString, string.Empty);
     }
 }

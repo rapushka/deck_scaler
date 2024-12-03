@@ -26,6 +26,7 @@ namespace DeckScaler
             Services.Setup<IUiMediator>(new UiMediator());
             Services.Setup<ITime>(new SimpleTime());
             Services.Setup<IInput>(new UnityInput());
+            Services.Setup<IUtils>(new Utils());
 
             SetupDebugServices();
 

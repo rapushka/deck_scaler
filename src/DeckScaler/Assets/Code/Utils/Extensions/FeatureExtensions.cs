@@ -1,4 +1,4 @@
-namespace DeckScaler.Utils
+namespace DeckScaler
 {
     public static class FeatureExtensions
     {

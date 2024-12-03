@@ -1,7 +1,7 @@
 using DeckScaler.Component;
 using DeckScaler.Scopes;
 using DeckScaler.Service;
-using DeckScaler.Utils;
+using DeckScaler;
 using Entitas.Generic;
 using FluentAssertions;
 using NUnit.Framework;

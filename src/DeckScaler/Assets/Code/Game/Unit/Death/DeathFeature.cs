@@ -9,6 +9,8 @@ namespace DeckScaler
         {
             Add(new MarkDeadUnitsWithZeroHp());
 
+            Add(new FillFreedTeamSlotsFeature());
+
             Add(new DestroyJustDiedUnits());
             Add(new EndDeathProcessing());
         }

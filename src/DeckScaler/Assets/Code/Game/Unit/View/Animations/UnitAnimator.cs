@@ -1,5 +1,5 @@
 using System;
-using DeckScaler.Utils;
+using DeckScaler;
 using DG.Tweening;
 using UnityEngine;
 
