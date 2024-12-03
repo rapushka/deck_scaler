@@ -33,7 +33,7 @@ namespace DeckScaler.Systems
             {
                 var rootPosition = root.Get<WorldPosition, Vector2>();
 
-                var index = unit.Get<SlotIndex, int>();
+                var index = unit.Get<SlotIndex, int>() - 1;
                 var xPosition = index * ViewConfig.SpacingBetweenSlots;
                 var slotCenterPosition = Vector2.right * xPosition;
 
