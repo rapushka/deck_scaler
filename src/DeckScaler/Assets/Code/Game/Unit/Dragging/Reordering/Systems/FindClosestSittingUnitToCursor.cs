@@ -28,19 +28,29 @@ namespace DeckScaler.Systems
                 MatcherBuilder<Game>
                     .With<UnitID>()
                     .And<WorldPosition>()
+                    .And<Teammate>()
                     .Without<Dragging>()
                     .Build()
             );
 
         public void Execute()
         {
-            foreach (var _ in _draggedUnits)
+            foreach (var draggedUnit in _draggedUnits)
             foreach (var cursor in _cursors)
             {
                 var cursorPosition = cursor.Get<WorldPosition, Vector2>();
+                var initialSlotPosition = draggedUnit.Get<SlotPosition, Vector2>();
+                var distanceToInitialPosition = cursorPosition.DistanceTo(initialSlotPosition);
 
-                var closestSlot = _placedUnits.MinByOrDefault<WorldPosition>((s) => cursorPosition.DistanceTo(s.Value));
-                closestSlot?.Is<ClosestSlotForReorder>(true);
+                var closestSlot = _placedUnits.MinByOrDefault<SlotPosition>((s) => cursorPosition.DistanceTo(s.Value));
+                if (closestSlot is null)
+                    continue;
+
+                var closestPosition = closestSlot.Get<SlotPosition>().Value;
+                var distanceToClosestPosition = cursorPosition.DistanceTo(closestPosition);
+
+                if (distanceToInitialPosition > distanceToClosestPosition)
+                    closestSlot.Is<ClosestSlotForReorder>(true);
             }
         }
     }
