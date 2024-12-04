@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using DeckScaler.Component;
 using DeckScaler.Scopes;
 using DeckScaler.Service;
-using DeckScaler;
 using Entitas;
 using Entitas.Generic;
 using UnityEngine;

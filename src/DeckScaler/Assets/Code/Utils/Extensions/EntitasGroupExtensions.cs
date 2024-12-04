@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using DeckScaler.Scopes;
 using Entitas;
 using Entitas.Generic;
-using JetBrains.Annotations;
 
 namespace DeckScaler.Systems
 {
