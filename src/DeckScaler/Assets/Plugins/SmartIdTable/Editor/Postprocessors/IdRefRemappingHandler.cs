@@ -61,15 +61,6 @@ namespace SmartIdTable.Editor.Postprocessors
 
 		private static void ProcessScriptReimport(out RemappingData remappingData)
 		{
-			// foreach IDTable
-			// Проходимся по всем рефам в таблице - Done
-			// Проходимся по PropertyPath, берём атрибут - Done
-			// Смотрим, сходится ли название таблицы с названием из атрибута - Done
-			// Если нет, то добавляем в список на перенос - Done
-			// Наверное удаляем запись сразу же - Done
-
-			// Нужно перенести в такую-то таблицу список референсов на такой-то ID
-
 			remappingData = new RemappingData();
 
 			foreach (IdTable idTable in RuntimeUtils.GetAllIdTables())
