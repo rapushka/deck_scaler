@@ -22,7 +22,6 @@ namespace DeckScaler
             Add(new SpawnRandomEnemy());
 
             Add(new TeamSlotsFeature());
-            Add(new TeamSlotsViewFeature());
 
             Add(new SequentialFightLoopFeature());
             Add(new DamageFeature());
@@ -30,6 +29,7 @@ namespace DeckScaler
 
             Add(new DestroyEntitiesAfterDelay());
 
+            Add(new TeamSlotsViewFeature());
             Add(new ViewFeature());
             Add(new InteractableFeature());
 
