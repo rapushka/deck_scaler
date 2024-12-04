@@ -2,6 +2,7 @@
 - [block ui during attack animations](https://github.com/rapushka/deck_scaler/pull/107)
 - [aliases for cheat aliases](https://github.com/rapushka/deck_scaler/pull/109)
 - [(refactoring) remove TeamSlots](https://github.com/rapushka/deck_scaler/pull/114)
+- [fill gaps, after unit death](https://github.com/rapushka/deck_scaler/pull/117)
 
 # v0.0.10
 - this changelog started:p
