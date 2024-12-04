@@ -2,10 +2,10 @@ using DeckScaler.Systems;
 
 namespace DeckScaler.Component
 {
-    public sealed class InteractableFeature : Feature
+    public sealed class ViewInteractablesFeature : Feature
     {
-        public InteractableFeature()
-            : base(nameof(InteractableFeature))
+        public ViewInteractablesFeature()
+            : base(nameof(ViewInteractablesFeature))
         {
             Add(new EnableInteractableOnPlayerPrepareEnter());
             Add(new DisableInteractableOnPlayerPrepareExit());

@@ -22,7 +22,6 @@ namespace DeckScaler
             Add(new SpawnRandomEnemy());
 
             Add(new TeamSlotsFeature());
-            Add(new TeamSlotsViewFeature());
 
             Add(new SequentialFightLoopFeature());
             Add(new DamageFeature());
@@ -30,17 +29,11 @@ namespace DeckScaler
 
             Add(new DestroyEntitiesAfterDelay());
 
+            Add(new TeamSlotsViewFeature());
             Add(new ViewFeature());
-            Add(new InteractableFeature());
+            Add(new ViewInteractablesFeature());
 
-            Add(new RemoveComponent<Dropped>());
-            Add(new RemoveComponent<ReturnToSlot>());
-            Add(new RemoveComponent<ClosestSlotForReorder>());
-            Add(new RemoveInputComponent<JustClicked>());
-
-            Add(new DestroyGameEntities());
-            // Add(new CleanupEntityIDFeature());
-            Add(new DestroyInputEntities());
+            Add(new CleanupsFeature());
 
             Add(new BoilerplateFeature(Contexts.Instance));
         }
