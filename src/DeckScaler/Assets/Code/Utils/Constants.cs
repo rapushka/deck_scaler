@@ -13,7 +13,7 @@ namespace DeckScaler
             public const string Table = "ID List";
 
             // # Categories
-            public const string Units = "Units/";
+            public const string Units = "Unit/";
             public const string Allies = Units + "Ally/";
             public const string Enemies = Units + "Enemy/";
         }

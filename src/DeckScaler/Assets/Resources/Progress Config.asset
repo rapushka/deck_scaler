@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <NewProgressData>k__BackingField:
     <TeammateIDs>k__BackingField:
-    - Value: Units/Ally/Crook
-    - Value: Units/Ally/Crook
+    - Value: Unit/Ally/Crook
+    - Value: Unit/Ally/Crook
+    - Value: Unit/Enemy/TestEnemy
