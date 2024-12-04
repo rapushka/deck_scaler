@@ -1,37 +1,36 @@
 using System.Collections.Generic;
 using DeckScaler.Component;
 using DeckScaler.Scopes;
-using DeckScaler.Service;
 using Entitas;
 using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public sealed class OnPlayerPrepareStepStartFillGapsTimer : IExecuteSystem
+    public sealed class OnPlayerPrepareStepPrepareUnitsToMove : IExecuteSystem
     {
-        private readonly IGroup<Entity<Game>> _event
+        private readonly IGroup<Entity<Game>> _events
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
                     .With<PlayerPrepareStepStarted>()
                     .Build()
             );
-        private readonly IGroup<Entity<Game>> _fillRequests
+        private readonly IGroup<Entity<Game>> _unitsToMove
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<FillGapRequest>()
-                    .Without<FillGapAfter>()
+                    .With<UnitID>()
+                    .And<MoveSlotToLeft>()
+                    .And<SlotIndex>()
                     .Build()
             );
         private readonly List<Entity<Game>> _buffer = new(32);
 
-        private static TeamSlotViewConfig Config => Services.Get<IConfigs>().TeamSlotView;
-
         public void Execute()
         {
-            foreach (var _ in _event)
-            foreach (var request in _fillRequests.GetEntities(_buffer))
+            foreach (var _ in _events)
+            foreach (var unit in _unitsToMove.GetEntities(_buffer))
             {
-                request.Add<FillGapAfter, Timer>(new(Config.DelayBeforeFillingGaps));
+                var oldSlotIndex = unit.Pop<SlotIndex, int>();
+                unit.Add<RetainedSlotIndex, int>(oldSlotIndex);
             }
         }
     }

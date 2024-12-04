@@ -7,12 +7,10 @@ namespace DeckScaler
         public FillFreedTeamSlotsFeature()
             : base(nameof(FillFreedTeamSlotsFeature))
         {
-            Add(new OnUnitDeathSendFillGapRequests());
+            Add(new OnUnitDeathCalculateSlotsToMove());
 
-            Add(new OnPlayerPrepareStepStartFillGapsTimer());
-
-            Add(new AfterFillGapsDelayElapsedMoveUnits());
-            Add(new AfterFillGapsDelayElapsedDestroyRequest());
+            Add(new OnPlayerPrepareStepPrepareUnitsToMove());
+            Add(new OnPlayerPrepareStepMoveUnitsToFillGaps());
         }
     }
 }

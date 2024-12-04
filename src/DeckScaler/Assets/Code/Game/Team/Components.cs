@@ -6,5 +6,8 @@ namespace DeckScaler.Component
 {
     public sealed class SlotIndex : ValueComponent<int>, IInScope<Game> { }
 
+    /// Not Indexed 
+    public sealed class RetainedSlotIndex : ValueComponent<int>, IInScope<Game> { }
+
     public sealed class SlotPosition : ValueComponent<Vector2>, IInScope<Game> { }
 }
