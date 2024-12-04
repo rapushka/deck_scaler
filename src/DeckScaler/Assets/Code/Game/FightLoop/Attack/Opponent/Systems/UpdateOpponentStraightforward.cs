@@ -18,20 +18,27 @@ namespace DeckScaler.Systems
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
                     .With<UnitID>()
+                    .And<SlotIndex>()
+                    .And<OnSide>()
                     .Without<Opponent>()
             );
         private readonly List<Entity<Game>> _buffer = new(128);
+
+        private static ScopeContext<Game> Context => Contexts.Instance.Get<Game>();
 
         public void Execute()
         {
             foreach (var _ in _events)
             foreach (var unit in _units.GetEntities(_buffer))
             {
-                if (!unit.TryGetOpponent(out var opponentID))
+                var slotIndex = unit.Get<SlotIndex, int>();
+                var side = unit.Get<OnSide, Side>();
+
+                if (!Context.TryGetUnitFromSlot(slotIndex, side.Flip(), out var opponent))
                     continue;
 
-                if (!opponentID.IsEntityDead())
-                    unit.Add<Opponent, EntityID>(opponentID);
+                if (!opponent.Is<Dead>())
+                    unit.SetByID<Opponent>(opponent);
             }
         }
     }

@@ -9,11 +9,13 @@ namespace DeckScaler.Systems
 {
     public class AddStrechyDurationDelayOnTeamSlotsScroll : IExecuteSystem
     {
-        private readonly IGroup<Entity<Game>> _slots = Contexts.Instance.GetGroup(
-            MatcherBuilder<Game>
-                .With<TeamSlot>()
-                .Build()
-        );
+        private readonly IGroup<Entity<Game>> _units
+            = Contexts.Instance.GetGroup(
+                MatcherBuilder<Game>
+                    .With<UnitID>()
+                    .And<SlotPosition>()
+                    .Build()
+            );
 
         private readonly IGroup<Entity<Game>> _roots = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
@@ -27,16 +29,16 @@ namespace DeckScaler.Systems
         public void Execute()
         {
             foreach (var root in _roots)
-            foreach (var slot in _slots)
+            foreach (var unit in _units)
             {
-                var direction = root.Get<Move, Vector2>().x.SignInt();
-                var slotPosition = slot.Get<WorldPosition, Vector2>().x;
+                var scrollDirection = root.Get<Move, Vector2>().x.SignInt();
+                var slotPosition = unit.Get<SlotPosition, Vector2>().x;
 
-                var distanceFromCenter = -slotPosition * direction;
+                var distanceFromCenter = -slotPosition * scrollDirection;
                 var config = ViewConfig.StretchyScroll;
                 var delay = config.DelayAtCenter + config.StepPerDistanceRate * distanceFromCenter;
 
-                slot.Replace<AnimationDuration, float>(delay);
+                unit.Replace<AnimationDuration, float>(delay);
             }
         }
     }

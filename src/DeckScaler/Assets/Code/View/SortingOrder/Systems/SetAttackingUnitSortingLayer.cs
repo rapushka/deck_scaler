@@ -24,10 +24,10 @@ namespace DeckScaler.Systems
         {
             foreach (var unit in _units)
             {
-                var slot = unit.Get<InSlot, EntityID>().GetEntity();
-                var slotIndex = slot.Get<TeamSlot, int>();
+                // var slot = unit.Get<InSlot, EntityID>().GetEntity();
+                // var slotIndex = slot.Get<TeamSlot, int>();
 
-                unit.ReplaceIfDifferent<SpriteSortOrder, int>(Config.Attack + slotIndex);
+                // unit.ReplaceIfDifferent<SpriteSortOrder, int>(Config.Attack + slotIndex);
             }
         }
     }

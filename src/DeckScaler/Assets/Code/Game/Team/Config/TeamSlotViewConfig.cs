@@ -1,4 +1,5 @@
 using System;
+using SmartIdTable;
 using UnityEngine;
 
 namespace DeckScaler
@@ -10,8 +11,7 @@ namespace DeckScaler
 
         [field: SerializeField] public float SpacingBetweenSlots { get; private set; }
 
-        [field: SerializeField] public Vector2 TeammateInSlotOffset { get; private set; }
-        [field: SerializeField] public Vector2 EnemyInSlotOffset    { get; private set; }
+        [field: SerializeField] public SerializedDictionary<Side, Vector2> SlotOffsetsBySide { get; private set; }
 
         [field: SerializeField] public StretchyScrollParams StretchyScroll { get; private set; }
 

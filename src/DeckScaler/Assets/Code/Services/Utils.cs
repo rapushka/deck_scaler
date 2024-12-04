@@ -1,12 +1,6 @@
 namespace DeckScaler.Service
 {
-    public interface IUtils : IService
-    {
-        TeamSlotsUtil TeamSlotsUtil { get; }
-    }
+    public interface IUtils : IService { }
 
-    public class Utils : IUtils
-    {
-        public TeamSlotsUtil TeamSlotsUtil { get; } = new();
-    }
+    public class Utils : IUtils { }
 }

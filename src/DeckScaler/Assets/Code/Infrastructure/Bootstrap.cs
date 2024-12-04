@@ -27,6 +27,7 @@ namespace DeckScaler
             Services.Setup<ITime>(new SimpleTime());
             Services.Setup<IInput>(new UnityInput());
             Services.Setup<IUtils>(new Utils());
+            Services.Setup<IIndexesInitializer>(new IndexesInitializer());
 
             SetupDebugServices();
 

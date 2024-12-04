@@ -4,6 +4,8 @@ namespace DeckScaler
 {
     public static class Constants
     {
+        public const int TeamSlotsStartingIndex = 0;
+
         public const string MenuPrefix = "375/Deck Scaler/";
 
         public static class TableID
@@ -21,6 +23,13 @@ namespace DeckScaler
             public const float DefaultDuration = 0.3f;
 
             public static readonly AnimationCurve LinearEasing = AnimationCurve.Linear(0f, 0f, 1f, 1f);
+        }
+
+        public static class Sign
+        {
+            public const int Left = -1;
+            public const int Center = 0;
+            public const int Right = 1;
         }
     }
 }

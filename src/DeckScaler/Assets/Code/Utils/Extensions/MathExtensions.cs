@@ -11,11 +11,14 @@ namespace DeckScaler
         public static bool ApproximatelyEquals(this float @this, float other) => Mathf.Approximately(@this, other);
 
         public static int SignInt(this float @this)
-        {
-            return @this.ApproximatelyEquals(0f) ? 0
-                : (double)@this >= 0             ? 1
-                                                   : -1;
-        }
+            => @this.ApproximatelyEquals(0f) ? Constants.Sign.Center
+                : @this >= 0d                ? Constants.Sign.Right
+                                               : Constants.Sign.Left;
+
+        public static int Sign(this int @this)
+            => @this == 0    ? Constants.Sign.Center
+                : @this >= 0 ? Constants.Sign.Right
+                               : Constants.Sign.Left;
 
         public static float Abs(this float @this) => Mathf.Abs(@this);
 

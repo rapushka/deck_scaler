@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DeckScaler.Component;
 using DeckScaler.Scopes;
 using Entitas;
@@ -12,36 +13,32 @@ namespace DeckScaler.Systems
                 MatcherBuilder<Game>
                     .With<Dragging>()
                     .And<UnitID>()
-                    .And<InSlot>()
+                    .And<SlotIndex>()
                     .Build()
             );
-        private readonly IGroup<Entity<Game>> _slots
+        private readonly IGroup<Entity<Game>> _unitsToSwap
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<TeamSlot>()
+                    .With<SlotIndex>()
                     .And<ClosestSlotForReorder>()
                     .Build()
             );
+        private readonly List<Entity<Game>> _buffer1 = new(16);
+        private readonly List<Entity<Game>> _buffer2 = new(16);
 
         public void Execute()
         {
-            foreach (var newSlot in _slots)
-            foreach (var unit in _draggedUnits)
+            foreach (var unitToSwap in _unitsToSwap.GetEntities(_buffer1))
+            foreach (var draggedUnit in _draggedUnits.GetEntities(_buffer2))
             {
-                var oldSlotID = unit.Get<InSlot, EntityID>();
-                var newSlotID = newSlot.Get<ID, EntityID>();
+                var oldSlotIndex = draggedUnit.Get<SlotIndex, int>();
+                var newSlotIndex = unitToSwap.Get<SlotIndex, int>();
 
-                if (oldSlotID == newSlotID)
+                if (oldSlotIndex == newSlotIndex)
                     continue;
 
-                if (newSlot.TryGet<HeldTeammate, EntityID>(out var teammateID))
-                {
-                    teammateID.GetEntity()
-                        .SetupTeammateToSlot(oldSlotID.GetEntity())
-                        .Add<ReturnToSlot>();
-                }
-
-                unit.SetupTeammateToSlot(newSlot);
+                draggedUnit.SwapValues<SlotIndex, int>(unitToSwap);
+                unitToSwap.Add<ReturnToSlot>();
             }
         }
     }

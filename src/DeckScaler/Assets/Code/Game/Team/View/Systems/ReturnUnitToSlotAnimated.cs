@@ -15,10 +15,9 @@ namespace DeckScaler.Systems
                     .With<UnitID>()
                     .And<ReturnToSlot>()
                     .And<WorldPosition>()
+                    .And<SlotPosition>()
                     .Build()
             );
-
-        private static TeamSlotViewConfig ViewConfig => Services.Get<IConfigs>().TeamSlotView;
 
         private static UnitViewConfig UnitViewConfig => Services.Get<IConfigs>().UnitView;
 
@@ -26,19 +25,13 @@ namespace DeckScaler.Systems
         {
             foreach (var unit in _units)
             {
-                var offset = unit.Is<Teammate>() ? ViewConfig.TeammateInSlotOffset : ViewConfig.EnemyInSlotOffset;
-
-                var slot = unit.Get<InSlot, EntityID>().GetEntity();
-                var slotPosition = slot.Get<WorldPosition, Vector2>();
-
+                var slotPosition = unit.Get<SlotPosition, Vector2>();
                 var duration = UnitViewConfig.ReturnAfterDragDuration;
 
-                var targetPosition = slotPosition + offset;
-
                 unit
-                    .Replace<TargetPosition, Vector2>(targetPosition)
+                    .Replace<TargetPosition, Vector2>(slotPosition)
                     .Is<AnimateMovement>(true)
-                    .Replace<StopAnimatingMovementAfter, Timer>(new Timer(duration))
+                    .Replace<StopAnimatingMovementAfter, Timer>(new(duration))
                     .Replace<AnimationDuration, float>(duration)
                     ;
             }

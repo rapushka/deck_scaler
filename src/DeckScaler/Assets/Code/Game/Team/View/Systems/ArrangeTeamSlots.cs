@@ -1,7 +1,6 @@
 using DeckScaler.Component;
 using DeckScaler.Scopes;
 using DeckScaler.Service;
-using DeckScaler;
 using Entitas;
 using Entitas.Generic;
 using UnityEngine;
@@ -16,25 +15,35 @@ namespace DeckScaler.Systems
                 .Build()
         );
 
-        private static TeamSlotViewConfig ViewConfig => Services.Get<IConfigs>().TeamSlotView;
+        private readonly IGroup<Entity<Game>> _units
+            = Contexts.Instance.GetGroup(
+                MatcherBuilder<Game>
+                    .With<UnitID>()
+                    .And<SlotIndex>()
+                    .And<OnSide>()
+                    .Build()
+            );
 
-        private static TeamSlotsUtil TeamSlotsUtil => Services.Get<IUtils>().TeamSlotsUtil;
+        private static TeamSlotViewConfig ViewConfig => Services.Get<IConfigs>().TeamSlotView;
 
         public void Execute()
         {
             foreach (var root in _roots)
-            foreach (var (slot, index) in TeamSlotsUtil.GetTeamSlotsInOrder())
+            foreach (var unit in _units)
             {
                 var rootPosition = root.Get<WorldPosition, Vector2>();
 
+                var index = unit.Get<SlotIndex, int>() - 1;
                 var xPosition = index * ViewConfig.SpacingBetweenSlots;
-                var localPosition = Vector2.right * xPosition;
+                var slotCenterPosition = Vector2.right * xPosition;
 
-                var targetPosition = localPosition + rootPosition;
-                var currentPosition = slot.Get<WorldPosition, Vector2>();
+                var sideOffset = ViewConfig.SlotOffsetsBySide[unit.Get<OnSide, Side>()];
 
-                if (!currentPosition.ApproximatelyEquals(targetPosition))
-                    slot.SetPositionAnimatable(targetPosition);
+                var prevPosition = unit.GetOrDefault<SlotPosition>();
+                var newPosition = slotCenterPosition + rootPosition + sideOffset;
+
+                if (prevPosition is null || !prevPosition.Value.ApproximatelyEquals(newPosition))
+                    unit.Replace<SlotPosition, Vector2>(newPosition);
             }
         }
     }
