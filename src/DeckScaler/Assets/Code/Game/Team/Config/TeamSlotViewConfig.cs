@@ -15,6 +15,8 @@ namespace DeckScaler
 
         [field: SerializeField] public StretchyScrollParams StretchyScroll { get; private set; }
 
+        [field: SerializeField] public float DelayBeforeFillingGaps { get; private set; } = 0.3f;
+
         [Serializable]
         public struct StretchyScrollParams
         {
