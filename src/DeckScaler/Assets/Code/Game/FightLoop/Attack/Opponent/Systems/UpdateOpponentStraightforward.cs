@@ -34,11 +34,11 @@ namespace DeckScaler.Systems
                 var slotIndex = unit.Get<SlotIndex, int>();
                 var side = unit.Get<OnSide, Side>();
 
-                if (!Context.TryGetUnitFromSlot(side.Flip(), slotIndex, out var opponent))
+                if (!Context.TryGetUnitFromSlot(slotIndex, side.Flip(), out var opponent))
                     continue;
 
                 if (!opponent.Is<Dead>())
-                    unit.Add<Opponent, EntityID>(opponent.Get<ID, EntityID>());
+                    unit.SetByID<Opponent>(opponent);
             }
         }
     }

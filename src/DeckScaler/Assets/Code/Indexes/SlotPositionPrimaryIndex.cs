@@ -55,13 +55,13 @@ namespace DeckScaler
 
     public static class SlotPositionIndexExtension
     {
-        public static bool TryGetUnitFromSlot(this ScopeContext<Game> context, Side side, int index, out Entity<Game> unit)
+        public static bool TryGetUnitFromSlot(this ScopeContext<Game> context, int index, Side side, out Entity<Game> unit)
         {
-            unit = context.GetUnitFromSlotOrDefault(side, index);
+            unit = context.GetUnitFromSlotOrDefault(index, side);
             return unit is not null;
         }
 
-        public static Entity<Game> GetUnitFromSlotOrDefault(this ScopeContext<Game> context, Side side, int index)
+        public static Entity<Game> GetUnitFromSlotOrDefault(this ScopeContext<Game> context, int index, Side side)
         {
             var entityIndex = context.GetEntityIndex(SlotPositionPrimaryIndex.SlotPosition);
             var gameIndex = (PrimaryEntityIndex<Entity<Game>, PositionKey>)entityIndex;

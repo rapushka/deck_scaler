@@ -3,82 +3,75 @@ using DeckScaler.Component;
 using DeckScaler.Scopes;
 using Entitas;
 using Entitas.Generic;
+using JetBrains.Annotations;
+using static DeckScaler.Constants;
 
 namespace DeckScaler.Systems
 {
-    // public class SeekForNeighborOpponents : IExecuteSystem
-    // {
-    //     private readonly IGroup<Entity<Game>> _events
-    //         = Contexts.Instance.GetGroup(
-    //             MatcherBuilder<Game>
-    //                 .With<RecalculateOpponents>()
-    //                 .Build()
-    //         );
-    //     private readonly IGroup<Entity<Game>> _units
-    //         = Contexts.Instance.GetGroup(
-    //             MatcherBuilder<Game>
-    //                 .With<UnitID>()
-    //                 .Without<Opponent>()
-    //         );
-    //     private readonly List<Entity<Game>> _buffer = new(128);
-    //
-    //     private static PrimaryEntityIndex<Game, TeamSlot, int> Index => Contexts.Instance.TeamSlotIndex();
-    //
-    //     public void Execute()
-    //     {
-    //         foreach (var _ in _events)
-    //         foreach (var unit in _units.GetEntities(_buffer))
-    //         {
-    //             var slot = unit.Get<InSlot>().Value.GetEntity();
-    //             var currentIndex = slot.Get<TeamSlot>().Value;
-    //
-    //             var delta = 1;
-    //
-    //             var loop = EndlessLoopPreventor.New();
-    //             while (loop.Continue)
-    //             {
-    //                 var left = currentIndex - delta;
-    //                 var resultFromLeft = TryGetFrom(left, unit);
-    //                 if (resultFromLeft is Result.Success)
-    //                     break;
-    //
-    //                 var right = currentIndex + delta;
-    //                 var resultFromRight = TryGetFrom(right, unit);
-    //                 if (resultFromRight is Result.Success)
-    //                     break;
-    //
-    //                 if (resultFromLeft is Result.NoSlot
-    //                     && resultFromRight is Result.NoSlot)
-    //                     break;
-    //
-    //                 delta++;
-    //             }
-    //         }
-    //     }
-    //
-    //     private static Result TryGetFrom(int index, Entity<Game> unit)
-    //     {
-    //         if (!Index.TryGetEntity(index, out var targetSlot))
-    //             return Result.NoSlot;
-    //
-    //         var opponent = unit.Is<Teammate>()
-    //             ? targetSlot.GetOrDefault<HeldEnemy>()?.Value
-    //             : targetSlot.GetOrDefault<HeldTeammate>()?.Value;
-    //
-    //         if (opponent is not null && !opponent.Value.GetEntity().Is<Dead>())
-    //         {
-    //             unit.Add<Opponent, EntityID>(opponent.Value);
-    //             return Result.Success;
-    //         }
-    //
-    //         return Result.SlotIsEmpty;
-    //     }
-    //
-    //     private enum Result
-    //     {
-    //         NoSlot,
-    //         SlotIsEmpty,
-    //         Success,
-    //     }
-    // }
+    public class SeekForNeighborOpponents : IExecuteSystem
+    {
+        private readonly IGroup<Entity<Game>> _events
+            = Contexts.Instance.GetGroup(
+                MatcherBuilder<Game>
+                    .With<RecalculateOpponents>()
+                    .Build()
+            );
+        private readonly IGroup<Entity<Game>> _unitsWithoutOpponents
+            = Contexts.Instance.GetGroup(
+                MatcherBuilder<Game>
+                    .With<UnitID>()
+                    .And<SlotIndex>()
+                    .And<OnSide>()
+                    .Without<Opponent>()
+            );
+        private readonly IGroup<Entity<Game>> _placedUnits
+            = Contexts.Instance.GetGroup(
+                MatcherBuilder<Game>
+                    .With<UnitID>()
+                    .And<SlotIndex>()
+                    .And<OnSide>()
+                    .Without<Dead>()
+            );
+        private readonly List<Entity<Game>> _buffer = new(128);
+
+        public void Execute()
+        {
+            foreach (var _ in _events)
+            foreach (var unit in _unitsWithoutOpponents.GetEntities(_buffer))
+            {
+                var slotIndex = unit.Get<SlotIndex, int>();
+                var side = unit.Get<OnSide, Side>();
+
+                var opponent = ClosestOpponent(slotIndex, side);
+
+                if (opponent is not null)
+                    unit.SetByID<Opponent>(opponent);
+            }
+        }
+
+        [CanBeNull]
+        private Entity<Game>? ClosestOpponent(int slotIndex, Side side)
+        {
+            int? minDelta = null;
+            Entity<Game> closestUnit = null;
+
+            var opponentSide = side.Flip();
+
+            foreach (var entity in _placedUnits.Where(e => e.Get<OnSide, Side>() == opponentSide))
+            {
+                var index = entity.Get<SlotIndex, int>();
+                var signedDelta = index - slotIndex;
+                var delta = signedDelta.Abs();
+                var isOnLeft = signedDelta.Sign() is Sign.Left;
+
+                if (minDelta is null || minDelta > delta || (minDelta == delta && isOnLeft))
+                {
+                    minDelta = delta;
+                    closestUnit = entity;
+                }
+            }
+
+            return closestUnit;
+        }
+    }
 }

@@ -24,5 +24,12 @@ namespace DeckScaler
 
             public static readonly AnimationCurve LinearEasing = AnimationCurve.Linear(0f, 0f, 1f, 1f);
         }
+
+        public static class Sign
+        {
+            public const int Left = -1;
+            public const int Center = 0;
+            public const int Right = 1;
+        }
     }
 }

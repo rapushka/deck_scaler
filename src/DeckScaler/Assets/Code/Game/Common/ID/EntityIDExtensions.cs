@@ -1,3 +1,4 @@
+using Codice.Client.Common.Threading;
 using DeckScaler.Component;
 using DeckScaler.Scopes;
 using Entitas.Generic;
@@ -23,5 +24,12 @@ namespace DeckScaler
         public static bool TryGetEntity(this EntityID @this, out Entity<Game> entity) => Index.TryGetEntity(@this, out entity);
 
         public static bool IsEntityDead(this EntityID @this) => @this.GetEntity().Is<Dead>();
+
+        public static Entity<Game> SetByID<TComponent>(this Entity<Game> @this, Entity<Game> other)
+            where TComponent : ValueComponent<EntityID>, IInScope<Game>, new()
+        {
+            @this.Replace<TComponent, EntityID>(other.Get<ID, EntityID>());
+            return @this;
+        }
     }
 }
