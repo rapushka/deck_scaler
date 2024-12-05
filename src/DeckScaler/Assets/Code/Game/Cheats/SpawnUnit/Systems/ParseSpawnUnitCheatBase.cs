@@ -10,12 +10,15 @@ namespace DeckScaler.Cheats.Systems
         private static UnitsConfig Config => Services.Get<IConfigs>().Units;
         private static IDebug      Debug  => Services.Get<IDebug>();
 
-        protected abstract string GroupID { get; }
-        protected abstract Side   Side    { get; }
+        protected abstract Side Side { get; }
 
         protected override bool TryParse(IList<Group> groups)
+            => TryGroup(groups, Constants.TableID.Allies)
+                || TryGroup(groups, Constants.TableID.Enemies);
+
+        private bool TryGroup(IList<Group> groups, string prefix)
         {
-            var unitID = $"{GroupID}{groups[1]}";
+            var unitID = $"{prefix}{groups[1]}";
 
             if (!Config.TryGet(unitID, out var unitConfig))
             {
