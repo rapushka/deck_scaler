@@ -20,9 +20,6 @@ namespace DeckScaler
             Add(new AttackFeature());
 
             Add(new PassTurn());
-
-            Add(new RemoveComponent<WaitForAnimations>());
-            Add(new RemoveComponent<TurnStarted>());
         }
     }
 }

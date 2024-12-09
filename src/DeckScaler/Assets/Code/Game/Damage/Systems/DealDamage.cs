@@ -21,7 +21,7 @@ namespace DeckScaler.Systems
                 var target = attack.Get<Target>().Value.GetEntity();
                 var damage = attack.Get<Component.DealDamage>().Value;
 
-                target.Replace<Health, int>(target.Get<Health>().Value - damage);
+                target.Increment<Health>(-damage);
             }
         }
     }

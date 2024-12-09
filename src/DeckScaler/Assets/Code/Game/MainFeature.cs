@@ -26,6 +26,8 @@ namespace DeckScaler
             Add(new TeamSlotsFeature());
 
             Add(new SequentialFightLoopFeature());
+
+            Add(new OnTurnStartedReactionsFeature());
             Add(new DamageFeature());
             Add(new DeathFeature());
 
