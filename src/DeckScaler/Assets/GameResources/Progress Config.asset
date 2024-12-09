@@ -16,3 +16,4 @@ MonoBehaviour:
     <TeammateIDs>k__BackingField:
     - Value: Unit/Ally/Crook
     - Value: Unit/Ally/Crook
+    <Gold>k__BackingField: 10
