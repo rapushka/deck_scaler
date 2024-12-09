@@ -13,6 +13,8 @@ namespace SmartIdTable.Editor.Postprocessors
 		[DidReloadScripts]
 		private static void OnCompilationFinished()
 		{
+			return; // #119
+
 			Log("Compilation finished");
 			ProcessScriptReimport(out RemappingData remappingData);
 

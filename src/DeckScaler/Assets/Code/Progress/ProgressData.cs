@@ -9,6 +9,7 @@ namespace DeckScaler
     {
         [field: SerializeField] public List<UnitIDRef> TeammateIDs { get; private set; }
         [field: SerializeField] public int             Gold        { get; private set; }
+        [field: SerializeField] public int             EnemyGold   { get; private set; }
 
         public void AddTeammate(string unitID)
         {
@@ -21,6 +22,7 @@ namespace DeckScaler
             {
                 TeammateIDs = from.TeammateIDs,
                 Gold = from.Gold,
+                EnemyGold = from.EnemyGold,
             };
         }
     }
