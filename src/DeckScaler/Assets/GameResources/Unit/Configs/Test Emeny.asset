@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Test Emeny
   m_EditorClassIdentifier: 
   <ID>k__BackingField: Unit/Enemy/TestEnemy
-  <Type>k__BackingField: 2
   <Suit>k__BackingField: 2
-  <MaxHealth>k__BackingField: 2
+  <MaxHealth>k__BackingField: 5
   <BaseDamage>k__BackingField: 1
   <Power>k__BackingField: 2
