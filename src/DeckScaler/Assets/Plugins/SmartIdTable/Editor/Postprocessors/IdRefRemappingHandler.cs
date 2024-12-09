@@ -6,111 +6,114 @@ using UnityEditor.Callbacks;
 using Debug = UnityEngine.Debug;
 using RuntimeUtils = SmartIdTable.Utils;
 
+// ReSharper disable All // #119
+#pragma warning disable CS0162 // Unreachable code detected // #119
+
 namespace SmartIdTable.Editor.Postprocessors
 {
-	internal static class IdRefRemappingHandler
-	{
-		[DidReloadScripts]
-		private static void OnCompilationFinished()
-		{
-			return; // #119
+    internal static class IdRefRemappingHandler
+    {
+        [DidReloadScripts]
+        private static void OnCompilationFinished()
+        {
+            return; // #119
 
-			Log("Compilation finished");
-			ProcessScriptReimport(out RemappingData remappingData);
+            Log("Compilation finished");
+            ProcessScriptReimport(out RemappingData remappingData);
 
-			bool updatedAnyTable = false;
-			foreach (IdTable idTable in RuntimeUtils.GetAllIdTables())
-			{
-				if (!remappingData.TryGetValue(idTable.name, out Dictionary<string, List<RefData>> remaps))
-					continue;
+            bool updatedAnyTable = false;
+            foreach (IdTable idTable in RuntimeUtils.GetAllIdTables())
+            {
+                if (!remappingData.TryGetValue(idTable.name, out Dictionary<string, List<RefData>> remaps))
+                    continue;
 
-				bool didRemaps = ProcessRemaps(idTable, remaps);
+                bool didRemaps = ProcessRemaps(idTable, remaps);
 
-				if (didRemaps)
-					continue;
+                if (didRemaps)
+                    continue;
 
-				updatedAnyTable = true;
-				EditorUtility.SetDirty(idTable);
-			}
+                updatedAnyTable = true;
+                EditorUtility.SetDirty(idTable);
+            }
 
-			if (updatedAnyTable)
-			{
-				AssetDatabase.SaveAssets();
-				AssetDatabase.Refresh();
-			}
-		}
+            if (updatedAnyTable)
+            {
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
+            }
+        }
 
-		private static bool ProcessRemaps(IdTable idTable, Dictionary<string, List<RefData>> remaps)
-		{
-			bool setDirty = false;
+        private static bool ProcessRemaps(IdTable idTable, Dictionary<string, List<RefData>> remaps)
+        {
+            bool setDirty = false;
 
-			foreach ((string id, List<RefData> refList) in remaps)
-			{
-				if (!idTable.Contains(id))
-					continue;
+            foreach ((string id, List<RefData> refList) in remaps)
+            {
+                if (!idTable.Contains(id))
+                    continue;
 
-				foreach (RefData refData in refList)
-				{
-					idTable.AddReferenceToId(id, refData);
-					setDirty = true;
-				}
-			}
+                foreach (RefData refData in refList)
+                {
+                    idTable.AddReferenceToId(id, refData);
+                    setDirty = true;
+                }
+            }
 
-			return setDirty;
-		}
+            return setDirty;
+        }
 
-		private class RemappingData : Dictionary<string, Dictionary<string, List<RefData>>> { }
+        private class RemappingData : Dictionary<string, Dictionary<string, List<RefData>>> { }
 
-		private static void ProcessScriptReimport(out RemappingData remappingData)
-		{
-			remappingData = new RemappingData();
+        private static void ProcessScriptReimport(out RemappingData remappingData)
+        {
+            remappingData = new RemappingData();
 
-			foreach (IdTable idTable in RuntimeUtils.GetAllIdTables())
-			foreach (IdDefinition idDefinition in idTable.IdDefinitions)
-			{
-				var refsToRemove = new List<RefData>();
+            foreach (IdTable idTable in RuntimeUtils.GetAllIdTables())
+            foreach (IdDefinition idDefinition in idTable.IdDefinitions)
+            {
+                var refsToRemove = new List<RefData>();
 
-				foreach (RefData assetRef in idDefinition.AssetRefs)
-				{
-					if (assetRef.ReferenceType is RefData.RefType.SceneObject)
-						continue;
-					
-					var fieldInfo = ReflectionUtils.AssetRefToFieldInfo(assetRef, out object fieldHolder);
-					var idRefAttribute = fieldInfo.GetCustomAttribute<IdRefAttribute>();
-					string currentValue = (string)fieldInfo.GetValue(fieldHolder);
+                foreach (RefData assetRef in idDefinition.AssetRefs)
+                {
+                    if (assetRef.ReferenceType is RefData.RefType.SceneObject)
+                        continue;
 
-					string desiredTableName = idRefAttribute.TableName;
-					if (Utils.IsSpecialValue(currentValue) || desiredTableName == idTable.name)
-						continue;
+                    var fieldInfo = ReflectionUtils.AssetRefToFieldInfo(assetRef, out object fieldHolder);
+                    var idRefAttribute = fieldInfo.GetCustomAttribute<IdRefAttribute>();
+                    string currentValue = (string)fieldInfo.GetValue(fieldHolder);
 
-					Log($"Need to move asset ref {assetRef.PropertyPath} from table '{idTable.name}' to '{desiredTableName}'");
-					if (!remappingData.TryGetValue(desiredTableName, out Dictionary<string, List<RefData>> tableRemaps))
-					{
-						tableRemaps = new Dictionary<string, List<RefData>>();
-						remappingData.Add(desiredTableName, tableRemaps);
-					}
+                    string desiredTableName = idRefAttribute.TableName;
+                    if (Utils.IsSpecialValue(currentValue) || desiredTableName == idTable.name)
+                        continue;
 
-					if (!tableRemaps.TryGetValue(currentValue, out List<RefData> refList))
-					{
-						refList = new List<RefData>();
-						tableRemaps.Add(currentValue, refList);
-					}
+                    Log($"Need to move asset ref {assetRef.PropertyPath} from table '{idTable.name}' to '{desiredTableName}'");
+                    if (!remappingData.TryGetValue(desiredTableName, out Dictionary<string, List<RefData>> tableRemaps))
+                    {
+                        tableRemaps = new Dictionary<string, List<RefData>>();
+                        remappingData.Add(desiredTableName, tableRemaps);
+                    }
 
-					refList.Add(assetRef);
-					refsToRemove.Add(assetRef);
-				}
+                    if (!tableRemaps.TryGetValue(currentValue, out List<RefData> refList))
+                    {
+                        refList = new List<RefData>();
+                        tableRemaps.Add(currentValue, refList);
+                    }
 
-				foreach (RefData refData in refsToRemove)
-				{
-					idDefinition.RemoveObjectRef(refData);
-				}
+                    refList.Add(assetRef);
+                    refsToRemove.Add(assetRef);
+                }
 
-				if (refsToRemove.Count > 0)
-					EditorUtility.SetDirty(idTable);
-			}
-		}
-		
-		[Conditional("ID_TABLE_ENABLE_LOGS")]
-		private static void Log(object message) => Debug.Log(message);
-	}
+                foreach (RefData refData in refsToRemove)
+                {
+                    idDefinition.RemoveObjectRef(refData);
+                }
+
+                if (refsToRemove.Count > 0)
+                    EditorUtility.SetDirty(idTable);
+            }
+        }
+
+        [Conditional("ID_TABLE_ENABLE_LOGS")]
+        private static void Log(object message) => Debug.Log(message);
+    }
 }
