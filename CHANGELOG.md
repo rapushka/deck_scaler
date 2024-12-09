@@ -5,6 +5,7 @@
 - Suits abilities implemented:
   - Logic:
     - [Spades: Increase dealt damage](https://github.com/rapushka/deck_scaler/pull/132)
+- [added counters for health-bars](https://github.com/rapushka/deck_scaler/pull/134)
 
 # v0.0.11
 - [block ui during attack animations](https://github.com/rapushka/deck_scaler/pull/107)
