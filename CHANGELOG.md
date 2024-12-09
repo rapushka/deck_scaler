@@ -6,7 +6,7 @@
   - Logic:
     - [Spades: Increase dealt damage](https://github.com/rapushka/deck_scaler/pull/132)
     - [Hearts: Unit heals themself](https://github.com/rapushka/deck_scaler/issues/128)
-    - WIP: Clubs
+    - [Clubs: Decrease income damage](https://github.com/rapushka/deck_scaler/pull/137)
     - [Diamonds: Steal money from opponent](https://github.com/rapushka/deck_scaler/pull/136)
   - WIP: View
 - [added counters for health-bars](https://github.com/rapushka/deck_scaler/pull/134)
