@@ -19,7 +19,7 @@ namespace DeckScaler
             var viewTransform = view.transform;
 
             view.Entity
-                .AddSafely<Name, string>(view.name)
+                .AddSafely<DebugName, string>(view.name)
                 .Add<ID, EntityID>(EntityID.Next())
                 .Add<View, EntityBehaviour<Game>>(view)
                 .Add<ViewTransform, Transform>(viewTransform)

@@ -22,7 +22,7 @@ namespace DeckScaler
             => $"{ID} {EntityName}";
 
         private string EntityName
-            => this.GetEntityOrDefault()?.GetOrDefault<Name, string>("no name")
+            => this.GetEntityOrDefault()?.GetOrDefault<DebugName, string>("no name")
                 ?? "Entity is destroyed:(";
 
         public override bool Equals(object obj) => obj is EntityID other && Equals(other);
