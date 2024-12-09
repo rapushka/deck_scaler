@@ -7,7 +7,8 @@ namespace DeckScaler
         public DamageFeature()
             : base(nameof(DamageFeature))
         {
-            Add(new IncreaseDamageForSpades());
+            Add(new IncreaseOutcomeDamageForSpades());
+            Add(new DecreaseIncomeDamageForClubs());
 
             Add(new DealDamage());
         }

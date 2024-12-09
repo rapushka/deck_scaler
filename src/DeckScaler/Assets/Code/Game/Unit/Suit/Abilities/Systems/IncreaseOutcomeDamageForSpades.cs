@@ -5,7 +5,7 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public sealed class IncreaseDamageForSpades : IExecuteSystem
+    public sealed class IncreaseOutcomeDamageForSpades : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _attacks = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
@@ -19,9 +19,8 @@ namespace DeckScaler.Systems
             foreach (var attack in _attacks)
             {
                 var attacker = attack.Get<Sender, EntityID>().GetEntity();
-                var attackerSuit = attacker.Get<Component.Suit, Suit>();
 
-                if (attackerSuit is not Suit.Spades)
+                if (!attacker.InSuit(Suit.Spades))
                     continue;
 
                 var attackerPower = attacker.Get<Power, int>();

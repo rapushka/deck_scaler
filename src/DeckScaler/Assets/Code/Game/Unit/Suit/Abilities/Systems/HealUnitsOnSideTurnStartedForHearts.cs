@@ -40,7 +40,7 @@ namespace DeckScaler.Systems
 
                 bool IsOnCurrentSide(Entity<Game> unit) => unit.Get<OnSide, Side>() == currentSide;
 
-                bool IsHearts(Entity<Game> unit) => unit.Get<Component.Suit, Suit>() is Suit.Hearts;
+                bool IsHearts(Entity<Game> unit) => unit.InSuit(Suit.Hearts);
             }
         }
     }
