@@ -10,7 +10,7 @@ namespace DeckScaler.Systems
             CreateEntity.Empty()
                 .Add<DebugName, string>("turn tracker")
                 .Add<TurnTracker>()
-                .Add<WaitForAnimations>()
+                .Add<WaitingForAnimations>()
                 ;
         }
     }

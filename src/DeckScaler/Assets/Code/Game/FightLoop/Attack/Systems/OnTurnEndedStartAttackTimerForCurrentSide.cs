@@ -12,7 +12,7 @@ namespace DeckScaler.Systems
             MatcherBuilder<Game>
                 .With<TurnTracker>()
                 .And<CurrentTurn>()
-                .And<TurnEnding>()
+                .And<TurnJustEnded>()
                 .Build()
         );
         private readonly IGroup<Entity<Game>> _units = Contexts.Instance.GetGroup(

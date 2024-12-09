@@ -24,7 +24,11 @@ namespace DeckScaler.Systems
             foreach (var _ in _requests)
             foreach (var turnTracker in _turnTrackers)
             {
-                turnTracker.Is<TurnEnding>(true);
+                turnTracker
+                    .Is<TurnJustEnded>(true)
+                    .Is<FinishingTurn>(true)
+                    .Is<WaitingForAnimations>(true)
+                    ;
             }
         }
     }

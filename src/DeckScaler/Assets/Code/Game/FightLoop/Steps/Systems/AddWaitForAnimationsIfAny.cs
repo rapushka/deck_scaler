@@ -28,7 +28,7 @@ namespace DeckScaler.Systems
             foreach (var _ in _entities)
             {
                 turnTracker
-                    .Is<WaitForAnimations>(true)
+                    .Is<WaitingForAnimations>(true)
                     ;
             }
         }

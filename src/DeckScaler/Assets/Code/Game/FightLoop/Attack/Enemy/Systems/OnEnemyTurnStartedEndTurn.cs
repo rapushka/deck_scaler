@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using DeckScaler.Component;
 using DeckScaler.Scopes;
 using Entitas;
@@ -12,18 +11,17 @@ namespace DeckScaler.Systems
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
                     .With<TurnTracker>()
-                    .Without<WaitForAnimations>()
-                    .Without<TurnEnding>()
+                    .Without<WaitingForAnimations>()
+                    .Without<FinishingTurn>()
                     .Build()
             );
-        private readonly List<Entity<Game>> _buffer = new(4);
 
         public void Execute()
         {
-            foreach (var turnTracker in _turnTrackers.GetEntities(_buffer))
+            foreach (var turnTracker in _turnTrackers)
             {
                 if (turnTracker.IsEnemyTurn())
-                    turnTracker.Is<TurnEnding>(true);
+                    CreateEntity.OneFrame().Add<RequestEndTurn>();
             }
         }
     }

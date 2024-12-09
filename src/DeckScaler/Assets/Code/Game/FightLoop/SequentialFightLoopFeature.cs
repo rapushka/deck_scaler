@@ -11,18 +11,16 @@ namespace DeckScaler
             Add(new InitializeCurrentTurnTracker());
             Add(new StartWithPlayerTurn());
 
+            Add(new EnemyAiFeature());
             Add(new GatherEndTurnRequests());
+
+            Add(new AttackFeature());
 
             Add(new AddWaitForAnimationsIfAny<TimerBeforeAttack>());
             Add(new AddWaitForAnimationsIfAny<PrepareAttack>());
             Add(new AddWaitForAnimationsIfAny<PlayingAnimation>());
 
-            Add(new AttackFeature());
-
             Add(new PassTurn());
-
-            Add(new RemoveComponent<WaitForAnimations>());
-            Add(new RemoveComponent<TurnStarted>());
         }
     }
 }

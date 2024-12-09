@@ -8,8 +8,6 @@ namespace DeckScaler
         public AttackFeature()
             : base(nameof(AttackFeature))
         {
-            Add(new EnemyAiFeature());
-
             Add(new OnTurnEndedStartAttackTimerForCurrentSide());
 
             Add(new OpponentsFeature());
