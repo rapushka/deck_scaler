@@ -19,35 +19,28 @@ namespace DeckScaler.Service
 
         private GameObject _currentView;
 
+        private static UiConfig Config => ServiceLocator.Resolve<IConfigs>().Ui;
+
+        private static ICameras Cameras => ServiceLocator.Resolve<ICameras>();
+
         public void Init()
         {
-            var canvasPrefab = Resources.Load<UiCanvas>("UI/Canvas/Canvas");
-            _uiCanvas = Object.Instantiate(canvasPrefab);
-            _uiCanvas.Init(ServiceLocator.Get<ICameras>().UiCamera);
+            _uiCanvas = Object.Instantiate(Config.CanvasPrefab);
+            _uiCanvas.Init(Cameras.UiCamera);
         }
 
-        public void ShowMainMenu()
-        {
-            SetView(Resources.Load<GameObject>("UI/MainMenu/MainMenu"));
-        }
+        public void ShowMainMenu() => SetView(Config.MainMenu);
 
-        public void ShowGameplayHUD()
-        {
-            SetView(Resources.Load<GameObject>("UI/GameplayHUD/GameplayHUD"));
-        }
+        public void ShowGameplayHUD() => SetView(Config.GameplayHUD);
 
         public TScene GetScene<TScene>()
             where TScene : UiScene
-        {
-            return _currentView.GetComponent<TScene>()
-                   ?? throw new InvalidOperationException($"Current view isn't the {typeof(TScene).Name}");
-        }
+            => _currentView.GetComponent<TScene>()
+                ?? throw new InvalidOperationException($"Current view isn't the {typeof(TScene).Name}");
 
         public void SetView(GameObject prefab)
         {
-            if (_currentView != null)
-                Object.Destroy(_currentView);
-
+            _currentView?.DestroyObject();
             _currentView = Object.Instantiate(prefab, _uiCanvas.Root);
         }
     }

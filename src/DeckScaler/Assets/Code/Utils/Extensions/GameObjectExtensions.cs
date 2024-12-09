@@ -12,17 +12,19 @@ namespace DeckScaler
                 ? @this.gameObject.activeInHierarchy
                 : @this.gameObject.activeSelf;
 
-        public static void DestroyObject(this MonoBehaviour @this)
+        public static void DestroyObject(this MonoBehaviour @this) => @this.gameObject.DestroyObject();
+
+        public static void DestroyObject(this GameObject @this)
         {
 #if UNITY_EDITOR
             if (!Application.isPlaying)
             {
-                Object.DestroyImmediate(@this.gameObject);
+                Object.DestroyImmediate(@this);
                 return;
             }
 #endif
 
-            Object.Destroy(@this.gameObject);
+            Object.Destroy(@this);
         }
 
         [CanBeNull]

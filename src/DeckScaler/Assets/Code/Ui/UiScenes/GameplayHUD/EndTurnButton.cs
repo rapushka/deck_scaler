@@ -4,7 +4,7 @@ namespace DeckScaler
 {
     public class EndTurnButton : BaseButton
     {
-        private static IUiMediator UiMediator => ServiceLocator.Get<IUiMediator>();
+        private static IUiMediator UiMediator => ServiceLocator.Resolve<IUiMediator>();
 
         protected override void OnClick()
         {

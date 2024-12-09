@@ -16,7 +16,7 @@ namespace DeckScaler.Systems
                     .Build()
             );
 
-        private static IInput Input => ServiceLocator.Get<IInput>();
+        private static IInput Input => ServiceLocator.Resolve<IInput>();
 
         public void Execute()
         {

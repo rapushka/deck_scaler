@@ -20,7 +20,7 @@ namespace DeckScaler.Cheats.Systems
             foreach (var entity in _cheats)
             {
                 var cheat = entity.Get<Cheat>().Value;
-                ServiceLocator.Get<IDebug>().LogError(nameof(Cheats), $"Cheat \"{cheat}\" wasn't processed!");
+                ServiceLocator.Resolve<IDebug>().LogError(nameof(Cheats), $"Cheat \"{cheat}\" wasn't processed!");
             }
         }
     }

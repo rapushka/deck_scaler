@@ -19,7 +19,7 @@ namespace DeckScaler.Systems
             );
         private readonly List<Entity<Game>> _buffer = new(16);
 
-        private static ProgressData Progress => ServiceLocator.Get<IProgress>().CurrentRun;
+        private static ProgressData Progress => ServiceLocator.Resolve<IProgress>().CurrentRun;
 
         public void Execute()
         {

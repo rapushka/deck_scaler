@@ -4,7 +4,7 @@ namespace DeckScaler.Service
 {
     public class SimpleDebug : IDebug
     {
-        private ITime Time => ServiceLocator.Get<ITime>();
+        private ITime Time => ServiceLocator.Resolve<ITime>();
 
         public void Assert(bool condition)
         {

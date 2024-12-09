@@ -25,7 +25,7 @@ namespace DeckScaler.Systems
             );
         private readonly List<Entity<Game>> _buffer = new(16);
 
-        private static UnitViewConfig UnitViewConfig => ServiceLocator.Get<IConfigs>().UnitView;
+        private static UnitViewConfig UnitViewConfig => ServiceLocator.Resolve<IConfigs>().UnitView;
 
         public void Execute()
         {

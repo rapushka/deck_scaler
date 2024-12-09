@@ -10,7 +10,7 @@ namespace DeckScaler
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
 
-        private static SpriteSheet SpriteSheet => ServiceLocator.Get<IConfigs>().SpriteSheet;
+        private static SpriteSheet SpriteSheet => ServiceLocator.Resolve<IConfigs>().SpriteSheet;
 
         public override void OnValueChanged(Entity<Game> entity, UnitID component)
             => _spriteRenderer.sprite = SpriteSheet.UnitPortraits[component.Value];

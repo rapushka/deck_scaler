@@ -10,7 +10,7 @@ namespace DeckScaler.Service
 
     public class UnityInput : IInput
     {
-        private Camera MainCamera => ServiceLocator.Get<ICameras>().MainCamera;
+        private Camera MainCamera => ServiceLocator.Resolve<ICameras>().MainCamera;
 
         public Vector2 CursorWorldPosition
             => MainCamera.Nullable()?.ScreenToWorldPoint(CursorScreenPosition).Flat()

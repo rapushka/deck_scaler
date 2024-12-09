@@ -5,9 +5,9 @@ namespace DeckScaler.Systems
 {
     public class SpawnGameplayHudEntities : IInitializeSystem
     {
-        private static GameplayHUD HUD => ServiceLocator.Get<IUI>().GetScene<GameplayHUD>();
+        private static GameplayHUD HUD => ServiceLocator.Resolve<IUI>().GetScene<GameplayHUD>();
 
-        private static IFactories Factory => ServiceLocator.Get<IFactories>();
+        private static IFactories Factory => ServiceLocator.Resolve<IFactories>();
 
         public void Initialize()
         {

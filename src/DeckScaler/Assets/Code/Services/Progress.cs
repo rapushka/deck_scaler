@@ -9,7 +9,7 @@ namespace DeckScaler.Service
 
     public class Progress : IProgress
     {
-        private static IConfigs Configs => ServiceLocator.Get<IConfigs>();
+        private static IConfigs Configs => ServiceLocator.Resolve<IConfigs>();
 
         public ProgressData CurrentRun { get; private set; }
 

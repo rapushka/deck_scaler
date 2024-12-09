@@ -6,7 +6,7 @@ namespace DeckScaler.Cheats.Systems
 {
     public class ProcessSpawnUnitCheat : ProcessCheatBaseSystem<SpawnUnit>
     {
-        private static IUnitFactory Factory => ServiceLocator.Get<IFactories>().Unit;
+        private static IUnitFactory Factory => ServiceLocator.Resolve<IFactories>().Unit;
 
         protected override bool TryProcess(Entity<Scopes.Cheats> entity, SpawnUnit component)
         {

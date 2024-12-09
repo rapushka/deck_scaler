@@ -14,7 +14,7 @@ namespace DeckScaler
             _endTimeStamp = Time.CurrentTime + seconds;
         }
 
-        private static ITime Time => ServiceLocator.Get<ITime>();
+        private static ITime Time => ServiceLocator.Resolve<ITime>();
 
         public bool IsElapsed => Time.CurrentTime >= _endTimeStamp;
 

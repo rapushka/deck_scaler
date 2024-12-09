@@ -6,13 +6,26 @@ namespace DeckScaler
 {
     public static class ServiceLocator
     {
-        public static void Setup<TService>(TService service) where TService : IService
-            => Service<TService>.Instance = service;
-
-        public static T Get<T>()
-            where T : IService
+        public static void Register<TService>(TService service) where TService : IService
         {
-            return Service<T>.Instance;
+            Validate<TService>();
+            Service<TService>.Instance = service;
+        }
+
+        public static TService Resolve<TService>()
+            where TService : IService
+        {
+            Validate<TService>();
+            return Service<TService>.Instance;
+        }
+
+        private static void Validate<TService>()
+            where TService : IService
+        {
+#if UNITY_EDITOR
+            if (!typeof(TService).IsInterface)
+                Debug.LogError("All Services must be registered by interfaces!");
+#endif
         }
 
         private static class Service<T>

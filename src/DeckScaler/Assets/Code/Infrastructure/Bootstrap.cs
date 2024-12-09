@@ -15,19 +15,19 @@ namespace DeckScaler
 
             var gameStateMachine = new GameStateMachine();
 
-            ServiceLocator.Setup<IUI>(new UI());
-            ServiceLocator.Setup<ICameras>(new Cameras(_servicesData));
-            ServiceLocator.Setup<IGameStateMachine>(gameStateMachine);
-            ServiceLocator.Setup<IEcs>(new Ecs());
-            ServiceLocator.Setup<IConfigs>(_servicesData.Configs);
-            ServiceLocator.Setup<IProgress>(new Progress());
-            ServiceLocator.Setup<IFactories>(new Factories());
-            ServiceLocator.Setup<IRandom>(new SimpleRandom());
-            ServiceLocator.Setup<IUiMediator>(new UiMediator());
-            ServiceLocator.Setup<ITime>(new SimpleTime());
-            ServiceLocator.Setup<IInput>(new UnityInput());
-            ServiceLocator.Setup<IUtils>(new Utils());
-            ServiceLocator.Setup<IIndexesInitializer>(new IndexesInitializer());
+            ServiceLocator.Register<IUI>(new UI());
+            ServiceLocator.Register<ICameras>(new Cameras(_servicesData));
+            ServiceLocator.Register<IGameStateMachine>(gameStateMachine);
+            ServiceLocator.Register<IEcs>(new Ecs());
+            ServiceLocator.Register<IConfigs>(_servicesData.Configs);
+            ServiceLocator.Register<IProgress>(new Progress());
+            ServiceLocator.Register<IFactories>(new Factories());
+            ServiceLocator.Register<IRandom>(new SimpleRandom());
+            ServiceLocator.Register<IUiMediator>(new UiMediator());
+            ServiceLocator.Register<ITime>(new SimpleTime());
+            ServiceLocator.Register<IInput>(new UnityInput());
+            ServiceLocator.Register<IUtils>(new Utils());
+            ServiceLocator.Register<IIndexesInitializer>(new IndexesInitializer());
 
             SetupDebugServices();
 
@@ -37,7 +37,7 @@ namespace DeckScaler
         private static void SetupDebugServices()
         {
 #if DEBUG
-            ServiceLocator.Setup<IDebug>(new SimpleDebug());
+            ServiceLocator.Register<IDebug>(new SimpleDebug());
 #else
             ServiceLocator.Setup<IDebug>(new DebugMock());
 #endif

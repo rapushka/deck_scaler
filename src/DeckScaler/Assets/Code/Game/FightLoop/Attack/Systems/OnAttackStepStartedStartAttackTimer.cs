@@ -22,7 +22,7 @@ namespace DeckScaler.Systems
                 .Build()
         );
 
-        private static float DelayBetweenAttacks => ServiceLocator.Get<IConfigs>().Units.DelayBetweenAttacks;
+        private static float DelayBetweenAttacks => ServiceLocator.Resolve<IConfigs>().Units.DelayBetweenAttacks;
 
         public void Execute()
         {

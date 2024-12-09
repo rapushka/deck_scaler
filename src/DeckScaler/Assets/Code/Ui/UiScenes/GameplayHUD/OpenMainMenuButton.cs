@@ -4,7 +4,7 @@ namespace DeckScaler.Ui.Views.GameplayHUD
     {
         protected override void OnClick()
         {
-            ServiceLocator.Get<IGameStateMachine>().Enter<MainMenuState>();
+            ServiceLocator.Resolve<IGameStateMachine>().Enter<MainMenuState>();
         }
     }
 }
