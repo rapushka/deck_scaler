@@ -3,7 +3,7 @@
 - [internal renamings](https://github.com/rapushka/deck_scaler/pull/124) 
 - [gold currency implemented](https://github.com/rapushka/deck_scaler/pull/131)
 - Suits abilities implemented:
-  - Logic:
+  - [Logic](https://github.com/rapushka/deck_scaler/issues/125):
     - [Spades: Increase dealt damage](https://github.com/rapushka/deck_scaler/pull/132)
     - [Hearts: Unit heals themself](https://github.com/rapushka/deck_scaler/issues/128)
     - [Clubs: Decrease income damage](https://github.com/rapushka/deck_scaler/pull/137)
