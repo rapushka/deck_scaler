@@ -3,16 +3,16 @@ using Entitas.Generic;
 
 namespace DeckScaler.Component
 {
-    public sealed class RequestChangeFightStep : ValueComponent<FightStep>, IInScope<Game> { }
+    public sealed class TurnTracker : FlagComponent, IInScope<Game> { }
 
-    public sealed class BlockFightStepChange : FlagComponent, IInScope<Game> { }
+    public sealed class CurrentTurn : ValueComponent<Side>, IInScope<Game> { }
 
-    public sealed class ExitPlayerPrepareStep : FlagComponent, IInScope<Game> { }
+    public sealed class WaitForAnimations : FlagComponent, IInScope<Game> { }
 
-    // # Concrete transitions
-    public sealed class PlayerPrepareStepStarted : FlagComponent, IInScope<Game> { }
+    public sealed class TurnStarted : FlagComponent, IInScope<Game> { }
 
-    public sealed class PlayerAttackStepStarted : FlagComponent, IInScope<Game> { }
+    public sealed class TurnEnding : FlagComponent, IInScope<Game> { }
 
-    public sealed class EnemyAttackStepStarted : FlagComponent, IInScope<Game> { }
+    /// One-Frame
+    public sealed class RequestEndTurn : FlagComponent, IInScope<Game> { }
 }

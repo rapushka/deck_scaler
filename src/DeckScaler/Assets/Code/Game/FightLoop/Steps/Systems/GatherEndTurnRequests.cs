@@ -5,26 +5,26 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public sealed class DisableInteractableOnPlayerPrepareExit : IExecuteSystem
+    public class GatherEndTurnRequests : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _requests
             = Contexts.Instance.GetGroup(
-                MatcherBuilder<Game>.With<ExitPlayerPrepareStep>().Build()
-            );
-
-        private readonly IGroup<Entity<Game>> _colliders
-            = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<EnableOnlyInPlayerPrepare>()
+                    .With<RequestEndTurn>()
                     .Build()
             );
+        private readonly IGroup<Entity<Game>> _turnTrackers = Contexts.Instance.GetGroup(
+            MatcherBuilder<Game>
+                .With<TurnTracker>()
+                .Build()
+        );
 
         public void Execute()
         {
             foreach (var _ in _requests)
-            foreach (var entity in _colliders)
+            foreach (var turnTracker in _turnTrackers)
             {
-                entity.Is<Interactable>(false);
+                turnTracker.Is<TurnEnding>(true);
             }
         }
     }

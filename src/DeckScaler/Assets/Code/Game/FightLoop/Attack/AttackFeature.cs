@@ -8,8 +8,7 @@ namespace DeckScaler
         public AttackFeature()
             : base(nameof(AttackFeature))
         {
-            Add(new OnAttackStepStartedStartAttackTimer<PlayerAttackStepStarted, Teammate>());
-            Add(new OnAttackStepStartedStartAttackTimer<EnemyAttackStepStarted, Enemy>());
+            Add(new OnTurnEndedStartAttackTimerForCurrentSide());
 
             Add(new OpponentsFeature());
             Add(new OnTimerBeforeAttackElapsedThenAttackOpponent());

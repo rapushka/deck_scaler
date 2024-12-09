@@ -8,8 +8,7 @@ namespace DeckScaler
     public class ProgressData
     {
         [field: SerializeField] public List<UnitIDRef> TeammateIDs { get; private set; }
-
-        public FightStep CurrentFightStep { get; set; }
+        [field: SerializeField] public int             Gold        { get; private set; }
 
         public void AddTeammate(string unitID)
         {
@@ -18,9 +17,10 @@ namespace DeckScaler
 
         public static ProgressData NewRun(ProgressData from)
         {
-            return new ProgressData
+            return new()
             {
                 TeammateIDs = from.TeammateIDs,
+                Gold = from.Gold,
             };
         }
     }

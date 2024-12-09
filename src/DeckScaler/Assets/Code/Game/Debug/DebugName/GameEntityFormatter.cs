@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using DeckScaler.Component;
 using DeckScaler.Scopes;
@@ -9,8 +12,8 @@ namespace DeckScaler
     {
         protected override void BuildName(ref StringBuilder stringBuilder, in Entity<Game> entity)
         {
-            stringBuilder.AppendJoin(
-                separator: " ",
+            var buffer = new[]
+            {
                 entity.GetOrDefault<ID>()?.Value.ID.ToString() ?? "_",
                 entity.ToString<DebugName, string>(),
                 entity.ToString<Lead>(),
@@ -18,12 +21,12 @@ namespace DeckScaler
                 // slots
                 entity.ToString<SlotIndex, int>(prefix: "in slot: "),
 
-                // Fight Step Changing
-                entity.ToString<RequestChangeFightStep, FightStep>(prefix: "change fight step: "),
+                // turns
+                entity.ToString<CurrentTurn, Side>(prefix: "current turn: "),
+                entity.ToString<WaitForAnimations>(),
+            };
 
-                // Empty just because I wanna leave multi-line expression with trailing coma
-                string.Empty
-            );
+            stringBuilder.AppendJoin(separator: " ", buffer.Where(s => !s.IsEmpty()));
         }
     }
 }

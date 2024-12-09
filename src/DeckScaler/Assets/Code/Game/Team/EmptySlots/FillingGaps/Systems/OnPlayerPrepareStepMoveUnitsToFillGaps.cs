@@ -11,7 +11,7 @@ namespace DeckScaler.Systems
         private readonly IGroup<Entity<Game>> _events
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<PlayerPrepareStepStarted>()
+                    .With<TurnStarted>()
                     .Build()
             );
         private readonly IGroup<Entity<Game>> _unitsToMove

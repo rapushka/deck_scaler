@@ -8,20 +8,20 @@ namespace DeckScaler
         public SequentialFightLoopFeature()
             : base(nameof(SequentialFightLoopFeature))
         {
-            Add(new StartWithPlayerPrepareStep());
+            Add(new InitializeCurrentTurnTracker());
+            Add(new StartWithPlayerTurn());
 
-            Add(new BlockFightStateChangeIfAny<TimerBeforeAttack>());
-            Add(new BlockFightStateChangeIfAny<PrepareAttack>());
-            Add(new BlockFightStateChangeIfAny<PlayingAnimation>());
+            Add(new GatherEndTurnRequests());
 
-            Add(new ReactOnRequestEndPlayerPrepareStep());
-
-            Add(new ChangeFightStateOnRequest());
-
-            Add(new OnPlayerAttackStartedRequestEnemyAttack());
-            Add(new OnEnemyAttackStartedRequestPlayerPrepare());
+            Add(new AddWaitForAnimationsIfAny<TimerBeforeAttack>());
+            Add(new AddWaitForAnimationsIfAny<PrepareAttack>());
+            Add(new AddWaitForAnimationsIfAny<PlayingAnimation>());
 
             Add(new AttackFeature());
+
+            Add(new PassTurn());
+
+            Add(new RemoveComponent<WaitForAnimations>());
         }
     }
 }
