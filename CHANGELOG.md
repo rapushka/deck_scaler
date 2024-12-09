@@ -2,6 +2,9 @@
 - [allow spawn any unit on any side](https://github.com/rapushka/deck_scaler/pull/120)
 - [internal renamings](https://github.com/rapushka/deck_scaler/pull/124) 
 - [gold currency implemented](https://github.com/rapushka/deck_scaler/pull/131)
+- Suits abilities implemented:
+  - Logic:
+    - [Spades: Increase dealt damage](https://github.com/rapushka/deck_scaler/pull/132)
 
 # v0.0.11
 - [block ui during attack animations](https://github.com/rapushka/deck_scaler/pull/107)
