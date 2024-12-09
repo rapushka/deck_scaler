@@ -1,6 +1,5 @@
 using DeckScaler.Component;
 using DeckScaler.Scopes;
-using DeckScaler;
 using Entitas;
 using Entitas.Generic;
 using UnityEngine;

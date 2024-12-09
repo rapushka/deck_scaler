@@ -50,7 +50,7 @@ namespace DeckScaler.Systems
         }
 
         [CanBeNull]
-        private Entity<Game>? ClosestOpponent(int slotIndex, Side side)
+        private Entity<Game> ClosestOpponent(int slotIndex, Side side)
         {
             int? minDelta = null;
             Entity<Game> closestUnit = null;
