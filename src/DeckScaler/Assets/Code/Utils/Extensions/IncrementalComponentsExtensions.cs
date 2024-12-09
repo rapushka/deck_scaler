@@ -24,9 +24,12 @@ namespace DeckScaler.Systems
             where TComponent : ValueComponent<int>, IInScope<Game>, new()
             => entity.Increment<TComponent>(otherComponent.Value);
 
-        public static Entity<Game> Increment<TComponent>(this Entity<Game> entity, int value)
+        public static Entity<Game> Increment<TComponent>(this Entity<Game> entity, int value, int? min = null, int? max = null)
             where TComponent : ValueComponent<int>, IInScope<Game>, new()
-            => entity.Replace<TComponent, int>(entity.Get<TComponent>().Value + value);
+        {
+            var result = entity.Get<TComponent>().Value + value;
+            return entity.Replace<TComponent, int>(result.Clamp(min, max));
+        }
 
 #endregion
     }
