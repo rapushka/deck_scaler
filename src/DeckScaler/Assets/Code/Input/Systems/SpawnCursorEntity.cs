@@ -8,7 +8,7 @@ namespace DeckScaler.Systems
 {
     public sealed class SpawnCursorEntity : IInitializeSystem
     {
-        private static Vector2 CursorWorldPosition => Services.Get<IInput>().CursorWorldPosition;
+        private static Vector2 CursorWorldPosition => ServiceLocator.Get<IInput>().CursorWorldPosition;
 
         public void Initialize()
         {

@@ -7,8 +7,8 @@ namespace DeckScaler.Cheats.Systems
 {
     public abstract class ParseSpawnUnitCheatBase : ParseCheatBaseSystem
     {
-        private static UnitsConfig Config => Services.Get<IConfigs>().Units;
-        private static IDebug      Debug  => Services.Get<IDebug>();
+        private static UnitsConfig Config => ServiceLocator.Get<IConfigs>().Units;
+        private static IDebug      Debug  => ServiceLocator.Get<IDebug>();
 
         protected abstract Side Side { get; }
 

@@ -27,7 +27,7 @@ namespace DeckScaler
             if (cheat.IsEmpty())
                 return;
 
-            Services.Get<IUiMediator>().SendCheat(cheat);
+            ServiceLocator.Get<IUiMediator>().SendCheat(cheat);
             _lastCheat = cheat;
             Clear();
         }

@@ -6,12 +6,12 @@ namespace DeckScaler
     {
         public override void Enter()
         {
-            Services.Get<IUI>().ShowGameplayHUD();
+            ServiceLocator.Get<IUI>().ShowGameplayHUD();
         }
 
         public override void Exit()
         {
-            Services.Get<IEcs>().Dispose();
+            ServiceLocator.Get<IEcs>().Dispose();
         }
     }
 }

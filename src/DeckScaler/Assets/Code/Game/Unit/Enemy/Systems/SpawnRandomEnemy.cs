@@ -5,11 +5,11 @@ namespace DeckScaler.Systems
 {
     public class SpawnRandomEnemy : IInitializeSystem
     {
-        private static IUnitFactory EnemyFactory => Services.Get<IFactories>().Unit;
+        private static IUnitFactory EnemyFactory => ServiceLocator.Get<IFactories>().Unit;
 
-        private static IRandom PickRandom => Services.Get<IRandom>();
+        private static IRandom PickRandom => ServiceLocator.Get<IRandom>();
 
-        private static UnitsConfig Config => Services.Get<IConfigs>().Units;
+        private static UnitsConfig Config => ServiceLocator.Get<IConfigs>().Units;
 
         public void Initialize()
         {

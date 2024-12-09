@@ -19,7 +19,7 @@ namespace DeckScaler.Systems
                     .Build()
             );
 
-        private static UnitViewConfig UnitViewConfig => Services.Get<IConfigs>().UnitView;
+        private static UnitViewConfig UnitViewConfig => ServiceLocator.Get<IConfigs>().UnitView;
 
         public void Execute()
         {

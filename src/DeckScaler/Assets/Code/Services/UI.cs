@@ -23,7 +23,7 @@ namespace DeckScaler.Service
         {
             var canvasPrefab = Resources.Load<UiCanvas>("UI/Canvas/Canvas");
             _uiCanvas = Object.Instantiate(canvasPrefab);
-            _uiCanvas.Init(Services.Get<ICameras>().UiCamera);
+            _uiCanvas.Init(ServiceLocator.Get<ICameras>().UiCamera);
         }
 
         public void ShowMainMenu()

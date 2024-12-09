@@ -18,7 +18,7 @@ namespace DeckScaler.Systems
                     .Build()
             );
 
-        private static UnitViewConfig.SortingOrderIndexes Config => Services.Get<IConfigs>().UnitView.SortingOrder;
+        private static UnitViewConfig.SortingOrderIndexes Config => ServiceLocator.Get<IConfigs>().UnitView.SortingOrder;
 
         public void Execute()
         {

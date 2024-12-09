@@ -6,7 +6,7 @@ namespace DeckScaler
     {
         public override void Enter()
         {
-            Services.Get<IUI>().Init();
+            ServiceLocator.Get<IUI>().Init();
 
             StateMachine.Enter<MainMenuState>();
         }

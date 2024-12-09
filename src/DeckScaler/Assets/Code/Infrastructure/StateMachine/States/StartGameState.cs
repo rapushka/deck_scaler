@@ -6,10 +6,10 @@ namespace DeckScaler
     {
         public override void Enter()
         {
-            Services.Get<IEcs>().Init();
-            Services.Get<IIndexesInitializer>().Initialize();
+            ServiceLocator.Get<IEcs>().Init();
+            ServiceLocator.Get<IIndexesInitializer>().Initialize();
 
-            Services.Get<IProgress>().StartNewRun();
+            ServiceLocator.Get<IProgress>().StartNewRun();
 
             StateMachine.Enter<LoadCurrentStageState>();
         }

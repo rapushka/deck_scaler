@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public static class Services
+    public static class ServiceLocator
     {
         public static void Setup<TService>(TService service) where TService : IService
             => Service<TService>.Instance = service;

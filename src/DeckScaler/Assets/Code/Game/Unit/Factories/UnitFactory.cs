@@ -17,11 +17,11 @@ namespace DeckScaler.Service
 
     public class UnitFactory : IUnitFactory
     {
-        private UnitsConfig UnitsConfig => Services.Get<IConfigs>().Units;
+        private UnitsConfig UnitsConfig => ServiceLocator.Get<IConfigs>().Units;
 
-        private IFactories Factory => Services.Get<IFactories>();
+        private IFactories Factory => ServiceLocator.Get<IFactories>();
 
-        private static UnitViewConfig ViewConfig => Services.Get<IConfigs>().UnitView;
+        private static UnitViewConfig ViewConfig => ServiceLocator.Get<IConfigs>().UnitView;
 
         public Entity<Game> CreateAtSide(UnitIDRef unitID, Side side)
         {
