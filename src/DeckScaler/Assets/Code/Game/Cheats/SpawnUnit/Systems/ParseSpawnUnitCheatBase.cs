@@ -10,18 +10,25 @@ namespace DeckScaler.Cheats.Systems
         private static UnitsConfig Config => Services.Get<IConfigs>().Units;
         private static IDebug      Debug  => Services.Get<IDebug>();
 
-        protected abstract string GroupID { get; }
-        protected abstract Side   Side    { get; }
+        protected abstract Side Side { get; }
 
         protected override bool TryParse(IList<Group> groups)
         {
-            var unitID = $"{GroupID}{groups[1]}";
+            var canParse = TryGroup(groups, Constants.TableID.Allies)
+                || TryGroup(groups, Constants.TableID.Enemies);
+
+            if (!canParse)
+                Debug.LogError(nameof(Cheats), $"No unit with ID {groups[1]}!");
+
+            return canParse;
+        }
+
+        private bool TryGroup(IList<Group> groups, string prefix)
+        {
+            var unitID = $"{prefix}{groups[1]}";
 
             if (!Config.TryGet(unitID, out var unitConfig))
-            {
-                Debug.LogError(nameof(Cheats), $"Has no unit with ID {unitID}!");
                 return false;
-            }
 
             CreateEntity.Cheat()
                 .Add<SpawnUnit, UnitIDRef>(unitConfig.ID)

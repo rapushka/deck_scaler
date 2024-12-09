@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd1111aea977406e91f7a2ac5476734a, type: 3}
   m_Name: Crook
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: Units/Ally/Crook
+  <ID>k__BackingField: Unit/Ally/Crook
   <Type>k__BackingField: 1
   <Suit>k__BackingField: 1
   <MaxHealth>k__BackingField: 10

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd1111aea977406e91f7a2ac5476734a, type: 3}
   m_Name: Test Emeny
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: Units/Enemy/TestEnemy
+  <ID>k__BackingField: Unit/Enemy/TestEnemy
   <Type>k__BackingField: 2
   <Suit>k__BackingField: 2
   <MaxHealth>k__BackingField: 2

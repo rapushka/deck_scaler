@@ -7,8 +7,8 @@ namespace DeckScaler.Cheats
         public CheatsFeature()
             : base(nameof(CheatsFeature))
         {
-            Add(new ParseSpawnTeammateCheat());
-            Add(new ParseSpawnEnemyCheat());
+            Add(new ParseSpawnAsTeammateCheat());
+            Add(new ParseSpawnAsEnemyCheat());
 
             Add(new ProcessSpawnUnitCheat());
 

@@ -10,6 +10,7 @@ namespace DeckScaler.Service
     {
         Entity<Game> CreateAtSide(UnitIDRef unitID, Side side);
 
+        Entity<Game> CreateLead(UnitIDRef unitID);
         Entity<Game> CreateTeammate(UnitIDRef unitID);
         Entity<Game> CreateEnemy(UnitIDRef unitID);
     }
@@ -33,6 +34,10 @@ namespace DeckScaler.Service
             throw new ArgumentException("Unknown Side");
         }
 
+        public Entity<Game> CreateLead(UnitIDRef unitID)
+            => CreateTeammate(unitID)
+                .Is<Lead>(true);
+
         public Entity<Game> CreateTeammate(UnitIDRef unitID)
             => CreateUnit(unitID, ViewConfig.TeammateSpawnOffset)
                 .Is<Draggable>(true)
@@ -49,12 +54,10 @@ namespace DeckScaler.Service
         {
             var config = UnitsConfig[unitID];
             var stats = config.Stats;
-            var unitType = config.Type;
 
             return Factory.CreateEntityBehaviour(UnitsConfig.ViewPrefab, spawnPosition)
                     .Replace<Name, string>(PrettierUnitID(config.ID))
                     .Add<UnitID, string>(config.ID)
-                    .Is<Lead>(unitType is UnitType.Lead)
                     .Add<SpriteSortOrder, int>(ViewConfig.SortingOrder.Idle)
                     .Add<Component.Suit, Suit>(config.Suit)
 

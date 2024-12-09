@@ -13,51 +13,59 @@ MonoBehaviour:
   m_Name: ID Table
   m_EditorClassIdentifier: 
   _idList:
-  - Units
-  - Units/Ally
-  - Units/Ally/Crook
-  - Units/Enemy
-  - Units/Enemy/TestEnemy
+  - Unit
+  - Unit/Ally
+  - Unit/Ally/Crook
+  - Unit/Enemy
+  - Unit/Enemy/TestEnemy
   _idDefinitions:
-  - _id: Units
+  - _id: Unit
     _assetRefs: []
-  - _id: Units/Ally
-    _assetRefs:
-    - _objectPath: 93e9e64e3e122934a9c7db4c430e9fde||11400000
-      _targetRefType: 0
-      _apiVersion: 1
-      _propertyPath: _unitConfigsMap._values.Array.data[0].<ID>k__BackingField
-  - _id: Units/Ally/Crook
+  - _id: Unit/Ally
+    _assetRefs: []
+  - _id: Unit/Ally/Crook
     _assetRefs:
     - _objectPath: 8a5b9c8ac47cfe2139d7532d0b89d2f1||11400000
       _targetRefType: 0
       _apiVersion: 1
       _propertyPath: <ID>k__BackingField
-    - _objectPath: 75f7728a340da1a438d7c3d10889455f||11400000
-      _targetRefType: 0
-      _apiVersion: 1
-      _propertyPath: <UnitPortraits>k__BackingField.list.Array.data[0].key.Value
-    - _objectPath: 8c84f30fda7d2db0a99bd62edddd1e4b||11400000
-      _targetRefType: 0
-      _apiVersion: 1
-      _propertyPath: <NewProgressData>k__BackingField.<SelectedLeadID>k__BackingField
-    - _objectPath: 8c84f30fda7d2db0a99bd62edddd1e4b||11400000
-      _targetRefType: 0
-      _apiVersion: 1
-      _propertyPath: <NewProgressData>k__BackingField.<TeammateIDs>k__BackingField.Array.data[0].Value
     - _objectPath: 8c84f30fda7d2db0a99bd62edddd1e4b||11400000
       _targetRefType: 0
       _apiVersion: 1
       _propertyPath: <NewProgressData>k__BackingField.<TeammateIDs>k__BackingField.Array.data[1].Value
-  - _id: Units/Enemy
+    - _objectPath: 8c84f30fda7d2db0a99bd62edddd1e4b||11400000
+      _targetRefType: 0
+      _apiVersion: 1
+      _propertyPath: <NewProgressData>k__BackingField.<TeammateIDs>k__BackingField.Array.data[0].Value
+    - _objectPath: 75f7728a340da1a438d7c3d10889455f||11400000
+      _targetRefType: 0
+      _apiVersion: 1
+      _propertyPath: <UnitPortraits>k__BackingField.list.Array.data[0].key.Value
+    - _objectPath: 93e9e64e3e122934a9c7db4c430e9fde||11400000
+      _targetRefType: 0
+      _apiVersion: 1
+      _propertyPath: _teammates.Array.data[0].Value
+    - _objectPath: 93e9e64e3e122934a9c7db4c430e9fde||11400000
+      _targetRefType: 0
+      _apiVersion: 1
+      _propertyPath: _allies.Array.data[0].Value
+  - _id: Unit/Enemy
     _assetRefs: []
-  - _id: Units/Enemy/TestEnemy
+  - _id: Unit/Enemy/TestEnemy
     _assetRefs:
     - _objectPath: 2499748cbf6e4bb8999cddebef7fb512||11400000
       _targetRefType: 0
       _apiVersion: 1
       _propertyPath: <ID>k__BackingField
+    - _objectPath: 8c84f30fda7d2db0a99bd62edddd1e4b||11400000
+      _targetRefType: 0
+      _apiVersion: 1
+      _propertyPath: <NewProgressData>k__BackingField.<TeammateIDs>k__BackingField.Array.data[2].Value
     - _objectPath: 75f7728a340da1a438d7c3d10889455f||11400000
       _targetRefType: 0
       _apiVersion: 1
       _propertyPath: <UnitPortraits>k__BackingField.list.Array.data[1].key.Value
+    - _objectPath: 93e9e64e3e122934a9c7db4c430e9fde||11400000
+      _targetRefType: 0
+      _apiVersion: 1
+      _propertyPath: _enemies.Array.data[0].Value

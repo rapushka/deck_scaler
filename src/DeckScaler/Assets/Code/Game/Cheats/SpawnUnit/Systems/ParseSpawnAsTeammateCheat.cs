@@ -1,11 +1,9 @@
 namespace DeckScaler.Cheats.Systems
 {
-    public class ParseSpawnTeammateCheat : ParseSpawnUnitCheatBase
+    public class ParseSpawnAsTeammateCheat : ParseSpawnUnitCheatBase
     {
         protected override string Pattern => "spawn teammate (.+)";
         protected override string Alias   => "st (.+)";
-
-        protected override string GroupID => Constants.TableID.Allies;
 
         protected override Side Side => Side.Player;
     }

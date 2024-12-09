@@ -1,17 +1,24 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityRandom = UnityEngine.Random;
 
 namespace DeckScaler.Service
 {
     public interface IRandom : IService
     {
-        int RandomIndex<T>(T[] array);
+        T PickRandom<T>(IEnumerable<T> source);
     }
 
     public class SimpleRandom : IRandom
     {
-        public int RandomIndex<T>(T[] array)
+        public T PickRandom<T>(IEnumerable<T> source)
         {
-            return UnityRandom.Range(0, array.Length);
+            var array = source as T[] ?? source.ToArray();
+            var randomIndex = RandomIndex(array);
+
+            return array[randomIndex];
         }
+
+        public int RandomIndex<T>(T[] array) => UnityRandom.Range(0, array.Length);
     }
 }
