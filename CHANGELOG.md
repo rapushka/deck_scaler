@@ -1,3 +1,6 @@
+# v0.0.12
+- [allow spawn any unit on any side](https://github.com/rapushka/deck_scaler/pull/120)
+
 # v0.0.11
 - [block ui during attack animations](https://github.com/rapushka/deck_scaler/pull/107)
 - [aliases for cheat aliases](https://github.com/rapushka/deck_scaler/pull/109)
