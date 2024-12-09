@@ -13,7 +13,7 @@ namespace DeckScaler.Systems
             CreateEntity.Empty()
                 .Add<DebugName, string>("enemy's inventory")
                 .Add<Inventory, Side>(Side.Enemy)
-                .Add<Gold, int>(Progress.EnemyGold)
+                .Add<Money, int>(Progress.EnemyGold)
                 ;
         }
     }

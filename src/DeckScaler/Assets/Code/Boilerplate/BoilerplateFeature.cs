@@ -20,7 +20,7 @@ namespace DeckScaler
             Add(new SelfEventSystem<Game, Damage>(contexts));
             Add(new SelfEventSystem<Game, Power>(contexts));
 
-            Add(new SelfEventSystem<Game, Gold>(contexts));
+            Add(new SelfEventSystem<Game, Money>(contexts));
         }
     }
 }

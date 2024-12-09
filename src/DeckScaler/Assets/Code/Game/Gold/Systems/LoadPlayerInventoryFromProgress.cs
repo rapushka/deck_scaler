@@ -23,7 +23,7 @@ namespace DeckScaler.Systems
             {
                 inventory
                     .Add<Inventory, Side>(Side.Player)
-                    .Add<Gold, int>(Progress.Gold)
+                    .Add<Money, int>(Progress.Gold)
                     ;
             }
         }
