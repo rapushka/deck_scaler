@@ -13,8 +13,9 @@ namespace DeckScaler
             Add(new RemoveComponent<ClosestSlotForReorder>());
             Add(new RemoveInputComponent<JustClicked>());
 
-            Add(new RemoveComponent<WaitForAnimations>());
+            Add(new RemoveComponent<WaitingForAnimations>());
             Add(new RemoveComponent<TurnStarted>());
+            Add(new RemoveComponent<TurnJustEnded>());
 
             Add(new DestroyGameEntities());
             Add(new DestroyInputEntities());

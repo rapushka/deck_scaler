@@ -12,8 +12,8 @@ namespace DeckScaler.Systems
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
                     .With<TurnTracker>()
-                    .And<TurnEnding>()
-                    .Without<WaitForAnimations>()
+                    .And<FinishingTurn>()
+                    .Without<WaitingForAnimations>()
                     .Without<TurnStarted>()
                     .Build()
             );
@@ -27,8 +27,7 @@ namespace DeckScaler.Systems
                 turnTracker
                     .Replace<CurrentTurn, Side>(nextTurn)
                     .Add<TurnStarted>()
-                    .Remove<
-                        TurnEnding>()
+                    .Remove<FinishingTurn>()
                     ;
             }
         }

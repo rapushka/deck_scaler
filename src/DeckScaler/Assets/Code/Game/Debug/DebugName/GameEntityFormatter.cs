@@ -21,7 +21,7 @@ namespace DeckScaler
 
                 // turns
                 entity.ToString<CurrentTurn, Side>(prefix: "current turn: "),
-                entity.ToString<WaitForAnimations>(),
+                entity.ToString<WaitingForAnimations>(),
             };
 
             stringBuilder.AppendJoin(separator: " ", buffer.Where(s => !s.IsEmpty()));
