@@ -1,6 +1,7 @@
 using DeckScaler.Component;
 using DeckScaler.Scopes;
 using Entitas.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace DeckScaler
@@ -11,6 +12,7 @@ namespace DeckScaler
           IRegistrableListener<Game, MaxHealth>
     {
         [SerializeField] private ProgressBar _progressBar;
+        [SerializeField] private TMP_Text _text;
 
         private Entity<Game> _entity;
 
@@ -35,6 +37,7 @@ namespace DeckScaler
             var maxHP = entity.Get<MaxHealth>().Value;
 
             _progressBar.NormalizedValue = (float)currentHP / maxHP;
+            _text.text = $"{currentHP}/{maxHP}";
         }
 
         public override void Unregister()
