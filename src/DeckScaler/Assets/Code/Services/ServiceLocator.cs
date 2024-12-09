@@ -24,7 +24,7 @@ namespace DeckScaler
         {
 #if UNITY_EDITOR
             if (!typeof(TService).IsInterface)
-                Debug.LogError("All Services must be registered by interfaces!");
+                Debug.LogError("All Services must be Registered and Resolved by Interface!");
 #endif
         }
 
