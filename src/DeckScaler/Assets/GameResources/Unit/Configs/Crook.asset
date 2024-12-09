@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Crook
   m_EditorClassIdentifier: 
   <ID>k__BackingField: Unit/Ally/Crook
-  <Type>k__BackingField: 1
   <Suit>k__BackingField: 1
   <MaxHealth>k__BackingField: 10
   <BaseDamage>k__BackingField: 2
