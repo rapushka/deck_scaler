@@ -7,10 +7,8 @@ namespace DeckScaler.Component
         public ViewInteractablesFeature()
             : base(nameof(ViewInteractablesFeature))
         {
-            Add(new EnableInteractableOnPlayerPrepareEnter());
-            Add(new DisableInteractableOnPlayerPrepareExit());
-
-            Add(new OnPlayerPrepareStepEnsureInteractableAllies());
+            Add(new UpdateInteractables());
+            Add(new BlockInteractablesOnDragging());
         }
     }
 }

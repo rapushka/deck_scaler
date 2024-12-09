@@ -11,7 +11,7 @@ namespace DeckScaler
 
             ServiceLocator.Resolve<IProgress>().StartNewRun();
 
-            StateMachine.Enter<LoadCurrentStageState>();
+            StateMachine.Enter<LoadCurrentLevelState>();
         }
     }
 }

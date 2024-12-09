@@ -8,16 +8,19 @@ namespace DeckScaler.Editor.Tests.Mocks
 {
     public class Factories : IFactories
     {
-        public IUnitFactory Unit { get; } = new UnitFactory();
+        public IUnitFactory            Unit            { get; } = new UnitFactory();
+        public IEntityBehaviourFactory EntityBehaviour { get; } = new MockEntityBehaviourFactory();
+    }
 
-        public Entity<Game> CreateEntityBehaviour(EntityBehaviour<Game> prefab, Vector2 spawnPosition)
-            => CreateEntity.Next()
-                .Replace<WorldPosition, Vector2>(spawnPosition);
+    public class MockEntityBehaviourFactory : IEntityBehaviourFactory
+    {
+        public Entity<Game> Create(EntityBehaviour<Game> prefab, Vector2 spawnPosition)
+            => CreateEntity.Next().Replace<WorldPosition, Vector2>(spawnPosition);
 
-        public Entity<Game> SetupEntityBehaviour(EntityBehaviour<Game> view, Vector2 spawnPosition)
-            => view.Entity
-                .Replace<WorldPosition, Vector2>(spawnPosition);
+        public Entity<Game> Setup(EntityBehaviour<Game> view, Vector2 spawnPosition)
+            => view.Entity.Replace<WorldPosition, Vector2>(spawnPosition);
 
-        public Entity<Game> SetupEntityBehaviour(EntityBehaviour<Game> view) => view.Entity;
+        public Entity<Game> Setup(EntityBehaviour<Game> view)
+            => view.Entity;
     }
 }

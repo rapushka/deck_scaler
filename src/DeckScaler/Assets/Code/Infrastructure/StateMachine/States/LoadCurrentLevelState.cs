@@ -1,6 +1,6 @@
 namespace DeckScaler
 {
-    public class LoadCurrentStageState : GameState
+    public class LoadCurrentLevelState : GameState
     {
         public override void Enter()
         {

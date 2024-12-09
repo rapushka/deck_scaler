@@ -12,7 +12,7 @@ namespace DeckScaler.Systems
         public void Initialize()
         {
             foreach (var entityBehaviour in HUD.Behaviours)
-                Factory.SetupEntityBehaviour(entityBehaviour);
+                Factory.EntityBehaviour.Setup(entityBehaviour);
         }
     }
 }
