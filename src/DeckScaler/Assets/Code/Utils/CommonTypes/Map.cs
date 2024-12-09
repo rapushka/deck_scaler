@@ -20,6 +20,8 @@ namespace DeckScaler
 
         public bool ContainsKey(TKey key) => Dictionary.ContainsKey(key);
 
+        public bool TryGet(TKey key, out TValue value) => Dictionary.TryGetValue(key, out value);
+
         protected abstract TKey SelectKey(TValue value);
     }
 }
