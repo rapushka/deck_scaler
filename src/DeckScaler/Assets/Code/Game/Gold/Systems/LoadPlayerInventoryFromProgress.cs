@@ -22,7 +22,8 @@ namespace DeckScaler.Systems
             foreach (var inventory in _inventories)
             {
                 inventory
-                    .Add<Gold, int>(Progress.Gold)
+                    .Add<Inventory, Side>(Side.Player)
+                    .Add<Money, int>(Progress.Gold)
                     ;
             }
         }

@@ -21,7 +21,7 @@ namespace DeckScaler
             Add(new SpawnPlayerTeamFromProgress());
             Add(new SpawnRandomEnemy());
 
-            Add(new PlayerInventoryFeature());
+            Add(new InventoryFeature());
 
             Add(new TeamSlotsFeature());
 

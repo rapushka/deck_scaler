@@ -24,6 +24,10 @@ namespace DeckScaler
 
         public static int Abs(this int @this) => Mathf.Abs(@this);
 
-        public static float Clamp(this float @this, float? min, float? max) => Mathf.Clamp(@this, min ?? @this, max ?? @this);
+        public static float Clamp(this float @this, float? min = null, float? max = null)
+            => Mathf.Clamp(@this, min ?? @this, max ?? @this);
+
+        public static int Clamp(this int @this, int? min = null, int? max = null)
+            => Mathf.Clamp(@this, min ?? @this, max ?? @this);
     }
 }

@@ -17,3 +17,4 @@ MonoBehaviour:
     - Value: Unit/Ally/Crook
     - Value: Unit/Ally/Crook
     <Gold>k__BackingField: 10
+    <EnemyGold>k__BackingField: 5

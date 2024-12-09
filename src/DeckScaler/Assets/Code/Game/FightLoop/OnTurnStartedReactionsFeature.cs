@@ -8,6 +8,9 @@ namespace DeckScaler
             : base(nameof(OnTurnStartedReactionsFeature))
         {
             Add(new HealUnitsOnSideTurnStartedForHearts());
+            Add(new StealMoneyFromOpponentForDiamonds());
+
+            Add(new StealMoneyFeature());
         }
     }
 }
