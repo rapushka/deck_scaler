@@ -5,6 +5,10 @@
 - Suits abilities implemented:
   - Logic:
     - [Spades: Increase dealt damage](https://github.com/rapushka/deck_scaler/pull/132)
+    - [Hearts: Unit heals themself](https://github.com/rapushka/deck_scaler/issues/128)
+    - WIP: Clubs
+    - [Diamonds: Steal money from opponent](https://github.com/rapushka/deck_scaler/pull/136)
+  - WIP: View
 - [added counters for health-bars](https://github.com/rapushka/deck_scaler/pull/134)
 
 # v0.0.11
