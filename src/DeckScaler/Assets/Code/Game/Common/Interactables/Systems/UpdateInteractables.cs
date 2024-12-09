@@ -27,7 +27,7 @@ namespace DeckScaler.Systems
             foreach (var interactable in _interactables)
             {
                 var isWaiting = turnTracker.Is<WaitForAnimations>();
-                var isPlayerTurn = turnTracker.Get<CurrentTurn, Side>() is Side.Player;
+                var isPlayerTurn = turnTracker.IsPlayerTurn();
 
                 var playerCanInteract = !isWaiting && isPlayerTurn;
                 interactable.Is<Interactable>(playerCanInteract);
