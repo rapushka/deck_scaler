@@ -24,7 +24,7 @@ namespace DeckScaler.Systems
                     .Build()
             );
 
-        private static TeamSlotViewConfig ViewConfig => Services.Get<IConfigs>().TeamSlotView;
+        private static TeamSlotViewConfig ViewConfig => ServiceLocator.Resolve<IConfigs>().TeamSlotView;
 
         public void Execute()
         {

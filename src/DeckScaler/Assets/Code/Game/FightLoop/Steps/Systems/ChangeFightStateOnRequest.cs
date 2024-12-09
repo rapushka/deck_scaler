@@ -18,9 +18,9 @@ namespace DeckScaler.Systems
                 MatcherBuilder<Game>.With<BlockFightStepChange>().Build()
             );
 
-        private static ProgressData Progress => Services.Get<IProgress>().CurrentRun;
+        private static ProgressData Progress => ServiceLocator.Resolve<IProgress>().CurrentRun;
 
-        private static IDebug Debug => Services.Get<IDebug>();
+        private static IDebug Debug => ServiceLocator.Resolve<IDebug>();
 
         public void Execute()
         {

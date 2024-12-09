@@ -7,7 +7,7 @@ namespace DeckScaler
 {
     public class Bootstrap : MonoBehaviour
     {
-        [SerializeField] private Services.Data _servicesData;
+        [SerializeField] private ServiceLocator.Data _servicesData;
 
         private void Awake()
         {
@@ -15,19 +15,19 @@ namespace DeckScaler
 
             var gameStateMachine = new GameStateMachine();
 
-            Services.Setup<IUI>(new UI());
-            Services.Setup<ICameras>(new Cameras(_servicesData));
-            Services.Setup<IGameStateMachine>(gameStateMachine);
-            Services.Setup<IEcs>(new Ecs());
-            Services.Setup<IConfigs>(_servicesData.Configs);
-            Services.Setup<IProgress>(new Progress());
-            Services.Setup<IFactories>(new Factories());
-            Services.Setup<IRandom>(new SimpleRandom());
-            Services.Setup<IUiMediator>(new UiMediator());
-            Services.Setup<ITime>(new SimpleTime());
-            Services.Setup<IInput>(new UnityInput());
-            Services.Setup<IUtils>(new Utils());
-            Services.Setup<IIndexesInitializer>(new IndexesInitializer());
+            ServiceLocator.Register<IUI>(new UI());
+            ServiceLocator.Register<ICameras>(new Cameras(_servicesData));
+            ServiceLocator.Register<IGameStateMachine>(gameStateMachine);
+            ServiceLocator.Register<IEcs>(new Ecs());
+            ServiceLocator.Register<IConfigs>(_servicesData.Configs);
+            ServiceLocator.Register<IProgress>(new Progress());
+            ServiceLocator.Register<IFactories>(new Factories());
+            ServiceLocator.Register<IRandom>(new SimpleRandom());
+            ServiceLocator.Register<IUiMediator>(new UiMediator());
+            ServiceLocator.Register<ITime>(new SimpleTime());
+            ServiceLocator.Register<IInput>(new UnityInput());
+            ServiceLocator.Register<IUtils>(new Utils());
+            ServiceLocator.Register<IIndexesInitializer>(new IndexesInitializer());
 
             SetupDebugServices();
 
@@ -37,9 +37,9 @@ namespace DeckScaler
         private static void SetupDebugServices()
         {
 #if DEBUG
-            Services.Setup<IDebug>(new SimpleDebug());
+            ServiceLocator.Register<IDebug>(new SimpleDebug());
 #else
-            Services.Setup<IDebug>(new DebugMock());
+            ServiceLocator.Setup<IDebug>(new DebugMock());
 #endif
         }
 

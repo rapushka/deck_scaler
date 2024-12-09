@@ -11,7 +11,7 @@ namespace DeckScaler.Service
 
     public class Cameras : ICameras
     {
-        public Cameras(Services.Data data)
+        public Cameras(ServiceLocator.Data data)
         {
             MainCamera = data.CamerasData.MainCamera;
             UiCamera = data.CamerasData.UiCamera;

@@ -3,5 +3,5 @@ using Entitas.Generic;
 
 namespace DeckScaler.Component
 {
-    public sealed class Name : ValueComponent<string>, IInScope<Game> { }
+    public sealed class DebugName : ValueComponent<string>, IInScope<Game> { }
 }

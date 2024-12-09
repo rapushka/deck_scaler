@@ -17,11 +17,11 @@ namespace DeckScaler.Service
 
     public class UnitFactory : IUnitFactory
     {
-        private UnitsConfig UnitsConfig => Services.Get<IConfigs>().Units;
+        private UnitsConfig UnitsConfig => ServiceLocator.Resolve<IConfigs>().Units;
 
-        private IFactories Factory => Services.Get<IFactories>();
+        private IFactories Factory => ServiceLocator.Resolve<IFactories>();
 
-        private static UnitViewConfig ViewConfig => Services.Get<IConfigs>().UnitView;
+        private static UnitViewConfig ViewConfig => ServiceLocator.Resolve<IConfigs>().UnitView;
 
         public Entity<Game> CreateAtSide(UnitIDRef unitID, Side side)
         {
@@ -56,7 +56,7 @@ namespace DeckScaler.Service
             var stats = config.Stats;
 
             return Factory.CreateEntityBehaviour(UnitsConfig.ViewPrefab, spawnPosition)
-                    .Replace<Name, string>(PrettierUnitID(config.ID))
+                    .Replace<DebugName, string>(PrettierUnitID(config.ID))
                     .Add<UnitID, string>(config.ID)
                     .Add<SpriteSortOrder, int>(ViewConfig.SortingOrder.Idle)
                     .Add<Component.Suit, Suit>(config.Suit)

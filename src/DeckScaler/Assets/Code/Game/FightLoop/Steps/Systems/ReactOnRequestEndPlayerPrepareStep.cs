@@ -13,7 +13,7 @@ namespace DeckScaler.Systems
                 MatcherBuilder<Game>.With<ExitPlayerPrepareStep>().Build()
             );
 
-        private static ProgressData Progress => Services.Get<IProgress>().CurrentRun;
+        private static ProgressData Progress => ServiceLocator.Resolve<IProgress>().CurrentRun;
 
         public void Execute()
         {

@@ -28,3 +28,5 @@ MonoBehaviour:
     <StretchyScroll>k__BackingField:
       <DelayAtCenter>k__BackingField: 0.05
       <StepPerDistanceRate>k__BackingField: 0.005
+    <DelayBeforeFillingGaps>k__BackingField: 0.3
+  <Ui>k__BackingField: {fileID: 11400000, guid: 578955ef846bb86ab9c576ea4c9d05b4, type: 2}

@@ -12,7 +12,7 @@ namespace DeckScaler
             stringBuilder.AppendJoin(
                 separator: " ",
                 entity.GetOrDefault<ID>()?.Value.ID.ToString() ?? "_",
-                entity.ToString<Name, string>(),
+                entity.ToString<DebugName, string>(),
                 entity.ToString<Lead>(),
 
                 // slots

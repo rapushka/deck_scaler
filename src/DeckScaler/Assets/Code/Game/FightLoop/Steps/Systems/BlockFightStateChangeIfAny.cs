@@ -19,7 +19,7 @@ namespace DeckScaler.Systems
             foreach (var _ in _entities)
             {
                 CreateEntity.OneFrame()
-                            .Add<Name, string>($"blocked by {typeof(TComponent).Name}")
+                            .Add<DebugName, string>($"blocked by {typeof(TComponent).Name}")
                             .Add<BlockFightStepChange>()
                     ;
             }

@@ -4,7 +4,7 @@ namespace DeckScaler
     {
         protected override void OnClick()
         {
-            Services.Get<IGameStateMachine>().Enter<StartGameState>();
+            ServiceLocator.Resolve<IGameStateMachine>().Enter<StartGameState>();
         }
     }
 }
