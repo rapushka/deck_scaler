@@ -1,3 +1,5 @@
+using DeckScaler.Systems;
+
 namespace DeckScaler
 {
     public sealed class DamageFeature : Feature
@@ -5,7 +7,9 @@ namespace DeckScaler
         public DamageFeature()
             : base(nameof(DamageFeature))
         {
-            Add(new Systems.DealDamage());
+            Add(new IncreaseDamageForSpades());
+
+            Add(new DealDamage());
         }
     }
 }
