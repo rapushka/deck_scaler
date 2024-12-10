@@ -1,6 +1,5 @@
 # v0.0.12
 - [allow spawn any unit on any side](https://github.com/rapushka/deck_scaler/pull/120)
-- [(refactoring) renamings](https://github.com/rapushka/deck_scaler/pull/124) 
 - [gold currency implemented](https://github.com/rapushka/deck_scaler/pull/131)
 - Suits abilities implemented:
   - [Logic](https://github.com/rapushka/deck_scaler/issues/125):
@@ -11,7 +10,10 @@
   - WIP: View
 - [added counters for health-bars](https://github.com/rapushka/deck_scaler/pull/134)
 - [blank card suit](https://github.com/rapushka/deck_scaler/pull/139)
-- [(refactoring) Affects System](https://github.com/rapushka/deck_scaler/pull/157)
+- refactorings:
+  - [renamings](https://github.com/rapushka/deck_scaler/pull/124)
+  - [Affects System](https://github.com/rapushka/deck_scaler/pull/157)
+  - [Ui Mediator](https://github.com/rapushka/deck_scaler/pull/158)
 
 # v0.0.11
 - [block ui during attack animations](https://github.com/rapushka/deck_scaler/pull/107)
