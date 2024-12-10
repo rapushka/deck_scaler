@@ -4,19 +4,19 @@ namespace DeckScaler
 {
     public interface IAffectsFactory
     {
-        void Create(AffectData affectData, EntityID senderID, EntityID targetID);
+        void Create(AffectData data, EntityID senderID, EntityID targetID);
     }
 
     public class AffectsFactory : IAffectsFactory
     {
-        public void Create(AffectData affectData, EntityID senderID, EntityID targetID)
+        public void Create(AffectData data, EntityID senderID, EntityID targetID)
         {
-            var type = affectData.Type;
+            var type = data.Type;
 
             CreateEntity.OneFrame()
                 .Add<Affect>()
                 .Add<AffectID, AffectType>(type)
-                .Add<AffectValue, int>(affectData.Value)
+                .Add<AffectValue, int>(data.Value)
                 .Add<SenderID, EntityID>(senderID)
                 .Add<TargetID, EntityID>(targetID)
 

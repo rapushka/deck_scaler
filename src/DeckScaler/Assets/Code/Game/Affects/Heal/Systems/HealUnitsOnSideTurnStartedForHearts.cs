@@ -1,5 +1,6 @@
 using DeckScaler.Component;
 using DeckScaler.Scopes;
+using DeckScaler.Service;
 using Entitas;
 using Entitas.Generic;
 
@@ -24,6 +25,8 @@ namespace DeckScaler.Systems
                     .Build()
             );
 
+        private static IAffectsFactory Factory => ServiceLocator.Resolve<IFactories>().Affects;
+
         public void Execute()
         {
             foreach (var turnTracker in _turnTrackers)
@@ -33,7 +36,13 @@ namespace DeckScaler.Systems
                 foreach (var unit in _units.Where(u => IsOnCurrentSide(u) && IsHearts(u)))
                 {
                     var power = unit.Get<Power, int>();
-                    unit.Increment<Health>(power);
+                    var unitID = unit.ID();
+
+                    Factory.Create(
+                        data: new(AffectType.Heal, power),
+                        senderID: unitID,
+                        targetID: unitID
+                    );
                 }
 
                 continue;

@@ -30,7 +30,7 @@ namespace DeckScaler.Systems
                     continue;
 
                 Factory.Create(
-                    affectData: new(AffectType.DealDamage, damage),
+                    data: new(AffectType.DealDamage, damage),
                     senderID: attacker.ID(),
                     targetID: opponentID
                 );

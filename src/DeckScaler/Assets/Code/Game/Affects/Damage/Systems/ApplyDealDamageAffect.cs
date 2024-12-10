@@ -5,15 +5,16 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public class DealDamage : IExecuteSystem
+    public class ApplyDealDamageAffect : IExecuteSystem
     {
-        private readonly IGroup<Entity<Game>> _attacks = Contexts.Instance.GetGroup(
-            MatcherBuilder<Game>
-                .With<DealDamageAffect>()
-                .And<AffectValue>()
-                .And<TargetID>()
-                .Build()
-        );
+        private readonly IGroup<Entity<Game>> _attacks
+            = Contexts.Instance.GetGroup(
+                MatcherBuilder<Game>
+                    .With<DealDamageAffect>()
+                    .And<AffectValue>()
+                    .And<TargetID>()
+                    .Build()
+            );
 
         public void Execute()
         {

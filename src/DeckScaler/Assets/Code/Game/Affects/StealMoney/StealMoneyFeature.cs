@@ -7,6 +7,7 @@ namespace DeckScaler
         public StealMoneyFeature()
             : base(nameof(StealMoneyFeature))
         {
+            Add(new StealMoneyFromOpponentForDiamonds());
             Add(new StealMoney());
         }
     }
