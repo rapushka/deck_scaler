@@ -25,7 +25,6 @@ namespace DeckScaler
             ServiceLocator.Register<ITime>(new SimpleTime());
             ServiceLocator.Register<IInput>(new UnityInput());
             ServiceLocator.Register<IUtils>(new Utils());
-            ServiceLocator.Register<IIndexesInitializer>(new IndexesInitializer());
 
             SetupDebugServices();
         }

@@ -8,7 +8,7 @@ namespace DeckScaler.Service
 {
     public interface IEcs : IService
     {
-        void Init();
+        void Initialize();
         void CreateFeature();
 
         void Dispose();
@@ -18,15 +18,21 @@ namespace DeckScaler.Service
     public class Ecs : IEcs
     {
         private GameplayFeatureAdapter _featureAdapter;
+        private CustomIndexes _customIndexes;
 
-        public void Init()
+        public void Initialize()
         {
-            Contexts.Instance.InitializeScope<Game>();
-            Contexts.Instance.InitializeScope<Scopes.Cheats>();
-            Contexts.Instance.InitializeScope<Input>();
+            var contexts = Contexts.Instance;
 
-            Contexts.Instance.Get<Game>().GetPrimaryIndex<ID, EntityID>().Initialize();
-            Contexts.Instance.Get<Game>().GetPrimaryIndex<Inventory, Side>().Initialize();
+            contexts.InitializeScope<Game>();
+            contexts.InitializeScope<Scopes.Cheats>();
+            contexts.InitializeScope<Input>();
+
+            contexts.Get<Game>().GetPrimaryIndex<ID, EntityID>().Initialize();
+            contexts.Get<Game>().GetPrimaryIndex<Inventory, Side>().Initialize();
+
+            _customIndexes = new(contexts);
+            _customIndexes.Initialize();
 
 #if DEBUG
             Entity<Game>.Formatter = new GameEntityFormatter();
