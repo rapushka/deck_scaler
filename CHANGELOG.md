@@ -10,6 +10,7 @@
     - [Diamonds: Steal money from opponent](https://github.com/rapushka/deck_scaler/pull/136)
   - WIP: View
 - [added counters for health-bars](https://github.com/rapushka/deck_scaler/pull/134)
+- [blank card suit](https://github.com/rapushka/deck_scaler/pull/139)
 
 # v0.0.11
 - [block ui during attack animations](https://github.com/rapushka/deck_scaler/pull/107)
