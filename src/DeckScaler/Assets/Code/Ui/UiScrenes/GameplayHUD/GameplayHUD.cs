@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public class GameplayHUD : UiScene
+    public class GameplayHUD : BaseUiScreen
     {
         [field: SerializeField] public EntityBehaviour<Game>[] Behaviours { get; private set; }
     }

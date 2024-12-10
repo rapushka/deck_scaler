@@ -2,13 +2,13 @@ using DeckScaler.Service;
 
 namespace DeckScaler
 {
-    public class MainMenuState : GameState
+    public class PlayButton : BaseButton
     {
         private static IUiMediator UiMediator => ServiceLocator.Resolve<IUiMediator>();
 
-        public override void Enter()
+        protected override void OnClick()
         {
-            UiMediator.OpenScreen<MainMenu>();
+            UiMediator.StartNewRun();
         }
     }
 }

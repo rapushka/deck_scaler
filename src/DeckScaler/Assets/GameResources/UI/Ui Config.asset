@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Ui Config
   m_EditorClassIdentifier: 
   <CanvasPrefab>k__BackingField: {fileID: 5014525103314158776, guid: fc419693fe3f051e29532eef1fc095be, type: 3}
-  <MainMenu>k__BackingField: {fileID: 8551543088172143899, guid: e3253b0b728175c0ea4ab39578412ceb, type: 3}
-  <GameplayHUD>k__BackingField: {fileID: 8551543088172143899, guid: 2128c90a4003728b6977ced104de19df, type: 3}
+  <Screens>k__BackingField:
+    _values:
+    - {fileID: 9125730342021434197, guid: e3253b0b728175c0ea4ab39578412ceb, type: 3}
+    - {fileID: 1156827225746770649, guid: 2128c90a4003728b6977ced104de19df, type: 3}

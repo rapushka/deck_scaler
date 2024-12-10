@@ -8,7 +8,7 @@ namespace DeckScaler
         {
             ServiceLocator.Resolve<ICameras>().SpawnCameras();
 
-            ServiceLocator.Resolve<IUI>().Init();
+            ServiceLocator.Resolve<IUiMediator>().InitializeUI();
             ServiceLocator.Resolve<IEcs>().Init();
 
             StateMachine.Enter<MainMenuState>();

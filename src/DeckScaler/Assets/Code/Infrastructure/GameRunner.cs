@@ -14,7 +14,7 @@ namespace DeckScaler
             // ReSharper disable RedundantTypeArgumentsOfMethod - I wanna keep consistency here
 
             ServiceLocator.Register<IConfigs>(_configs);
-            ServiceLocator.Register<IUI>(new UI());
+            ServiceLocator.Register<IUiScreens>(new UiScreens());
             ServiceLocator.Register<ICameras>(_configs.Cameras);
             ServiceLocator.Register<IGameStateMachine>(new GameStateMachine());
             ServiceLocator.Register<IEcs>(new Ecs());
