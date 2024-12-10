@@ -11,11 +11,13 @@ namespace DeckScaler
         public override void Enter()
         {
             UiMediator.OpenScreen<GameplayHUD>();
+
+            Ecs.StartGameplay();
         }
 
         public override void Exit()
         {
-            Ecs.Dispose();
+            Ecs.EndGameplay();
         }
     }
 }

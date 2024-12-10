@@ -1,7 +1,6 @@
 using DeckScaler.Component;
 using DeckScaler.Scopes;
 using Entitas.Generic;
-using UnityEngine;
 using Input = DeckScaler.Scopes.Input;
 
 namespace DeckScaler.Service
@@ -9,29 +8,30 @@ namespace DeckScaler.Service
     public interface IEcs : IService
     {
         void Initialize();
-        void CreateFeature();
+        void StartGameplay();
 
-        void Dispose();
-        void MarkAllEntitiesAsDestroyed();
+        void EndGameplay();
     }
 
     public class Ecs : IEcs
     {
-        private GameplayFeatureAdapter _featureAdapter;
         private CustomIndexes _customIndexes;
+        private Contexts _contexts;
+
+        private static IEcsRunner EcsRunner => ServiceLocator.Resolve<IEcsRunner>();
 
         public void Initialize()
         {
-            var contexts = Contexts.Instance;
+            _contexts = Contexts.Instance;
 
-            contexts.InitializeScope<Game>();
-            contexts.InitializeScope<Scopes.Cheats>();
-            contexts.InitializeScope<Input>();
+            _contexts.InitializeScope<Game>();
+            _contexts.InitializeScope<Scopes.Cheats>();
+            _contexts.InitializeScope<Input>();
 
-            contexts.Get<Game>().GetPrimaryIndex<ID, EntityID>().Initialize();
-            contexts.Get<Game>().GetPrimaryIndex<Inventory, Side>().Initialize();
+            _contexts.Get<Game>().GetPrimaryIndex<ID, EntityID>().Initialize();
+            _contexts.Get<Game>().GetPrimaryIndex<Inventory, Side>().Initialize();
 
-            _customIndexes = new(contexts);
+            _customIndexes = new(_contexts);
             _customIndexes.Initialize();
 
 #if DEBUG
@@ -39,27 +39,18 @@ namespace DeckScaler.Service
 #endif
         }
 
-        public void CreateFeature()
+        public void StartGameplay()
         {
-            var go = new GameObject("Gameplay Feature");
-            _featureAdapter = go.AddComponent<GameplayFeatureAdapter>();
-            _featureAdapter.Init(this);
+            EcsRunner.AddFeature<MainFeature>();
         }
 
-        public void Dispose()
+        public void EndGameplay()
         {
-            Object.Destroy(_featureAdapter.gameObject);
-        }
+            EcsRunner.RemoveFeature<MainFeature>(destroyAllEntities: true);
 
-        public void MarkAllEntitiesAsDestroyed()
-        {
-            var contexts = Contexts.Instance;
-
-            foreach (var entity in contexts.Get<Game>().GetEntities())
-                entity.Is<Destroy>(true);
-
-            foreach (var entity in contexts.Get<Input>().GetEntities())
-                entity.Is<Destroy>(true);
+            _contexts.Get<Game>().Reset();
+            _contexts.Get<Input>().Reset();
+            _contexts.Get<Scopes.Cheats>().Reset();
         }
     }
 }

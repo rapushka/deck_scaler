@@ -10,8 +10,6 @@ namespace DeckScaler
         private void Awake()
         {
             var gameRunner = new GameRunner(_configs);
-            gameRunner.SetupServices();
-
             gameRunner.StartGame();
         }
     }
