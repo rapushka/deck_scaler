@@ -22,6 +22,7 @@ namespace DeckScaler.Systems
                     .With<UnitID>()
                     .And<OnSide>()
                     .And<Component.Suit>()
+                    .And<Opponent>()
                     .Build()
             );
 
