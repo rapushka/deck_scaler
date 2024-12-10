@@ -11,6 +11,7 @@
   - WIP: View
 - [added counters for health-bars](https://github.com/rapushka/deck_scaler/pull/134)
 - [blank card suit](https://github.com/rapushka/deck_scaler/pull/139)
+- [(refactoring) Affects System](https://github.com/rapushka/deck_scaler/pull/157)
 
 # v0.0.11
 - [block ui during attack animations](https://github.com/rapushka/deck_scaler/pull/107)
