@@ -7,7 +7,7 @@ namespace DeckScaler.Systems
 {
     public class ApplyDealDamageAffect : IExecuteSystem
     {
-        private readonly IGroup<Entity<Game>> _attacks
+        private readonly IGroup<Entity<Game>> _affects
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
                     .With<DealDamageAffect>()
@@ -18,10 +18,10 @@ namespace DeckScaler.Systems
 
         public void Execute()
         {
-            foreach (var attack in _attacks)
+            foreach (var affect in _affects)
             {
-                var target = attack.Get<TargetID>().Value.GetEntity();
-                var damage = attack.Get<AffectValue>().Value;
+                var target = affect.Get<TargetID>().Value.GetEntity();
+                var damage = affect.Get<AffectValue>().Value;
 
                 target.Increment<Health>(-damage);
             }

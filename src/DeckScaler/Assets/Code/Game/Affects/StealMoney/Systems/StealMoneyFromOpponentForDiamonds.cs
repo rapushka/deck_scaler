@@ -1,5 +1,6 @@
 using DeckScaler.Component;
 using DeckScaler.Scopes;
+using DeckScaler.Service;
 using Entitas;
 using Entitas.Generic;
 
@@ -24,6 +25,8 @@ namespace DeckScaler.Systems
                     .Build()
             );
 
+        private static IAffectsFactory Factory => ServiceLocator.Resolve<IFactories>().Affects;
+
         public void Execute()
         {
             foreach (var turnTracker in _turnTrackers)
@@ -32,13 +35,14 @@ namespace DeckScaler.Systems
 
                 foreach (var unit in _units.Where(u => IsOnCurrentSide(u) && IsDiamonds(u)))
                 {
-                    var side = unit.Get<OnSide, Side>();
+                    var opponentID = unit.Get<Opponent, EntityID>();
                     var power = unit.Get<Power, int>();
 
-                    CreateEntity.OneFrame()
-                        .Add<Component.StealMoney, int>(power)
-                        .Add<StealMoneyFrom, Side>(side.Flip())
-                        ;
+                    Factory.Create(
+                        data: new(AffectType.StealMoney, power),
+                        senderID: unit.ID(),
+                        targetID: opponentID
+                    );
                 }
 
                 continue;
