@@ -10,7 +10,7 @@ namespace DeckScaler
             Add(new IncreaseOutcomeDamageForSpades());
             Add(new DecreaseIncomeDamageForClubs());
 
-            Add(new DealDamage());
+            Add(new ApplyDealDamageAffect());
         }
     }
 }

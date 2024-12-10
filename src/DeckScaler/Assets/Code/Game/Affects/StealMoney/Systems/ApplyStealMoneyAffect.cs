@@ -5,13 +5,15 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public sealed class StealMoney : IExecuteSystem
+    public sealed class ApplyStealMoneyAffect : IExecuteSystem
     {
-        private readonly IGroup<Entity<Game>> _requests
+        private readonly IGroup<Entity<Game>> _affects
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<Component.StealMoney>()
-                    .And<StealMoneyFrom>()
+                    .With<StealMoneyAffect>()
+                    .And<AffectValue>()
+                    .And<SenderID>()
+                    .And<TargetID>()
                     .Build()
             );
 
@@ -20,11 +22,14 @@ namespace DeckScaler.Systems
 
         public void Execute()
         {
-            foreach (var request in _requests)
+            foreach (var affect in _affects)
             {
-                var targetAmount = request.Get<Component.StealMoney, int>();
-                var targetSide = request.Get<StealMoneyFrom, Side>();
-                var beneficiarySide = targetSide.Flip();
+                var sender = affect.GetByID<SenderID>();
+                var target = affect.GetByID<TargetID>();
+                var targetAmount = affect.Get<AffectValue>().Value;
+
+                var targetSide = target.Get<OnSide, Side>();
+                var beneficiarySide = sender.Get<OnSide, Side>();
 
                 var targetInventory = Index.GetEntity(targetSide);
                 var availableMoney = targetInventory.Get<Money, int>();

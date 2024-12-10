@@ -9,8 +9,9 @@ namespace DeckScaler.Systems
     {
         private readonly IGroup<Entity<Game>> _attacks = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
-                .With<Component.DealDamage>()
-                .And<Sender>()
+                .With<DealDamageAffect>()
+                .And<SenderID>()
+                .And<AffectValue>()
                 .Build()
         );
 
@@ -18,13 +19,13 @@ namespace DeckScaler.Systems
         {
             foreach (var attack in _attacks)
             {
-                var attacker = attack.Get<Sender, EntityID>().GetEntity();
+                var attacker = attack.Get<SenderID, EntityID>().GetEntity();
 
                 if (!attacker.InSuit(Suit.Spades))
                     continue;
 
                 var attackerPower = attacker.Get<Power, int>();
-                attack.Increment<Component.DealDamage>(attackerPower);
+                attack.Increment<AffectValue>(attackerPower);
             }
         }
     }

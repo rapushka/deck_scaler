@@ -24,6 +24,10 @@ namespace DeckScaler
 
         public static bool IsEntityDead(this EntityID @this) => @this.GetEntity().Is<Dead>();
 
+        public static Entity<Game> GetByID<TComponent>(this Entity<Game> @this)
+            where TComponent : ValueComponent<EntityID>, IInScope<Game>, new()
+            => @this.Get<TComponent, EntityID>().GetEntity();
+
         public static Entity<Game> SetByID<TComponent>(this Entity<Game> @this, Entity<Game> other)
             where TComponent : ValueComponent<EntityID>, IInScope<Game>, new()
         {
