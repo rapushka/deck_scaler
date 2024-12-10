@@ -9,6 +9,7 @@ namespace DeckScaler.Service
 
         void StartNewRun();
         void EndTurn();
+        void EndRun();
 
         void SendCheat(string cheat);
     }
@@ -29,6 +30,7 @@ namespace DeckScaler.Service
 
         public void StartNewRun() => StateMachine.Enter<StartGameState>();
         public void EndTurn()     => CreateEntity.OneFrame().Add<Component.RequestEndTurn>();
+        public void EndRun()      => StateMachine.Enter<EndGameState>();
 
         public void SendCheat(string cheat) => CreateEntity.Cheat(cheat);
     }
