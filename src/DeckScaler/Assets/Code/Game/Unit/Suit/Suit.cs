@@ -12,12 +12,13 @@ namespace DeckScaler
         Hearts = 2,
         Clubs = 3,
         Diamonds = 4,
+        Blank = 5,
     }
 
     public static class SuitExtensions
     {
         public static bool InSuit(this Entity<Game> @this, Suit other)
-            => @this.Get<Component.Suit, Suit>().Is(other);
+            => @this.InSuit<Component.Suit>(other);
 
         public static bool InSuit<TComponent>(this Entity<Game> @this, Suit other)
             where TComponent : ValueComponent<Suit>, IInScope<Game>, new()
@@ -45,6 +46,7 @@ namespace DeckScaler
                 Suit.Hearts   => "\u2665",
                 Suit.Clubs    => "\u2663",
                 Suit.Diamonds => "\u2666",
+                Suit.Blank    => "_",
                 _             => throw new ArgumentOutOfRangeException(nameof(suit), suit, null),
             };
     }
