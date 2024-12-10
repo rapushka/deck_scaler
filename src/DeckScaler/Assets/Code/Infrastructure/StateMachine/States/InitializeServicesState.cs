@@ -26,6 +26,7 @@ namespace DeckScaler
             ServiceLocator.Register<ITime>(new SimpleTime());
             ServiceLocator.Register<IInput>(new UnityInput());
             ServiceLocator.Register<IUtils>(new Utils());
+            ServiceLocator.Register<IIdentifierServer>(new IdentifierServer());
 
             var ecsRunner = new EcsRunner();
             ServiceLocator.Register<IEcsRunner>(ecsRunner);

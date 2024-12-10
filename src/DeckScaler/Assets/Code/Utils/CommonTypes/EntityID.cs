@@ -7,16 +7,14 @@ namespace DeckScaler
     public struct EntityID
         : IEquatable<EntityID>
     {
-        private static int _globalCounter;
-
         public int ID { get; private set; }
+
+        public EntityID(int id) => ID = id;
 
         public static implicit operator int(EntityID entityID) => entityID.ID;
 
         public static bool operator ==(EntityID lhs, EntityID rhs) => lhs.Equals(rhs);
         public static bool operator !=(EntityID lhs, EntityID rhs) => !(lhs == rhs);
-
-        public static EntityID Next() => new() { ID = _globalCounter++ };
 
         public override string ToString()
             => $"{ID} {EntityName}";
