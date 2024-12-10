@@ -10,8 +10,8 @@ namespace DeckScaler.Systems
     {
         private readonly IGroup<Entity<Game>> _attacks = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
-                .With<Component.DealDamage>()
-                .And<Target>()
+                .With<DealDamageAffect>()
+                .And<TargetID>()
                 .Build()
         );
 
@@ -19,7 +19,7 @@ namespace DeckScaler.Systems
         {
             foreach (var attack in _attacks)
             {
-                var target = attack.Get<Target>().Value.GetEntity();
+                var target = attack.Get<TargetID>().Value.GetEntity();
 
                 if (target.TryGet<Component.UnitAnimator, UnitAnimator>(out var animator))
                 {

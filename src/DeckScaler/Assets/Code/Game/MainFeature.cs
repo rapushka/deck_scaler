@@ -28,7 +28,7 @@ namespace DeckScaler
             Add(new SequentialFightLoopFeature());
 
             Add(new OnTurnStartedReactionsFeature());
-            Add(new DamageFeature());
+            Add(new AffectsFeature());
             Add(new DeathFeature());
 
             Add(new DestroyEntitiesAfterDelay());

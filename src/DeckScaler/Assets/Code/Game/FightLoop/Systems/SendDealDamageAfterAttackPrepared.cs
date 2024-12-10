@@ -1,5 +1,6 @@
 using DeckScaler.Component;
 using DeckScaler.Scopes;
+using DeckScaler.Service;
 using Entitas;
 using Entitas.Generic;
 
@@ -12,6 +13,8 @@ namespace DeckScaler.Systems
                 .With<PrepareAttackTimer>()
                 .Build()
         );
+
+        private static IAffectsFactory Factory => ServiceLocator.Resolve<IFactories>().Affects;
 
         public void Execute()
         {
@@ -26,11 +29,11 @@ namespace DeckScaler.Systems
                 if (opponentID.IsEntityDead())
                     continue;
 
-                CreateEntity.OneFrame()
-                            .Add<Component.DealDamage, int>(damage)
-                            .Add<Sender, EntityID>(attacker.ID())
-                            .Add<Target, EntityID>(opponentID)
-                    ;
+                Factory.Create(
+                    affectData: new(AffectType.DealDamage, damage),
+                    senderID: attacker.ID(),
+                    targetID: opponentID
+                );
             }
         }
     }
