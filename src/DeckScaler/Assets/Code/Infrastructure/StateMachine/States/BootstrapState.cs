@@ -6,10 +6,10 @@ namespace DeckScaler
     {
         public override void Enter()
         {
+            ServiceLocator.Resolve<ICameras>().SpawnCameras();
+
             ServiceLocator.Resolve<IUI>().Init();
             ServiceLocator.Resolve<IEcs>().Init();
-
-            ServiceLocator.Resolve<ICameras>().SpawnCameras();
 
             StateMachine.Enter<MainMenuState>();
         }
