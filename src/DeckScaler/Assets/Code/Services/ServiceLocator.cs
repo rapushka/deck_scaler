@@ -39,12 +39,5 @@ namespace DeckScaler
                 set => _instance = value ?? throw new NullReferenceException();
             }
         }
-
-        [Serializable]
-        public class Data
-        {
-            [field: SerializeField] public Cameras.Data CamerasData { get; private set; }
-            [field: SerializeField] public Configs      Configs     { get; private set; }
-        }
     }
 }

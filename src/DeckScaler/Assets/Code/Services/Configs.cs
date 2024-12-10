@@ -4,6 +4,8 @@ namespace DeckScaler.Service
 {
     public interface IConfigs : IService
     {
+        ICameras Cameras { get; }
+
         UnitsConfig        Units        { get; }
         ProgressConfig     Progress     { get; }
         SpriteSheet        SpriteSheet  { get; }
@@ -15,6 +17,8 @@ namespace DeckScaler.Service
     [CreateAssetMenu(menuName = Constants.MenuPrefix + nameof(Configs))]
     public class Configs : ScriptableObject, IConfigs
     {
+        [SerializeField] private Cameras _cameras;
+
         [field: NaughtyAttributes.Expandable]
         [field: SerializeField] public UnitsConfig Units { get; private set; }
 
@@ -31,5 +35,7 @@ namespace DeckScaler.Service
 
         [field: NaughtyAttributes.Expandable]
         [field: SerializeField] public UiConfig Ui { get; private set; }
+
+        public ICameras Cameras => _cameras;
     }
 }

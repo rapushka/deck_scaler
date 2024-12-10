@@ -1,25 +1,23 @@
-using DeckScaler.Scopes;
 using DeckScaler.Service;
-using Entitas.Generic;
-using UnityEngine;
 
 namespace DeckScaler
 {
-    public class Bootstrap : MonoBehaviour
+    public class GameRunner
     {
-        [SerializeField] private ServiceLocator.Data _servicesData;
+        private readonly IConfigs _configs;
 
-        private void Awake()
+        public GameRunner(IConfigs configs)
+            => _configs = configs;
+
+        public void SetupServices()
         {
-            InitializeEcs();
+            // ReSharper disable RedundantTypeArgumentsOfMethod - I wanna keep consistency here
 
-            var gameStateMachine = new GameStateMachine();
-
+            ServiceLocator.Register<IConfigs>(_configs);
             ServiceLocator.Register<IUI>(new UI());
-            ServiceLocator.Register<ICameras>(new Cameras(_servicesData));
-            ServiceLocator.Register<IGameStateMachine>(gameStateMachine);
+            ServiceLocator.Register<ICameras>(_configs.Cameras);
+            ServiceLocator.Register<IGameStateMachine>(new GameStateMachine());
             ServiceLocator.Register<IEcs>(new Ecs());
-            ServiceLocator.Register<IConfigs>(_servicesData.Configs);
             ServiceLocator.Register<IProgress>(new Progress());
             ServiceLocator.Register<IFactories>(new Factories());
             ServiceLocator.Register<IRandom>(new SimpleRandom());
@@ -30,24 +28,21 @@ namespace DeckScaler
             ServiceLocator.Register<IIndexesInitializer>(new IndexesInitializer());
 
             SetupDebugServices();
+        }
 
+        public void StartGame()
+        {
+            var gameStateMachine = ServiceLocator.Resolve<IGameStateMachine>();
             gameStateMachine.Enter<BootstrapState>();
         }
 
-        private static void SetupDebugServices()
+        private void SetupDebugServices()
         {
 #if DEBUG
             ServiceLocator.Register<IDebug>(new SimpleDebug());
 #else
-            ServiceLocator.Setup<IDebug>(new DebugMock());
+            ServiceLocator.Register<IDebug>(new DebugMock());
 #endif
-        }
-
-        private static void InitializeEcs()
-        {
-            Contexts.Instance.InitializeScope<Game>();
-            Contexts.Instance.InitializeScope<Scopes.Cheats>();
-            Contexts.Instance.InitializeScope<Scopes.Input>();
         }
     }
 }
