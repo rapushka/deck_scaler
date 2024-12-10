@@ -6,8 +6,9 @@ namespace DeckScaler
 {
     public interface IGameStateMachine : IService
     {
-        void Enter<TState>()
-            where TState : GameState, new();
+        void Enter<TState>() where TState : GameState, new();
+
+        void Enter<TState, TData>(TData data) where TState : GameState, IPayload<TData>, new();
     }
 
     public class GameStateMachine : IGameStateMachine
@@ -22,6 +23,18 @@ namespace DeckScaler
 
             _currentState?.Exit();
             _currentState = nextState;
+            _currentState.Enter();
+        }
+
+        public void Enter<TState, TData>(TData data)
+            where TState : GameState, IPayload<TData>, new()
+        {
+            var nextState = _states.GetOrAdd(typeof(TState), NewState<TState>);
+
+            _currentState?.Exit();
+
+            _currentState = nextState;
+            ((TState)_currentState).SetData(data);
             _currentState.Enter();
         }
 

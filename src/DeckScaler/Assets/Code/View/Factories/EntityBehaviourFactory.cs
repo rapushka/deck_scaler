@@ -15,6 +15,8 @@ namespace DeckScaler
     public class EntityBehaviourFactory
         : IEntityBehaviourFactory
     {
+        private static IIdentifierServer Identifiers => ServiceLocator.Resolve<IIdentifierServer>();
+
         public Entity<Game> Create(EntityBehaviour<Game> prefab, Vector2 spawnPosition)
             => Setup(Object.Instantiate(prefab), spawnPosition);
 
@@ -28,7 +30,7 @@ namespace DeckScaler
 
             return view.Entity
                     .AddSafely<DebugName, string>(view.name)
-                    .Add<ID, EntityID>(EntityID.Next())
+                    .Add<ID, EntityID>(new(Identifiers.Next()))
                     .Add<View, EntityBehaviour<Game>>(view)
                     .Add<ViewTransform, Transform>(viewTransform)
                     .Add<WorldPosition, Vector2>(spawnPosition)

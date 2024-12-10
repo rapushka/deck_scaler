@@ -7,8 +7,10 @@ namespace DeckScaler
 {
     public static class CreateEntity
     {
+        private static IIdentifierServer Identifiers => ServiceLocator.Resolve<IIdentifierServer>();
+
         public static Entity<Game> Next()
-            => Empty().Add<ID, EntityID>(EntityID.Next());
+            => Empty().Add<ID, EntityID>(new(Identifiers.Next()));
 
         public static Entity<Game> OneFrame()
             => Empty().Add<Destroy>();

@@ -30,6 +30,8 @@ namespace DeckScaler
             _tween = DOTween.Sequence()
                     // prepare
                     .Append(transform.DOScale(InitialScale * args.Scale, args.Duration))
+
+                    // punch
                     .Append(transform.DOPunchPosition(punchPosition, args.Duration, vibrato: 0))
 
                     // recovery

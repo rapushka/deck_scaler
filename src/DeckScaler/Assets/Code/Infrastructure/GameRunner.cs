@@ -9,40 +9,12 @@ namespace DeckScaler
         public GameRunner(IConfigs configs)
             => _configs = configs;
 
-        public void SetupServices()
-        {
-            // ReSharper disable RedundantTypeArgumentsOfMethod - I wanna keep consistency here
-
-            ServiceLocator.Register<IConfigs>(_configs);
-            ServiceLocator.Register<IUiScreens>(new UiScreens());
-            ServiceLocator.Register<ICameras>(_configs.Cameras);
-            ServiceLocator.Register<IGameStateMachine>(new GameStateMachine());
-            ServiceLocator.Register<IEcs>(new Ecs());
-            ServiceLocator.Register<IProgress>(new Progress());
-            ServiceLocator.Register<IFactories>(new Factories());
-            ServiceLocator.Register<IRandom>(new SimpleRandom());
-            ServiceLocator.Register<IUiMediator>(new UiMediator());
-            ServiceLocator.Register<ITime>(new SimpleTime());
-            ServiceLocator.Register<IInput>(new UnityInput());
-            ServiceLocator.Register<IUtils>(new Utils());
-            ServiceLocator.Register<IIndexesInitializer>(new IndexesInitializer());
-
-            SetupDebugServices();
-        }
-
         public void StartGame()
         {
-            var gameStateMachine = ServiceLocator.Resolve<IGameStateMachine>();
-            gameStateMachine.Enter<BootstrapState>();
-        }
+            var stateMachine = new GameStateMachine();
+            ServiceLocator.Register<IGameStateMachine>(stateMachine);
 
-        private void SetupDebugServices()
-        {
-#if DEBUG
-            ServiceLocator.Register<IDebug>(new SimpleDebug());
-#else
-            ServiceLocator.Register<IDebug>(new DebugMock());
-#endif
+            stateMachine.Enter<InitializeServicesState, IConfigs>(_configs);
         }
     }
 }
