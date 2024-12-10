@@ -15,5 +15,5 @@ MonoBehaviour:
   <ID>k__BackingField: Unit/Ally/Crook
   <Suit>k__BackingField: 1
   <MaxHealth>k__BackingField: 10
-  <BaseDamage>k__BackingField: 2
-  <Power>k__BackingField: 4
+  <BaseDamage>k__BackingField: 1
+  <Power>k__BackingField: 1
