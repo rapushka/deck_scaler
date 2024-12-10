@@ -11,6 +11,7 @@ namespace DeckScaler.Editor.Tests
         public void SetUp()
         {
             Time.timeScale = 10f;
+            
         }
 
         [UnityTest]

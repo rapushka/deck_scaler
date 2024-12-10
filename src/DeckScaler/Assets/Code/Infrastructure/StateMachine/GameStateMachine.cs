@@ -8,9 +8,6 @@ namespace DeckScaler
     {
         void Enter<TState>()
             where TState : GameState, new();
-
-        TState NewState<TState>()
-            where TState : GameState, new();
     }
 
     public class GameStateMachine : IGameStateMachine
@@ -28,7 +25,7 @@ namespace DeckScaler
             _currentState.Enter();
         }
 
-        public TState NewState<TState>()
+        private TState NewState<TState>()
             where TState : GameState, new()
             => GameState.Create<TState>(this);
     }

@@ -4,18 +4,20 @@ namespace DeckScaler
 {
     public class GameRunner
     {
-        private readonly ServicesData _servicesData;
+        private readonly IConfigs _configs;
 
-        public GameRunner(ServicesData servicesData)
-            => _servicesData = servicesData;
+        public GameRunner(IConfigs configs)
+            => _configs = configs;
 
         public void SetupServices()
         {
+            // ReSharper disable RedundantTypeArgumentsOfMethod - I wanna keep consistency here
+
+            ServiceLocator.Register<IConfigs>(_configs);
             ServiceLocator.Register<IUI>(new UI());
-            ServiceLocator.Register<ICameras>(new Cameras(_servicesData));
+            ServiceLocator.Register<ICameras>(_configs.Cameras);
             ServiceLocator.Register<IGameStateMachine>(new GameStateMachine());
             ServiceLocator.Register<IEcs>(new Ecs());
-            ServiceLocator.Register<IConfigs>(_servicesData.Configs);
             ServiceLocator.Register<IProgress>(new Progress());
             ServiceLocator.Register<IFactories>(new Factories());
             ServiceLocator.Register<IRandom>(new SimpleRandom());
