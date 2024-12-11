@@ -9,7 +9,9 @@ namespace DeckScaler
     {
         [SerializeField] private GameObject _target;
 
+        protected override void OnRegistered(Entity<Game> entity) => OnValueChanged(entity, null);
+
         public override void OnValueChanged(Entity<Game> entity, Visible component)
-            => _target.SetActive(entity.Is<Interactable>());
+            => _target.SetActive(entity.Is<Visible>());
     }
 }

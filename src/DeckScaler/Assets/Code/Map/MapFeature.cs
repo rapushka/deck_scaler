@@ -9,6 +9,8 @@ namespace DeckScaler
         {
             Add(new ShowMapOnStartOfRun());
             Add(new OnLevelSelectedHideMap());
+
+            Add(new HideEntitiesIfMapIsOpened());
         }
     }
 }
