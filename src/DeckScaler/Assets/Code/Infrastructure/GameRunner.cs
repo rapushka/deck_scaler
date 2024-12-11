@@ -11,8 +11,8 @@ namespace DeckScaler
 
         public void StartGame()
         {
-            var stateMachine = new GameStateMachine();
-            ServiceLocator.Register<IGameStateMachine>(stateMachine);
+            IGameStateMachine stateMachine = new GameStateMachine();
+            ServiceLocator.Register(stateMachine);
 
             stateMachine.Enter<InitializeServicesState, IConfigs>(_configs);
         }

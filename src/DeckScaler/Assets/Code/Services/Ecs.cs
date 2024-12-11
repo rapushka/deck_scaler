@@ -8,8 +8,9 @@ namespace DeckScaler.Service
     public interface IEcs : IService
     {
         void Initialize();
-        void StartGameplay();
 
+        void StartGameplay();
+        void Update();
         void EndGameplay();
     }
 
@@ -42,6 +43,11 @@ namespace DeckScaler.Service
         public void StartGameplay()
         {
             EcsRunner.AddFeature<MainFeature>();
+        }
+
+        public void Update()
+        {
+            EcsRunner.Update();
         }
 
         public void EndGameplay()
