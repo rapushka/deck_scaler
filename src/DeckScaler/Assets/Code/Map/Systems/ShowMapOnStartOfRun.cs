@@ -1,28 +1,15 @@
-using DeckScaler.Component;
-using DeckScaler.Scopes;
+using DeckScaler.Service;
 using Entitas;
-using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
     public class ShowMapOnStartOfRun : IInitializeSystem
     {
-        private readonly IGroup<Entity<Game>> _maps
-            = Contexts.Instance.GetGroup(
-                MatcherBuilder<Game>
-                    .With<Map>()
-                    .Build()
-            );
+        private static GameplayHUD HUD => ServiceLocator.Resolve<IUiMediator>().GetCurrentScreen<GameplayHUD>();
 
         public void Initialize()
         {
-            foreach (var map in _maps)
-            {
-                map
-                    .Is<Visible>(true)
-                    .Is<Interactable>(true)
-                    ;
-            }
+            HUD.MapView.Show();
         }
     }
 }
