@@ -18,6 +18,7 @@ MonoBehaviour:
   <UnitView>k__BackingField: {fileID: 11400000, guid: 6d0304e0278adb1f1a58a6f2767c0b84, type: 2}
   <Progress>k__BackingField: {fileID: 11400000, guid: 8c84f30fda7d2db0a99bd62edddd1e4b, type: 2}
   <SpriteSheet>k__BackingField: {fileID: 11400000, guid: 75f7728a340da1a438d7c3d10889455f, type: 2}
+  <Ui>k__BackingField: {fileID: 11400000, guid: 578955ef846bb86ab9c576ea4c9d05b4, type: 2}
   <TeamSlotView>k__BackingField:
     <ViewPrefab>k__BackingField: {fileID: 5709879491896991328, guid: f7f8ccdd674a5aa949e7e857daf42c77, type: 3}
     <SpacingBetweenSlots>k__BackingField: 2.75
@@ -33,4 +34,5 @@ MonoBehaviour:
     <DelayBeforeFillingGaps>k__BackingField: 0.3
   <GameOver>k__BackingField:
     <DelayBeforeGameOverScreenAppear>k__BackingField: 0.5
-  <Ui>k__BackingField: {fileID: 11400000, guid: 578955ef846bb86ab9c576ea4c9d05b4, type: 2}
+  <Map>k__BackingField:
+    <CountOfLevelOnStreet>k__BackingField: 5
