@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3888969119499180201}
+  - component: {fileID: 4456422695288222839}
   m_Layer: 5
   m_Name: Game Over Screen
   m_TagString: Untagged
@@ -37,6 +38,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4456422695288222839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4629954774688027175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ae6a3223084c66b57d4832f6851cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5264911440790061439
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -274,8 +287,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2672216507342255158, guid: 3ca91127a5ade69c78d7fbb7aaca1815, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7537938553585003269}
   m_SourcePrefab: {fileID: 100100000, guid: 3ca91127a5ade69c78d7fbb7aaca1815, type: 3}
+--- !u!1 &5058137082494497414 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2672216507342255158, guid: 3ca91127a5ade69c78d7fbb7aaca1815, type: 3}
+  m_PrefabInstance: {fileID: 7144822416257140400}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7537938553585003269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5058137082494497414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a31c20ce990473e84c380fd803d2b7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6584502125781232449 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4055311066924576241, guid: 3ca91127a5ade69c78d7fbb7aaca1815, type: 3}
