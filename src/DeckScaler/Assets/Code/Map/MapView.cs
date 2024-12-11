@@ -10,7 +10,7 @@ namespace DeckScaler
         [SerializeField] private Transform _levelsContainer;
         [SerializeField] private LevelButton _levelButtonPrefab;
 
-        private readonly List<LevelButton> _currentLevelButtons = new();
+        private readonly List<LevelButton> _levelButtons = new();
 
         public bool IsOpened => gameObject.IsActive();
 
@@ -28,13 +28,22 @@ namespace DeckScaler
             {
                 var levelButton = Instantiate(_levelButtonPrefab, _levelsContainer);
                 levelButton.Initialize(i, currentLevelIndex);
-                _currentLevelButtons.Add(levelButton);
+                _levelButtons.Add(levelButton);
             }
         }
 
         public void Show()
         {
+            UpdateCompletedLevels();
             gameObject.SetActive(true);
+        }
+
+        private void UpdateCompletedLevels()
+        {
+            foreach (var levelButton in _levelButtons)
+            {
+                levelButton.UpdateState(Progress.CurrentLevelIndex);
+            }
         }
 
         public void Hide() => gameObject.SetActive(false);
@@ -48,9 +57,9 @@ namespace DeckScaler
 
         private void ClearLevelButtons()
         {
-            foreach (var levelButton in _currentLevelButtons)
+            foreach (var levelButton in _levelButtons)
                 Destroy(levelButton);
-            _currentLevelButtons.Clear();
+            _levelButtons.Clear();
         }
     }
 }

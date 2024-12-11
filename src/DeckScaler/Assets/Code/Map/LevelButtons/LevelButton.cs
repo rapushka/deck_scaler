@@ -9,6 +9,8 @@ namespace DeckScaler
         [SerializeField] private TMP_Text _textMesh;
         [SerializeField] private GameObject _completedView;
 
+        private int _buttonLevelIndex;
+
         private static IUiMediator UiMediator => ServiceLocator.Resolve<IUiMediator>();
 
         private static GameplayHUD HUD => UiMediator.GetCurrentScreen<GameplayHUD>();
@@ -20,10 +22,16 @@ namespace DeckScaler
 
         public void Initialize(int buttonLevelIndex, int currentLevelIndex)
         {
-            _textMesh.text = (buttonLevelIndex + 1).ToString();
+            _buttonLevelIndex = buttonLevelIndex;
+            _textMesh.text = (_buttonLevelIndex + 1).ToString();
 
-            Button.interactable = currentLevelIndex == buttonLevelIndex;
-            _completedView.SetActive(currentLevelIndex > buttonLevelIndex);
+            UpdateState(currentLevelIndex);
+        }
+
+        public void UpdateState(int currentLevelIndex)
+        {
+            Button.interactable = currentLevelIndex == _buttonLevelIndex;
+            _completedView.SetActive(currentLevelIndex > _buttonLevelIndex);
         }
     }
 }
