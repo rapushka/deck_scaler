@@ -10,7 +10,7 @@ namespace DeckScaler
             Add(new MarkDeadUnitsWithZeroHp());
 
             Add(new FillFreedTeamSlotsFeature());
-            Add(new GameOverIfAllyDied());
+            Add(new GameOverFeature());
 
             Add(new DestroyJustDiedUnits());
             Add(new EndDeathProcessing());
