@@ -9,4 +9,6 @@ namespace DeckScaler.Component
     public sealed class ViewTransform : ValueComponent<Transform>, IInScope<Game> { }
 
     public sealed class ZOrder : ValueComponent<float>, IInScope<Game> { }
+
+    public sealed class Visible : FlagComponent, IInScope<Game>, IEvent<Self> { }
 }
