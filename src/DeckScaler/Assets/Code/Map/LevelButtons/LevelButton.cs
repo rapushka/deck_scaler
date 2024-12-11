@@ -7,6 +7,7 @@ namespace DeckScaler
     public class LevelButton : BaseButton
     {
         [SerializeField] private TMP_Text _textMesh;
+        [SerializeField] private GameObject _completedView;
 
         private static IUiMediator UiMediator => ServiceLocator.Resolve<IUiMediator>();
 
@@ -17,12 +18,12 @@ namespace DeckScaler
             HUD.MapView.SelectNextLevel();
         }
 
-        public void Initialize(int levelIndex, int currentLevelIndex)
+        public void Initialize(int buttonLevelIndex, int currentLevelIndex)
         {
-            _textMesh.text = (levelIndex + 1).ToString();
+            _textMesh.text = (buttonLevelIndex + 1).ToString();
 
-            Button.interactable = levelIndex == currentLevelIndex;
-            Button.enabled = levelIndex >= currentLevelIndex;
+            Button.interactable = currentLevelIndex == buttonLevelIndex;
+            _completedView.SetActive(currentLevelIndex > buttonLevelIndex);
         }
     }
 }
