@@ -10,6 +10,7 @@ namespace DeckScaler
             : base(nameof(BoilerplateFeature))
         {
             Add(new SelfFlagEventSystem<Game, Interactable>(contexts));
+            Add(new SelfFlagEventSystem<Game, Visible>(contexts));
             Add(new SelfEventSystem<Game, SpriteSortOrder>(contexts));
 
             Add(new SelfEventSystem<Game, Component.Suit>(contexts));

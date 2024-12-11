@@ -18,8 +18,10 @@ namespace DeckScaler
 
             Add(new GameplayHudFeature());
 
+            Add(new MapFeature());
+
             Add(new SpawnPlayerTeamFromProgress());
-            Add(new SpawnRandomEnemy());
+            Add(new OnLevelSelectedSpawnRandomEnemy());
 
             Add(new InventoryFeature());
 

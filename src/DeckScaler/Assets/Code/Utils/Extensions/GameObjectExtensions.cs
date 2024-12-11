@@ -8,9 +8,12 @@ namespace DeckScaler
         public static void SetActive(this MonoBehaviour @this, bool value) => @this.gameObject.SetActive(value);
 
         public static bool IsActive(this MonoBehaviour @this, bool inHierarchy = false)
+            => @this.gameObject.IsActive(inHierarchy);
+
+        public static bool IsActive(this GameObject @this, bool inHierarchy = false)
             => inHierarchy
-                ? @this.gameObject.activeInHierarchy
-                : @this.gameObject.activeSelf;
+                ? @this.activeInHierarchy
+                : @this.activeSelf;
 
         public static void DestroyObject(this MonoBehaviour @this)
         {
