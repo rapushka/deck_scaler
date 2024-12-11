@@ -8,14 +8,6 @@ namespace DeckScaler.Systems
 {
     public sealed class StealMoneyFromOpponentForDiamonds : IExecuteSystem
     {
-        private readonly IGroup<Entity<Game>> _turnTrackers
-            = Contexts.Instance.GetGroup(
-                MatcherBuilder<Game>
-                    .With<TurnTracker>()
-                    .And<TurnStarted>()
-                    .And<CurrentTurn>()
-                    .Build()
-            );
         private readonly IGroup<Entity<Game>> _units
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
@@ -23,6 +15,7 @@ namespace DeckScaler.Systems
                     .And<OnSide>()
                     .And<Component.Suit>()
                     .And<Opponent>()
+                    .And<TriggerOnTurnStartedAbility>()
                     .Build()
             );
 
@@ -30,27 +23,16 @@ namespace DeckScaler.Systems
 
         public void Execute()
         {
-            foreach (var turnTracker in _turnTrackers)
+            foreach (var unit in _units.Where(unit => unit.InSuit(Suit.Diamonds)))
             {
-                var currentSide = turnTracker.Get<CurrentTurn>().Value;
+                var opponentID = unit.Get<Opponent, EntityID>();
+                var power = unit.Get<Power, int>();
 
-                foreach (var unit in _units.Where(u => IsOnCurrentSide(u) && IsDiamonds(u)))
-                {
-                    var opponentID = unit.Get<Opponent, EntityID>();
-                    var power = unit.Get<Power, int>();
-
-                    Factory.Create(
-                        data: new(AffectType.StealMoney, power),
-                        senderID: unit.ID(),
-                        targetID: opponentID
-                    );
-                }
-
-                continue;
-
-                bool IsOnCurrentSide(Entity<Game> unit) => unit.Get<OnSide, Side>() == currentSide;
-
-                bool IsDiamonds(Entity<Game> unit) => unit.InSuit(Suit.Diamonds);
+                Factory.Create(
+                    data: new(AffectType.StealMoney, power),
+                    senderID: unit.ID(),
+                    targetID: opponentID
+                );
             }
         }
     }

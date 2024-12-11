@@ -26,6 +26,12 @@ namespace DeckScaler.Systems
                     .With<GameOverAfter>()
                     .Build()
             );
+        private readonly IGroup<Entity<Game>> _delaysBeforeAbility
+            = Contexts.Instance.GetGroup(
+                MatcherBuilder<Game>
+                    .With<SendTurnStartedAfter>()
+                    .Build()
+            );
 
         public void Execute()
         {
@@ -35,8 +41,9 @@ namespace DeckScaler.Systems
                 var isWaiting = turnTracker.Is<WaitingForAnimations>();
                 var isPlayerTurn = turnTracker.IsPlayerTurn();
                 var isGameOver = _gameOverTimers.Any();
+                var isAnyAbilityAnimationPlaying = _delaysBeforeAbility.Any();
 
-                var playerCanInteract = !isWaiting && isPlayerTurn && !isGameOver;
+                var playerCanInteract = !isWaiting && isPlayerTurn && !isGameOver && !isAnyAbilityAnimationPlaying;
                 interactable.Is<Interactable>(playerCanInteract);
             }
         }

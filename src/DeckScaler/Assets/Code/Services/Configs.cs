@@ -7,10 +7,10 @@ namespace DeckScaler.Service
         ICameras Cameras { get; }
 
         UnitsConfig        Units        { get; }
+        UnitViewConfig     UnitView     { get; }
         ProgressConfig     Progress     { get; }
         SpriteSheet        SpriteSheet  { get; }
         TeamSlotViewConfig TeamSlotView { get; }
-        UnitViewConfig     UnitView     { get; }
         UiConfig           Ui           { get; }
         GameOverConfig     GameOver     { get; }
     }

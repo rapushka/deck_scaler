@@ -15,8 +15,7 @@ namespace DeckScaler
         [SerializeField] private UnitIDRef[] _allies;
         [SerializeField] private UnitIDRef[] _enemies;
 
-        [field: SerializeField] public float           DelayBetweenAttacks { get; private set; }
-        [field: SerializeField] public EntityBehaviour ViewPrefab          { get; private set; }
+        [field: SerializeField] public EntityBehaviour ViewPrefab { get; private set; }
 
         public UnitConfig this[UnitIDRef id] => GetConfig(id);
 
