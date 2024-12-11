@@ -16,3 +16,21 @@ MonoBehaviour:
   <EnemySpawnOffset>k__BackingField: {x: 0, y: 7.5}
   <AppearDuration>k__BackingField: 0.5
   <ReturnAfterDragDuration>k__BackingField: 0.25
+  <SortingOrder>k__BackingField:
+    Idle: 0
+    Attack: 1
+    PerIndexStep: 1
+    Dragging: 10
+  <FloatingNumbers>k__BackingField:
+    <Damage>k__BackingField:
+      <Template>k__BackingField: -{0}
+      <Color>k__BackingField: {r: 1, g: 0, b: 0, a: 1}
+    <Heal>k__BackingField:
+      <Template>k__BackingField: +{0}
+      <Color>k__BackingField: {r: 0.16579854, g: 1, b: 0, a: 1}
+    <StealMoneyFromPlayer>k__BackingField:
+      <Template>k__BackingField: '{0}'
+      <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+    <StealMoneyFromEnemy>k__BackingField:
+      <Template>k__BackingField: '{0}'
+      <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}

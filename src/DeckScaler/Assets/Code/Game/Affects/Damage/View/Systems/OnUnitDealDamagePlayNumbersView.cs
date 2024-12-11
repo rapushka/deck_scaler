@@ -25,7 +25,7 @@ namespace DeckScaler.Systems
                 if (target.TryGet<NumbersView, FloatingNumberView>(out var numbersView))
                 {
                     var damage = affect.Get<AffectValue, int>();
-                    numbersView.Play(damage);
+                    numbersView.Play(damage, FloatingNumberView.Type.Damage);
                 }
             }
         }
