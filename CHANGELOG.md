@@ -15,8 +15,9 @@
   - [renamings](https://github.com/rapushka/deck_scaler/pull/124)
   - [Affects System](https://github.com/rapushka/deck_scaler/pull/157)
   - [Ui Mediator](https://github.com/rapushka/deck_scaler/pull/158)
-- [Ability To Restart Run](https://github.com/rapushka/deck_scaler/issues/150)
-- [Game Over](https://github.com/rapushka/deck_scaler/pull/165)
+- [ability To Restart Run](https://github.com/rapushka/deck_scaler/issues/150)
+- [game over screen](https://github.com/rapushka/deck_scaler/pull/165)
+- [implemented map View](https://github.com/rapushka/deck_scaler/issues/148)
 
 # v0.0.11
 - [block ui during attack animations](https://github.com/rapushka/deck_scaler/pull/107)
