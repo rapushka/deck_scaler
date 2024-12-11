@@ -11,7 +11,7 @@ namespace DeckScaler.Systems
         private readonly IGroup<Entity<Game>> _events
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<LevelCompleted>()
+                    .With<SendLevelCompletedAfter>()
                     .Build()
             );
 
@@ -23,6 +23,9 @@ namespace DeckScaler.Systems
         {
             foreach (var @event in _events)
             {
+                if (!@event.IsElapsed<SendLevelCompletedAfter>())
+                    continue;
+
                 Progress.MarkLevelAsCompleted();
                 HUD.MapView.Show();
 

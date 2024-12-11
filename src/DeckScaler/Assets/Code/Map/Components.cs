@@ -7,5 +7,5 @@ namespace DeckScaler.Component
 
     public sealed class HideMeWhenMapOpened : FlagComponent, IInScope<Game> { }
 
-    public sealed class LevelCompleted : FlagComponent, IInScope<Game> { }
+    public sealed class SendLevelCompletedAfter : ValueComponent<Timer>, IInScope<Game> { }
 }
