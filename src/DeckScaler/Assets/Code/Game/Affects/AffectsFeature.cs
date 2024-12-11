@@ -8,6 +8,8 @@ namespace DeckScaler.Component
             Add(new HealFeature());
             Add(new StealMoneyFeature());
             Add(new DamageFeature());
+
+            Add(new DamageViewFeature());
         }
     }
 }
