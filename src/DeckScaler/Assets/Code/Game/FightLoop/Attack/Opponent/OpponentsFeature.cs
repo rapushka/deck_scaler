@@ -8,6 +8,7 @@ namespace DeckScaler
             : base(nameof(OpponentsFeature))
         {
             Add(new SendEventOnAddedOrRemoved<Component.UnitID, Component.RecalculateOpponents>());
+            Add(new SendRecalculateOpponentsOnUnitDropped());
 
             Add(new ResetOpponent());
             Add(new UpdateOpponentStraightforward());

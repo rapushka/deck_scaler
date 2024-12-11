@@ -15,6 +15,13 @@ namespace DeckScaler.Systems
                     .Build()
             );
 
+        private readonly IGroup<Entity<Game>> _mapOpeningRequests
+            = Contexts.Instance.GetGroup(
+                MatcherBuilder<Game>
+                    .With<OpenMapAfter>()
+                    .Build()
+            );
+
         private static GameplayHUD HUD => ServiceLocator.Resolve<IUiMediator>().GetCurrentScreen<GameplayHUD>();
 
         public void Initialize()
@@ -26,7 +33,7 @@ namespace DeckScaler.Systems
         public void Execute()
         {
             foreach (var entity in _entities)
-                entity.Is<Visible>(!HUD.MapView.IsOpened);
+                entity.Is<Visible>(!HUD.MapView.IsOpened || _mapOpeningRequests.Any());
         }
     }
 }
