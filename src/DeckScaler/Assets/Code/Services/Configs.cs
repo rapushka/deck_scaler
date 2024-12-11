@@ -12,6 +12,7 @@ namespace DeckScaler.Service
         TeamSlotViewConfig TeamSlotView { get; }
         UnitViewConfig     UnitView     { get; }
         UiConfig           Ui           { get; }
+        GameOverConfig     GameOver     { get; }
     }
 
     [CreateAssetMenu(menuName = Constants.MenuPrefix + nameof(Configs))]
@@ -32,6 +33,7 @@ namespace DeckScaler.Service
         [field: SerializeField] public SpriteSheet SpriteSheet { get; private set; }
 
         [field: SerializeField] public TeamSlotViewConfig TeamSlotView { get; private set; }
+        [field: SerializeField] public GameOverConfig     GameOver     { get; private set; }
 
         [field: NaughtyAttributes.Expandable]
         [field: SerializeField] public UiConfig Ui { get; private set; }

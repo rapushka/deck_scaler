@@ -2,13 +2,13 @@ using DeckScaler.Service;
 
 namespace DeckScaler
 {
-    public class LeaveGameplayButton : BaseButton
+    public class GameOverState : GameState
     {
         private static IUiMediator UiMediator => ServiceLocator.Resolve<IUiMediator>();
 
-        protected override void OnClick()
+        public override void Enter()
         {
-            UiMediator.BackToMainMenu();
+            UiMediator.OpenScreen<GameOverScreen>();
         }
     }
 }

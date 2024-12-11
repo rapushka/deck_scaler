@@ -7,10 +7,8 @@ namespace DeckScaler.Cheats
         public CheatsFeature()
             : base(nameof(CheatsFeature))
         {
-            Add(new ParseSpawnAsTeammateCheat());
-            Add(new ParseSpawnAsEnemyCheat());
-
-            Add(new ProcessSpawnUnitCheat());
+            Add(new SpawnUnitFeature());
+            Add(new GameOverFeature());
 
             Add(new LogUnprocessedCheats());
             Add(new DestroyAllCheats());

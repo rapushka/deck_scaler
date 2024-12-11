@@ -2,7 +2,7 @@ using DeckScaler.Service;
 
 namespace DeckScaler
 {
-    public class LeaveGameplayButton : BaseButton
+    public class BackToMainMenuButton : BaseButton
     {
         private static IUiMediator UiMediator => ServiceLocator.Resolve<IUiMediator>();
 

@@ -9,7 +9,8 @@ namespace DeckScaler.Service
 
         void StartNewRun();
         void EndTurn();
-        void EndRun();
+        void GameOver();
+        void BackToMainMenu();
 
         void SendCheat(string cheat);
     }
@@ -28,9 +29,10 @@ namespace DeckScaler.Service
         public void    OpenScreen<TScreen>() where TScreen : BaseUiScreen       => Screens.Open<TScreen>();
         public TScreen GetCurrentScreen<TScreen>() where TScreen : BaseUiScreen => Screens.GetCurrent<TScreen>();
 
-        public void StartNewRun() => StateMachine.Enter<StartGameState>();
-        public void EndTurn()     => CreateEntity.OneFrame().Add<Component.RequestEndTurn>();
-        public void EndRun()      => StateMachine.Enter<EndGameState>();
+        public void StartNewRun()    => StateMachine.Enter<StartGameState>();
+        public void EndTurn()        => CreateEntity.OneFrame().Add<Component.RequestEndTurn>();
+        public void GameOver()       => StateMachine.Enter<GameOverState>();
+        public void BackToMainMenu() => StateMachine.Enter<EndRunState>();
 
         public void SendCheat(string cheat) => CreateEntity.Cheat(cheat);
     }

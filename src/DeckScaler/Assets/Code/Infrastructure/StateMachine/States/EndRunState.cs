@@ -1,6 +1,6 @@
 namespace DeckScaler
 {
-    public class EndGameState : GameState
+    public class EndRunState : GameState
     {
         private static IIdentifierServer Identifiers => ServiceLocator.Resolve<IIdentifierServer>();
 
