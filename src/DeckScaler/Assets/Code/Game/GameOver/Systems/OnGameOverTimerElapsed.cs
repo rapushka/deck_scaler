@@ -6,13 +6,12 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public sealed class GameOverIfAllyDied : IExecuteSystem
+    public sealed class OnGameOverTimerElapsed : IExecuteSystem
     {
-        private readonly IGroup<Entity<Game>> _deadAllies
+        private readonly IGroup<Entity<Game>> _gameOverTimers
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<Ally>()
-                    .And<Dead>()
+                    .With<GameOverAfter>()
                     .Build()
             );
 
@@ -20,10 +19,10 @@ namespace DeckScaler.Systems
 
         public void Execute()
         {
-            foreach (var _ in _deadAllies)
+            foreach (var timer in _gameOverTimers)
             {
-                UiMediator.GameOver();
-                return;
+                if (timer.Get<GameOverAfter, Timer>().IsElapsed)
+                    UiMediator.GameOver();
             }
         }
     }

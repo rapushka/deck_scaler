@@ -6,7 +6,8 @@ namespace DeckScaler
     {
         public GameOverFeature()
         {
-            Add(new GameOverIfAllyDied());
+            Add(new IfAllyDiedStartGameOverTimer());
+            Add(new OnGameOverTimerElapsed());
         }
     }
 }

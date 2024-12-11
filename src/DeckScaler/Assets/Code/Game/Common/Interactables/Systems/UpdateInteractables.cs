@@ -20,6 +20,12 @@ namespace DeckScaler.Systems
                     .With<EnableOnlyOnPlayerTurn>()
                     .Build()
             );
+        private readonly IGroup<Entity<Game>> _gameOverTimers
+            = Contexts.Instance.GetGroup(
+                MatcherBuilder<Game>
+                    .With<GameOverAfter>()
+                    .Build()
+            );
 
         public void Execute()
         {
@@ -28,8 +34,9 @@ namespace DeckScaler.Systems
             {
                 var isWaiting = turnTracker.Is<WaitingForAnimations>();
                 var isPlayerTurn = turnTracker.IsPlayerTurn();
+                var isGameOver = _gameOverTimers.Any();
 
-                var playerCanInteract = !isWaiting && isPlayerTurn;
+                var playerCanInteract = !isWaiting && isPlayerTurn && !isGameOver;
                 interactable.Is<Interactable>(playerCanInteract);
             }
         }
