@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+
 namespace DeckScaler
 {
     public abstract class GameState
@@ -11,6 +13,8 @@ namespace DeckScaler
         protected GameStateMachine StateMachine { get; private set; }
 
         public abstract void Enter();
+
+        public virtual UniTask Update() => UniTask.CompletedTask;
 
         public virtual void Exit() { }
     }

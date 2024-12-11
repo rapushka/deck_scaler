@@ -11,10 +11,12 @@ namespace DeckScaler
     {
         void AddFeature<TFeature>() where TFeature : Feature, new();
 
+        void Update();
+
         void RemoveFeature<TFeature>(bool destroyAllEntities) where TFeature : Feature;
     }
 
-    public class EcsRunner : IEcsRunner, IUpdatable
+    public class EcsRunner : IEcsRunner
     {
         private readonly Dictionary<Type, Feature> _features = new();
 
@@ -37,7 +39,7 @@ namespace DeckScaler
             _features.Remove(type);
         }
 
-        public void UpdateManually()
+        public void Update()
         {
             foreach (var (_, feature) in _features)
             {

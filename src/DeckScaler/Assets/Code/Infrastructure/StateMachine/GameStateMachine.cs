@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using DeckScaler.Service;
 
 namespace DeckScaler
@@ -11,35 +12,60 @@ namespace DeckScaler
         void Enter<TState, TData>(TData data) where TState : GameState, IPayload<TData>, new();
     }
 
-    public class GameStateMachine : IGameStateMachine
+    public class GameStateMachine : IGameStateMachine, IUpdatable
     {
         private readonly Dictionary<Type, GameState> _states = new();
+
+        private GameState _pendingState;
         private GameState _currentState;
 
         public void Enter<TState>()
             where TState : GameState, new()
         {
-            var nextState = _states.GetOrAdd(typeof(TState), NewState<TState>);
+            if (_pendingState is not null)
+                throw new InvalidOperationException("State Machine Already has pending State!");
 
-            _currentState?.Exit();
-            _currentState = nextState;
-            _currentState.Enter();
+            _pendingState = GetState<TState>();
+
+            if (_currentState is null)
+                TransferToPendingState();
         }
 
         public void Enter<TState, TData>(TData data)
             where TState : GameState, IPayload<TData>, new()
         {
-            var nextState = _states.GetOrAdd(typeof(TState), NewState<TState>);
+            if (_pendingState is not null)
+                throw new InvalidOperationException("State Machine Already has pending State!");
 
-            _currentState?.Exit();
+            _pendingState = GetState<TState>();
+            ((TState)_pendingState).SetData(data);
 
-            _currentState = nextState;
-            ((TState)_currentState).SetData(data);
-            _currentState.Enter();
+            if (_currentState is null)
+                TransferToPendingState();
         }
 
-        private TState NewState<TState>()
+        private GameState GetState<TState>()
             where TState : GameState, new()
-            => GameState.Create<TState>(this);
+            => _states.GetOrAdd(typeof(TState), () => GameState.Create<TState>(this));
+
+        public void UpdateManually() => ProcessUpdate().Forget();
+
+        private async UniTaskVoid ProcessUpdate()
+        {
+            await _currentState.Update();
+
+            if (_pendingState is not null)
+                TransferToPendingState();
+        }
+
+        private void TransferToPendingState()
+        {
+            _currentState?.Exit();
+
+            _currentState = _pendingState;
+            _pendingState = null;
+
+            _currentState.Enter();
+        }
     }
 }

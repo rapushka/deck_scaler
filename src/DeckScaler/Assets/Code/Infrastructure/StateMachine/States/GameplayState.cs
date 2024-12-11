@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using DeckScaler.Service;
 
 namespace DeckScaler
@@ -13,6 +14,12 @@ namespace DeckScaler
             UiMediator.OpenScreen<GameplayHUD>();
 
             Ecs.StartGameplay();
+        }
+
+        public override UniTask Update()
+        {
+            Ecs.Update();
+            return UniTask.CompletedTask;
         }
 
         public override void Exit()
