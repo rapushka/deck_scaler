@@ -29,5 +29,10 @@ namespace DeckScaler
                 CurrentLevelIndex = 0,
             };
         }
+
+        public void MarkLevelAsCompleted()
+        {
+            CurrentLevelIndex++;
+        }
     }
 }
