@@ -23,8 +23,6 @@ namespace DeckScaler.Systems
                     .Build()
             );
 
-        private static MapConfig Map => ServiceLocator.Resolve<IConfigs>().Map;
-
         public void Execute()
         {
             foreach (var _ in _justDiedEnemies)
@@ -33,7 +31,7 @@ namespace DeckScaler.Systems
                     return;
 
                 CreateEntity.Empty()
-                    .Add<SendLevelCompletedAfter, Timer>(new(Map.DelayBeforeMapAppear))
+                    .Add<LevelCompleted>()
                     ;
             }
         }

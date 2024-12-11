@@ -6,18 +6,13 @@ namespace DeckScaler
     [RequireComponent(typeof(Button))]
     public abstract class BaseButton : MonoBehaviour
     {
-        protected Button Button { get; private set; }
+        private Button _button;
 
-        private void OnEnable()
-        {
-            Button ??= GetComponent<Button>();
-            Button.onClick.AddListener(OnClick);
-        }
+        protected Button Button => _button ??= GetComponent<Button>();
 
-        private void OnDisable()
-        {
-            Button.onClick.RemoveListener(OnClick);
-        }
+        private void OnEnable() => Button.onClick.AddListener(OnClick);
+
+        private void OnDisable() => Button.onClick.RemoveListener(OnClick);
 
         protected abstract void OnClick();
     }

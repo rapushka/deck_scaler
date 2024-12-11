@@ -6,7 +6,7 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public class OnLevelSelectedSpawnRandomEnemy : IExecuteSystem
+    public class OnLevelSelectedSpawnRandomCountOfRandomEnemies : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _events
             = Contexts.Instance.GetGroup(
@@ -25,8 +25,12 @@ namespace DeckScaler.Systems
         {
             foreach (var _ in _events)
             {
-                var randomEnemyID = Random.PickRandom(Config.Enemies);
-                EnemyFactory.CreateEnemy(randomEnemyID);
+                var randomCountOfEnemies = Random.RandomNumber(1, 3);
+                for (var i = 0; i < randomCountOfEnemies; i++)
+                {
+                    var randomEnemyID = Random.PickRandom(Config.Enemies);
+                    EnemyFactory.CreateEnemy(randomEnemyID);
+                }
             }
         }
     }

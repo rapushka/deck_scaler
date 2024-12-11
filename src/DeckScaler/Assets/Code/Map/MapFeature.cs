@@ -8,7 +8,9 @@ namespace DeckScaler
             : base(nameof(MapFeature))
         {
             Add(new InitializeAndShowMapOnStartOfRun());
-            Add(new OnLevelCompletedShowMap());
+
+            Add(new OpenMapOnLevelCompleted());
+            Add(new OpenMapAfterDelay());
             Add(new OnLevelSelectedHideMap());
 
             Add(new HideEntitiesIfMapIsOpened());

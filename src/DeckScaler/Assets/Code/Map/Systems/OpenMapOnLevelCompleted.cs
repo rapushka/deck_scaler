@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DeckScaler.Component;
 using DeckScaler.Scopes;
 using DeckScaler.Service;
@@ -6,30 +7,30 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public class OnLevelCompletedShowMap : IExecuteSystem
+    public class OpenMapOnLevelCompleted : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _events
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<SendLevelCompletedAfter>()
+                    .With<LevelCompleted>()
+                    .Without<OpenMapAfter>()
                     .Build()
             );
+        private readonly List<Entity<Game>> _buffer = new(16);
 
-        private static GameplayHUD HUD => ServiceLocator.Resolve<IUiMediator>().GetCurrentScreen<GameplayHUD>();
+        private static MapConfig Config => ServiceLocator.Resolve<IConfigs>().Map;
 
         private static ProgressData Progress => ServiceLocator.Resolve<IProgress>().CurrentRun;
 
         public void Execute()
         {
-            foreach (var @event in _events)
+            foreach (var entity in _events.GetEntities(_buffer))
             {
-                if (!@event.IsElapsed<SendLevelCompletedAfter>())
-                    continue;
-
                 Progress.MarkLevelAsCompleted();
-                HUD.MapView.Show();
 
-                @event.Add<Destroy>();
+                entity
+                    .Add<OpenMapAfter, Timer>(new(Config.DelayBeforeMapAppear))
+                    ;
             }
         }
     }
