@@ -6,7 +6,8 @@ namespace DeckScaler.Service
 {
     public interface IRandom : IService
     {
-        T PickRandom<T>(IEnumerable<T> source);
+        T   PickRandom<T>(IEnumerable<T> source);
+        int RandomNumber(int minInclusive, int maxInclusive);
     }
 
     public class SimpleRandom : IRandom
@@ -18,6 +19,8 @@ namespace DeckScaler.Service
 
             return array[randomIndex];
         }
+
+        public int RandomNumber(int minInclusive, int maxInclusive) => UnityRandom.Range(minInclusive, maxInclusive + 1);
 
         public int RandomIndex<T>(T[] array) => UnityRandom.Range(0, array.Length);
     }
