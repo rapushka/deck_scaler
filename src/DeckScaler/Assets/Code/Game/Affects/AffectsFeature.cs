@@ -1,4 +1,4 @@
-namespace DeckScaler.Component
+namespace DeckScaler
 {
     public sealed class AffectsFeature : Feature
     {
@@ -8,6 +8,8 @@ namespace DeckScaler.Component
             Add(new HealFeature());
             Add(new StealMoneyFeature());
             Add(new DamageFeature());
+
+            Add(new AffectsViewFeature());
         }
     }
 }
