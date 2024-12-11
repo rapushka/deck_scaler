@@ -3,12 +3,13 @@ using Entitas;
 
 namespace DeckScaler.Systems
 {
-    public class ShowMapOnStartOfRun : IInitializeSystem
+    public class InitializeAndShowMapOnStartOfRun : IInitializeSystem
     {
         private static GameplayHUD HUD => ServiceLocator.Resolve<IUiMediator>().GetCurrentScreen<GameplayHUD>();
 
         public void Initialize()
         {
+            HUD.MapView.LoadLevelsOnCurrentStreet();
             HUD.MapView.Show();
         }
     }

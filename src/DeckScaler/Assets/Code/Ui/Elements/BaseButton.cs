@@ -3,22 +3,22 @@ using UnityEngine.UI;
 
 namespace DeckScaler
 {
-	[RequireComponent(typeof(Button))]
-	public abstract class BaseButton : MonoBehaviour
-	{
-		private Button _button;
+    [RequireComponent(typeof(Button))]
+    public abstract class BaseButton : MonoBehaviour
+    {
+        protected Button Button { get; private set; }
 
-		private void OnEnable()
-		{
-			_button ??= GetComponent<Button>();
-			_button.onClick.AddListener(OnClick);
-		}
+        private void OnEnable()
+        {
+            Button ??= GetComponent<Button>();
+            Button.onClick.AddListener(OnClick);
+        }
 
-		private void OnDisable()
-		{
-			_button.onClick.RemoveListener(OnClick);
-		}
+        private void OnDisable()
+        {
+            Button.onClick.RemoveListener(OnClick);
+        }
 
-		protected abstract void OnClick();
-	}
+        protected abstract void OnClick();
+    }
 }

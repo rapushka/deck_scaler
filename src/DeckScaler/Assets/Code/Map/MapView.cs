@@ -1,13 +1,41 @@
+using System.Collections.Generic;
 using DeckScaler.Component;
+using DeckScaler.Service;
 using UnityEngine;
 
 namespace DeckScaler
 {
     public class MapView : MonoBehaviour
     {
+        [SerializeField] private Transform _levelsContainer;
+        [SerializeField] private LevelButton _levelButtonPrefab;
+
+        private readonly List<LevelButton> _currentLevelButtons = new();
+
         public bool IsOpened => gameObject.IsActive();
 
-        public void Show() => gameObject.SetActive(true);
+        private static MapConfig Config => ServiceLocator.Resolve<IConfigs>().Map;
+
+        private static ProgressData Progress => ServiceLocator.Resolve<IProgress>().CurrentRun;
+
+        public void LoadLevelsOnCurrentStreet()
+        {
+            ClearLevelButtons();
+
+            var currentLevelIndex = Progress.CurrentLevelIndex;
+
+            for (var i = 0; i < Config.CountOfLevelOnStreet; i++)
+            {
+                var levelButton = Instantiate(_levelButtonPrefab, _levelsContainer);
+                levelButton.Initialize(i, currentLevelIndex);
+                _currentLevelButtons.Add(levelButton);
+            }
+        }
+
+        public void Show()
+        {
+            gameObject.SetActive(true);
+        }
 
         public void Hide() => gameObject.SetActive(false);
 
@@ -16,6 +44,13 @@ namespace DeckScaler
             CreateEntity.OneFrame()
                 .Add<SelectNextLevel>()
                 ;
+        }
+
+        private void ClearLevelButtons()
+        {
+            foreach (var levelButton in _currentLevelButtons)
+                Destroy(levelButton);
+            _currentLevelButtons.Clear();
         }
     }
 }

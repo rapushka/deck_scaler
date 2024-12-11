@@ -1934,6 +1934,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5792896746367568294, guid: 3ca91127a5ade69c78d7fbb7aaca1815, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6070995087021511400, guid: 3ca91127a5ade69c78d7fbb7aaca1815, type: 3}
       propertyPath: m_text
       value: End Turn

@@ -11,6 +11,9 @@ namespace DeckScaler
         [field: SerializeField] public int             Gold        { get; private set; }
         [field: SerializeField] public int             EnemyGold   { get; private set; }
 
+        [field: HideInInspector]
+        [field: SerializeField] public int CurrentLevelIndex { get; private set; }
+
         public void AddTeammate(string unitID)
         {
             TeammateIDs.Add(unitID);
@@ -23,6 +26,7 @@ namespace DeckScaler
                 TeammateIDs = from.TeammateIDs,
                 Gold = from.Gold,
                 EnemyGold = from.EnemyGold,
+                CurrentLevelIndex = 0,
             };
         }
     }
