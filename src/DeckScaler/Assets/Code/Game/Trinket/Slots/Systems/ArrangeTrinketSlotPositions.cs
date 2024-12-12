@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace DeckScaler.Systems
 {
-    public sealed class ArrangeTrinketSlots : IExecuteSystem
+    public sealed class ArrangeTrinketSlotPositions : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _requests
             = Contexts.Instance.GetGroup(
