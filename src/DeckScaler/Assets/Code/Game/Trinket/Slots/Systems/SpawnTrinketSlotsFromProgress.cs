@@ -1,9 +1,10 @@
+using DeckScaler.Component;
 using DeckScaler.Service;
 using Entitas;
 
 namespace DeckScaler.Systems
 {
-    public class SpawnTrinketsFromProgress : IInitializeSystem
+    public sealed class SpawnTrinketSlotsFromProgress : IInitializeSystem
     {
         private static ITrinketFactory Factory => ServiceLocator.Resolve<IFactories>().Trinkets;
 
@@ -11,8 +12,12 @@ namespace DeckScaler.Systems
 
         public void Initialize()
         {
-            foreach (var trinketID in Progress.Trinkets)
-                Factory.CreateInPlayerInventory(trinketID);
+            for (var i = 0; i < Progress.TrinketSlotCount; i++)
+                Factory.CreateTrinketSlot(i);
+
+            CreateEntity.OneFrame()
+                .Add<RearrangeTrinketSlots>()
+                ;
         }
     }
 }

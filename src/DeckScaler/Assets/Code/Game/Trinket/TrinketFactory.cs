@@ -7,6 +7,8 @@ namespace DeckScaler
     public interface ITrinketFactory
     {
         void CreateInPlayerInventory(TrinketIDRef trinketID);
+
+        void CreateTrinketSlot(int index);
     }
 
     public class TrinketFactory : ITrinketFactory
@@ -24,6 +26,14 @@ namespace DeckScaler
                 .Add<TrinketID, TrinketIDRef>(config.ID)
                 .Add<TrinketAbility, AffectData>(config.Affect)
                 .Add<Price, int>(config.Price)
+                ;
+        }
+
+        public void CreateTrinketSlot(int index)
+        {
+            EntityBehaviourFactory.Create(Config.SlotViewPrefab, Vector2.zero)
+                .Replace<DebugName, string>($"slot: {index + 1}")
+                .Add<TrinketSlot, int>(index)
                 ;
         }
 
