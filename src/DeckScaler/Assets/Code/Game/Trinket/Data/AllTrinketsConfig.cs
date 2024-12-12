@@ -11,6 +11,9 @@ namespace DeckScaler
         [field: SerializeField] public EntityBehaviour ViewPrefab     { get; private set; }
         [field: SerializeField] public EntityBehaviour SlotViewPrefab { get; private set; }
 
+        [field: SerializeField] public float   SlotsSpacing { get; private set; }
+        [field: SerializeField] public Vector2 RootPosition { get; private set; }
+
         public TrinketConfig GetConfig(TrinketIDRef id) => _trinkets[id];
 
         [Serializable]

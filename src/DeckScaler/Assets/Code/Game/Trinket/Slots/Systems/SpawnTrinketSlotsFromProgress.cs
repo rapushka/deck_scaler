@@ -1,3 +1,4 @@
+using DeckScaler.Component;
 using DeckScaler.Service;
 using Entitas;
 
@@ -13,6 +14,10 @@ namespace DeckScaler.Systems
         {
             for (var i = 0; i < Progress.TrinketSlotCount; i++)
                 Factory.CreateTrinketSlot(i);
+
+            CreateEntity.OneFrame()
+                .Add<RearrangeTrinketSlots>()
+                ;
         }
     }
 }

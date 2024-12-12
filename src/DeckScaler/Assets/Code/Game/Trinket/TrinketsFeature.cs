@@ -8,6 +8,8 @@ namespace DeckScaler
         {
             Add(new SpawnTrinketSlotsFromProgress());
             Add(new SpawnTrinketsFromProgress());
+
+            Add(new ArrangeTrinketSlots());
         }
     }
 }

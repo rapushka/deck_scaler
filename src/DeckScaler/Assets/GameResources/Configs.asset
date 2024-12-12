@@ -43,3 +43,5 @@ MonoBehaviour:
       - {fileID: 11400000, guid: b011d2bec461348238257dd9e0600059, type: 2}
     <ViewPrefab>k__BackingField: {fileID: 6915663080607579929, guid: ace86ddeea80bc8d681d5da615c353d9, type: 3}
     <SlotViewPrefab>k__BackingField: {fileID: 6915663080607579929, guid: 068123ec628c1f81c81d24580927688d, type: 3}
+    <SlotsSpacing>k__BackingField: 1.3
+    <RootPosition>k__BackingField: {x: -8.2, y: -4.2}
