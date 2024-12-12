@@ -21,16 +21,5 @@ MonoBehaviour:
     Attack: 1
     PerIndexStep: 1
     Dragging: 10
-  <FloatingNumbers>k__BackingField:
-    <Damage>k__BackingField:
-      <Template>k__BackingField: -{0}
-      <Color>k__BackingField: {r: 1, g: 0, b: 0, a: 1}
-    <Heal>k__BackingField:
-      <Template>k__BackingField: +{0}
-      <Color>k__BackingField: {r: 0.16579854, g: 1, b: 0, a: 1}
-    <StealMoneyFromPlayer>k__BackingField:
-      <Template>k__BackingField: '{0}'
-      <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
-    <StealMoneyFromEnemy>k__BackingField:
-      <Template>k__BackingField: '{0}'
-      <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <DelayBetweenAttacks>k__BackingField: 0.3
+  <DelayBetweenOnTurnStartAbilities>k__BackingField: 0.1
