@@ -20,4 +20,5 @@ MonoBehaviour:
     <EnemyGold>k__BackingField: 5
     <Trinkets>k__BackingField:
     - Value: Trinket/Booze
+    <TrinketSlotCount>k__BackingField: 5
     <CurrentLevelIndex>k__BackingField: 0

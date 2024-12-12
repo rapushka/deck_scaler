@@ -8,7 +8,8 @@ namespace DeckScaler
     {
         [SerializeField] private TrinketsMap _trinkets;
 
-        [field: SerializeField] public EntityBehaviour ViewPrefab { get; private set; }
+        [field: SerializeField] public EntityBehaviour ViewPrefab     { get; private set; }
+        [field: SerializeField] public EntityBehaviour SlotViewPrefab { get; private set; }
 
         public TrinketConfig GetConfig(TrinketIDRef id) => _trinkets[id];
 
