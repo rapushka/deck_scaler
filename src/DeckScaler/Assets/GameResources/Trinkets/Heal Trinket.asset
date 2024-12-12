@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05caa7c73b124c2e9e54426eff4c658d, type: 3}
   m_Name: Heal Trinket
   m_EditorClassIdentifier: 
-  <TrinketID>k__BackingField:
+  <ID>k__BackingField:
     Value: Trinket/Booze
   <Affect>k__BackingField:
     <Type>k__BackingField: 2
     <Value>k__BackingField: 5
   <Price>k__BackingField: 5
-  <Name>k__BackingField: Booze
-  <Sprite>k__BackingField: {fileID: 21300000, guid: 4711f85713f109602a96e469f47fac99, type: 3}

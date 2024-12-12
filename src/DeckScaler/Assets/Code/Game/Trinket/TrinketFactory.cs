@@ -20,7 +20,7 @@ namespace DeckScaler
             var config = Config.GetConfig(trinketID);
 
             EntityBehaviourFactory.Create(Config.ViewPrefab, Vector2.zero)
-                .Add<DebugName, string>(ShortID(config.ID.Value))
+                .Replace<DebugName, string>(ShortID(config.ID.Value))
                 .Add<TrinketID, TrinketIDRef>(config.ID)
                 .Add<TrinketAbility, AffectData>(config.Affect)
                 .Add<Price, int>(config.Price)
