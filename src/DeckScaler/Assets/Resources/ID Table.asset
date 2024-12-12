@@ -29,6 +29,14 @@ MonoBehaviour:
       _targetRefType: 0
       _apiVersion: 1
       _propertyPath: <TrinketID>k__BackingField.Value
+    - _objectPath: 75f7728a340da1a438d7c3d10889455f||11400000
+      _targetRefType: 0
+      _apiVersion: 1
+      _propertyPath: <Trinkets>k__BackingField.list.Array.data[0].key.Value
+    - _objectPath: 8c84f30fda7d2db0a99bd62edddd1e4b||11400000
+      _targetRefType: 0
+      _apiVersion: 1
+      _propertyPath: <NewProgressData>k__BackingField.<Trinkets>k__BackingField.Array.data[0].Value
   - _id: Unit
     _assetRefs: []
   - _id: Unit/Ally

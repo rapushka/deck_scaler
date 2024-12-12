@@ -47,6 +47,9 @@ TagManager:
   - name: Units
     uniqueID: 682003943
     locked: 0
+  - name: Trinkets
+    uniqueID: 1669618665
+    locked: 0
   - name: UI
     uniqueID: 2501145485
     locked: 0
