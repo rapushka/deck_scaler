@@ -15,5 +15,7 @@ namespace DeckScaler
             Type = type;
             Value = value;
         }
+
+        public override string ToString() => $"{nameof(Type)}: {Type}, {nameof(Value)}: {Value}";
     }
 }
