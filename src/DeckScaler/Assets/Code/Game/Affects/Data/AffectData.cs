@@ -15,10 +15,5 @@ namespace DeckScaler
             Type = type;
             Value = value;
         }
-        // AffectID, AffectType>(AffectType.DealDamage)
-        // DealDamageAffect>()
-        // AffectValue, int>(damage)
-        // SenderID, EntityID>(attacker.ID())
-        // TargetID, EntityID>(opponentID)
     }
 }
