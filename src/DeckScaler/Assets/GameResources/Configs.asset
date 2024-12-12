@@ -37,3 +37,6 @@ MonoBehaviour:
   <Map>k__BackingField:
     <CountOfLevelOnStreet>k__BackingField: 5
     <DelayBeforeMapAppear>k__BackingField: 0.7
+  <Trinkets>k__BackingField:
+    <Trinkets>k__BackingField:
+    - {fileID: 11400000, guid: b011d2bec461348238257dd9e0600059, type: 2}

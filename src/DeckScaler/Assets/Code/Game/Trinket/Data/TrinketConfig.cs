@@ -13,6 +13,7 @@ namespace DeckScaler
         [Header("View")]
         [field: SerializeField] public string Name { get; private set; }
 
+        [field: NaughtyAttributes.ShowAssetPreview]
         [field: SerializeField] public Sprite Sprite { get; private set; }
     }
 }

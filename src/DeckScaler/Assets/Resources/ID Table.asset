@@ -13,12 +13,22 @@ MonoBehaviour:
   m_Name: ID Table
   m_EditorClassIdentifier: 
   _idList:
+  - Trinket
+  - Trinket/Booze
   - Unit
   - Unit/Ally
   - Unit/Ally/Crook
   - Unit/Enemy
   - Unit/Enemy/TestEnemy
   _idDefinitions:
+  - _id: Trinket
+    _assetRefs: []
+  - _id: Trinket/Booze
+    _assetRefs:
+    - _objectPath: b011d2bec461348238257dd9e0600059||11400000
+      _targetRefType: 0
+      _apiVersion: 1
+      _propertyPath: <TrinketID>k__BackingField.Value
   - _id: Unit
     _assetRefs: []
   - _id: Unit/Ally
