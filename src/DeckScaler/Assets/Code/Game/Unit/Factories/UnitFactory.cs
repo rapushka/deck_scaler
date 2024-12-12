@@ -56,7 +56,7 @@ namespace DeckScaler.Service
             var stats = config.Stats;
 
             return Factory.EntityBehaviour.Create(UnitsConfig.ViewPrefab, spawnPosition)
-                    .Replace<DebugName, string>(PrettierUnitID(config.ID))
+                    .Replace<DebugName, string>(ShortUnitID(config.ID))
                     .Add<UnitID, string>(config.ID)
                     .Add<SpriteSortOrder, int>(ViewConfig.SortingOrder.Idle)
                     .Add<Component.Suit, Suit>(config.Suit)
@@ -70,9 +70,15 @@ namespace DeckScaler.Service
                 ;
         }
 
-        private string PrettierUnitID(string source)
-            => source
+        private string ShortUnitID(string source)
+        {
+#if UNITY_EDITOR
+            return source
                 .Remove(Constants.TableID.Allies)
                 .Remove(Constants.TableID.Enemies);
+#else
+            return source;
+#endif
+        }
     }
 }

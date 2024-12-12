@@ -8,5 +8,7 @@ namespace DeckScaler
     {
         [field: SerializeField] public SerializedDictionary<UnitIDRef, Sprite> UnitPortraits   { get; private set; }
         [field: SerializeField] public SerializedDictionary<Suit, Sprite>      CardBackgrounds { get; private set; }
+
+        [field: SerializeField] public SerializedDictionary<TrinketIDRef, Sprite> Trinkets { get; private set; }
     }
 }

@@ -15,10 +15,7 @@ namespace DeckScaler
             Type = type;
             Value = value;
         }
-        // AffectID, AffectType>(AffectType.DealDamage)
-        // DealDamageAffect>()
-        // AffectValue, int>(damage)
-        // SenderID, EntityID>(attacker.ID())
-        // TargetID, EntityID>(opponentID)
+
+        public override string ToString() => $"{nameof(Type)}: {Type}, {nameof(Value)}: {Value}";
     }
 }

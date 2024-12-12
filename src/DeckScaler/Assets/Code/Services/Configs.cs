@@ -14,6 +14,8 @@ namespace DeckScaler.Service
         UiConfig           Ui           { get; }
         GameOverConfig     GameOver     { get; }
         MapConfig          Map          { get; }
+
+        AllTrinketsConfig Trinkets { get; }
     }
 
     [CreateAssetMenu(menuName = Constants.MenuPrefix + nameof(Configs))]
@@ -39,6 +41,7 @@ namespace DeckScaler.Service
         [field: SerializeField] public TeamSlotViewConfig TeamSlotView { get; private set; }
         [field: SerializeField] public GameOverConfig     GameOver     { get; private set; }
         [field: SerializeField] public MapConfig          Map          { get; private set; }
+        [field: SerializeField] public AllTrinketsConfig  Trinkets     { get; private set; }
 
         public ICameras Cameras => _cameras;
     }

@@ -16,6 +16,8 @@ namespace DeckScaler
             public const string Units = "Unit/";
             public const string Allies = Units + "Ally/";
             public const string Enemies = Units + "Enemy/";
+
+            public const string Trinkets = "Trinket/";
         }
 
         public static class Animation

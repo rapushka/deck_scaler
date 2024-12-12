@@ -18,9 +18,15 @@ namespace DeckScaler
         [IdRef(startsWith: Constants.TableID.Units)]
         public string Value;
 
-        public static implicit operator UnitIDRef(string unitID)
-        {
-            return new UnitIDRef { Value = unitID };
-        }
+        public static implicit operator UnitIDRef(string unitID) => new() { Value = unitID };
+    }
+
+    [Serializable]
+    public struct TrinketIDRef
+    {
+        [IdRef(startsWith: Constants.TableID.Trinkets)]
+        public string Value;
+
+        public static implicit operator TrinketIDRef(string trinketID) => new() { Value = trinketID };
     }
 }

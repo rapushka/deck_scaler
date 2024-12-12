@@ -37,3 +37,8 @@ MonoBehaviour:
   <Map>k__BackingField:
     <CountOfLevelOnStreet>k__BackingField: 5
     <DelayBeforeMapAppear>k__BackingField: 0.7
+  <Trinkets>k__BackingField:
+    _trinkets:
+      _values:
+      - {fileID: 11400000, guid: b011d2bec461348238257dd9e0600059, type: 2}
+    <ViewPrefab>k__BackingField: {fileID: 6915663080607579929, guid: ace86ddeea80bc8d681d5da615c353d9, type: 3}

@@ -11,6 +11,7 @@ namespace DeckScaler.Editor.Tests.Mocks
         public IUnitFactory            Unit            { get; } = new UnitFactory();
         public IEntityBehaviourFactory EntityBehaviour { get; } = new MockEntityBehaviourFactory();
         public IAffectsFactory         Affects         { get; } = new AffectsFactory();
+        public ITrinketFactory         Trinkets        { get; } = new TrinketFactory();
     }
 
     public class MockEntityBehaviourFactory : IEntityBehaviourFactory

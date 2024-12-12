@@ -7,17 +7,13 @@ namespace DeckScaler
     [Serializable]
     public class ProgressData
     {
-        [field: SerializeField] public List<UnitIDRef> TeammateIDs { get; private set; }
-        [field: SerializeField] public int             Gold        { get; private set; }
-        [field: SerializeField] public int             EnemyGold   { get; private set; }
+        [field: SerializeField] public List<UnitIDRef>    TeammateIDs { get; private set; }
+        [field: SerializeField] public int                Gold        { get; private set; }
+        [field: SerializeField] public int                EnemyGold   { get; private set; }
+        [field: SerializeField] public List<TrinketIDRef> Trinkets    { get; private set; }
 
         [field: HideInInspector]
         [field: SerializeField] public int CurrentLevelIndex { get; private set; }
-
-        public void AddTeammate(string unitID)
-        {
-            TeammateIDs.Add(unitID);
-        }
 
         public static ProgressData NewRun(ProgressData from)
         {
@@ -27,6 +23,7 @@ namespace DeckScaler
                 Gold = from.Gold,
                 EnemyGold = from.EnemyGold,
                 CurrentLevelIndex = 0,
+                Trinkets = from.Trinkets,
             };
         }
 

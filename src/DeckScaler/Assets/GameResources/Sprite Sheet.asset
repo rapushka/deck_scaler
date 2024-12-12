@@ -32,3 +32,8 @@ MonoBehaviour:
       value: {fileID: 21300000, guid: 45ab8a8277c785e41b1d19d39677301b, type: 3}
     - key: 5
       value: {fileID: 21300000, guid: 72161f5271ac0469aa4b5d6cde6de895, type: 3}
+  <Trinkets>k__BackingField:
+    list:
+    - key:
+        Value: Trinket/Booze
+      value: {fileID: 21300000, guid: 4711f85713f109602a96e469f47fac99, type: 3}
