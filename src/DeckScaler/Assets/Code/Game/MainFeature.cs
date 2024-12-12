@@ -20,6 +20,7 @@ namespace DeckScaler
 
             Add(new MapFeature());
 
+            Add(new TrinketsFeature());
             Add(new SpawnPlayerTeamFromProgress());
             Add(new OnLevelSelectedSpawnRandomCountOfRandomEnemies());
 

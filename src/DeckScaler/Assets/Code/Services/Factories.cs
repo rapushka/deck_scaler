@@ -7,6 +7,8 @@ namespace DeckScaler.Service
         IEntityBehaviourFactory EntityBehaviour { get; }
 
         IAffectsFactory Affects { get; }
+
+        ITrinketFactory Trinkets { get; }
     }
 
     public class Factories : IFactories
@@ -16,5 +18,7 @@ namespace DeckScaler.Service
         public IEntityBehaviourFactory EntityBehaviour { get; } = new EntityBehaviourFactory();
 
         public IAffectsFactory Affects { get; } = new AffectsFactory();
+
+        public ITrinketFactory Trinkets { get; } = new TrinketFactory();
     }
 }

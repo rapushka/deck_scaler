@@ -8,4 +8,6 @@ namespace DeckScaler.Component
     public sealed class Inventory : PrimaryIndexComponent<Side>, IInScope<Game> { }
 
     public sealed class Money : ValueComponent<int>, IInScope<Game>, IEvent<Self> { }
+
+    public sealed class Price : ValueComponent<int>, IInScope<Game> { }
 }

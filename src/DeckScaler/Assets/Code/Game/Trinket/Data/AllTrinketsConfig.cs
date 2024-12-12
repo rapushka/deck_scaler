@@ -6,6 +6,16 @@ namespace DeckScaler
     [Serializable]
     public class AllTrinketsConfig
     {
-        [field: SerializeField] public TrinketConfig[] Trinkets { get; private set; }
+        [SerializeField] private TrinketsMap _trinkets;
+
+        [field: SerializeField] public EntityBehaviour ViewPrefab { get; private set; }
+
+        public TrinketConfig GetConfig(TrinketIDRef id) => _trinkets[id];
+
+        [Serializable]
+        private class TrinketsMap : Map<TrinketIDRef, TrinketConfig>
+        {
+            protected override TrinketIDRef SelectKey(TrinketConfig config) => config.ID;
+        }
     }
 }
