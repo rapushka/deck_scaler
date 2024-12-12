@@ -25,9 +25,9 @@ MonoBehaviour:
     <SlotOffsetsBySide>k__BackingField:
       list:
       - key: 1
-        value: {x: 0, y: -1.75}
+        value: {x: 0, y: -2.5}
       - key: 2
-        value: {x: 0, y: 1.5}
+        value: {x: 0, y: 2.5}
     <StretchyScroll>k__BackingField:
       <DelayAtCenter>k__BackingField: 0.05
       <StepPerDistanceRate>k__BackingField: 0.005
