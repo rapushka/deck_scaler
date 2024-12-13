@@ -24,6 +24,9 @@ namespace DeckScaler.Systems
                 if (!@event.IsElapsed<OpenMapAfter>())
                     continue;
 
+                if (@event.Is<RefreshMap>())
+                    HUD.MapView.LoadCurrentStreet();
+
                 HUD.MapView.Show();
 
                 @event.Add<Destroy>();

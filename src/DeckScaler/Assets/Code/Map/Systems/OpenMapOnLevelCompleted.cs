@@ -28,8 +28,13 @@ namespace DeckScaler.Systems
             {
                 Progress.MarkLevelAsCompleted();
 
+                var streetIsCompleted = Progress.CurrentLevelIndex >= Config.CountOfLevelOnStreet;
+                if (streetIsCompleted)
+                    Progress.GoToNextStreet();
+
                 entity
                     .Add<OpenMapAfter, Timer>(new(Config.DelayBeforeMapAppear))
+                    .Is<RefreshMap>(streetIsCompleted)
                     ;
             }
         }
