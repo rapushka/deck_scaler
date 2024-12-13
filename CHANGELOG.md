@@ -18,6 +18,7 @@
 - [ability To Restart Run](https://github.com/rapushka/deck_scaler/issues/150)
 - [game over screen](https://github.com/rapushka/deck_scaler/pull/165)
 - [implemented map View](https://github.com/rapushka/deck_scaler/issues/148)
+- [implemented Trinkets](https://github.com/rapushka/deck_scaler/issues/184)
 
 # v0.0.11
 - [block ui during attack animations](https://github.com/rapushka/deck_scaler/pull/107)
