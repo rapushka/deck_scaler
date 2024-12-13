@@ -45,3 +45,4 @@ MonoBehaviour:
     <SlotViewPrefab>k__BackingField: {fileID: 6915663080607579929, guid: 068123ec628c1f81c81d24580927688d, type: 3}
     <SlotsSpacing>k__BackingField: 1.3
     <RootPosition>k__BackingField: {x: -8.2, y: -4.2}
+    <DroppedTrinketUseRange>k__BackingField: 1

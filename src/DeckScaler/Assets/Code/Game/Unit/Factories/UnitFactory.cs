@@ -57,7 +57,7 @@ namespace DeckScaler.Service
 
             return Factory.EntityBehaviour.Create(UnitsConfig.ViewPrefab, spawnPosition)
                     .Replace<DebugName, string>(ShortUnitID(config.ID))
-                    .Add<UnitID, string>(config.ID)
+                    .Add<Unit, string>(config.ID)
                     .Add<SpriteSortOrder, int>(ViewConfig.SortingOrder.Idle)
                     .Add<Component.Suit, Suit>(config.Suit)
 

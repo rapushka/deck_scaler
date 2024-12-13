@@ -18,7 +18,7 @@ namespace DeckScaler.Systems
         private readonly IGroup<Entity<Game>> _units
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<UnitID>()
+                    .With<Unit>()
                     .And<SlotIndex>()
                     .And<OnSide>()
                     .Build()

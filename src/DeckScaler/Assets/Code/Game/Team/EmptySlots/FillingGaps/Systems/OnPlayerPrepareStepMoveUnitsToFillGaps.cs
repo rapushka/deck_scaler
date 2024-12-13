@@ -17,7 +17,7 @@ namespace DeckScaler.Systems
         private readonly IGroup<Entity<Game>> _unitsToMove
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<UnitID>()
+                    .With<Unit>()
                     .And<MoveSlotToLeft>()
                     .And<RetainedSlotIndex>()
                     .Build()

@@ -13,7 +13,7 @@ namespace DeckScaler.Systems
         private readonly IGroup<Entity<Game>> _notPlacedTrinkets
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<TrinketID>()
+                    .With<Trinket>()
                     .Without<TrinketInSlot>()
                     .Build()
             );

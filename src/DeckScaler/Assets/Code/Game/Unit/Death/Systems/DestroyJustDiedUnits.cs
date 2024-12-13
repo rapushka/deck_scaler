@@ -11,7 +11,7 @@ namespace DeckScaler.Systems
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
                     .With<JustDied>()
-                    .And<UnitID>()
+                    .And<Unit>()
                     .Build()
             );
 

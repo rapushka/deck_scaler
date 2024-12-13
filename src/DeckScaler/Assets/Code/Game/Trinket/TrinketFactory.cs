@@ -23,10 +23,11 @@ namespace DeckScaler
 
             EntityBehaviourFactory.Create(Config.ViewPrefab, Vector2.zero)
                 .Replace<DebugName, string>(config.ID.Value)
-                .Add<TrinketID, TrinketIDRef>(config.ID)
+                .Add<Trinket, TrinketIDRef>(config.ID)
                 .Add<TrinketAbility, AffectData>(config.Affect)
                 .Add<Price, int>(config.Price)
                 .Add<Draggable>()
+                .Is<SingleUseTrinket>(config.IsSingleUse)
                 ;
         }
 

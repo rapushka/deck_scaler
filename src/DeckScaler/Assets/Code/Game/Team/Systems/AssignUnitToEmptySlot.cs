@@ -12,7 +12,7 @@ namespace DeckScaler
         private readonly IGroup<Entity<Game>> _newUnits
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<UnitID>()
+                    .With<Unit>()
                     .And<OnSide>()
                     .Without<SlotIndex>()
                     .Build()
@@ -20,7 +20,7 @@ namespace DeckScaler
         private readonly IGroup<Entity<Game>> _placedUnits
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<UnitID>()
+                    .With<Unit>()
                     .And<OnSide>()
                     .And<SlotIndex>()
                     .Build()
