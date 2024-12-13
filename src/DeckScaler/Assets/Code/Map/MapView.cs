@@ -67,7 +67,7 @@ namespace DeckScaler
         private void ClearLevelButtons()
         {
             foreach (var levelButton in _levelButtons)
-                Destroy(levelButton);
+                levelButton.DestroyObject();
             _levelButtons.Clear();
         }
     }
