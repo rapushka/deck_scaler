@@ -15,7 +15,7 @@ namespace DeckScaler
             Add(new DropCurrentDraggingEntity());
 
             Add(new StopAutoPlacingDraggedUnit());
-            Add(new ReturnDroppedUnitToSlot());
+            Add(new ReturnDroppedEntityToSlot());
 
             Add(new FindClosestSittingUnitToCursor());
             Add(new SwapDraggedUnitToClosestSlot());

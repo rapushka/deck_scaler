@@ -33,7 +33,10 @@ namespace DeckScaler.Systems
                 var slot = SlotsIndex.GetEntity(slotIndex);
 
                 var slotPosition = slot.Get<WorldPosition, Vector2>();
-                trinket.Replace<WorldPosition, Vector2>(slotPosition);
+                trinket
+                    .Replace<WorldPosition, Vector2>(slotPosition)
+                    .Replace<SlotPosition, Vector2>(slotPosition)
+                    ;
             }
         }
     }

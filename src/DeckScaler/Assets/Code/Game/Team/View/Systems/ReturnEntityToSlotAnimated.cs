@@ -7,13 +7,12 @@ using UnityEngine;
 
 namespace DeckScaler.Systems
 {
-    public sealed class ReturnUnitToSlotAnimated : IExecuteSystem
+    public sealed class ReturnEntityToSlotAnimated : IExecuteSystem
     {
-        private readonly IGroup<Entity<Game>> _units
+        private readonly IGroup<Entity<Game>> _entities
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<UnitID>()
-                    .And<ReturnToSlot>()
+                    .With<ReturnToSlot>()
                     .And<WorldPosition>()
                     .And<SlotPosition>()
                     .Build()
@@ -23,7 +22,7 @@ namespace DeckScaler.Systems
 
         public void Execute()
         {
-            foreach (var unit in _units)
+            foreach (var unit in _entities)
             {
                 var slotPosition = unit.Get<SlotPosition, Vector2>();
                 var duration = UnitViewConfig.ReturnAfterDragDuration;
