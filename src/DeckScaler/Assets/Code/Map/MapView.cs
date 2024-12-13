@@ -9,7 +9,7 @@ namespace DeckScaler
     public class MapView : MonoBehaviour
     {
         [SerializeField] private TMP_Text _currentStreetTextMesh;
-        [SerializeField] private string _currentStreetTemplate = "Current Street: {0}";
+        [SerializeField] private string _currentStreetTemplate = "Current Street: {0}/{1}";
 
         [Header("Levels")]
         [SerializeField] private Transform _levelsContainer;
@@ -25,7 +25,10 @@ namespace DeckScaler
 
         public void LoadCurrentStreet()
         {
-            _currentStreetTextMesh.text = _currentStreetTemplate.Format(Progress.CurrentStreetIndex + 1);
+            var currentStreetNumber = Progress.CurrentStreetIndex + 1;
+            var totalStreetCount = Config.CountOfStreets;
+
+            _currentStreetTextMesh.text = _currentStreetTemplate.Format(currentStreetNumber, totalStreetCount);
             CreateLevelButtons();
         }
 
