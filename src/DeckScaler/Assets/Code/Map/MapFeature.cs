@@ -11,6 +11,9 @@ namespace DeckScaler
 
             Add(new MarkLevelCompleted());
             Add(new MarkStreetAsCompleted());
+
+            Add(new OnLastLevelOnLastStreetCompletedEndRun());
+
             Add(new OpenMapOnLevelCompleted());
             Add(new OpenMapAfterDelay());
             Add(new OnLevelSelectedHideMap());
