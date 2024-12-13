@@ -17,22 +17,30 @@ namespace DeckScaler
         [field: HideInInspector]
         [field: SerializeField] public int CurrentLevelIndex { get; private set; }
 
+        [field: HideInInspector]
+        [field: SerializeField] public int CurrentStreetIndex { get; private set; }
+
         public static ProgressData NewRun(ProgressData from)
-        {
-            return new()
+            => new()
             {
                 TeammateIDs = from.TeammateIDs,
                 Gold = from.Gold,
                 EnemyGold = from.EnemyGold,
                 CurrentLevelIndex = 0,
+                CurrentStreetIndex = 0,
                 Trinkets = from.Trinkets,
                 TrinketSlotCount = from.TrinketSlotCount,
             };
-        }
 
         public void MarkLevelAsCompleted()
         {
             CurrentLevelIndex++;
+        }
+
+        public void GoToNextStreet()
+        {
+            CurrentLevelIndex = 0;
+            CurrentStreetIndex++;
         }
     }
 }

@@ -36,6 +36,7 @@ MonoBehaviour:
     <DelayBeforeGameOverScreenAppear>k__BackingField: 0.5
   <Map>k__BackingField:
     <CountOfLevelOnStreet>k__BackingField: 5
+    <CountOfStreets>k__BackingField: 2
     <DelayBeforeMapAppear>k__BackingField: 0.7
   <Trinkets>k__BackingField:
     _trinkets:
