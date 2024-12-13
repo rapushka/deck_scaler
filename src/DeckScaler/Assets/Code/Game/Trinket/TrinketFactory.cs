@@ -22,10 +22,11 @@ namespace DeckScaler
             var config = Config.GetConfig(trinketID);
 
             EntityBehaviourFactory.Create(Config.ViewPrefab, Vector2.zero)
-                .Replace<DebugName, string>(ShortID(config.ID.Value))
+                .Replace<DebugName, string>(config.ID.Value)
                 .Add<TrinketID, TrinketIDRef>(config.ID)
                 .Add<TrinketAbility, AffectData>(config.Affect)
                 .Add<Price, int>(config.Price)
+                .Add<Draggable>()
                 ;
         }
 
@@ -35,17 +36,6 @@ namespace DeckScaler
                 .Replace<DebugName, string>($"slot: {index + 1}")
                 .Add<TrinketSlot, int>(index)
                 ;
-        }
-
-        private string ShortID(string source)
-        {
-#if UNITY_EDITOR
-            return source
-                    .Remove(Constants.TableID.Trinkets)
-                ;
-#else
-            return source;
-#endif
         }
     }
 }
