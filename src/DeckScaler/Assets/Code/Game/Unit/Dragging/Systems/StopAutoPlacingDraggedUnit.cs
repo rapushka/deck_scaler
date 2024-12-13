@@ -12,7 +12,7 @@ namespace DeckScaler.Systems
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
                     .With<Dragging>()
-                    .And<UnitID>()
+                    .And<Unit>()
                     .And<SittingInSlot>()
                     .Build()
             );

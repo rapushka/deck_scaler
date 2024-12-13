@@ -25,7 +25,7 @@ namespace DeckScaler
                     name: SlotPosition,
                     group: _context.GetGroup(
                         MatcherBuilder<Game>
-                            .With<UnitID>()
+                            .With<Unit>()
                             .And<OnSide>()
                             .And<SlotIndex>()
                             .Build()

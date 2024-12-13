@@ -11,7 +11,7 @@ namespace DeckScaler.Component
 
     public sealed class Lead : FlagComponent, IInScope<Game> { }
 
-    public sealed class UnitID : ValueComponent<string>, IInScope<Game>, IEvent<Self> { }
+    public sealed class Unit : ValueComponent<string>, IInScope<Game>, IEvent<Self> { }
 
     public sealed class Enemy : FlagComponent, IInScope<Game> { }
 

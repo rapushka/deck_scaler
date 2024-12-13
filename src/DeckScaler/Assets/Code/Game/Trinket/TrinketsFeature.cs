@@ -1,3 +1,4 @@
+using DeckScaler.Component;
 using DeckScaler.Systems;
 
 namespace DeckScaler
@@ -13,6 +14,11 @@ namespace DeckScaler
 
             Add(new ArrangeTrinketSlotPositions());
             Add(new ArrangeTrinketPositionToSlot());
+
+            Add(new UseDroppedTrinket());
+            Add(new DestroySingleUseTrinketsAfterUse());
+
+            Add(new RemoveComponent<Used>());
         }
     }
 }

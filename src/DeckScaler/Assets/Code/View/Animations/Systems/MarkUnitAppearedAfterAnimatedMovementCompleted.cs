@@ -12,7 +12,7 @@ namespace DeckScaler.Systems
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
                     .With<StopAnimatingMovementAfter>()
-                    .And<UnitID>()
+                    .And<Unit>()
                     .Build()
             );
         private readonly List<Entity<Game>> _buffer = new(16);

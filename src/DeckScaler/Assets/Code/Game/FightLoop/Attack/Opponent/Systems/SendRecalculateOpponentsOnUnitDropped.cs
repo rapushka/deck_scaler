@@ -10,7 +10,7 @@ namespace DeckScaler.Systems
         private readonly IGroup<Entity<Game>> _droppedUnits
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<UnitID>()
+                    .With<Unit>()
                     .And<Dropped>()
                     .Build()
             );

@@ -14,6 +14,9 @@ namespace DeckScaler
         [field: SerializeField] public float   SlotsSpacing { get; private set; }
         [field: SerializeField] public Vector2 RootPosition { get; private set; }
 
+        [field: Header("Usage")]
+        [field: SerializeField] public float DroppedTrinketUseRange { get; private set; }
+
         public TrinketConfig GetConfig(TrinketIDRef id) => _trinkets[id];
 
         [Serializable]
