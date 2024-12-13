@@ -11,7 +11,8 @@ namespace DeckScaler
 
         public static string Remove(this string source, string oldString) => source.Replace(oldString, string.Empty);
 
-        public static string Format(this string template, object arg0)          => string.Format(template, arg0);
-        public static string Format(this string template, params object[] args) => string.Format(template, args);
+        public static string Format(this string template, object arg0)              => string.Format(template, arg0);
+        public static string Format(this string template, object arg0, object arg1) => string.Format(template, arg0, arg1);
+        public static string Format(this string template, params object[] args)     => string.Format(template, args);
     }
 }

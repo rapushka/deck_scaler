@@ -9,9 +9,16 @@ namespace DeckScaler
         {
             Add(new InitializeAndShowMapOnStartOfRun());
 
+            Add(new MarkLevelCompleted());
+            Add(new MarkStreetAsCompleted());
+
+            Add(new OnLastLevelOnLastStreetCompletedEndRun());
+
             Add(new OpenMapOnLevelCompleted());
             Add(new OpenMapAfterDelay());
             Add(new OnLevelSelectedHideMap());
+
+            Add(new MarkLevelCompletedEventProcessed());
 
             Add(new HideEntitiesIfMapIsOpened());
         }

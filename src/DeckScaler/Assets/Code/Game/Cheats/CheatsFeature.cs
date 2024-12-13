@@ -10,6 +10,8 @@ namespace DeckScaler.Cheats
             Add(new SpawnUnitFeature());
             Add(new GameOverFeature());
 
+            Add(new TMP_SetMaxPowerCheat());
+
             Add(new LogUnprocessedCheats());
             Add(new DestroyAllCheats());
         }

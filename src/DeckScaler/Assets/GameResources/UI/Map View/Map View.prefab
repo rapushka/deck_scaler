@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentStreetTextMesh: {fileID: 7329054998628381793}
-  _currentStreetTemplate: 'Current Street: {0}'
+  _currentStreetTemplate: 'Current Street: {0}/{1}'
   _levelsContainer: {fileID: 2079924480244574830}
   _levelButtonPrefab: {fileID: 3817995152168206120, guid: d98c742b87685e93984c3da9e391abaa, type: 3}
 --- !u!1 &5703219359019483612

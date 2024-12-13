@@ -6,7 +6,7 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public class OpenMapOnLevelCompleted : IExecuteSystem
+    public class MarkStreetAsCompleted : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _events
             = Contexts.Instance.GetGroup(
@@ -18,10 +18,19 @@ namespace DeckScaler.Systems
 
         private static MapConfig Config => ServiceLocator.Resolve<IConfigs>().Map;
 
+        private static ProgressData Progress => ServiceLocator.Resolve<IProgress>().CurrentRun;
+
         public void Execute()
         {
             foreach (var entity in _events)
-                entity.Add<OpenMapAfter, Timer>(new(Config.DelayBeforeMapAppear));
+            {
+                var streetIsCompleted = Progress.CurrentLevelIndex >= Config.CountOfLevelOnStreet;
+                if (streetIsCompleted)
+                {
+                    Progress.GoToNextStreet();
+                    entity.Add<RefreshMap>();
+                }
+            }
         }
     }
 }
