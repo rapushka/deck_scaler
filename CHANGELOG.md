@@ -16,7 +16,9 @@
   - [Affects System](https://github.com/rapushka/deck_scaler/pull/157)
   - [Ui Mediator](https://github.com/rapushka/deck_scaler/pull/158)
 - [ability To Restart Run](https://github.com/rapushka/deck_scaler/issues/150)
-- [game over screen](https://github.com/rapushka/deck_scaler/pull/165)
+- Run Ended Screens:
+  - [loose](https://github.com/rapushka/deck_scaler/pull/165)
+  - [win](https://github.com/rapushka/deck_scaler/issues/154)
 - [implemented map View](https://github.com/rapushka/deck_scaler/issues/148)
 - [implemented Trinkets](https://github.com/rapushka/deck_scaler/issues/184)
 
