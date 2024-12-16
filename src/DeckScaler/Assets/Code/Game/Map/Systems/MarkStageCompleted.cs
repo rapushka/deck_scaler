@@ -6,7 +6,7 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public class MarkLevelCompleted : IExecuteSystem
+    public class MarkStageCompleted : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _events
             = Contexts.Instance.GetGroup(
