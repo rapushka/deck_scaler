@@ -21,7 +21,7 @@ namespace DeckScaler.Systems
         public void Execute()
         {
             foreach (var _ in _events)
-                Progress.MarkLevelAsCompleted();
+                Progress.MarkStageAsCompleted();
         }
     }
 }

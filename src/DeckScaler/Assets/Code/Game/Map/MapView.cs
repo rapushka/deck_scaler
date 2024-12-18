@@ -51,9 +51,9 @@ namespace DeckScaler
         {
             ClearLevelButtons();
 
-            var currentLevelIndex = Progress.CurrentLevelIndex;
+            var currentLevelIndex = Progress.CurrentStageIndex;
 
-            for (var i = 0; i < Config.CountOfLevelOnStreet; i++)
+            for (var i = 0; i < Config.CountOfStagesOnStreet; i++)
             {
                 var levelButton = Instantiate(_levelButtonPrefab, _levelsContainer);
                 levelButton.Initialize(i, currentLevelIndex);
@@ -64,7 +64,7 @@ namespace DeckScaler
         private void UpdateCompletedLevels()
         {
             foreach (var levelButton in _levelButtons)
-                levelButton.UpdateState(Progress.CurrentLevelIndex);
+                levelButton.UpdateState(Progress.CurrentStageIndex);
         }
 
         private void ClearLevelButtons()

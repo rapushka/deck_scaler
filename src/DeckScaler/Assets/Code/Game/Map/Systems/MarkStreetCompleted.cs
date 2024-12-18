@@ -24,7 +24,7 @@ namespace DeckScaler.Systems
         {
             foreach (var entity in _events)
             {
-                var streetIsCompleted = Progress.CurrentLevelIndex >= Config.CountOfLevelOnStreet;
+                var streetIsCompleted = Progress.CurrentStageIndex >= Config.CountOfStagesOnStreet;
                 if (streetIsCompleted)
                 {
                     Progress.GoToNextStreet();
