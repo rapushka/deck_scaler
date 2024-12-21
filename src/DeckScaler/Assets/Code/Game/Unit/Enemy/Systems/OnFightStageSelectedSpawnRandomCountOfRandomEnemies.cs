@@ -6,12 +6,13 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public class OnLevelSelectedSpawnRandomCountOfRandomEnemies : IExecuteSystem
+    public class OnFightStageSelectedSpawnRandomCountOfRandomEnemies : IExecuteSystem
     {
-        private readonly IGroup<Entity<Game>> _events
+        private readonly IGroup<Entity<Game>> _selectedFightStages
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<SelectNextLevel>()
+                    .With<SelectStage>()
+                    .And<FightStage>()
                     .Build()
             );
 
@@ -23,7 +24,7 @@ namespace DeckScaler.Systems
 
         public void Execute()
         {
-            foreach (var _ in _events)
+            foreach (var _ in _selectedFightStages)
             {
                 var randomCountOfEnemies = Random.RandomNumber(1, 3);
                 for (var i = 0; i < randomCountOfEnemies; i++)

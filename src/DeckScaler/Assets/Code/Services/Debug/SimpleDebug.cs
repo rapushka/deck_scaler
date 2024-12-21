@@ -21,6 +21,11 @@ namespace DeckScaler.Service
             Debug.LogError(Format(category, msg));
         }
 
+        public void LogWarning(string category, string msg)
+        {
+            Debug.LogWarning(Format(category, msg));
+        }
+
         private string Format(string category, string msg)
             => $"|{Time.Frame}| [{category}] {msg}\n\n---\n";
     }

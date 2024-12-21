@@ -1,7 +1,6 @@
 using System;
 using DeckScaler.Component;
 using DeckScaler.Scopes;
-using DeckScaler.Service;
 using Entitas.Generic;
 using TMPro;
 using UnityEngine;
@@ -13,26 +12,20 @@ namespace DeckScaler
         [SerializeField] private TMP_Text _textMesh;
         [SerializeField] private GameObject _completedView;
 
-        private int _buttonLevelIndex;
+        public event Action<int> Clicked;
+
+        private int _stageIndex;
         private Entity<Game> _entity;
 
-        private static IUiMediator UiMediator => ServiceLocator.Resolve<IUiMediator>();
-
-        private static GameplayHUD HUD => UiMediator.GetCurrentScreen<GameplayHUD>();
-
-        protected override void OnClick()
-        {
-            HUD.MapView.SelectNextLevel();
-        }
+        protected override void OnClick() => Clicked?.Invoke(_stageIndex);
 
         public void Initialize(Entity<Game> entity)
         {
             _entity = entity;
             _entity.Retain(this);
 
-            var stageIndex = entity.Get<StageIndex, int>();
-            _buttonLevelIndex = stageIndex;
-            _textMesh.text = (_buttonLevelIndex + 1).ToString();
+            _stageIndex = entity.Get<StageIndex, int>();
+            _textMesh.text = (_stageIndex + 1).ToString();
 
             UpdateState();
         }
@@ -47,6 +40,8 @@ namespace DeckScaler
         {
             _entity.Release(this);
             _entity = null;
+
+            Clicked = null;
         }
     }
 }

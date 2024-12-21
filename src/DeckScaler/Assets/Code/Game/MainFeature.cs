@@ -22,7 +22,7 @@ namespace DeckScaler
 
             Add(new TrinketsFeature());
             Add(new SpawnPlayerTeamFromProgress());
-            Add(new OnLevelSelectedSpawnRandomCountOfRandomEnemies());
+            Add(new OnFightStageSelectedSpawnRandomCountOfRandomEnemies());
 
             Add(new InventoryFeature());
 
@@ -32,6 +32,8 @@ namespace DeckScaler
 
             Add(new AffectsFeature());
             Add(new DeathFeature());
+
+            Add(new DestroyTurnTrackerOnFightStageCompleted()); // #201
 
             Add(new DestroyEntitiesAfterDelay());
 

@@ -3,11 +3,10 @@ using Entitas.Generic;
 
 namespace DeckScaler.Component
 {
-    public sealed class SelectNextLevel : FlagComponent, IInScope<Game> { }
-
     public sealed class HideMeWhenMapOpened : FlagComponent, IInScope<Game> { }
 
-    public sealed class LevelCompleted : FlagComponent, IInScope<Game> { }
+    /// One-frame Entity
+    public sealed class StageCompletedEvent : FlagComponent, IInScope<Game> { }
 
     public sealed class Processed : FlagComponent, IInScope<Game> { }
 
