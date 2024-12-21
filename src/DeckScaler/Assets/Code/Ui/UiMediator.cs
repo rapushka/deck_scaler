@@ -6,6 +6,7 @@ namespace DeckScaler.Service
 
         void    OpenScreen<TScreen>() where TScreen : BaseUiScreen;
         TScreen GetCurrentScreen<TScreen>() where TScreen : BaseUiScreen;
+        void    DisposeCurrentScreen();
 
         void StartNewRun();
         void EndTurn();
@@ -28,6 +29,7 @@ namespace DeckScaler.Service
 
         public void    OpenScreen<TScreen>() where TScreen : BaseUiScreen       => Screens.Open<TScreen>();
         public TScreen GetCurrentScreen<TScreen>() where TScreen : BaseUiScreen => Screens.GetCurrent<TScreen>();
+        public void    DisposeCurrentScreen()                                   => Screens.DisposeCurrent();
 
         public void StartNewRun()    => StateMachine.Enter<StartGameState>();
         public void EndTurn()        => CreateEntity.OneFrame().Add<Component.RequestEndTurn>();

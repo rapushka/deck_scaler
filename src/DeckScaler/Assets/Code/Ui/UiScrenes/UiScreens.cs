@@ -10,6 +10,7 @@ namespace DeckScaler.Service
         TView GetCurrent<TView>() where TView : BaseUiScreen;
 
         void Open<TView>() where TView : BaseUiScreen;
+        void DisposeCurrent();
     }
 
     public class UiScreens : IUiScreens
@@ -39,6 +40,11 @@ namespace DeckScaler.Service
         {
             _currentScreen?.DestroyObject();
             _currentScreen = Object.Instantiate(prefab, _uiCanvas.Root);
+        }
+
+        public void DisposeCurrent()
+        {
+            (_currentScreen as IDisposable)?.Dispose();
         }
     }
 }

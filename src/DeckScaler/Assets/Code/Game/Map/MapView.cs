@@ -48,6 +48,8 @@ namespace DeckScaler
                 ;
         }
 
+        public void Dispose() => ClearLevelButtons();
+
         private void CreateLevelButtons()
         {
             ClearLevelButtons();

@@ -27,6 +27,8 @@ namespace DeckScaler
 
         public override void Exit()
         {
+            UiMediator.DisposeCurrentScreen();
+
             Ecs.EndGameplay();
             Utils.Dispose();
         }
