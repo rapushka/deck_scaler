@@ -15,6 +15,7 @@ namespace DeckScaler
             Add(new OnRequireSpawnStagesDestroyOldStages());
             Add(new SpawnStagesForCurrentStreet());
 
+            Add(new AddRecruitmentStage());
             Add(new MakeAllUntypedStagesToFight());
 
             Add(new WhenLastStageAndLastStreetCompletedEndRun());
