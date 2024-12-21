@@ -30,7 +30,6 @@ namespace DeckScaler
                     CreateEntity.Next()
                         .Add<DebugName, string>($"stage: {stageIndex}")
                         .Add<StageIndex, int>(stageIndex)
-                        .Is<StageProcessingInProgress>(true)
                         .Is<CurrentStage>(stageIndex == currentStage)
                         .Is<CompletedStage>(stageIndex > currentStage)
                         ;

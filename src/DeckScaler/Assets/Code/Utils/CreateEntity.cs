@@ -16,7 +16,8 @@ namespace DeckScaler
             => Empty().Add<Destroy>();
 
         public static Entity<Game> Empty()
-            => Contexts.Instance.Get<Game>().CreateEntity();
+            => Contexts.Instance.Get<Game>().CreateEntity()
+                .Add<Initializing>();
 
         public static Entity<Scopes.Cheats> Cheat() => Cheat(string.Empty);
 

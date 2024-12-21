@@ -7,12 +7,12 @@ namespace DeckScaler
         public StagesFeature()
             : base(nameof(StagesFeature))
         {
+            Add(new RequireSpawnStagesOnInit());
+
             Add(new OnRequireSpawnStagesDestroyOldStages());
             Add(new SpawnStagesForCurrentStreet());
 
             Add(new MakeAllUntypedStagesToFight());
-
-            Add(new MarkStagesProcessed());
 
             Add(new MarkStageCompleted());
             Add(new MarkStreetCompleted());

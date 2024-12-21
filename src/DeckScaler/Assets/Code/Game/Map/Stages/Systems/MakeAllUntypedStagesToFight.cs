@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using DeckScaler.Component;
 using DeckScaler.Scopes;
-using DeckScaler.Service;
 using Entitas;
 using Entitas.Generic;
 
@@ -13,7 +12,7 @@ namespace DeckScaler
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
                     .With<Stage>()
-                    .And<StageProcessingInProgress>()
+                    .And<Initializing>()
                     .Without<Component.StageType>()
                     .Build()
             );

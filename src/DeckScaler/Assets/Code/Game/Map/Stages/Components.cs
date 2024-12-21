@@ -15,6 +15,4 @@ namespace DeckScaler.Component
     public sealed class CompletedStage : FlagComponent, IInScope<Game> { }
 
     public sealed class CurrentStage : FlagComponent, IInScope<Game>, IUnique { }
-
-    public sealed class StageProcessingInProgress : FlagComponent, IInScope<Game> { }
 }

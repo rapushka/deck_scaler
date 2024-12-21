@@ -8,6 +8,9 @@ namespace DeckScaler
         public CleanupsFeature()
             : base(nameof(CleanupsFeature))
         {
+            Add(new RemoveComponent<Initialized>());
+            Add(new MarkAllInitializingEntitiesAsInitialized());
+
             Add(new RemoveComponent<Dropped>());
             Add(new RemoveComponent<ReturnToSlot>());
             Add(new RemoveComponent<ClosestSlotForReorder>());
