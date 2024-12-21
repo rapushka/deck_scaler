@@ -10,7 +10,7 @@ namespace DeckScaler.Component
 
     public sealed class StageType : ValueComponent<DeckScaler.StageType>, IInScope<Game> { }
 
-    public sealed class StageIndex : ValueComponent<int>, IInScope<Game> { }
+    public sealed class StageIndex : PrimaryIndexComponent<int>, IInScope<Game> { }
 
     public sealed class CompletedStage : FlagComponent, IInScope<Game> { }
 

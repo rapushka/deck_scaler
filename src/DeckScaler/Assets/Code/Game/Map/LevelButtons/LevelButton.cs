@@ -1,15 +1,20 @@
+using System;
+using DeckScaler.Component;
+using DeckScaler.Scopes;
 using DeckScaler.Service;
+using Entitas.Generic;
 using TMPro;
 using UnityEngine;
 
 namespace DeckScaler
 {
-    public class LevelButton : BaseButton
+    public class LevelButton : BaseButton, IDisposable
     {
         [SerializeField] private TMP_Text _textMesh;
         [SerializeField] private GameObject _completedView;
 
         private int _buttonLevelIndex;
+        private Entity<Game> _entity;
 
         private static IUiMediator UiMediator => ServiceLocator.Resolve<IUiMediator>();
 
@@ -20,18 +25,28 @@ namespace DeckScaler
             HUD.MapView.SelectNextLevel();
         }
 
-        public void Initialize(int buttonLevelIndex, int currentLevelIndex)
+        public void Initialize(Entity<Game> entity)
         {
-            _buttonLevelIndex = buttonLevelIndex;
+            _entity = entity;
+            _entity.Retain(this);
+
+            var stageIndex = entity.Get<StageIndex, int>();
+            _buttonLevelIndex = stageIndex;
             _textMesh.text = (_buttonLevelIndex + 1).ToString();
 
-            UpdateState(currentLevelIndex);
+            UpdateState();
         }
 
-        public void UpdateState(int currentLevelIndex)
+        public void UpdateState()
         {
-            Button.interactable = currentLevelIndex == _buttonLevelIndex;
-            _completedView.SetActive(currentLevelIndex > _buttonLevelIndex);
+            Button.interactable = _entity.Is<CurrentStage>();
+            _completedView.SetActive(_entity.Is<CompletedStage>());
+        }
+
+        public void Dispose()
+        {
+            _entity.Release(this);
+            _entity = null;
         }
     }
 }

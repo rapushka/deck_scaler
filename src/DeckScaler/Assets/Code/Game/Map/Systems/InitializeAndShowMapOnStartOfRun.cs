@@ -13,10 +13,10 @@ namespace DeckScaler.Systems
         public void Initialize()
         {
             HUD.MapView.Hide();
-            HUD.MapView.LoadCurrentStreet();
 
             CreateEntity.Empty()
                 .Add<OpenMapAfter, Timer>(new(Config.DelayBeforeMapAppear))
+                .Add<RefreshMap>()
                 ;
         }
     }

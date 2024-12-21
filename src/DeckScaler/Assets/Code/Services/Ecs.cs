@@ -33,6 +33,7 @@ namespace DeckScaler.Service
             _contexts.Get<Game>().GetPrimaryIndex<Inventory, Side>().Initialize();
             _contexts.Get<Game>().GetPrimaryIndex<TrinketSlot, int>().Initialize();
             _contexts.Get<Game>().GetPrimaryIndex<TrinketInSlot, int>().Initialize();
+            _contexts.Get<Game>().GetPrimaryIndex<StageIndex, int>().Initialize();
 
             _customIndexes = new(_contexts);
             _customIndexes.Initialize();

@@ -1,6 +1,25 @@
 namespace DeckScaler.Service
 {
-    public interface IUtils : IService { }
+    public interface IUtils : IService
+    {
+        MapUtils Map { get; }
 
-    public class Utils : IUtils { }
+        void Initialize();
+        void Dispose();
+    }
+
+    public class Utils : IUtils
+    {
+        public MapUtils Map { get; private set; }
+
+        public void Initialize()
+        {
+            Map = new();
+        }
+
+        public void Dispose()
+        {
+            Map = null;
+        }
+    }
 }

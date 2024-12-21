@@ -9,8 +9,11 @@ namespace DeckScaler
 
         private static IEcs Ecs => ServiceLocator.Resolve<IEcs>();
 
+        private static IUtils Utils => ServiceLocator.Resolve<IUtils>();
+
         public override void Enter()
         {
+            Utils.Initialize();
             UiMediator.OpenScreen<GameplayHUD>();
 
             Ecs.StartGameplay();
@@ -25,6 +28,7 @@ namespace DeckScaler
         public override void Exit()
         {
             Ecs.EndGameplay();
+            Utils.Dispose();
         }
     }
 }
