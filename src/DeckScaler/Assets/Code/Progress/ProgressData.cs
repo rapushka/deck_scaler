@@ -15,7 +15,7 @@ namespace DeckScaler
         [field: SerializeField] public int                TrinketSlotCount { get; private set; }
 
         [field: HideInInspector]
-        [field: SerializeField] public int CurrentLevelIndex { get; private set; }
+        [field: SerializeField] public int CurrentStageIndex { get; private set; }
 
         [field: HideInInspector]
         [field: SerializeField] public int CurrentStreetIndex { get; private set; }
@@ -26,20 +26,20 @@ namespace DeckScaler
                 TeammateIDs = from.TeammateIDs,
                 Gold = from.Gold,
                 EnemyGold = from.EnemyGold,
-                CurrentLevelIndex = 0,
+                CurrentStageIndex = 0,
                 CurrentStreetIndex = 0,
                 Trinkets = from.Trinkets,
                 TrinketSlotCount = from.TrinketSlotCount,
             };
 
-        public void MarkLevelAsCompleted()
+        public void MarkStageAsCompleted()
         {
-            CurrentLevelIndex++;
+            CurrentStageIndex++;
         }
 
         public void GoToNextStreet()
         {
-            CurrentLevelIndex = 0;
+            CurrentStageIndex = 0;
             CurrentStreetIndex++;
         }
     }

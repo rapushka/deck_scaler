@@ -6,7 +6,7 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public class MarkStreetAsCompleted : IExecuteSystem
+    public class WhenLastStageAndLastStreetCompletedEndRun : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _events
             = Contexts.Instance.GetGroup(
@@ -20,16 +20,16 @@ namespace DeckScaler.Systems
 
         private static ProgressData Progress => ServiceLocator.Resolve<IProgress>().CurrentRun;
 
+        private static IGameStateMachine StateMachine => ServiceLocator.Resolve<IGameStateMachine>();
+
         public void Execute()
         {
-            foreach (var entity in _events)
+            foreach (var _ in _events)
             {
-                var streetIsCompleted = Progress.CurrentLevelIndex >= Config.CountOfLevelOnStreet;
-                if (streetIsCompleted)
-                {
-                    Progress.GoToNextStreet();
-                    entity.Add<RefreshMap>();
-                }
+                var completedLastAvailableLevel = Progress.CurrentStreetIndex >= Config.CountOfStreets; // it's a workaround
+
+                if (completedLastAvailableLevel)
+                    StateMachine.Enter<GameVictoryState>();
             }
         }
     }

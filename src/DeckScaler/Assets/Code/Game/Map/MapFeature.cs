@@ -9,10 +9,7 @@ namespace DeckScaler
         {
             Add(new InitializeAndShowMapOnStartOfRun());
 
-            Add(new MarkLevelCompleted());
-            Add(new MarkStreetAsCompleted());
-
-            Add(new OnLastLevelOnLastStreetCompletedEndRun());
+            Add(new StagesFeature());
 
             Add(new OpenMapOnLevelCompleted());
             Add(new OpenMapAfterDelay());

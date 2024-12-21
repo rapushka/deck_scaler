@@ -19,9 +19,10 @@ namespace DeckScaler
 
         public bool IsOpened => gameObject.IsActive();
 
-        private static MapConfig Config => ServiceLocator.Resolve<IConfigs>().Map;
+        private static MapUtils Utils => ServiceLocator.Resolve<IUtils>().Map;
 
         private static ProgressData Progress => ServiceLocator.Resolve<IProgress>().CurrentRun;
+        private static MapConfig    Config   => ServiceLocator.Resolve<IConfigs>().Map;
 
         public void LoadCurrentStreet()
         {
@@ -51,12 +52,10 @@ namespace DeckScaler
         {
             ClearLevelButtons();
 
-            var currentLevelIndex = Progress.CurrentLevelIndex;
-
-            for (var i = 0; i < Config.CountOfLevelOnStreet; i++)
+            foreach (var stageEntity in Utils.GetStagesInOrder())
             {
                 var levelButton = Instantiate(_levelButtonPrefab, _levelsContainer);
-                levelButton.Initialize(i, currentLevelIndex);
+                levelButton.Initialize(stageEntity);
                 _levelButtons.Add(levelButton);
             }
         }
@@ -64,7 +63,7 @@ namespace DeckScaler
         private void UpdateCompletedLevels()
         {
             foreach (var levelButton in _levelButtons)
-                levelButton.UpdateState(Progress.CurrentLevelIndex);
+                levelButton.UpdateState();
         }
 
         private void ClearLevelButtons()

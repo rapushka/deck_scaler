@@ -1,5 +1,7 @@
+using System;
 using JetBrains.Annotations;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace DeckScaler
 {
@@ -18,7 +20,10 @@ namespace DeckScaler
         public static void DestroyObject(this MonoBehaviour @this)
         {
             if (@this != null)
+            {
+                (@this as IDisposable)?.Dispose();
                 @this.gameObject.DestroyObject();
+            }
         }
 
         public static void DestroyObject(this GameObject @this)
