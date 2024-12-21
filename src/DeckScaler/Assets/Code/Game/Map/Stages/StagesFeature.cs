@@ -9,13 +9,13 @@ namespace DeckScaler
         {
             Add(new RequireSpawnStagesOnInit());
 
+            Add(new MarkStageCompleted());
+            Add(new MarkStreetCompleted());
+
             Add(new OnRequireSpawnStagesDestroyOldStages());
             Add(new SpawnStagesForCurrentStreet());
 
             Add(new MakeAllUntypedStagesToFight());
-
-            Add(new MarkStageCompleted());
-            Add(new MarkStreetCompleted());
 
             Add(new WhenLastStageAndLastStreetCompletedEndRun());
         }

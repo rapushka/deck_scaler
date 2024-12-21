@@ -25,7 +25,10 @@ namespace DeckScaler
             foreach (var _ in _requests)
             foreach (var stage in _oldStages)
             {
-                stage.Is<Destroy>(true);
+                stage
+                    .Is<Destroy>(true)
+                    .Remove<StageIndex>()
+                    ;
             }
         }
     }

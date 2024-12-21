@@ -29,6 +29,9 @@ namespace DeckScaler.Systems
                 {
                     Progress.GoToNextStreet();
                     entity.Add<RefreshMap>();
+
+                    CreateEntity.OneFrame()
+                        .Add<RequireSpawnStages>();
                 }
             }
         }
