@@ -1,6 +1,9 @@
 # v0.0.13
-- refactorings:
-  - [stages as ecs](https://github.com/rapushka/deck_scaler/issues/194)
+- WIP [Recruitment stage](https://github.com/rapushka/deck_scaler/issues/156):
+  - [(refactoring) stages as ecs](https://github.com/rapushka/deck_scaler/issues/194)
+  - [generate recruitment stage on map](https://github.com/rapushka/deck_scaler/issues/198)
+  - [spawn enemies only on fight stages](https://github.com/rapushka/deck_scaler/pull/203)
+
 
 # v0.0.12
 - [allow spawn any unit on any side](https://github.com/rapushka/deck_scaler/pull/120)
