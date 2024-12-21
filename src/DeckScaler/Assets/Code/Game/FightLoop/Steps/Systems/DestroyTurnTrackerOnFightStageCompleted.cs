@@ -27,7 +27,7 @@ namespace DeckScaler.Systems
             foreach (var _ in _events)
             foreach (var turnTracker in _turnTrackers)
             {
-                turnTracker.Add<Destroy>();
+                turnTracker.Is<Destroy>(true);
             }
         }
     }

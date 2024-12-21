@@ -11,6 +11,7 @@ namespace DeckScaler.Cheats
             Add(new GameOverFeature());
 
             Add(new TMP_SetMaxPowerCheat());
+            Add(new TMP_SkipStageCheat());
 
             Add(new LogUnprocessedCheats());
             Add(new DestroyAllCheats());
