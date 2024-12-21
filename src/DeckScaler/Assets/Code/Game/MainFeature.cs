@@ -33,6 +33,8 @@ namespace DeckScaler
             Add(new AffectsFeature());
             Add(new DeathFeature());
 
+            Add(new DestroyTurnTrackerOnFightStageCompleted()); // #201
+
             Add(new DestroyEntitiesAfterDelay());
 
             Add(new TeamSlotsViewFeature());

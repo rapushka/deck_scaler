@@ -30,7 +30,7 @@ namespace DeckScaler.Systems
                     return;
 
                 CreateEntity.Empty()
-                    .Add<LevelCompleted>()
+                    .Add<StageCompletedEvent>()
                     ;
             }
         }

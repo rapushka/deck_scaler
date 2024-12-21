@@ -8,8 +8,8 @@ namespace DeckScaler
         public SequentialFightLoopFeature()
             : base(nameof(SequentialFightLoopFeature))
         {
-            Add(new InitializeCurrentTurnTracker());
-            Add(new StartWithPlayerTurn());
+            Add(new CreateTurnTracker());
+            Add(new StartFightStageWithPlayerTurn());
 
             Add(new EnemyAiFeature());
             Add(new GatherEndTurnRequests());

@@ -5,8 +5,16 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public class StartWithPlayerTurn : IInitializeSystem
+    public class StartFightStageWithPlayerTurn : IExecuteSystem
     {
+        private readonly IGroup<Entity<Game>> _selectedStage
+            = Contexts.Instance.GetGroup(
+                MatcherBuilder<Game>
+                    .With<SelectStage>()
+                    .And<FightStage>()
+                    .Build()
+            );
+
         private readonly IGroup<Entity<Game>> _turnTrackers
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
@@ -14,8 +22,9 @@ namespace DeckScaler.Systems
                     .Build()
             );
 
-        public void Initialize()
+        public void Execute()
         {
+            foreach (var _ in _selectedStage)
             foreach (var turnTracker in _turnTrackers)
             {
                 turnTracker
