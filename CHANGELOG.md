@@ -1,3 +1,7 @@
+# v0.0.13
+- refactorings:
+  - [stages as ecs](https://github.com/rapushka/deck_scaler/issues/194)
+
 # v0.0.12
 - [allow spawn any unit on any side](https://github.com/rapushka/deck_scaler/pull/120)
 - [gold currency implemented](https://github.com/rapushka/deck_scaler/pull/131)
