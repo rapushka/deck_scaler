@@ -17,6 +17,7 @@ namespace DeckScaler
 
             Add(new AddRecruitmentStage());
             Add(new MakeAllUntypedStagesToFight());
+            Add(new AddFlagsForStageType());
 
             Add(new WhenLastStageAndLastStreetCompletedEndRun());
         }

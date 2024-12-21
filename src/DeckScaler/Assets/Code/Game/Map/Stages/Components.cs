@@ -8,11 +8,16 @@ namespace DeckScaler.Component
 
     public sealed class Stage : FlagComponent, IInScope<Game> { }
 
-    public sealed class StageType : ValueComponent<DeckScaler.StageType>, IInScope<Game> { }
-
     public sealed class StageIndex : PrimaryIndexComponent<int>, IInScope<Game> { }
 
     public sealed class CompletedStage : FlagComponent, IInScope<Game> { }
 
     public sealed class CurrentStage : FlagComponent, IInScope<Game>, IUnique { }
+
+    // # Stage Types
+    public sealed class StageType : ValueComponent<DeckScaler.StageType>, IInScope<Game> { }
+
+    public sealed class FightStage : FlagComponent, IInScope<Game> { }
+
+    public sealed class RecruitmentStage : FlagComponent, IInScope<Game> { }
 }
