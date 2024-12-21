@@ -11,5 +11,7 @@ namespace DeckScaler
         [field: SerializeField] public int CountOfStreets { get; private set; }
 
         [field: SerializeField] public float DelayBeforeMapAppear { get; private set; }
+
+        [field: SerializeField] public int IndexOfRecruitmentStage { get; private set; }
     }
 }

@@ -16,6 +16,7 @@ MonoBehaviour:
     <TeammateIDs>k__BackingField:
     - Value: Unit/Ally/Crook
     - Value: Unit/Ally/Crook
+    - Value: Unit/Ally/Crook
     <Gold>k__BackingField: 10
     <EnemyGold>k__BackingField: 5
     <Trinkets>k__BackingField:
@@ -24,4 +25,5 @@ MonoBehaviour:
     - Value: Trinket/Booze
     - Value: Trinket/Booze
     <TrinketSlotCount>k__BackingField: 5
-    <CurrentLevelIndex>k__BackingField: 0
+    <CurrentStageIndex>k__BackingField: 0
+    <CurrentStreetIndex>k__BackingField: 0

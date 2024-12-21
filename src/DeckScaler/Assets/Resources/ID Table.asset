@@ -83,6 +83,10 @@ MonoBehaviour:
       _targetRefType: 0
       _apiVersion: 1
       _propertyPath: _allies.Array.data[0].Value
+    - _objectPath: 8c84f30fda7d2db0a99bd62edddd1e4b||11400000
+      _targetRefType: 0
+      _apiVersion: 1
+      _propertyPath: <NewProgressData>k__BackingField.<TeammateIDs>k__BackingField.Array.data[2].Value
   - _id: Unit/Enemy
     _assetRefs: []
   - _id: Unit/Enemy/TestEnemy
