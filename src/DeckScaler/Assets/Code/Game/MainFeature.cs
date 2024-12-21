@@ -22,7 +22,7 @@ namespace DeckScaler
 
             Add(new TrinketsFeature());
             Add(new SpawnPlayerTeamFromProgress());
-            Add(new OnLevelSelectedSpawnRandomCountOfRandomEnemies());
+            Add(new OnFightStageSelectedSpawnRandomCountOfRandomEnemies());
 
             Add(new InventoryFeature());
 

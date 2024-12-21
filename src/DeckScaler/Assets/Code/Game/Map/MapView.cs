@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using DeckScaler.Component;
+using DeckScaler.Scopes;
 using DeckScaler.Service;
+using Entitas.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -24,6 +26,9 @@ namespace DeckScaler
         private static ProgressData Progress => ServiceLocator.Resolve<IProgress>().CurrentRun;
         private static MapConfig    Config   => ServiceLocator.Resolve<IConfigs>().Map;
 
+        private static PrimaryEntityIndex<Game, StageIndex, int> Index
+            => Contexts.Instance.Get<Game>().GetPrimaryIndex<StageIndex, int>();
+
         public void LoadCurrentStreet()
         {
             var currentStreetNumber = Progress.CurrentStreetIndex + 1;
@@ -41,13 +46,6 @@ namespace DeckScaler
 
         public void Hide() => gameObject.SetActive(false);
 
-        public void SelectNextLevel()
-        {
-            CreateEntity.OneFrame()
-                .Add<SelectNextLevel>()
-                ;
-        }
-
         public void Dispose() => ClearLevelButtons();
 
         private void CreateLevelButtons()
@@ -56,10 +54,18 @@ namespace DeckScaler
 
             foreach (var stageEntity in Utils.GetStagesInOrder())
             {
-                var levelButton = Instantiate(_levelButtonPrefab, _levelsContainer);
-                levelButton.Initialize(stageEntity);
-                _levelButtons.Add(levelButton);
+                var stageButton = Instantiate(_levelButtonPrefab, _levelsContainer);
+                stageButton.Initialize(stageEntity);
+                stageButton.Clicked += OnStageSelected;
+                _levelButtons.Add(stageButton);
             }
+        }
+
+        private void OnStageSelected(int stageIndex)
+        {
+            Index.GetEntity(stageIndex)
+                .Add<SelectStage>()
+                ;
         }
 
         private void UpdateCompletedLevels()

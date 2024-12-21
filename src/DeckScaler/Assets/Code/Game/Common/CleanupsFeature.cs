@@ -20,6 +20,8 @@ namespace DeckScaler
             Add(new RemoveComponent<TurnStarted>());
             Add(new RemoveComponent<TurnJustEnded>());
 
+            Add(new RemoveComponent<SelectStage>());
+
             Add(new DestroyGameEntities());
             Add(new DestroyInputEntities());
         }
