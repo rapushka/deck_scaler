@@ -9,7 +9,8 @@ namespace DeckScaler
     {
         [field: SerializeField] public EntityBehaviour<Game>[] Behaviours { get; private set; }
 
-        [field: SerializeField] public MapView MapView { get; private set; }
+        [field: SerializeField] public MapView    MapView              { get; private set; }
+        [field: SerializeField] public GameObject RecruitmentStageView { get; private set; }
 
         public void Dispose()
         {
