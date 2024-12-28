@@ -9,6 +9,8 @@ namespace DeckScaler
         {
             Add(new RequireSpawnStagesOnInit());
 
+            Add(new OnRecruitTakenCompleteStage());
+
             Add(new MarkStageCompleted());
             Add(new MarkStreetCompleted());
 

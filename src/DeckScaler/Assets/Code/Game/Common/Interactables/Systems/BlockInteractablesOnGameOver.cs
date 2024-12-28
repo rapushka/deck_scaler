@@ -5,7 +5,7 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public sealed class BlockInteractablesOnAbilitiesUsage : IExecuteSystem
+    public sealed class BlockInteractablesOnGameOver : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _interactables
             = Contexts.Instance.GetGroup(
@@ -13,17 +13,16 @@ namespace DeckScaler.Systems
                     .With<EnableOnlyOnPlayerTurn>()
                     .Build()
             );
-        private readonly IGroup<Entity<Game>> _delaysBeforeAbility
+        private readonly IGroup<Entity<Game>> _gameOverTimers
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<SendTurnStartedAfter>()
-                    .Or<TriggerOnTurnStartedAbility>()
+                    .With<GameOverAfter>()
                     .Build()
             );
 
         public void Execute()
         {
-            foreach (var _ in _delaysBeforeAbility)
+            foreach (var _ in _gameOverTimers)
             foreach (var interactable in _interactables)
             {
                 interactable.Is<Interactable>(false);

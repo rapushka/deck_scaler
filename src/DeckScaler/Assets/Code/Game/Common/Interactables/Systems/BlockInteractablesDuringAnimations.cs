@@ -5,7 +5,7 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public sealed class BlockInteractablesOnAbilitiesUsage : IExecuteSystem
+    public sealed class BlockInteractablesDuringAnimations : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _interactables
             = Contexts.Instance.GetGroup(
@@ -13,17 +13,17 @@ namespace DeckScaler.Systems
                     .With<EnableOnlyOnPlayerTurn>()
                     .Build()
             );
-        private readonly IGroup<Entity<Game>> _delaysBeforeAbility
+        private readonly IGroup<Entity<Game>> _turnTrackers
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<SendTurnStartedAfter>()
-                    .Or<TriggerOnTurnStartedAbility>()
+                    .With<TurnTracker>()
+                    .And<WaitingForAnimations>()
                     .Build()
             );
 
         public void Execute()
         {
-            foreach (var _ in _delaysBeforeAbility)
+            foreach (var _ in _turnTrackers)
             foreach (var interactable in _interactables)
             {
                 interactable.Is<Interactable>(false);

@@ -1,12 +1,12 @@
 using DeckScaler.Component;
+using DeckScaler.Scopes;
 using Entitas;
 using Entitas.Generic;
 using Cursor = DeckScaler.Component.Cursor;
-using Input = DeckScaler.Scopes.Input;
 
 namespace DeckScaler.Systems
 {
-    public sealed class StartDragging : IExecuteSystem
+    public class HandleClickOnRecruit : IExecuteSystem
     {
         private readonly IGroup<Entity<Input>> _hoveredEntities
             = Contexts.Instance.GetGroup(
@@ -27,10 +27,12 @@ namespace DeckScaler.Systems
             foreach (var hovered in _hoveredEntities)
             foreach (var _ in _cursors)
             {
-                var target = hovered.Get<HoveredEntity, EntityID>().GetEntity();
+                var entity = hovered.Get<HoveredEntity>().Value.GetEntity();
 
-                if (target.Is<Draggable>())
-                    target.Is<Dragging>(true);
+                if (!entity.Is<RecruitmentCandidate>())
+                    continue;
+
+                entity.Add<TakeToTeam>();
             }
         }
     }

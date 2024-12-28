@@ -22,18 +22,15 @@ namespace DeckScaler.Service
 
         private static UnitViewConfig ViewConfig => ServiceLocator.Resolve<IConfigs>().UnitView;
 
+        private static UnitsUtil Utils => ServiceLocator.Resolve<IUtils>().Units;
+
         public Entity<Game> CreateLead(UnitIDRef unitID)
             => CreateTeammate(unitID)
                 .Is<Lead>(true)
                 .Bump();
 
         public Entity<Game> CreateTeammate(UnitIDRef unitID)
-            => CreateUnit(unitID, ViewConfig.TeammateSpawnOffset)
-                .Is<Draggable>(true)
-                .Is<Teammate>(true)
-                .Is<Ally>(true)
-                .Add<OnSide, Side>(Side.Player)
-                .Bump();
+            => Utils.ToAlly(CreateUnit(unitID, ViewConfig.TeammateSpawnOffset));
 
         public Entity<Game> CreateEnemy(UnitIDRef unitID)
             => CreateUnit(unitID, ViewConfig.EnemySpawnOffset)

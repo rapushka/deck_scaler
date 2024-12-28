@@ -4,6 +4,7 @@ namespace DeckScaler.Service
     {
         MapUtils   Map    { get; }
         StagesUtil Stages { get; }
+        UnitsUtil  Units  { get; }
 
         void Initialize();
         void Dispose();
@@ -13,17 +14,19 @@ namespace DeckScaler.Service
     {
         public MapUtils   Map    { get; private set; }
         public StagesUtil Stages { get; private set; }
+        public UnitsUtil  Units  { get; private set; }
 
         public void Initialize()
         {
             Map = new();
             Stages = new();
+            Units = new();
         }
 
         public void Dispose()
         {
             Map = null;
-            Stages = null;
+            Units = null;
         }
     }
 }
