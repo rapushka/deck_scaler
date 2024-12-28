@@ -7,8 +7,13 @@ namespace DeckScaler.Component
         public ViewInteractablesFeature()
             : base(nameof(ViewInteractablesFeature))
         {
-            Add(new UpdateInteractables());
+            Add(new ActivateAllInteractables());
+
+            Add(new BlockInteractablesDuringAnimations());
+            Add(new BlockInteractablesDuringEnemyTurn());
             Add(new BlockInteractablesOnDragging());
+            Add(new BlockInteractablesOnGameOver());
+            Add(new BlockInteractablesOnAbilitiesUsage());
         }
     }
 }

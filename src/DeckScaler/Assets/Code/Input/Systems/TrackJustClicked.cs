@@ -18,7 +18,7 @@ namespace DeckScaler.Systems
         protected override void Execute(List<Entity<Input>> cursors)
         {
             foreach (var cursor in cursors)
-                cursor.Is<JustClicked>(true);
+                cursor.Is<CursorClicked>(true);
         }
     }
 }

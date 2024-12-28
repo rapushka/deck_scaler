@@ -18,7 +18,7 @@ namespace DeckScaler.Systems
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Input>
                     .With<Cursor>()
-                    .And<JustClicked>()
+                    .And<CursorClicked>()
                     .Build()
             );
 
