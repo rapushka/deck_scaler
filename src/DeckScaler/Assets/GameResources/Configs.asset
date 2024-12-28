@@ -39,6 +39,7 @@ MonoBehaviour:
     <CountOfStreets>k__BackingField: 2
     <DelayBeforeMapAppear>k__BackingField: 0.7
     <IndexOfRecruitmentStage>k__BackingField: 1
+    <CountOfRecruitmentCandidates>k__BackingField: 3
   <Trinkets>k__BackingField:
     _trinkets:
       _values:

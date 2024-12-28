@@ -1,3 +1,4 @@
+using System;
 using DeckScaler.Cheats.Component;
 using DeckScaler.Service;
 using Entitas.Generic;
@@ -13,9 +14,25 @@ namespace DeckScaler.Cheats.Systems
             var unitID = component.Value;
             var side = entity.Get<SpawnUnitAtSide>().Value;
 
-            Factory.CreateAtSide(unitID, side);
-
+            CreateAtSide(unitID, side);
             return true;
+        }
+
+        private void CreateAtSide(UnitIDRef unitID, Side side)
+        {
+            if (side is Side.Enemy)
+            {
+                Factory.CreateEnemy(unitID);
+                return;
+            }
+
+            if (side is Side.Player)
+            {
+                Factory.CreateTeammate(unitID);
+                return;
+            }
+
+            throw new ArgumentException("Unknown Side");
         }
     }
 }

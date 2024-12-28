@@ -33,6 +33,20 @@ namespace DeckScaler
             return @this;
         }
 
+        public static Vector3 Add(this Vector3 @this, float? x = null, float? y = null, float? z = null)
+        {
+            if (x is not null)
+                @this.x += x.Value;
+
+            if (y is not null)
+                @this.y += y.Value;
+
+            if (z is not null)
+                @this.z += z.Value;
+
+            return @this;
+        }
+
         public static float DistanceTo(this Vector2 @this, Vector2 other) => Vector2.Distance(@this, other);
     }
 }

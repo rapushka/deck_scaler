@@ -9,6 +9,9 @@ namespace DeckScaler
         {
             Add(new HideRecruitmentUIOnInit());
 
+            Add(new SpawnRecruitmentCandidates());
+            Add(new PlaceRecruits());
+
             Add(new UpdateRecruitmentStageUI());
             Add(new HideRecruitmentUIOnStageCompleted());
         }
