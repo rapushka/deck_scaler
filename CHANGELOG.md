@@ -3,6 +3,8 @@
   - [skip recruitment stage button](https://github.com/rapushka/deck_scaler/issues/204)
   - [spawn recruits](https://github.com/rapushka/deck_scaler/issues/206)
   - [player can take units now](https://github.com/rapushka/deck_scaler/pull/211)
+- bugfix:
+  - [end turn button is visible only during fight stage now](https://github.com/rapushka/deck_scaler/pull/213)
 
 # v0.0.13
 - (WIP) [Recruitment stage](https://github.com/rapushka/deck_scaler/issues/156):
