@@ -11,6 +11,7 @@ namespace DeckScaler
 
             Add(new SpawnRecruitmentCandidates());
             Add(new PlaceRecruits());
+            Add(new DestroyAllRecruitsOnStageCompleted());
 
             Add(new UpdateRecruitmentStageUI());
             Add(new HideRecruitmentUIOnStageCompleted());
