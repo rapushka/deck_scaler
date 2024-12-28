@@ -1,4 +1,3 @@
-using System;
 using DeckScaler.Component;
 using DeckScaler.Scopes;
 using Entitas.Generic;
@@ -8,11 +7,11 @@ namespace DeckScaler.Service
 {
     public interface IUnitFactory
     {
-        Entity<Game> CreateAtSide(UnitIDRef unitID, Side side);
-
         Entity<Game> CreateLead(UnitIDRef unitID);
         Entity<Game> CreateTeammate(UnitIDRef unitID);
         Entity<Game> CreateEnemy(UnitIDRef unitID);
+
+        Entity<Game> CreateRecruitmentCandidate(UnitIDRef unitID);
     }
 
     public class UnitFactory : IUnitFactory
@@ -23,32 +22,29 @@ namespace DeckScaler.Service
 
         private static UnitViewConfig ViewConfig => ServiceLocator.Resolve<IConfigs>().UnitView;
 
-        public Entity<Game> CreateAtSide(UnitIDRef unitID, Side side)
-        {
-            if (side is Side.Enemy)
-                return CreateEnemy(unitID);
-
-            if (side is Side.Player)
-                return CreateTeammate(unitID);
-
-            throw new ArgumentException("Unknown Side");
-        }
-
         public Entity<Game> CreateLead(UnitIDRef unitID)
             => CreateTeammate(unitID)
-                .Is<Lead>(true);
+                .Is<Lead>(true)
+                .Bump();
 
         public Entity<Game> CreateTeammate(UnitIDRef unitID)
             => CreateUnit(unitID, ViewConfig.TeammateSpawnOffset)
                 .Is<Draggable>(true)
                 .Is<Teammate>(true)
                 .Is<Ally>(true)
-                .Add<OnSide, Side>(Side.Player);
+                .Add<OnSide, Side>(Side.Player)
+                .Bump();
 
         public Entity<Game> CreateEnemy(UnitIDRef unitID)
             => CreateUnit(unitID, ViewConfig.EnemySpawnOffset)
                 .Is<Enemy>(true)
-                .Add<OnSide, Side>(Side.Enemy);
+                .Add<OnSide, Side>(Side.Enemy)
+                .Bump();
+
+        public Entity<Game> CreateRecruitmentCandidate(UnitIDRef unitID)
+            => CreateUnit(unitID, ViewConfig.EnemySpawnOffset)
+                .Is<RecruitmentCandidate>(true)
+                .Bump();
 
         private Entity<Game> CreateUnit(UnitIDRef unitID, Vector2 spawnPosition)
         {

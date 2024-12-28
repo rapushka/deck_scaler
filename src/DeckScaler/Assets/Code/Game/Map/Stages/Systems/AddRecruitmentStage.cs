@@ -23,8 +23,13 @@ namespace DeckScaler
         {
             foreach (var stage in _stages)
             {
-                if (stage.Get<StageIndex, int>() == Config.IndexOfRecruitmentStage)
-                    stage.Add<Component.StageType, StageType>(StageType.Recruitment);
+                if (stage.Get<StageIndex, int>() != Config.IndexOfRecruitmentStage)
+                    continue;
+
+                stage
+                    .Add<Component.StageType, StageType>(StageType.Recruitment)
+                    .Add<RecruitOnStageCount, int>(Config.CountOfRecruitmentCandidates)
+                    ;
             }
         }
     }
