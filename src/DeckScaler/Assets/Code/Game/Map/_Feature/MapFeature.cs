@@ -16,8 +16,6 @@ namespace DeckScaler
             Add(new OnLevelSelectedHideMap());
 
             Add(new MarkLevelCompletedEventProcessed());
-
-            Add(new HideEntitiesIfMapIsOpened());
         }
     }
 }

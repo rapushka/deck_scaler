@@ -3,7 +3,7 @@ using Entitas.Generic;
 
 namespace DeckScaler.Component
 {
-    public sealed class HideMeWhenMapOpened : FlagComponent, IInScope<Game> { }
+    public sealed class ShowOnlyInFightStage : FlagComponent, IInScope<Game> { }
 
     /// One-frame Entity
     public sealed class StageCompletedEvent : FlagComponent, IInScope<Game> { }

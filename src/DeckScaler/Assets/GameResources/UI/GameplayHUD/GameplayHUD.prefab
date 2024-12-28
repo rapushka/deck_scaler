@@ -188,8 +188,8 @@ GameObject:
   - component: {fileID: 8841447367245009233}
   - component: {fileID: 5600777059062621247}
   - component: {fileID: 6723120267950953740}
-  - component: {fileID: 5429867102033462116}
   - component: {fileID: 2802447885908613491}
+  - component: {fileID: 4967193202161635812}
   m_Layer: 0
   m_Name: End Turn Button
   m_TagString: Untagged
@@ -232,7 +232,7 @@ MonoBehaviour:
   _componentBehaviours:
   - {fileID: 8841447367245009233}
   - {fileID: 5600777059062621247}
-  - {fileID: 5429867102033462116}
+  - {fileID: 4967193202161635812}
   _listeners:
   - {fileID: 6723120267950953740}
   - {fileID: 2802447885908613491}
@@ -277,18 +277,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 1546312164710228057}
---- !u!114 &5429867102033462116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3694672547633950370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d60655d6885f4f9a99ba82b01717f465, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2802447885908613491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,6 +290,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 3694672547633950370}
+--- !u!114 &4967193202161635812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3694672547633950370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96d2228f18f54de78ddeab0fea6ef1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4872830326662184841
 GameObject:
   m_ObjectHideFlags: 0

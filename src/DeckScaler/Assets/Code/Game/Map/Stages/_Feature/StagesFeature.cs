@@ -21,6 +21,7 @@ namespace DeckScaler
             Add(new MakeAllUntypedStagesToFight());
             Add(new AddFlagsForStageType());
 
+            Add(new FightStageFeature());
             Add(new RecruitmentStageFeature());
 
             Add(new WhenLastStageAndLastStreetCompletedEndRun());
