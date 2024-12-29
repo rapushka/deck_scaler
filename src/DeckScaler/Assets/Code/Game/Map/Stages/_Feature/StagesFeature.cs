@@ -24,6 +24,7 @@ namespace DeckScaler
 
             Add(new FightStageFeature());
             Add(new RecruitmentStageFeature());
+            Add(new ShopStageFeature());
 
             Add(new WhenLastStageAndLastStreetCompletedEndRun());
         }

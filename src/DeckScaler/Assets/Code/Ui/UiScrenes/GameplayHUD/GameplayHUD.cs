@@ -11,6 +11,7 @@ namespace DeckScaler
 
         [field: SerializeField] public MapView              MapView              { get; private set; }
         [field: SerializeField] public RecruitmentStageView RecruitmentStageView { get; private set; }
+        [field: SerializeField] public ShopStageView        ShopStageView        { get; private set; }
 
         public void Dispose()
         {
