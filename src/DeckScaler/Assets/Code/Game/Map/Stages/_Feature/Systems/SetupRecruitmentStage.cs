@@ -1,27 +1,28 @@
-using System.Collections.Generic;
 using DeckScaler.Component;
 using DeckScaler.Scopes;
+using DeckScaler.Service;
 using Entitas;
 using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class MakeAllUntypedStagesToFight : IExecuteSystem
+    public sealed class SetupRecruitmentStage : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _stages
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
                     .With<Stage>()
                     .And<Initializing>()
-                    .Without<Component.StageType>()
+                    .And<RecruitmentStage>()
                     .Build()
             );
-        private readonly List<Entity<Game>> _buffer = new(8);
+
+        private static MapConfig Config => ServiceLocator.Resolve<IConfigs>().Map;
 
         public void Execute()
         {
-            foreach (var stage in _stages.GetEntities(_buffer))
-                stage.Add<Component.StageType, StageType>(StageType.Fight);
+            foreach (var stage in _stages)
+                stage.Add<RecruitOnStageCount, int>(Config.CountOfRecruitmentCandidates);
         }
     }
 }

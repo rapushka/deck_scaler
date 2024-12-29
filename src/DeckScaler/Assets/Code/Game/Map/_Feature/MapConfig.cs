@@ -1,4 +1,5 @@
 using System;
+using SmartIdTable;
 using UnityEngine;
 
 namespace DeckScaler
@@ -12,9 +13,9 @@ namespace DeckScaler
 
         [field: SerializeField] public float DelayBeforeMapAppear { get; private set; }
 
-        [field: SerializeField] public int IndexOfRecruitmentStage { get; private set; }
-
         [field: Header("Stages Configs")]
+        [field: SerializeField] public SerializedDictionary<int, StageType> SpecialStageIndexes { get; private set; }
+
         [field: SerializeField] public int CountOfRecruitmentCandidates { get; private set; }
     }
 }
