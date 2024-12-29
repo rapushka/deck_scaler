@@ -4,6 +4,7 @@
   - [spawn recruits](https://github.com/rapushka/deck_scaler/issues/206)
   - [player can take units now](https://github.com/rapushka/deck_scaler/pull/211)
 - (WIP) [Shop Stage](https://github.com/rapushka/deck_scaler/issues/152)
+  - [generate shops on map](https://github.com/rapushka/deck_scaler/issues/152)
 - bugfix:
   - [end turn button is visible only during fight stage now](https://github.com/rapushka/deck_scaler/pull/213)
 
