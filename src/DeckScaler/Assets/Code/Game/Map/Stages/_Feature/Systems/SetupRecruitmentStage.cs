@@ -22,7 +22,7 @@ namespace DeckScaler
         public void Execute()
         {
             foreach (var stage in _stages)
-                stage.Add<RecruitOnStageCount, int>(Config.CountOfRecruitmentCandidates);
+                stage.Add<RecruitOnStageCount, int>(Config.Recruitment.RecruitCount);
         }
     }
 }

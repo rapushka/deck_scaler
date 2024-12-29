@@ -20,6 +20,7 @@ namespace DeckScaler
             Add(new AddSpecialStages());
             Add(new AddSpecialStageFlags());
             Add(new SetupRecruitmentStage());
+            Add(new SetupShopStage());
 
             Add(new FightStageFeature());
             Add(new RecruitmentStageFeature());

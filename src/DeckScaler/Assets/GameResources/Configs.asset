@@ -42,7 +42,13 @@ MonoBehaviour:
       list:
       - key: 1
         value: 2
-    <CountOfRecruitmentCandidates>k__BackingField: 3
+      - key: 2
+        value: 3
+    <Recruitment>k__BackingField:
+      <RecruitCount>k__BackingField: 3
+    <Shop>k__BackingField:
+      <UnitCount>k__BackingField: 1
+      <TrinketCount>k__BackingField: 1
   <Trinkets>k__BackingField:
     _trinkets:
       _values:
