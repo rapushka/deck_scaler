@@ -6,14 +6,14 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public sealed class SpawnRecruitmentCandidates : IExecuteSystem
+    public sealed class SpawnUnitsInShop : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _stages
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<RecruitmentStage>()
+                    .With<ShopStage>()
                     .And<SelectStage>()
-                    .And<RecruitOnStageCount>()
+                    .And<UnitInShopCount>()
             );
 
         private static IUnitFactory Factory => ServiceLocator.Resolve<IFactories>().Unit;
@@ -24,14 +24,12 @@ namespace DeckScaler.Systems
         {
             foreach (var stage in _stages)
             {
-                var recruitCount = stage.Get<RecruitOnStageCount, int>();
+                var unitCount = stage.Get<UnitInShopCount, int>();
 
-                foreach (var id in Utils.GetRandomAllyIDs(recruitCount))
-                {
+                foreach (var id in Utils.GetRandomAllyIDs(unitCount))
                     Factory.CreateUnit(id)
-                        .Is<RecruitmentCandidate>(true)
+                        .Is<UnitInShop>(true)
                         ;
-                }
             }
         }
     }

@@ -20,18 +20,16 @@ namespace DeckScaler.Systems
 
         private static IRandom Random => ServiceLocator.Resolve<IRandom>();
 
-        private static UnitsConfig Config => ServiceLocator.Resolve<IConfigs>().Units;
+        private static UnitsUtil Utils => ServiceLocator.Resolve<IUtils>().Units;
 
         public void Execute()
         {
             foreach (var _ in _selectedFightStages)
             {
                 var randomCountOfEnemies = Random.RandomNumber(1, 3);
-                for (var i = 0; i < randomCountOfEnemies; i++)
-                {
-                    var randomEnemyID = Random.PickRandom(Config.Enemies);
-                    EnemyFactory.CreateEnemy(randomEnemyID);
-                }
+
+                foreach (var id in Utils.GetRandomEnemyIDs(randomCountOfEnemies))
+                    EnemyFactory.CreateEnemy(id);
             }
         }
     }

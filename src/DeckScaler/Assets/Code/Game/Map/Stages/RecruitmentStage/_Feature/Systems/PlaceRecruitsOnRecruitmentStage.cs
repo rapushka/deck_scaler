@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace DeckScaler.Systems
 {
-    public sealed class PlaceRecruits : IExecuteSystem
+    public sealed class PlaceRecruitsOnRecruitmentStage : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _stages
             = Contexts.Instance.GetGroup(
