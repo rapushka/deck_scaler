@@ -17,12 +17,14 @@ namespace DeckScaler
             Add(new OnRequireSpawnStagesDestroyOldStages());
             Add(new SpawnStagesForCurrentStreet());
 
-            Add(new AddRecruitmentStage());
-            Add(new MakeAllUntypedStagesToFight());
-            Add(new AddFlagsForStageType());
+            Add(new AddSpecialStages());
+            Add(new AddSpecialStageFlags());
+            Add(new SetupRecruitmentStage());
+            Add(new SetupShopStage());
 
             Add(new FightStageFeature());
             Add(new RecruitmentStageFeature());
+            Add(new ShopStageFeature());
 
             Add(new WhenLastStageAndLastStreetCompletedEndRun());
         }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DeckScaler.Component;
 using DeckScaler.Scopes;
 using DeckScaler.Service;
@@ -6,7 +7,7 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class AddRecruitmentStage : IExecuteSystem
+    public sealed class AddSpecialStages : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _stages
             = Contexts.Instance.GetGroup(
@@ -23,13 +24,10 @@ namespace DeckScaler
         {
             foreach (var stage in _stages)
             {
-                if (stage.Get<StageIndex, int>() != Config.IndexOfRecruitmentStage)
-                    continue;
+                var stageIndex = stage.Get<StageIndex, int>();
+                var stageType = Config.SpecialStageIndexes.GetValueOrDefault(stageIndex, StageType.Fight);
 
-                stage
-                    .Add<Component.StageType, StageType>(StageType.Recruitment)
-                    .Add<RecruitOnStageCount, int>(Config.CountOfRecruitmentCandidates)
-                    ;
+                stage.Add<Component.StageType, StageType>(stageType);
             }
         }
     }

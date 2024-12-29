@@ -23,4 +23,6 @@ namespace DeckScaler.Component
     public sealed class FightStage : FlagComponent, IInScope<Game> { }
 
     public sealed class RecruitmentStage : FlagComponent, IInScope<Game> { }
+
+    public sealed class ShopStage : FlagComponent, IInScope<Game> { }
 }
