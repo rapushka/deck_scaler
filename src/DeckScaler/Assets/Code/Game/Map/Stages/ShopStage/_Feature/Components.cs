@@ -10,4 +10,10 @@ namespace DeckScaler.Component
     public sealed class UnitInShop : FlagComponent, IInScope<Game> { }
 
     public sealed class TrinketInShop : FlagComponent, IInScope<Game> { }
+
+    public sealed class TryBuy : FlagComponent, IInScope<Game> { }
+
+    public sealed class Bought : FlagComponent, IInScope<Game> { }
+
+    public sealed class NotEnoughMoney : FlagComponent, IInScope<Game> { }
 }

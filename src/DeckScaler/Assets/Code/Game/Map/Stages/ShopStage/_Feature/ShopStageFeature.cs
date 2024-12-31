@@ -13,6 +13,10 @@ namespace DeckScaler
             Add(new PlaceRecruitsInShop());
             Add(new DestroyAllShopUnitsOnStageCompleted());
 
+            Add(new TryBuyOnUnitInShopClicked());
+            Add(new TryProcessPurchase());
+            Add(new AddBoughtUnitFromShopToTeam());
+
             Add(new UpdateShopStageUI());
             Add(new HideShopUIOnStageCompleted());
         }
