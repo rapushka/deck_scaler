@@ -18,9 +18,9 @@ namespace DeckScaler
 
         public UnitConfig this[UnitIDRef id] => GetConfig(id);
 
-        public IEnumerable<UnitIDRef> Allies  => _allies;
-        public IEnumerable<UnitIDRef> Leads   => _leads;
-        public IEnumerable<UnitIDRef> Enemies => _enemies;
+        public IReadOnlyCollection<UnitIDRef> Allies  => _allies;
+        public IReadOnlyCollection<UnitIDRef> Leads   => _leads;
+        public IReadOnlyCollection<UnitIDRef> Enemies => _enemies;
 
         public UnitConfig GetConfig(UnitIDRef id) => _unitConfigsMap[id];
 

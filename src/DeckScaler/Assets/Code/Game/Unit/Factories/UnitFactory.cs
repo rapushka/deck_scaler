@@ -11,7 +11,7 @@ namespace DeckScaler.Service
         Entity<Game> CreateTeammate(UnitIDRef unitID);
         Entity<Game> CreateEnemy(UnitIDRef unitID);
 
-        Entity<Game> CreateRecruitmentCandidate(UnitIDRef unitID);
+        Entity<Game> CreateUnit(UnitIDRef unitID);
     }
 
     public class UnitFactory : IUnitFactory
@@ -30,7 +30,7 @@ namespace DeckScaler.Service
                 .Bump();
 
         public Entity<Game> CreateTeammate(UnitIDRef unitID)
-            => Utils.ToAlly(CreateUnit(unitID, ViewConfig.TeammateSpawnOffset));
+            => Utils.AddAllyBundle(CreateUnit(unitID, ViewConfig.TeammateSpawnOffset));
 
         public Entity<Game> CreateEnemy(UnitIDRef unitID)
             => CreateUnit(unitID, ViewConfig.EnemySpawnOffset)
@@ -38,10 +38,8 @@ namespace DeckScaler.Service
                 .Add<OnSide, Side>(Side.Enemy)
                 .Bump();
 
-        public Entity<Game> CreateRecruitmentCandidate(UnitIDRef unitID)
-            => CreateUnit(unitID, ViewConfig.EnemySpawnOffset)
-                .Is<RecruitmentCandidate>(true)
-                .Bump();
+        public Entity<Game> CreateUnit(UnitIDRef unitID)
+            => CreateUnit(unitID, ViewConfig.EnemySpawnOffset);
 
         private Entity<Game> CreateUnit(UnitIDRef unitID, Vector2 spawnPosition)
         {
@@ -53,6 +51,7 @@ namespace DeckScaler.Service
                     .Add<Unit, string>(config.ID)
                     .Add<SpriteSortOrder, int>(ViewConfig.SortingOrder.Idle)
                     .Add<Component.Suit, Suit>(config.Suit)
+                    .Add<Price, int>(config.Price)
 
                     // stats
                     .Add<BaseStats, StatsData>(stats)
