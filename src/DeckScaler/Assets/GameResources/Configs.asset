@@ -48,7 +48,7 @@ MonoBehaviour:
       <RecruitCount>k__BackingField: 3
     <Shop>k__BackingField:
       <UnitCount>k__BackingField: 1
-      <TrinketCount>k__BackingField: 1
+      <TrinketCount>k__BackingField: 2
   <Trinkets>k__BackingField:
     _trinkets:
       _values:

@@ -30,7 +30,7 @@ namespace DeckScaler.Service
                 .Bump();
 
         public Entity<Game> CreateTeammate(UnitIDRef unitID)
-            => Utils.AddAllyBundle(CreateUnit(unitID, ViewConfig.TeammateSpawnOffset));
+            => Utils.AddAllyComponents(CreateUnit(unitID, ViewConfig.TeammateSpawnOffset));
 
         public Entity<Game> CreateEnemy(UnitIDRef unitID)
             => CreateUnit(unitID, ViewConfig.EnemySpawnOffset)

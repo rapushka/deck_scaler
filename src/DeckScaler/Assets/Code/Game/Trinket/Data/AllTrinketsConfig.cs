@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DeckScaler
@@ -18,6 +19,8 @@ namespace DeckScaler
         [field: SerializeField] public float DroppedTrinketUseRange { get; private set; }
 
         public TrinketConfig GetConfig(TrinketIDRef id) => _trinkets[id];
+
+        public IReadOnlyCollection<TrinketIDRef> TrinketIDs => _trinkets.Keys;
 
         [Serializable]
         private class TrinketsMap : Map<TrinketIDRef, TrinketConfig>

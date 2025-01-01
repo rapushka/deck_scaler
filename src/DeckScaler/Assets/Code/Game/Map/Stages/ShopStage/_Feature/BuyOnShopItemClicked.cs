@@ -5,7 +5,7 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public class TryBuyOnUnitInShopClicked : IExecuteSystem
+    public class BuyOnShopItemClicked : IExecuteSystem
     {
         private readonly IGroup<Entity<Input>> _hoveredEntities
             = Contexts.Instance.GetGroup(
@@ -28,10 +28,8 @@ namespace DeckScaler
             {
                 var entity = hovered.Get<HoveredEntity>().Value.GetEntity();
 
-                if (!entity.Is<UnitInShop>())
-                    continue;
-
-                entity.Add<TryBuy>();
+                if (entity.Is<ShopItem>())
+                    entity.Add<TryBuy>();
             }
         }
     }

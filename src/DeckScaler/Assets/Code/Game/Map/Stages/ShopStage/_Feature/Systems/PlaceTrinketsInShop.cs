@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace DeckScaler.Systems
 {
-    public sealed class PlaceRecruitsInShop : IExecuteSystem
+    public sealed class PlaceTrinketsInShop : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _stages
             = Contexts.Instance.GetGroup(
@@ -17,10 +17,10 @@ namespace DeckScaler.Systems
                     .Build()
             );
 
-        private readonly IGroup<Entity<Game>> _units
+        private readonly IGroup<Entity<Game>> _trinkets
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<UnitInShop>()
+                    .With<TrinketInShop>()
                     .Build()
             );
 
@@ -30,21 +30,21 @@ namespace DeckScaler.Systems
         {
             foreach (var _ in _stages)
             {
-                var unitsRoot = HUD.ShopStageView.UnitsRoot;
-                var spacing = HUD.ShopStageView.UnitsSpacing;
+                var root = HUD.ShopStageView.TrinketsRoot;
+                var spacing = HUD.ShopStageView.TrinketsSpacing;
 
-                var currentX = -spacing * (_units.count - 1) / 2f;
+                var currentY = -spacing * (_trinkets.count - 1) / 2f;
 
-                foreach (var recruit in _units)
+                foreach (var trinket in _trinkets)
                 {
-                    var unitPosition = unitsRoot.position.Add(x: currentX);
+                    var position = root.position.Add(y: currentY);
 
-                    recruit
+                    trinket
                         .Add<AnimateMovement>()
-                        .Replace<TargetPosition, Vector2>(unitPosition)
+                        .Replace<TargetPosition, Vector2>(position)
                         ;
 
-                    currentX += spacing;
+                    currentY += spacing;
                 }
             }
         }

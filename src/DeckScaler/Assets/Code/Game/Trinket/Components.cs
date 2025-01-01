@@ -10,4 +10,6 @@ namespace DeckScaler.Component
     public sealed class Used : FlagComponent, IInScope<Game> { }
 
     public sealed class SingleUseTrinket : FlagComponent, IInScope<Game> { }
+
+    public sealed class PlayerTrinket : FlagComponent, IInScope<Game> { }
 }

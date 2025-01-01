@@ -5,7 +5,7 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public sealed class DestroyAllShopUnitsOnStageCompleted : IExecuteSystem
+    public sealed class DestroyAllShopItemsOnStageCompleted : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _events
             = Contexts.Instance.GetGroup(
@@ -14,19 +14,19 @@ namespace DeckScaler.Systems
                     .Build()
             );
 
-        private readonly IGroup<Entity<Game>> _units
+        private readonly IGroup<Entity<Game>> _items
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<UnitInShop>()
+                    .With<ShopItem>()
                     .Build()
             );
 
         public void Execute()
         {
             foreach (var _ in _events)
-            foreach (var unit in _units)
+            foreach (var item in _items)
             {
-                unit.Add<Destroy>();
+                item.Add<Destroy>();
             }
         }
     }

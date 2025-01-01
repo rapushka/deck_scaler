@@ -28,7 +28,8 @@ namespace DeckScaler.Systems
 
                 foreach (var id in Utils.GetRandomAllyIDs(unitCount))
                     Factory.CreateUnit(id)
-                        .Is<UnitInShop>(true)
+                        .Add<UnitInShop>()
+                        .Add<ShopItem>()
                         ;
             }
         }

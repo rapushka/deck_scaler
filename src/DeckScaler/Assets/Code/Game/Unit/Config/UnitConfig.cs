@@ -17,9 +17,11 @@ namespace DeckScaler
 
         [field: SerializeField] public int Price { get; private set; }
 
-        public StatsData Stats => new StatsData()
-            .With(Stat.BaseDamage, BaseDamage)
-            .With(Stat.Power, Power)
-            .With(Stat.MaxHealth, MaxHealth);
+        public StatsData Stats => new()
+        {
+            [Stat.BaseDamage] = BaseDamage,
+            [Stat.Power] = Power,
+            [Stat.MaxHealth] = MaxHealth,
+        };
     }
 }

@@ -14,7 +14,9 @@ namespace DeckScaler
 
         public Dictionary<TKey, TValue> Dictionary => _dictionary ??= _values.ToDictionary(SelectKey);
 
-        public IEnumerable<TValue> Values => _values;
+        public IReadOnlyCollection<TKey> Keys => _dictionary.Keys;
+
+        public IReadOnlyCollection<TValue> Values => _values;
 
         public TValue this[TKey key] => Dictionary[key];
 
