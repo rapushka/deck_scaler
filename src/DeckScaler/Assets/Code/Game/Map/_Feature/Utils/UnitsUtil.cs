@@ -13,7 +13,7 @@ namespace DeckScaler
         private static UnitsConfig Config => ServiceLocator.Resolve<IConfigs>().Units;
 
         public Entity<Game> TakeToTeam(Entity<Game> unit)
-            => AddAllyBundle(
+            => AddAllyComponents(
                 unit
                     // from recruit
                     .Is<RecruitmentCandidate>(false)
@@ -23,7 +23,7 @@ namespace DeckScaler
                     .Is<UnitInShop>(false)
             );
 
-        public Entity<Game> AddAllyBundle(Entity<Game> unit)
+        public Entity<Game> AddAllyComponents(Entity<Game> unit)
             => unit
                 // add components, that makes him the teammate
                 .Is<Draggable>(true)
