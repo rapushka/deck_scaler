@@ -21,6 +21,7 @@ namespace DeckScaler
 
                     // from shop
                     .Is<UnitInShop>(false)
+                    .Is<ShopItem>(false)
             );
 
         public Entity<Game> AddAllyComponents(Entity<Game> unit)

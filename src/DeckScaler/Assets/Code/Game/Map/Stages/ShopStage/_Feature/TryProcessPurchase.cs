@@ -8,10 +8,11 @@ namespace DeckScaler
 {
     public sealed class TryProcessPurchase : IExecuteSystem
     {
-        private readonly IGroup<Entity<Game>> _products
+        private readonly IGroup<Entity<Game>> _itemsToBuy
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<TryBuy>()
+                    .With<ShopItem>()
+                    .And<TryBuy>()
                     .And<Price>()
                     .Build()
             );
@@ -25,18 +26,18 @@ namespace DeckScaler
 
         public void Execute()
         {
-            foreach (var product in _products)
+            foreach (var item in _itemsToBuy)
             foreach (var inventory in _playerInventories)
             {
                 var currentMoney = inventory.Get<Money, int>();
-                var neededMoney = product.Get<Price, int>();
+                var neededMoney = item.Get<Price, int>();
 
                 var hasEnoughMoney = currentMoney.IsEnough(neededMoney);
 
                 if (hasEnoughMoney)
                     inventory.Increment<Money>(-neededMoney);
 
-                product
+                item
                     .Is<Bought>(hasEnoughMoney)
                     .Is<NotEnoughMoney>(!hasEnoughMoney)
                     ;

@@ -22,10 +22,6 @@ namespace DeckScaler
 
             Add(new RemoveComponent<SelectStage>());
 
-            Add(new RemoveComponent<TryBuy>());
-            Add(new RemoveComponent<Bought>());
-            Add(new RemoveComponent<NotEnoughMoney>());
-
             Add(new DestroyGameEntities());
             Add(new DestroyInputEntities());
         }

@@ -21,13 +21,10 @@ namespace DeckScaler
 
         private static AllTrinketsConfig Config => ServiceLocator.Resolve<IConfigs>().Trinkets;
 
+        private static TrinketsUtil Utils => ServiceLocator.Resolve<IUtils>().Trinket;
+
         public Entity<Game> CreateInPlayerInventory(TrinketIDRef trinketID)
-        {
-            return CreateTrinket(trinketID)
-                    .Add<Draggable>()
-                    .Add<PlayerTrinket>()
-                ;
-        }
+            => Utils.Obtain(CreateTrinket(trinketID));
 
         public Entity<Game> CreateTrinket(TrinketIDRef trinketID)
         {

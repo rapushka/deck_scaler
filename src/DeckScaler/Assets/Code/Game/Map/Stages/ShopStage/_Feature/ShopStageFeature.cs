@@ -1,3 +1,4 @@
+using DeckScaler.Component;
 using DeckScaler.Systems;
 
 namespace DeckScaler
@@ -14,14 +15,20 @@ namespace DeckScaler
 
             Add(new SpawnTrinketsInShop());
             Add(new PlaceTrinketsInShop());
+
             Add(new DestroyAllShopItemsOnStageCompleted());
 
-            Add(new TryBuyOnUnitInShopClicked());
+            Add(new TryBuyOnShopItemClicked());
             Add(new TryProcessPurchase());
             Add(new AddBoughtUnitFromShopToTeam());
+            Add(new AddBoughtTrinketFromShopToInventory());
 
             Add(new UpdateShopStageUI());
             Add(new HideShopUIOnStageCompleted());
+
+            Add(new RemoveComponent<TryBuy>());
+            Add(new RemoveComponent<Bought>());
+            Add(new RemoveComponent<NotEnoughMoney>());
         }
     }
 }
