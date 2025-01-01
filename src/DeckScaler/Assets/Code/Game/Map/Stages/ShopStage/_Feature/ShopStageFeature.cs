@@ -18,8 +18,11 @@ namespace DeckScaler
 
             Add(new DestroyAllShopItemsOnStageCompleted());
 
-            Add(new TryBuyOnShopItemClicked());
-            Add(new TryProcessPurchase());
+            Add(new BuyOnShopItemClicked());
+
+            Add(new CheckEmptySlotsForTrinkets());
+            Add(new TrySpendMoneyToBuy());
+
             Add(new AddBoughtUnitFromShopToTeam());
             Add(new AddBoughtTrinketFromShopToInventory());
 

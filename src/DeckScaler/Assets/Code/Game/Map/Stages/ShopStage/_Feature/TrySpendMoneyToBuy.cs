@@ -6,7 +6,7 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class TryProcessPurchase : IExecuteSystem
+    public sealed class TrySpendMoneyToBuy : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _itemsToBuy
             = Contexts.Instance.GetGroup(
@@ -14,6 +14,7 @@ namespace DeckScaler
                     .With<ShopItem>()
                     .And<TryBuy>()
                     .And<Price>()
+                    .Without<CannotBuy>()
                     .Build()
             );
         private readonly IGroup<Entity<Game>> _playerInventories
@@ -40,6 +41,7 @@ namespace DeckScaler
                 item
                     .Is<Bought>(hasEnoughMoney)
                     .Is<NotEnoughMoney>(!hasEnoughMoney)
+                    .Is<CannotBuy>(!hasEnoughMoney)
                     ;
             }
         }

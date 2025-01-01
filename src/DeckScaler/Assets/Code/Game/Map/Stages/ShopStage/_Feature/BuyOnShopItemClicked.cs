@@ -5,7 +5,7 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public class TryBuyOnShopItemClicked : IExecuteSystem
+    public class BuyOnShopItemClicked : IExecuteSystem
     {
         private readonly IGroup<Entity<Input>> _hoveredEntities
             = Contexts.Instance.GetGroup(
