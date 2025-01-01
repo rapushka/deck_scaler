@@ -1,3 +1,8 @@
+# v0.0.15
+- (WIP) [Shop Stage](https://github.com/rapushka/deck_scaler/issues/152)
+  - [ability to buy units from shop](https://github.com/rapushka/deck_scaler/issues/216)
+  - [ability to buy trinkets from shop](https://github.com/rapushka/deck_scaler/issues/218)
+
 # v0.0.14
 - [Recruitment stage](https://github.com/rapushka/deck_scaler/issues/156):
   - [skip recruitment stage button](https://github.com/rapushka/deck_scaler/issues/204)
