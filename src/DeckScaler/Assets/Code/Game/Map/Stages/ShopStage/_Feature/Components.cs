@@ -7,6 +7,8 @@ namespace DeckScaler.Component
 
     public sealed class TrinketInShopCount : ValueComponent<int>, IInScope<Game> { }
 
+    public sealed class ShopItem : FlagComponent, IInScope<Game> { }
+
     public sealed class UnitInShop : FlagComponent, IInScope<Game> { }
 
     public sealed class TrinketInShop : FlagComponent, IInScope<Game> { }

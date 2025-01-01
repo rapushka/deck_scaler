@@ -11,7 +11,9 @@ namespace DeckScaler
 
             Add(new SpawnUnitsInShop());
             Add(new PlaceRecruitsInShop());
-            Add(new DestroyAllShopUnitsOnStageCompleted());
+
+            Add(new SpawnTrinketsInShop());
+            Add(new DestroyAllShopItemsOnStageCompleted());
 
             Add(new TryBuyOnUnitInShopClicked());
             Add(new TryProcessPurchase());

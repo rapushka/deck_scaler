@@ -1,14 +1,18 @@
 using DeckScaler.Component;
+using DeckScaler.Scopes;
 using DeckScaler.Service;
+using Entitas.Generic;
 using UnityEngine;
 
 namespace DeckScaler
 {
     public interface ITrinketFactory
     {
-        void CreateInPlayerInventory(TrinketIDRef trinketID);
+        Entity<Game> CreateInPlayerInventory(TrinketIDRef trinketID);
 
-        void CreateTrinketSlot(int index);
+        Entity<Game> CreateTrinketSlot(int index);
+
+        Entity<Game> CreateTrinket(TrinketIDRef trinketID);
     }
 
     public class TrinketFactory : ITrinketFactory
@@ -17,26 +21,31 @@ namespace DeckScaler
 
         private static AllTrinketsConfig Config => ServiceLocator.Resolve<IConfigs>().Trinkets;
 
-        public void CreateInPlayerInventory(TrinketIDRef trinketID)
+        public Entity<Game> CreateInPlayerInventory(TrinketIDRef trinketID)
+        {
+            return CreateTrinket(trinketID)
+                    .Add<Draggable>()
+                    .Add<PlayerTrinket>()
+                ;
+        }
+
+        public Entity<Game> CreateTrinket(TrinketIDRef trinketID)
         {
             var config = Config.GetConfig(trinketID);
 
-            EntityBehaviourFactory.Create(Config.ViewPrefab, Vector2.zero)
-                .Replace<DebugName, string>(config.ID.Value)
-                .Add<Trinket, TrinketIDRef>(config.ID)
-                .Add<TrinketAbility, AffectData>(config.Affect)
-                .Add<Price, int>(config.Price)
-                .Add<Draggable>()
-                .Is<SingleUseTrinket>(config.IsSingleUse)
+            return EntityBehaviourFactory.Create(Config.ViewPrefab, Vector2.zero)
+                    .Replace<DebugName, string>(config.ID.Value)
+                    .Add<Trinket, TrinketIDRef>(config.ID)
+                    .Add<TrinketAbility, AffectData>(config.Affect)
+                    .Add<Price, int>(config.Price)
+                    .Is<SingleUseTrinket>(config.IsSingleUse)
                 ;
         }
 
-        public void CreateTrinketSlot(int index)
-        {
-            EntityBehaviourFactory.Create(Config.SlotViewPrefab, Vector2.zero)
+        public Entity<Game> CreateTrinketSlot(int index)
+            => EntityBehaviourFactory.Create(Config.SlotViewPrefab, Vector2.zero)
                 .Replace<DebugName, string>($"slot: {index + 1}")
                 .Add<TrinketSlot, int>(index)
-                ;
-        }
+                .Bump();
     }
 }

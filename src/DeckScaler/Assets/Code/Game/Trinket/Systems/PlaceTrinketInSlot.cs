@@ -14,6 +14,7 @@ namespace DeckScaler.Systems
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
                     .With<Trinket>()
+                    .And<PlayerTrinket>()
                     .Without<TrinketInSlot>()
                     .Build()
             );

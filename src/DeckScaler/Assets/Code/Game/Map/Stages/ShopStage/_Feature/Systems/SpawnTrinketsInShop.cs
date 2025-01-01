@@ -6,31 +6,33 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public sealed class SpawnUnitsInShop : IExecuteSystem
+    public sealed class SpawnTrinketsInShop : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _stages
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
                     .With<ShopStage>()
                     .And<SelectStage>()
-                    .And<UnitInShopCount>()
+                    .And<TrinketInShopCount>()
             );
 
-        private static IUnitFactory Factory => ServiceLocator.Resolve<IFactories>().Unit;
+        private static ITrinketFactory Factory => ServiceLocator.Resolve<IFactories>().Trinkets;
 
-        private static UnitsUtil Utils => ServiceLocator.Resolve<IUtils>().Units;
+        private static TrinketsUtil Utils => ServiceLocator.Resolve<IUtils>().Trinket;
 
         public void Execute()
         {
             foreach (var stage in _stages)
             {
-                var unitCount = stage.Get<UnitInShopCount, int>();
+                var trinketCount = stage.Get<TrinketInShopCount, int>();
 
-                foreach (var id in Utils.GetRandomAllyIDs(unitCount))
-                    Factory.CreateUnit(id)
-                        .Add<UnitInShop>()
+                foreach (var id in Utils.GetRandomTrinketID(trinketCount))
+                {
+                    Factory.CreateTrinket(id)
+                        .Add<TrinketInShop>()
                         .Add<ShopItem>()
                         ;
+                }
             }
         }
     }
