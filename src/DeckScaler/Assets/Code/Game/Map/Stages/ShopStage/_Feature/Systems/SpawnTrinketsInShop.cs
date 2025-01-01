@@ -3,6 +3,7 @@ using DeckScaler.Scopes;
 using DeckScaler.Service;
 using Entitas;
 using Entitas.Generic;
+using UnityEngine;
 
 namespace DeckScaler.Systems
 {
@@ -20,6 +21,9 @@ namespace DeckScaler.Systems
 
         private static TrinketsUtil Utils => ServiceLocator.Resolve<IUtils>().Trinket;
 
+        private static ShopStageView ShopView
+            => ServiceLocator.Resolve<IUiMediator>().GetCurrentScreen<GameplayHUD>().ShopStageView;
+
         public void Execute()
         {
             foreach (var stage in _stages)
@@ -31,6 +35,7 @@ namespace DeckScaler.Systems
                     Factory.CreateTrinket(id)
                         .Add<TrinketInShop>()
                         .Add<ShopItem>()
+                        .Replace<WorldPosition, Vector2>(ShopView.OffscreenPosition)
                         ;
                 }
             }
