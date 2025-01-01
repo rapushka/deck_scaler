@@ -10,7 +10,7 @@ namespace DeckScaler
             Add(new HideShopUIOnInit());
 
             Add(new SpawnUnitsInShop());
-            Add(new PlaceRecruitsInShop());
+            Add(new PlaceUnitsInShop());
 
             Add(new SpawnTrinketsInShop());
             Add(new DestroyAllShopItemsOnStageCompleted());
