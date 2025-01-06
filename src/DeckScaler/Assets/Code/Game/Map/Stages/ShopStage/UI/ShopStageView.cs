@@ -1,3 +1,5 @@
+using DeckScaler.Scopes;
+using Entitas.Generic;
 using UnityEngine;
 
 namespace DeckScaler
@@ -15,6 +17,9 @@ namespace DeckScaler
         [field: SerializeField] public Transform TrinketsRoot { get; private set; }
 
         [field: SerializeField] public float TrinketsSpacing { get; private set; }
+
+        [field: Header("Reroll")]
+        [field: SerializeField] public EntityBehaviour<Game> RerollButton { get; private set; }
 
         public Vector2 OffscreenPosition => _offscreenTransform.position;
     }

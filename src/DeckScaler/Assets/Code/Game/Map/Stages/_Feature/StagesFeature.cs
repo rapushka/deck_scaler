@@ -21,6 +21,7 @@ namespace DeckScaler
             Add(new AddSpecialStageFlags());
             Add(new SetupRecruitmentStage());
             Add(new SetupShopStage());
+            Add(new SetupShopRerollButton());
 
             Add(new FightStageFeature());
             Add(new RecruitmentStageFeature());

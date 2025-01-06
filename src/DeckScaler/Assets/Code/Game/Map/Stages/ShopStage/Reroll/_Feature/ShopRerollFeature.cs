@@ -1,0 +1,13 @@
+using DeckScaler.Systems;
+
+namespace DeckScaler
+{
+    public sealed class ShopRerollFeature : Feature
+    {
+        public ShopRerollFeature()
+            : base(nameof(ShopRerollFeature))
+        {
+            Add(new InitializeRerollItemInShop());
+        }
+    }
+}

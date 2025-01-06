@@ -16,6 +16,8 @@ namespace DeckScaler
             Add(new SpawnTrinketsInShop());
             Add(new PlaceTrinketsInShop());
 
+            Add(new ShopRerollFeature());
+
             Add(new DestroyAllShopItemsOnStageCompleted());
 
             Add(new BuyOnShopItemClicked());

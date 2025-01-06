@@ -9,11 +9,9 @@ namespace DeckScaler
     {
         Entity<Game> Create(EntityBehaviour<Game> prefab, Vector2 spawnPosition);
         Entity<Game> Setup(EntityBehaviour<Game> view);
-        Entity<Game> Setup(EntityBehaviour<Game> view, Vector2 spawnPosition);
     }
 
-    public class EntityBehaviourFactory
-        : IEntityBehaviourFactory
+    public class EntityBehaviourFactory : IEntityBehaviourFactory
     {
         private static IIdentifierServer Identifiers => ServiceLocator.Resolve<IIdentifierServer>();
 
@@ -22,7 +20,7 @@ namespace DeckScaler
 
         public Entity<Game> Setup(EntityBehaviour<Game> view) => Setup(view, view.transform.position);
 
-        public Entity<Game> Setup(EntityBehaviour<Game> view, Vector2 spawnPosition)
+        private Entity<Game> Setup(EntityBehaviour<Game> view, Vector2 spawnPosition)
         {
             view.Register(Contexts.Instance);
             view.SetActive(false);
