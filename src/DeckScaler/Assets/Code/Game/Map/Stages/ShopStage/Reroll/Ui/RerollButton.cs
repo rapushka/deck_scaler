@@ -1,10 +1,14 @@
+using DeckScaler.Component;
+
 namespace DeckScaler
 {
     public class RerollButton : BaseButton
     {
         protected override void OnClick()
         {
-            // TODO:
+            CreateEntity.Empty()
+                .Add<RequestReroll>()
+                ;
         }
     }
 }
