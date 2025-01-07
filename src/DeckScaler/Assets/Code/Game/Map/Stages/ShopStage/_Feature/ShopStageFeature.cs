@@ -25,6 +25,8 @@ namespace DeckScaler
             Add(new CheckEmptySlotsForTrinkets());
             Add(new TrySpendMoneyToBuy());
 
+            Add(new ShopItemsAvailabilityFeature());
+
             Add(new AddBoughtUnitFromShopToTeam());
             Add(new AddBoughtTrinketFromShopToInventory());
 

@@ -17,7 +17,7 @@ namespace DeckScaler.Component
 
     public sealed class Bought : FlagComponent, IInScope<Game> { }
 
-    public sealed class CannotBuy : FlagComponent, IInScope<Game> { }
+    public sealed class PurchaseFailed : FlagComponent, IInScope<Game> { }
 
     public sealed class NotEnoughMoney : FlagComponent, IInScope<Game> { }
 

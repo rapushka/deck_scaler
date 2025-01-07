@@ -5,25 +5,22 @@ using Entitas.Generic;
 
 namespace DeckScaler.Systems
 {
-    public sealed class InitializeRerollItemInShop : IExecuteSystem
+    public sealed class RequestUpdateShopOnShopEnter : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _stages
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
                     .With<ShopStage>()
                     .And<SelectStage>()
+                    .Build()
             );
 
         public void Execute()
         {
-            foreach (var stage in _stages)
+            foreach (var _ in _stages)
             {
-                var initialPrice = stage.Get<ShopRerollInitialPrice, int>();
-
-                CreateEntity.Empty() // TODO: spawn with prefab
-                    .Add<Component.RerollButton>()
-                    .Add<ShopItem>()
-                    .Add<Price, int>(initialPrice)
+                CreateEntity.OneFrame()
+                    .Add<UpdateShopItemsEvent>()
                     ;
             }
         }
