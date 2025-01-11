@@ -5,10 +5,10 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class MainFeature : Feature
+    public sealed class CardGameFeature : Feature // TODO: Remove me
     {
-        public MainFeature()
-            : base(nameof(MainFeature))
+        public CardGameFeature()
+            : base(nameof(CardGameFeature))
         {
 #if UNITY_EDITOR
             Add(new CheatsFeature());

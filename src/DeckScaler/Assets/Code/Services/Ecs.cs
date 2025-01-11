@@ -45,7 +45,7 @@ namespace DeckScaler.Service
 
         public void StartGameplay()
         {
-            EcsRunner.AddFeature<MainFeature>();
+            EcsRunner.AddFeature<GameplayFeature>();
         }
 
         public void Update()
@@ -55,7 +55,7 @@ namespace DeckScaler.Service
 
         public void EndGameplay()
         {
-            EcsRunner.RemoveFeature<MainFeature>(destroyAllEntities: true);
+            EcsRunner.RemoveFeature<GameplayFeature>(destroyAllEntities: true);
 
             _contexts.Get<Game>().Reset();
             _contexts.Get<Input>().Reset();
