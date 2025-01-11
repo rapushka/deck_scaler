@@ -30,6 +30,8 @@ namespace DeckScaler
         {
             [field: SerializeField] public int UnitCount    { get; private set; }
             [field: SerializeField] public int TrinketCount { get; private set; }
+
+            [field: SerializeField] public int RerollInitialPrice { get; private set; }
         }
     }
 }

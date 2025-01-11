@@ -1,20 +1,23 @@
 using DeckScaler.Component;
 using DeckScaler.Scopes;
-using DeckScaler.Systems;
 using Entitas;
 using Entitas.Generic;
 
-namespace DeckScaler
+namespace DeckScaler.Systems
 {
-    public sealed class TrySpendMoneyToBuy : IExecuteSystem
+    public class UpdateShopItems : IExecuteSystem
     {
-        private readonly IGroup<Entity<Game>> _itemsToBuy
+        private readonly IGroup<Entity<Game>> _events
+            = Contexts.Instance.GetGroup(
+                MatcherBuilder<Game>
+                    .With<UpdateShopItemsEvent>()
+                    .Build()
+            );
+        private readonly IGroup<Entity<Game>> _shopItems
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
                     .With<ShopItem>()
-                    .And<TryBuy>()
                     .And<Price>()
-                    .Without<CannotBuy>()
                     .Build()
             );
         private readonly IGroup<Entity<Game>> _playerInventories
@@ -27,7 +30,8 @@ namespace DeckScaler
 
         public void Execute()
         {
-            foreach (var item in _itemsToBuy)
+            foreach (var _ in _events)
+            foreach (var item in _shopItems)
             foreach (var inventory in _playerInventories)
             {
                 var currentMoney = inventory.Get<Money, int>();
@@ -35,14 +39,7 @@ namespace DeckScaler
 
                 var hasEnoughMoney = currentMoney.IsEnough(neededMoney);
 
-                if (hasEnoughMoney)
-                    inventory.Increment<Money>(-neededMoney);
-
-                item
-                    .Is<Bought>(hasEnoughMoney)
-                    .Is<NotEnoughMoney>(!hasEnoughMoney)
-                    .Is<CannotBuy>(!hasEnoughMoney)
-                    ;
+                item.Is<Interactable>(hasEnoughMoney);
             }
         }
     }

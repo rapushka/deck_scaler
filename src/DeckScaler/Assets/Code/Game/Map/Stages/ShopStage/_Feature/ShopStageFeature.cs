@@ -10,6 +10,11 @@ namespace DeckScaler
         {
             Add(new HideShopUIOnInit());
 
+            Add(new ShopRerollFeature());
+
+            Add(new RestockShopOnShotStageSelected());
+            Add(new DestroyOldShopItemsOnRestock());
+
             Add(new SpawnUnitsInShop());
             Add(new PlaceUnitsInShop());
 
@@ -23,6 +28,8 @@ namespace DeckScaler
             Add(new CheckEmptySlotsForTrinkets());
             Add(new TrySpendMoneyToBuy());
 
+            Add(new ShopItemsAvailabilityFeature());
+
             Add(new AddBoughtUnitFromShopToTeam());
             Add(new AddBoughtTrinketFromShopToInventory());
 
@@ -32,6 +39,7 @@ namespace DeckScaler
             Add(new RemoveComponent<TryBuy>());
             Add(new RemoveComponent<Bought>());
             Add(new RemoveComponent<NotEnoughMoney>());
+            Add(new RemoveComponent<RestockShop>());
         }
     }
 }

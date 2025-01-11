@@ -6,7 +6,7 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class SetupShopStage : IExecuteSystem
+    public sealed class SetupShopRerollButton : IExecuteSystem
     {
         private readonly IGroup<Entity<Game>> _stages
             = Contexts.Instance.GetGroup(
@@ -17,16 +17,19 @@ namespace DeckScaler
                     .Build()
             );
 
-        private static MapConfig Config => ServiceLocator.Resolve<IConfigs>().Map;
+        private static ShopStageView ShopView
+            => ServiceLocator.Resolve<IUiMediator>().GetCurrentScreen<GameplayHUD>().ShopStageView;
+
+        private static IEntityBehaviourFactory Factory => ServiceLocator.Resolve<IFactories>().EntityBehaviour;
 
         public void Execute()
         {
             foreach (var stage in _stages)
             {
-                stage
-                    .Add<UnitInShopCount, int>(Config.Shop.UnitCount)
-                    .Add<TrinketInShopCount, int>(Config.Shop.TrinketCount)
-                    .Add<ShopRerollInitialPrice, int>(Config.Shop.RerollInitialPrice)
+                Factory.Setup(ShopView.RerollButton)
+                    .Add<Price, int>(stage.Get<ShopRerollInitialPrice, int>())
+                    .Add<Interactable>()
+                    .Add<Visible>()
                     ;
             }
         }

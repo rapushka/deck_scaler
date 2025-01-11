@@ -15,7 +15,7 @@ namespace DeckScaler
                 MatcherBuilder<Game>
                     .With<TrinketInShop>()
                     .And<TryBuy>()
-                    .Without<CannotBuy>()
+                    .Without<PurchaseFailed>()
                     .Build()
             );
         private readonly List<Entity<Game>> _buffer = new(8);
@@ -37,7 +37,7 @@ namespace DeckScaler
                 item
                     .Is<Bought>(hasFreeSlot)
                     .Is<NeedEmptySlot>(!hasFreeSlot)
-                    .Is<CannotBuy>(!hasFreeSlot)
+                    .Is<PurchaseFailed>(!hasFreeSlot)
                     ;
             }
         }

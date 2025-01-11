@@ -3,6 +3,8 @@ using Entitas.Generic;
 
 namespace DeckScaler.Component
 {
+    public sealed class RestockShop : FlagComponent, IInScope<Game> { }
+
     public sealed class UnitInShopCount : ValueComponent<int>, IInScope<Game> { }
 
     public sealed class TrinketInShopCount : ValueComponent<int>, IInScope<Game> { }
@@ -17,7 +19,7 @@ namespace DeckScaler.Component
 
     public sealed class Bought : FlagComponent, IInScope<Game> { }
 
-    public sealed class CannotBuy : FlagComponent, IInScope<Game> { }
+    public sealed class PurchaseFailed : FlagComponent, IInScope<Game> { }
 
     public sealed class NotEnoughMoney : FlagComponent, IInScope<Game> { }
 
