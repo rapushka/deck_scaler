@@ -37,6 +37,10 @@ namespace DeckScaler
 
             Dispose(feature, destroyAllEntities);
             _features.Remove(type);
+
+#if (!ENTITAS_DISABLE_VISUAL_DEBUGGING && UNITY_EDITOR)
+            feature.gameObject.DestroyObject();
+#endif
         }
 
         public void Update()
