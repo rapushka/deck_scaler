@@ -1,3 +1,5 @@
+using DeckScaler.Component;
+
 namespace DeckScaler
 {
     public sealed class GameplayFeature : Feature
@@ -8,6 +10,9 @@ namespace DeckScaler
             Add(new UnitsFeature());
 
             // # Cleanup
+            Add(new RemoveComponent<Initialized>());
+            Add(new ProcessInitialization());
+
             Add(new DestroyEntityBehavioursSystem());
 
             Add(new DestroyGameEntitiesSystem());

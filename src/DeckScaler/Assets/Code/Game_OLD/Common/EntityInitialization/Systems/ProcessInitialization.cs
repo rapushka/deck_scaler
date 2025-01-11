@@ -6,7 +6,7 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class MarkAllInitializingEntitiesAsInitialized : ICleanupSystem
+    public sealed class ProcessInitialization : ICleanupSystem
     {
         private readonly IGroup<Entity<Game>> _entities
             = Contexts.Instance.GetGroup(

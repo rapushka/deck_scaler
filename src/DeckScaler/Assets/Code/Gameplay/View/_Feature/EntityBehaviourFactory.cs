@@ -16,23 +16,22 @@ namespace DeckScaler
         private static IIdentifierServer Identifiers => ServiceLocator.Resolve<IIdentifierServer>();
 
         public Entity<Game> Create(EntityBehaviour<Game> prefab, Vector2 spawnPosition)
-            => Setup(Object.Instantiate(prefab), spawnPosition);
+            => Register(Object.Instantiate(prefab), spawnPosition);
 
-        public Entity<Game> Register(EntityBehaviour<Game> view) => Setup(view, view.transform.position);
+        public Entity<Game> Register(EntityBehaviour<Game> view) => Register(view, view.transform.position);
 
-        private Entity<Game> Setup(EntityBehaviour<Game> view, Vector2 spawnPosition)
+        private Entity<Game> Register(EntityBehaviour<Game> view, Vector2 spawnPosition)
         {
             view.Register(Contexts.Instance);
-            view.SetActive(false);
             var viewTransform = view.transform;
 
             return view.Entity
+                    .Add<Initializing>()
                     .AddSafely<DebugName, string>(view.name)
                     .Add<ID, EntityID>(new(Identifiers.Next()))
                     .Add<View, EntityBehaviour<Game>>(view)
                     .Add<ViewTransform, Transform>(viewTransform)
                     .Add<WorldPosition, Vector2>(spawnPosition)
-                    .Add<Loading>()
                 ;
         }
     }

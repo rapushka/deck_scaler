@@ -8,7 +8,7 @@ namespace DeckScaler
             : base(nameof(CleanupsFeature))
         {
             Add(new RemoveComponent<Initialized>());
-            Add(new MarkAllInitializingEntitiesAsInitialized());
+            Add(new ProcessInitialization());
 
             Add(new RemoveComponent<Dropped>());
             Add(new RemoveComponent<ReturnToSlot>());
