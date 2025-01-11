@@ -1,3 +1,7 @@
+# v0.0.16
+- [Shop Stage](https://github.com/rapushka/deck_scaler/issues/152)
+  - [(free) rerolls](https://github.com/rapushka/deck_scaler/issues/221)
+
 # v0.0.15
 - (WIP) [Shop Stage](https://github.com/rapushka/deck_scaler/issues/152)
   - [ability to buy units from shop](https://github.com/rapushka/deck_scaler/issues/216)
