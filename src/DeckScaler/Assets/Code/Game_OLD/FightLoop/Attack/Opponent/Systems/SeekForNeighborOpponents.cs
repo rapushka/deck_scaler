@@ -6,7 +6,7 @@ using Entitas.Generic;
 using JetBrains.Annotations;
 using static DeckScaler.Constants;
 
-namespace DeckScaler.Systems
+namespace DeckScaler
 {
     public class SeekForNeighborOpponents : IExecuteSystem
     {

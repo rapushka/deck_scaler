@@ -1,5 +1,3 @@
-using DeckScaler.Systems;
-
 namespace DeckScaler.Component
 {
     public sealed class InventoryFeature : Feature

@@ -1,5 +1,3 @@
-using DeckScaler.Systems;
-
 namespace DeckScaler
 {
     public sealed class GameplayFeature : Feature
@@ -7,10 +5,13 @@ namespace DeckScaler
         public GameplayFeature()
             : base(nameof(GameplayFeature))
         {
-            Add(new DestroyEntityBehaviours());
+            Add(new UnitsFeature());
 
-            Add(new DestroyGameEntities());
-            Add(new DestroyInputEntities());
+            // # Cleanup
+            Add(new DestroyEntityBehavioursSystem());
+
+            Add(new DestroyGameEntitiesSystem());
+            Add(new DestroyInputEntitiesSystem());
         }
     }
 }

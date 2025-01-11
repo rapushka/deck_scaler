@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Entitas;
 using Entitas.Generic;
 
-namespace DeckScaler.Systems
+namespace DeckScaler
 {
     public static class EntitasGroupExtensions
     {

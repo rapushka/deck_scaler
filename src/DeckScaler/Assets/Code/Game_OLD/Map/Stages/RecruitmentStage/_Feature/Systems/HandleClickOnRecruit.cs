@@ -4,7 +4,7 @@ using Entitas;
 using Entitas.Generic;
 using Cursor = DeckScaler.Component.Cursor;
 
-namespace DeckScaler.Systems
+namespace DeckScaler
 {
     public class HandleClickOnRecruit : IExecuteSystem
     {

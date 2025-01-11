@@ -4,7 +4,7 @@ using DeckScaler.Scopes;
 using Entitas;
 using Entitas.Generic;
 
-namespace DeckScaler.Systems
+namespace DeckScaler
 {
     public class CleanupMissingEntityID<TComponent> : ICleanupSystem
         where TComponent : ValueComponent<EntityID>, IInScope<Game>, new()

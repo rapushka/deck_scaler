@@ -2,7 +2,7 @@ using DeckScaler.Scopes;
 using Entitas.Generic;
 using UnityEngine;
 
-namespace DeckScaler.Systems
+namespace DeckScaler
 {
     public static class IncrementalComponentsExtensions
     {

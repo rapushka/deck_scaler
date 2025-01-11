@@ -1,5 +1,4 @@
 using DeckScaler.Component;
-using DeckScaler.Systems;
 
 namespace DeckScaler
 {
@@ -22,8 +21,8 @@ namespace DeckScaler
 
             Add(new RemoveComponent<SelectStage>());
 
-            Add(new DestroyGameEntities());
-            Add(new DestroyInputEntities());
+            Add(new DestroyGameEntitiesSystem());
+            Add(new DestroyInputEntitiesSystem());
         }
     }
 }

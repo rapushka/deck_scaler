@@ -1,4 +1,4 @@
-namespace DeckScaler.Systems
+namespace DeckScaler
 {
     public sealed class EnemyAiFeature : Feature
     {

@@ -1,5 +1,3 @@
-using DeckScaler.Systems;
-
 namespace DeckScaler
 {
     public sealed class AffectsViewFeature : Feature

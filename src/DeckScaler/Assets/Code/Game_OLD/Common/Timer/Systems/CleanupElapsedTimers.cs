@@ -3,7 +3,7 @@ using DeckScaler.Scopes;
 using Entitas;
 using Entitas.Generic;
 
-namespace DeckScaler.Systems
+namespace DeckScaler
 {
     public class CleanupElapsedTimers<TTimer> : ICleanupSystem
         where TTimer : ValueComponent<Timer>, IInScope<Game>, new()

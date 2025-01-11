@@ -2,7 +2,7 @@ using DeckScaler.Component;
 using DeckScaler.Service;
 using Entitas;
 
-namespace DeckScaler.Systems
+namespace DeckScaler
 {
     public sealed class CreateEnemyInventory : IInitializeSystem
     {

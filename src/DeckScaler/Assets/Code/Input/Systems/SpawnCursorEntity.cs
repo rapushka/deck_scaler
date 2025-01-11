@@ -4,7 +4,7 @@ using Entitas;
 using UnityEngine;
 using Cursor = DeckScaler.Component.Cursor;
 
-namespace DeckScaler.Systems
+namespace DeckScaler
 {
     public sealed class SpawnCursorEntity : IInitializeSystem
     {

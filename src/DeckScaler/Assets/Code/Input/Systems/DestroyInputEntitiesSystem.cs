@@ -4,16 +4,16 @@ using DeckScaler.Scopes;
 using Entitas;
 using Entitas.Generic;
 
-namespace DeckScaler.Systems
+namespace DeckScaler
 {
-    public class DestroyGameEntities : ICleanupSystem
+    public class DestroyInputEntitiesSystem : ICleanupSystem
     {
-        private readonly IGroup<Entity<Game>> _entities = Contexts.Instance.GetGroup(
-            MatcherBuilder<Game>
+        private readonly IGroup<Entity<Input>> _entities = Contexts.Instance.GetGroup(
+            MatcherBuilder<Input>
                 .With<Destroy>()
                 .Build()
         );
-        private readonly List<Entity<Game>> _buffer = new(64);
+        private readonly List<Entity<Input>> _buffer = new(64);
 
         public void Cleanup()
         {

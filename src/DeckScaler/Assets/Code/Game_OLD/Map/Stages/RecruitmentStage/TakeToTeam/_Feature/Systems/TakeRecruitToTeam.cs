@@ -5,7 +5,7 @@ using DeckScaler.Service;
 using Entitas;
 using Entitas.Generic;
 
-namespace DeckScaler.Systems
+namespace DeckScaler
 {
     public sealed class TakeRecruitToTeam : IExecuteSystem
     {

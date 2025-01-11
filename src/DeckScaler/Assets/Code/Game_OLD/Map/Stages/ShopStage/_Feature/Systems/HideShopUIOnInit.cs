@@ -1,7 +1,7 @@
 using DeckScaler.Service;
 using Entitas;
 
-namespace DeckScaler.Systems
+namespace DeckScaler
 {
     public sealed class HideShopUIOnInit : IInitializeSystem
     {

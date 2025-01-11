@@ -3,7 +3,7 @@ using DeckScaler.Scopes;
 using Entitas;
 using Entitas.Generic;
 
-namespace DeckScaler.Systems
+namespace DeckScaler
 {
     public sealed class ReturnDroppedEntityToSlot : IExecuteSystem
     {

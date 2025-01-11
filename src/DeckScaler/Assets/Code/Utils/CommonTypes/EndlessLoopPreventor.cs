@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DeckScaler.Systems
+namespace DeckScaler
 {
     public struct EndlessLoopPreventor
     {

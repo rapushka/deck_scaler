@@ -4,7 +4,7 @@ using DG.Tweening;
 using Entitas;
 using Entitas.Generic;
 
-namespace DeckScaler.Systems
+namespace DeckScaler
 {
     public class PlayFlinchAnimation : IExecuteSystem
     {

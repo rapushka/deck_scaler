@@ -4,7 +4,7 @@ using Entitas.Generic;
 using Cursor = DeckScaler.Component.Cursor;
 using Input = DeckScaler.Scopes.Input;
 
-namespace DeckScaler.Systems
+namespace DeckScaler
 {
     public sealed class StartDragging : IExecuteSystem
     {

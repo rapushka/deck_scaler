@@ -1,5 +1,4 @@
 using DeckScaler.Component;
-using DeckScaler.Systems;
 
 namespace DeckScaler
 {
@@ -19,7 +18,7 @@ namespace DeckScaler
             Add(new UpdateViewTransformWorldPosition());
 
             Add(new CleanupElapsedTimers<StopAnimatingMovementAfter>());
-            Add(new DestroyEntityBehaviours());
+            Add(new DestroyEntityBehavioursSystem());
         }
     }
 }

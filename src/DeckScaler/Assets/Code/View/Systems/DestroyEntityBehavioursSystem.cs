@@ -4,9 +4,9 @@ using DeckScaler.Scopes;
 using Entitas;
 using Entitas.Generic;
 
-namespace DeckScaler.Systems
+namespace DeckScaler
 {
-    public class DestroyEntityBehaviours : ICleanupSystem
+    public class DestroyEntityBehavioursSystem : ICleanupSystem
     {
         private readonly IGroup<Entity<Game>> _entities = Contexts.Instance.GetGroup(
             MatcherBuilder<Game>
