@@ -8,6 +8,7 @@ namespace DeckScaler
             : base(nameof(ShopRerollFeature))
         {
             Add(new InitializeRerollItemInShop());
+            Add(new RestockShopOnReroll());
         }
     }
 }

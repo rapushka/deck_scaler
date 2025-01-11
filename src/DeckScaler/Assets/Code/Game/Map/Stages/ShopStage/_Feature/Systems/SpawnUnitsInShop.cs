@@ -8,11 +8,10 @@ namespace DeckScaler.Systems
 {
     public sealed class SpawnUnitsInShop : IExecuteSystem
     {
-        private readonly IGroup<Entity<Game>> _stages
+        private readonly IGroup<Entity<Game>> _shops
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<ShopStage>()
-                    .And<SelectStage>()
+                    .With<RestockShop>()
                     .And<UnitInShopCount>()
             );
 
@@ -22,9 +21,9 @@ namespace DeckScaler.Systems
 
         public void Execute()
         {
-            foreach (var stage in _stages)
+            foreach (var shop in _shops)
             {
-                var unitCount = stage.Get<UnitInShopCount, int>();
+                var unitCount = shop.Get<UnitInShopCount, int>();
 
                 foreach (var id in Utils.GetRandomAllyIDs(unitCount))
                     Factory.CreateUnit(id)

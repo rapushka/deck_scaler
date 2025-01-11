@@ -6,7 +6,7 @@ namespace DeckScaler
     {
         protected override void OnClick()
         {
-            CreateEntity.Empty()
+            CreateEntity.OneFrame()
                 .Add<RequestReroll>()
                 ;
         }

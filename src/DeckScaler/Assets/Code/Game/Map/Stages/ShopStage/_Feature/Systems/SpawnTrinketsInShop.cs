@@ -12,8 +12,7 @@ namespace DeckScaler.Systems
         private readonly IGroup<Entity<Game>> _stages
             = Contexts.Instance.GetGroup(
                 MatcherBuilder<Game>
-                    .With<ShopStage>()
-                    .And<SelectStage>()
+                    .With<RestockShop>()
                     .And<TrinketInShopCount>()
             );
 
