@@ -14,7 +14,8 @@ namespace DeckScaler
         public override void Enter()
         {
             Utils.Initialize();
-            UiMediator.OpenScreen<GameplayHUD>();
+            UiMediator.OpenScreen<GameplayHUD>()
+                .Initialize();
 
             Ecs.StartGameplay();
         }

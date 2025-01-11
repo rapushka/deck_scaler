@@ -8,7 +8,7 @@ namespace DeckScaler
     public interface IEntityBehaviourFactory
     {
         Entity<Game> Create(EntityBehaviour<Game> prefab, Vector2 spawnPosition);
-        Entity<Game> Setup(EntityBehaviour<Game> view);
+        Entity<Game> Register(EntityBehaviour<Game> view);
     }
 
     public class EntityBehaviourFactory : IEntityBehaviourFactory
@@ -18,7 +18,7 @@ namespace DeckScaler
         public Entity<Game> Create(EntityBehaviour<Game> prefab, Vector2 spawnPosition)
             => Setup(Object.Instantiate(prefab), spawnPosition);
 
-        public Entity<Game> Setup(EntityBehaviour<Game> view) => Setup(view, view.transform.position);
+        public Entity<Game> Register(EntityBehaviour<Game> view) => Setup(view, view.transform.position);
 
         private Entity<Game> Setup(EntityBehaviour<Game> view, Vector2 spawnPosition)
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public class ShopStageView : MonoBehaviour
+    public class ShopStageView : GameplayViewBase
     {
         [SerializeField] private Transform _offscreenTransform;
 

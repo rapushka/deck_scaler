@@ -1,22 +1,16 @@
-using Entitas;
-using UnityEngine;
+using DeckScaler.Systems;
 
 namespace DeckScaler
 {
-    public class GameplayFeature : Feature
+    public sealed class GameplayFeature : Feature
     {
         public GameplayFeature()
             : base(nameof(GameplayFeature))
         {
-            Add(new TestSystem());
-        }
+            Add(new DestroyEntityBehaviours());
 
-        private class TestSystem : IInitializeSystem
-        {
-            public void Initialize()
-            {
-                Debug.Log("hello");
-            }
+            Add(new DestroyGameEntities());
+            Add(new DestroyInputEntities());
         }
     }
 }

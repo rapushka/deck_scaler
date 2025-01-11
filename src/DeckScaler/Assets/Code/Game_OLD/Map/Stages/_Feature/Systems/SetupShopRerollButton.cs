@@ -26,7 +26,7 @@ namespace DeckScaler
         {
             foreach (var stage in _stages)
             {
-                Factory.Setup(ShopView.RerollButton)
+                Factory.Register(ShopView.RerollButton)
                     .Add<Price, int>(stage.Get<ShopRerollInitialPrice, int>())
                     .Add<Interactable>()
                     .Add<Visible>()

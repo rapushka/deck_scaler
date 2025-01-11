@@ -7,7 +7,7 @@ namespace DeckScaler
         public GameplayHudFeature()
             : base(nameof(GameplayHudFeature))
         {
-            Add(new SpawnGameplayHudEntities());
+            Add(new RegisterGameplayHudEntities());
         }
     }
 }

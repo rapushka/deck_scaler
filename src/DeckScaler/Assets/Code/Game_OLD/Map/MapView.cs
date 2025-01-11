@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public class MapView : MonoBehaviour
+    public class MapView : GameplayViewBase
     {
         [SerializeField] private TMP_Text _currentStreetTextMesh;
         [SerializeField] private string _currentStreetTemplate = "Current Street: {0}/{1}";
@@ -18,8 +18,6 @@ namespace DeckScaler
         [SerializeField] private LevelButton _levelButtonPrefab;
 
         private readonly List<LevelButton> _levelButtons = new();
-
-        public bool IsOpened => gameObject.IsActive();
 
         private static MapUtils Utils => ServiceLocator.Resolve<IUtils>().Map;
 
@@ -38,13 +36,11 @@ namespace DeckScaler
             CreateLevelButtons();
         }
 
-        public void Show()
+        public override void Show()
         {
             UpdateCompletedLevels();
-            gameObject.SetActive(true);
+            base.Show();
         }
-
-        public void Hide() => gameObject.SetActive(false);
 
         public void Dispose() => ClearLevelButtons();
 

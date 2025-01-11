@@ -9,8 +9,8 @@ namespace DeckScaler.Service
 
         TView GetCurrent<TView>() where TView : BaseUiScreen;
 
-        void Open<TView>() where TView : BaseUiScreen;
-        void DisposeCurrent();
+        TView Open<TView>() where TView : BaseUiScreen;
+        void  DisposeCurrent();
     }
 
     public class UiScreens : IUiScreens
@@ -29,17 +29,18 @@ namespace DeckScaler.Service
             _uiCanvas.Init(Cameras.UiCamera);
         }
 
-        public void Open<TScreen>() where TScreen : BaseUiScreen => SetView(Config.Screens.Get<TScreen>());
+        public TScreen Open<TScreen>() where TScreen : BaseUiScreen => (TScreen)SetView(Config.Screens.Get<TScreen>());
 
         public TScene GetCurrent<TScene>()
             where TScene : BaseUiScreen
             => _currentScreen as TScene
                 ?? throw new InvalidOperationException($"Current view is {_currentScreen.GetType().Name} But requested {typeof(TScene).Name}");
 
-        private void SetView(BaseUiScreen prefab)
+        private BaseUiScreen SetView(BaseUiScreen prefab)
         {
             _currentScreen?.DestroyObject();
             _currentScreen = Object.Instantiate(prefab, _uiCanvas.Root);
+            return _currentScreen;
         }
 
         public void DisposeCurrent()

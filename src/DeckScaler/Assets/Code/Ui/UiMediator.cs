@@ -4,7 +4,7 @@ namespace DeckScaler.Service
     {
         void InitializeUI();
 
-        void    OpenScreen<TScreen>() where TScreen : BaseUiScreen;
+        TScreen OpenScreen<TScreen>() where TScreen : BaseUiScreen;
         TScreen GetCurrentScreen<TScreen>() where TScreen : BaseUiScreen;
         void    DisposeCurrentScreen();
 
@@ -27,7 +27,7 @@ namespace DeckScaler.Service
             Screens.Init();
         }
 
-        public void    OpenScreen<TScreen>() where TScreen : BaseUiScreen       => Screens.Open<TScreen>();
+        public TScreen OpenScreen<TScreen>() where TScreen : BaseUiScreen       => Screens.Open<TScreen>();
         public TScreen GetCurrentScreen<TScreen>() where TScreen : BaseUiScreen => Screens.GetCurrent<TScreen>();
         public void    DisposeCurrentScreen()                                   => Screens.DisposeCurrent();
 

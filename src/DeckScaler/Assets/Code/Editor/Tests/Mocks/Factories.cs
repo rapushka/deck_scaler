@@ -22,7 +22,7 @@ namespace DeckScaler.Editor.Tests.Mocks
         public Entity<Game> Setup(EntityBehaviour<Game> view, Vector2 spawnPosition)
             => view.Entity.Replace<WorldPosition, Vector2>(spawnPosition);
 
-        public Entity<Game> Setup(EntityBehaviour<Game> view)
+        public Entity<Game> Register(EntityBehaviour<Game> view)
             => view.Entity;
     }
 }

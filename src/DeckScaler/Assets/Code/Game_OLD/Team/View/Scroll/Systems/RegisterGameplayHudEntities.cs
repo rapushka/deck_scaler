@@ -3,7 +3,7 @@ using Entitas;
 
 namespace DeckScaler.Systems
 {
-    public class SpawnGameplayHudEntities : IInitializeSystem
+    public class RegisterGameplayHudEntities : IInitializeSystem
     {
         private static IUiMediator UiMediator => ServiceLocator.Resolve<IUiMediator>();
 
@@ -14,7 +14,7 @@ namespace DeckScaler.Systems
         public void Initialize()
         {
             foreach (var entityBehaviour in HUD.Behaviours)
-                Factory.EntityBehaviour.Setup(entityBehaviour);
+                Factory.EntityBehaviour.Register(entityBehaviour);
         }
     }
 }
