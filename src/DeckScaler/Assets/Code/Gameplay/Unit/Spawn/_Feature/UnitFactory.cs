@@ -2,16 +2,14 @@ using DeckScaler.Component;
 using DeckScaler.Scopes;
 using Entitas.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace DeckScaler.Service
 {
     public interface IUnitFactory
     {
-        Entity<Game> CreateLead(UnitIDRef unitID);
         Entity<Game> CreateTeammate(UnitIDRef unitID);
         Entity<Game> CreateEnemy(UnitIDRef unitID);
-
-        Entity<Game> CreateUnit(UnitIDRef unitID);
     }
 
     public class UnitFactory : IUnitFactory
@@ -20,17 +18,12 @@ namespace DeckScaler.Service
 
         private IFactories Factory => ServiceLocator.Resolve<IFactories>();
 
-        private static UnitViewConfig ViewConfig => ServiceLocator.Resolve<IConfigs>().UnitView;
+        private UnitsConfig.ViewConfig ViewConfig => UnitsConfig.View;
 
-        private static UnitsUtil Utils => ServiceLocator.Resolve<IUtils>().Units;
-
-        public Entity<Game> CreateLead(UnitIDRef unitID)
-            => CreateTeammate(unitID)
-                .Is<Lead>(true)
-                .Bump();
+        private static UnitUtils Utils => ServiceLocator.Resolve<IUtils>().Units;
 
         public Entity<Game> CreateTeammate(UnitIDRef unitID)
-            => Utils.AddAllyComponents(CreateUnit(unitID, ViewConfig.TeammateSpawnOffset));
+            => Utils.ToAlly(CreateUnit(unitID));
 
         public Entity<Game> CreateEnemy(UnitIDRef unitID)
             => CreateUnit(unitID, ViewConfig.EnemySpawnOffset)
@@ -41,14 +34,14 @@ namespace DeckScaler.Service
         public Entity<Game> CreateUnit(UnitIDRef unitID)
             => CreateUnit(unitID, ViewConfig.EnemySpawnOffset);
 
-        private Entity<Game> CreateUnit(UnitIDRef unitID, Vector2 spawnPosition)
+        private Entity<Game> CreateUnit(UnitIDRef unitID)
         {
             var config = UnitsConfig[unitID];
             var stats = config.Stats;
 
             return Factory.EntityBehaviour.Create(UnitsConfig.ViewPrefab, spawnPosition)
                     .Replace<DebugName, string>(ShortUnitID(config.ID))
-                    .Add<Unit, string>(config.ID)
+                    .Add<CanvasScaler.Unit, string>(config.ID)
                     .Add<SpriteSortOrder, int>(ViewConfig.SortingOrder.Idle)
                     .Add<Component.Suit, Suit>(config.Suit)
                     .Add<Price, int>(config.Price)

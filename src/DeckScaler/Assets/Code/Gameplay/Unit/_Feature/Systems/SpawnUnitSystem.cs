@@ -24,15 +24,8 @@ namespace DeckScaler
             {
                 var unitID = request.Get<SpawnUnitRequest, UnitIDRef>();
                 var side = request.Get<OnSide, Side>();
-                var isLead = request.Is<Lead>();
 
                 request.Add<Destroy>();
-
-                if (isLead)
-                {
-                    Factory.CreateLead(unitID);
-                    continue;
-                }
 
                 // ReSharper disable once SwitchExpressionHandlesSomeKnownEnumValuesWithExceptionInDefault - fuck you
                 _ = side switch

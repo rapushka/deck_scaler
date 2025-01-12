@@ -10,10 +10,6 @@ namespace DeckScaler
     {
         [field: SerializeField] public EntityBehaviour<Game>[] Behaviours { get; private set; }
 
-        [field: SerializeField] public MapView              MapView              { get; private set; }
-        [field: SerializeField] public RecruitmentStageView RecruitmentStageView { get; private set; }
-        [field: SerializeField] public ShopStageView        ShopStageView        { get; private set; }
-
         private static IFactories Factory => ServiceLocator.Resolve<IFactories>();
 
         public override void Initialize()
@@ -21,9 +17,6 @@ namespace DeckScaler
             base.Initialize();
 
             RegisterEntityBehaviours();
-            MapView.Hide();
-            RecruitmentStageView.Hide();
-            ShopStageView.Hide();
         }
 
         private void RegisterEntityBehaviours()
@@ -32,9 +25,6 @@ namespace DeckScaler
                 Factory.EntityBehaviour.Register(entityBehaviour);
         }
 
-        public void Dispose()
-        {
-            MapView.Dispose();
-        }
+        public void Dispose() { }
     }
 }

@@ -10,8 +10,8 @@ namespace DeckScaler
             Add(new UnitsFeature());
 
             // # Cleanup
-            Add(new RemoveComponent<Initialized>());
-            Add(new ProcessInitialization());
+            Add(new RemoveComponentSystem<Initialized>());
+            Add(new ProcessInitializationSystem());
 
             Add(new DestroyEntityBehavioursSystem());
 
